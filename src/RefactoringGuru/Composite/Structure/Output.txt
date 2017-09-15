@@ -1,0 +1,8 @@
+Client code gets a simple component:
+CLIENT SAYS: Leaf
+
+Same client code gets a composite tree:
+CLIENT SAYS: Branch(Branch(Leaf+Leaf)+Branch(Leaf))
+
+Client merges two components without checking their classes:
+Branch(Branch(Leaf+Leaf)+Branch(Leaf)+Leaf)

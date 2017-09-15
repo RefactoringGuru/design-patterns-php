@@ -1,0 +1,5 @@
+Client code gets a simple component:
+CLIENT SAYS: ConcreteComponent
+
+Same client code gets a decorated component:
+CLIENT SAYS: ConcreteDecoratorB(ConcreteDecoratorA(ConcreteComponent))

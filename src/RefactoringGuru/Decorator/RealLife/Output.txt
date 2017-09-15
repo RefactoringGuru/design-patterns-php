@@ -1,0 +1,32 @@
+Website renders comments without filtering (unsafe):
+Hello! Nice blog post!
+Please visit my <a href='http://www.iwillhackyou.com'>homepage</a>.
+<script src="http://www.iwillhackyou.com/script.js">
+  performXSSAttack();
+</script>
+
+
+Website renders comments after stripping all tags (safe):
+Hello! Nice blog post!
+Please visit my homepage.
+
+  performXSSAttack();
+
+
+
+Website renders a forum post without filtering and formatting (unsafe, ugly):
+# Welcome
+
+This is my first post on this **gorgeous** forum.
+
+<script src="http://www.iwillhackyou.com/script.js">
+  performXSSAttack();
+</script>
+
+
+Website renders a forum post after translating markdown markupand filtering some dangerous HTML tags and attributes (safe, pretty):
+<h1>Welcome</h1>
+
+<p>This is my first post on this <strong>gorgeous</strong> forum.</p>
+
+<p></p>

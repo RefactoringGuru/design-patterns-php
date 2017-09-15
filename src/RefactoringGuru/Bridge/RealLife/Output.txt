@@ -1,0 +1,27 @@
+HTML view of a simple content page:
+<html><body>
+<h1>Home</h1>
+<div class='text'>Welcome to our website!</div>
+</body></html>
+
+JSON view of a simple content page, rendered with a same client code:
+{
+"title": "Home",
+"text": "Welcome to our website!"
+}
+
+HTML view of a product page, same client code:
+<html><body>
+<h1>Star Wars, episode1</h1>
+<div class='text'>A long time ago in a galaxy far, far away...</div>
+<img src='/images/star-wars.jpeg'>
+<a href='/cart/add/123'>Add to cart</a>
+</body></html>
+
+JSON view of a simple content page, with the same client code:
+{
+"title": "Star Wars, episode1",
+"text": "A long time ago in a galaxy far, far away...",
+"img": "/images/star-wars.jpeg",
+"link": {"href": "Add to cart", "title": "Add to cart""}
+}

@@ -1,0 +1,5 @@
+Base operation with:
+Result of ConcreteImplementorA in platform A.
+
+Extended operation with:
+Result of ConcreteImplementorB in platform B.

@@ -1,0 +1,7 @@
+Client code works with visitors through a common Visitor interface:
+A + ConcreteVisitor1
+B + ConcreteVisitor1
+
+Same client code can work with different visitors:
+A + ConcreteVisitor1
+B + ConcreteVisitor2

@@ -1,0 +1,7 @@
+Testing client code with the first factory type:
+Result of product B1.
+Result of B1 collaborating with: Result of product A1.
+
+Testing the same client code with the second factory type:
+Result of product B2.
+Result of B2 collaborating with: Result of product A2.

@@ -1,0 +1,7 @@
+Executing client code with real subject:
+REAL_SUBJECT: Handling request.
+
+Executing the same client code with a proxy:
+PROXY: Checking access prior to firing a real request.
+REAL_SUBJECT: Handling request.
+PROXY: Logging the time of request.

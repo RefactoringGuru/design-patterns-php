@@ -1,0 +1,13 @@
+<form action="/product/add">
+<h3>Add product</h3>
+<label for="name">Name</label>
+<input name="name" type="text" value="Apple MacBook">
+<label for="description">Description</label>
+<input name="description" type="text" value="A decent laptop.">
+<fieldset><legend>Product photo</legend>
+<label for="caption">Caption</label>
+<input name="caption" type="text" value="Front photo.">
+<label for="image">Image</label>
+<input name="image" type="file" value="photo1.png">
+</fieldset>
+</form>

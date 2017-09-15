@@ -1,0 +1,8 @@
+Client code correctly works with normal targets:
+Default target behavior.
+
+External adaptee has a weird interface, client code does not understand it:
+.eetpadA fo roivaheb laicepS
+
+But the same client code can work fine with external adaptee via adapter:
+TRANSLATED: Special behavior of Adaptee.

@@ -1,0 +1,4 @@
+Primitive field values have not been copied. Booo!
+Simple component have been cloned. Yay!
+Component with back reference have been cloned. Yay!
+Component with back reference is linked to the clone. Yay!

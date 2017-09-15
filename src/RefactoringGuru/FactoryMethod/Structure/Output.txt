@@ -1,0 +1,5 @@
+Testing ConcreteCreator1:
+Same creator's code worked with: Result of ConcreteProduct1
+
+Testing ConcreteCreator2:
+Same creator's code worked with: Result of ConcreteProduct2

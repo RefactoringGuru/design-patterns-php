@@ -1,0 +1,6 @@
+Client code is designed correctly works with email notifications:
+Sent email with title 'Website is down!' to 'developers@example.com' that says '<strong style='color:red;font-size: 50px;'>Alert!</strong> Our website is not responding. Call the admins and bring it up!'.
+
+The same client code can work with other classes via adapter:
+Logged in to a slack account 'example.com'.
+Posted following message into the 'Examples.com Developers' chat: '#Website is down!# Alert! Our website is not responding. Call the admins and bring it up!'.
