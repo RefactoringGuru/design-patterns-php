@@ -29,8 +29,8 @@ For the best experience, we recommend working with examples in [PHPStorm](https:
 ## Roadmap
 
 - [ ] Flyweight: Structure + RealLife
-- [ ] Chain of Responsibility: Structure + RealLife
-- [ ] Command: Structure + RealLife
+- [ ] Chain of Responsibility: RealLife
+- [ ] Command: RealLife
 - [ ] Iterator: Structure + RealLife
 - [ ] Mediator: Structure + RealLife
 - [ ] Memento: Structure + RealLife
