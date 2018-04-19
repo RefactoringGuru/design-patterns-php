@@ -11,15 +11,18 @@ namespace RefactoringGuru\ChainOfResponsibility\Structure;
  */
 
 /**
- * Define an interface for handling requests. Implement the successor link.
+ * Define an interface for handling requests.
  */
 interface Handler
 {
-    function setNext(Handler $handler);
+    public function setNext(Handler $handler);
 
-    function handle($request);
+    public function handle($request);
 }
 
+/**
+ * Base handler class implements the standard linking behavior.
+ */
 abstract class AbstractHandler implements Handler
 {
     /**
@@ -31,14 +34,15 @@ abstract class AbstractHandler implements Handler
      * @param Handler $handler
      * @return Handler
      */
-    function setNext(Handler $handler)
+    public function setNext(Handler $handler)
     {
         $this->nextHandler = $handler;
+
         // Returning a handler will let us link handlers in a convenient way.
         return $handler;
     }
 
-    function handle($request)
+    public function handle($request)
     {
         if ($this->nextHandler) {
             return $this->nextHandler->handle($request);
@@ -51,7 +55,7 @@ abstract class AbstractHandler implements Handler
  */
 class MonkeyHandler extends AbstractHandler
 {
-    function handle($request)
+    public function handle($request)
     {
         if ($request == "Banana") {
             return "Monkey: I'll eat the " . $request . ".\n";
@@ -63,7 +67,7 @@ class MonkeyHandler extends AbstractHandler
 
 class SquirrelHandler extends AbstractHandler
 {
-    function handle($request)
+    public function handle($request)
     {
         if ($request == "Nut") {
             return "Squirrel: I'll eat the " . $request . ".\n";
@@ -75,7 +79,7 @@ class SquirrelHandler extends AbstractHandler
 
 class DogHandler extends AbstractHandler
 {
-    function handle($request)
+    public function handle($request)
     {
         if ($request == "MeatBall") {
             return "Dog: I'll eat the " . $request . ".\n";

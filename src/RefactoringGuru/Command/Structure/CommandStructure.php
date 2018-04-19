@@ -15,7 +15,7 @@ namespace RefactoringGuru\Command\Structure;
  */
 interface Command
 {
-    function execute();
+    public function execute();
 }
 
 /**
@@ -25,12 +25,12 @@ class SimpleCommand implements Command
 {
     private $payload;
 
-    function __construct($payload)
+    public function __construct($payload)
     {
         $this->payload = $payload;
     }
 
-    function execute()
+    public function execute()
     {
         print("SimpleCommand: See, I can do simple things like printing (" . $this->payload . ")\n");
     }
@@ -57,7 +57,7 @@ class ComplexCommand implements Command
      * Complex commands can accept one or several receiver objects along with
      * any context data via constructor.
      */
-    function __construct(Receiver $receiver, $a, $b)
+    public function __construct(Receiver $receiver, $a, $b)
     {
         $this->receiver = $receiver;
         $this->a = $a;
@@ -67,7 +67,7 @@ class ComplexCommand implements Command
     /**
      * Commands can execute any methods of a receiver.
      */
-    function execute()
+    public function execute()
     {
         print("ComplexCommand: Complex stuff should be done by a receiver object.\n");
         $this->receiver->doSomething($this->a);
@@ -82,12 +82,12 @@ class ComplexCommand implements Command
  */
 class Receiver
 {
-    function doSomething($a)
+    public function doSomething($a)
     {
         print("Receiver: Working on (" . $a . ".)\n");
     }
 
-    function doSomethingElse($b)
+    public function doSomethingElse($b)
     {
         print("Receiver: Also working on (" . $b . ".)\n");
     }
