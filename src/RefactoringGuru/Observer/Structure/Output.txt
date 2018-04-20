@@ -1,0 +1,18 @@
+Publisher: Subscribed an object.
+Publisher: Subscribed an object.
+
+Publisher: I'm doing something important.
+Publisher: My state has just changed to: 2
+Publisher: Notifying subscribers.
+ConcreteSubscriberA: Reacted to the event.
+ConcreteSubscriberB: Reacted to the event.
+
+Publisher: I'm doing something important.
+Publisher: My state has just changed to: 1
+Publisher: Notifying subscribers.
+ConcreteSubscriberA: Reacted to the event.
+
+Publisher: I'm doing something important.
+Publisher: My state has just changed to: 5
+Publisher: Notifying subscribers.
+ConcreteSubscriberB: Reacted to the event.
