@@ -1,1 +1,16 @@
-// TODO
+Client: Let's see what we have in "cats.csv".
+CatDataBase: Added a cat (Steve, Bengal).
+CatDataBase: Added a cat (Siri, Domestic short-haired).
+CatDataBase: Added a cat (Fluffy, Maine Coon).
+
+Client: Let's look for a cat named "Siri".
+= Siri =
+Age: 2
+Owner: Alexander Shvets
+Breed: Domestic short-haired
+Image: /cats/domestic-sh.jpg
+Color: Black
+Texture: Solid
+
+Client: Let's look for a cat named "Bob".
+CatDataBase: Sorry, your query does not yield any results.
