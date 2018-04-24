@@ -1,0 +1,26 @@
+Enter your email:
+asd
+Enter your password:
+123
+UserExistsMiddleware: This email is not registered!
+
+Enter your email:
+admin@example.com
+Enter your password:
+wrong
+UserExistsMiddleware: Wrong password!
+
+Enter your email:
+admin@example.com
+Enter your password:
+letmein
+ThrottlingMiddleware: Request limit exceeded!
+
+
+
+Enter your email:
+admin@example.com
+Enter your password:
+admin_pass
+RoleCheckMiddleware: Hello, admin!
+Server: Authorization has been successful!
