@@ -35,13 +35,19 @@ use Iterator;
  *     // Rewind the Iterator to the first element
  *     public function rewind();
  * }
+ *
+ * There's also a built-in interface for collections:
+ *
+ * interface IteratorAggregate extends Traversable {
+ *     public getIterator(): Traversable;
+ * }
  */
 
 /**
  * Concrete Iterator implements various traversal algorythms.
  * It stores the current traversal position at all times.
  */
-class AlphabeticalOrderIterator implements Iterator
+class AlphabeticalOrderIterator implements \Iterator
 {
     /**
      * @var WordsCollection
@@ -94,19 +100,10 @@ class AlphabeticalOrderIterator implements Iterator
 }
 
 /**
- * Collection Interface is optional. It's mainly useful to let the client code
- * to operate with various collections without depending on their classes.
- */
-interface IterableCollection
-{
-    public function getIterator(): Iterator;
-}
-
-/**
  * Concrete Collection provides one or several methods for retrieving a fresh
  * iterator instance, compatible with this collection.
  */
-class WordsCollection implements IterableCollection
+class WordsCollection implements \IteratorAggregate
 {
     private $items = [];
 
