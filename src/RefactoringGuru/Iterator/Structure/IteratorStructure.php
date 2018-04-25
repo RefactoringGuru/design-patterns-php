@@ -19,28 +19,28 @@ use Iterator;
  *
  * Here's how the interface looks like:
  *
- * interface Iterator extends Traversable {
- *     // Return the current element
- *     public function current();
- *
- *     // Move forward to next element
- *     public function next();
- *
- *     // Return the key of the current element
- *     public function key();
- *
- *     // Checks if current position is valid
- *     public function valid();
- *
- *     // Rewind the Iterator to the first element
- *     public function rewind();
- * }
+ *     interface Iterator extends Traversable {
+ *         // Return the current element
+ *         public function current();
+ *    
+ *         // Move forward to next element
+ *         public function next();
+ *    
+ *         // Return the key of the current element
+ *         public function key();
+ *    
+ *         // Checks if current position is valid
+ *         public function valid();
+ *    
+ *         // Rewind the Iterator to the first element
+ *         public function rewind();
+ *     }
  *
  * There's also a built-in interface for collections:
  *
- * interface IteratorAggregate extends Traversable {
- *     public getIterator(): Traversable;
- * }
+ *     interface IteratorAggregate extends Traversable {
+ *         public getIterator(): Traversable;
+ *     }
  */
 
 /**
