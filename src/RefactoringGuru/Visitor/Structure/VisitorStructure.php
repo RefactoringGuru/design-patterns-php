@@ -5,140 +5,169 @@ namespace RefactoringGuru\Visitor\Structure;
 /**
  * Visitor Design Pattern
  *
- * Intent: Represent an operation to be performed on the elements of an object
- * structure. Visitor lets you define a new operation without changing the
- * classes of the elements on which it operates.
+ * Intent: Represent an operation to be performed over elements of an object
+ * structure. The Visitor pattern lets you define a new operation without
+ * changing the classes of the elements on which it operates.
  */
 
 /**
- * Accepting interface defines an `accept` operation that takes a base visitor
- * interface as an argument.
+ * EN: The Component interface declares an `accept` method that should take the
+ * base visitor interface as an argument.
+ *
+ * RU: Интерфейс компонентов должен объявлять метод, принимающий базовый
+ * интерфейс посетителей в качестве аргумента.
  */
-interface AcceptsVisitors
+interface Component
 {
     function accept(Visitor $visitor);
 }
 
 /**
- * Each concrete element accepting visitors, should implement the
- * accept operation by calling a method in visitor class that corresponds to
- * that element's class.
+ * EN: Each Concrete Component must implement the `accept` method in a such a
+ * way that it calls the visitor's method, corresponding to the component's
+ * class.
+ *
+ * RU: Каждый конкретный компонент должен реализовать метод `accept` таким
+ * образом, чтобы вызвать метод посетителя, соотвествующий текущему классу.
  */
-class ConcreteElementA implements AcceptsVisitors
+class ConcreteComponentA implements Component
 {
     /**
-     * Note that we're calling `visitConcreteElementA` inside
-     * ConcreteElementA. This way visitor will know the concrete type of
-     * object it visits.
+     * EN: Note that we're calling `visitConcreteComponentA`, which matches the
+     * current class name. This way we will let the visitor know the class of
+     * the component it works with.
+     *
+     * RU: Обратите внимание, что мы вызываем `visitConcreteComponentA`, что
+     * совпадает с названием  текущего класса. Этим мы дадим посетителю знать с
+     * каким классом компонентов он сейчас работает.
      */
     function accept(Visitor $visitor)
     {
-        $visitor->visitConcreteElementA($this);
+        $visitor->visitConcreteComponentA($this);
     }
 
     /**
-     * Concrete elements could have special methods that does not exists in
-     * their base class. Visitor has access to these methods, because it's
-     * aware of the concrete element classes.
+     * EN: Concrete Components may have special methods that don't exists in
+     * their base class or interface. The Visitor will still be able to use
+     * these methods, since it's aware of the component's concrete class.
+     *
+     * RU: Конкретные Компоненты могут иметь особые методы, не объявленные в их
+     * базовом классе или интерфейсе. Несмотря на это, посетитель всё-равно
+     * сможет их использовать, так как знает конкретный класс компонента.
      */
-    function exclusiveMethodOfConcreteElementA()
+    function exclusiveMethodOfConcreteComponentA()
     {
         return "A";
     }
 }
 
-class ConcreteElementB implements AcceptsVisitors
+class ConcreteComponentB implements Component
 {
     /**
-     * Same here: visitConcreteElementB => ConcreteElementB
+     * EN: Same here: visitConcreteComponentB => ConcreteComponentB
+     *
+     * RU: То же самое: visitConcreteComponentB => ConcreteComponentB
      */
     function accept(Visitor $visitor)
     {
-        $visitor->visitConcreteElementB($this);
+        $visitor->visitConcreteComponentB($this);
     }
 
-    function specialMethodOfConcreteElementB()
+    function specialMethodOfConcreteComponentB()
     {
         return "B";
     }
 }
 
 /**
- * Visitor interface defines visiting operations for each ConcreteElement
- * class. The operation's name and signature identifies the class that sends
- * request to the visitor. That lets the visitor determine the concrete
- * class of the element being visited. Then the visitor can access the
- * element directly through its particular interface.
+ * EN: The Visitor Interface declares a set of visiting methods that correspond
+ * to component classes. The signature of a visiting method allows the visitor
+ * to identify the exact class of the component that it's dealing with.
+ *
+ * RU: Интерфейс Посетителя объявляет набор методов посещения для каждого класса
+ * компонента. Сигнатуры этих методов позволяют посетителю определить конкретный
+ * класс компонента, с которым он работает.
  */
 interface Visitor
 {
-    public function visitConcreteElementA(ConcreteElementA $element);
+    public function visitConcreteComponentA(ConcreteComponentA $element);
 
-    public function visitConcreteElementB(ConcreteElementB $element);
+    public function visitConcreteComponentB(ConcreteComponentB $element);
 }
 
 /**
- * Concrete Visitors implement specific algorithms and capable to execute
- * it over all types of elements. Concrete visitors implement all Visitor's
- * methods and thanks to them, know the concrete classes of elements they
- * work with.
+ * EN: Concrete Visitors implement several versions of the same algorithm, which
+ * are able to work with all concrete component classes.
  *
- * Concrete Visitor may not only work with separate element objects, but with
- * a complex element structure, for instance, composite tree. In this case,
- * Concrete Visitor can hold the local state of the algorithm. This state
- * often accumulates results during the traversal of the structure.
+ * You can experience the biggest benefit of the Visitor pattern when using it
+ * with a complex object structure, such as a Composite tree. In this case, it
+ * might be helpful to store some intermediate state of the algorithm while
+ * executing visitor's methods over various objects of the structure.
+ *
+ * RU: Конкретные посетители реализуют несколько версий какого-то одного
+ * алгоритма, способные работать со всеми классами конкретных компонентов.
+ *
+ * Главная польза паттерна проявляется тогда, когда вы используете посетитель не
+ * с отдельным объектами компонентов, а с целыми структурами разнорозных
+ * компонентов, вроде дерева Компоновщика. В этом случае, посетитель может быть
+ * реализован так, чтобы накоплять состояние при последовательном запуске своих
+ * методов.
  */
 class ConcreteVisitor1 implements Visitor
 {
-    public function visitConcreteElementA(ConcreteElementA $element)
+    public function visitConcreteComponentA(ConcreteComponentA $element)
     {
-        echo $element->exclusiveMethodOfConcreteElementA() . " + ConcreteVisitor1\n";
+        echo $element->exclusiveMethodOfConcreteComponentA()." + ConcreteVisitor1\n";
     }
 
-    public function visitConcreteElementB(ConcreteElementB $element)
+    public function visitConcreteComponentB(ConcreteComponentB $element)
     {
-        echo $element->specialMethodOfConcreteElementB() . " + ConcreteVisitor1\n";
+        echo $element->specialMethodOfConcreteComponentB()." + ConcreteVisitor1\n";
     }
 }
 
 class ConcreteVisitor2 implements Visitor
 {
-    public function visitConcreteElementA(ConcreteElementA $element)
+    public function visitConcreteComponentA(ConcreteComponentA $element)
     {
-        echo $element->exclusiveMethodOfConcreteElementA() . " + ConcreteVisitor1\n";
+        echo $element->exclusiveMethodOfConcreteComponentA()." + ConcreteVisitor1\n";
     }
 
-    public function visitConcreteElementB(ConcreteElementB $element)
+    public function visitConcreteComponentB(ConcreteComponentB $element)
     {
-        echo $element->specialMethodOfConcreteElementB() . " + ConcreteVisitor2\n";
+        echo $element->specialMethodOfConcreteComponentB()." + ConcreteVisitor2\n";
     }
 }
 
 /**
- * Client code can run visitor operations over any set of elements without
+ * EN: Client code can run visitor operations over any set of elements without
  * figuring out their concrete classes. The accept operation directs call to the
  * appropriate operation in the visitor object.
+ *
+ * RU: Клиентский код может запускать операции посетителя над любым набором
+ * компонентов, не привязываясь к их конкретным классам. Метод `accept`
+ * позаботится о том, чтобы вызвать метод посетителя, соответствующий данному
+ * классу компонента.
  */
-function clientCode(array $elements, Visitor $visitor)
+function clientCode(array $components, Visitor $visitor)
 {
     // ...
-    foreach ($elements as $element) {
-        $element->accept($visitor);
+    foreach ($components as $component) {
+        $component->accept($visitor);
     }
     // ...
 }
 
-
-$elements = [
-    new ConcreteElementA(),
-    new ConcreteElementB()
+$components = [
+    new ConcreteComponentA(),
+    new ConcreteComponentB(),
 ];
 
-echo "Client code works with visitors through a common Visitor interface:\n";
+echo "The client code works with all visitors via the base Visitor interface:\n";
 $visitor1 = new ConcreteVisitor1();
-clientCode($elements, $visitor1);
+clientCode($components, $visitor1);
 echo "\n";
 
-echo "Same client code can work with different visitors:\n";
+echo "It allows the same client code to work with different types of visitors:\n";
 $visitor2 = new ConcreteVisitor2();
-clientCode($elements, $visitor2);
+clientCode($components, $visitor2);

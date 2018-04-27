@@ -1,0 +1,45 @@
+Client: Let's create some orders
+Controller: POST request to /orders with {"email":"me@example.com","product":"ABC Cat food (XL)","total":9.95}
+Controller: Created the order #0.
+Controller: POST request to /orders with {"email":"me@example.com","product":"XYZ Cat litter (XXL)","total":19.95}
+Controller: Created the order #1.
+
+Client: List my orders, please
+Controller: GET request to /orders
+Controller: Here's all orders:
+{
+    "id": 0,
+    "status": "new",
+    "email": "me@example.com",
+    "product": "ABC Cat food (XL)",
+    "total": 9.95
+}
+{
+    "id": 1,
+    "status": "new",
+    "email": "me@example.com",
+    "product": "XYZ Cat litter (XXL)",
+    "total": 19.95
+}
+
+Client: I'd like to pay for the second, show me the payment form
+Controller: GET request to /order/1/payment/paypal
+Controller: here's the payment form:
+<form action="https://paypal.com/payment" method="POST">
+    <input type="hidden" id="email" value="me@example.com">
+    <input type="hidden" id="total" value="19.95">
+    <input type="hidden" id="returnURL" value="https://our-website.com/order/1/payment/paypal/return">
+    <input type="submit" value="Pay on PayPal">
+</form>
+
+Client: ...pushes the Pay button...
+
+Client: Oh, I'm redirected to the PayPal.
+
+Client: ...pays on the PayPal...
+
+Client: Alright, I'm back with you, guys.
+Controller: GET request to /order/1/payment/paypal/return?key=c55a3964833a4b0fa4469ea94a057152&success=true&total=19.95
+PayPalPayment: ...validating... Done!
+Controller: Thanks for your order!
+Order: #1 is now completed.

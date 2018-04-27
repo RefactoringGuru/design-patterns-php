@@ -11,7 +11,7 @@ namespace RefactoringGuru\Strategy\Structure;
  */
 
 /**
- * Context define the interface of interest to clients.
+ * Context defines the interface of interest to clients.
  */
 class Context
 {
