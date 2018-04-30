@@ -28,7 +28,7 @@ class SimpleDownloader implements Downloader
 {
     public function download(string $url): string
     {
-        echo "Downloading file from Internet...\n";
+        print("Downloading file from Internet...\n");
         return file_get_contents($url);
     }
 }
@@ -57,11 +57,11 @@ class CachingDownloader implements Downloader
     public function download(string $url): string
     {
         if (!isset($this->cache[$url])) {
-            echo "CacheProxy MISS. ";
+            print("CacheProxy MISS. ");
             $result = $this->downloader->download($url);
             $this->cache[$url] = $result;
         } else {
-            echo "CacheProxy HIT. Retrieving result from cache...\n";
+            print("CacheProxy HIT. Retrieving result from cache...\n");
         }
         return $this->cache[$url];
     }
@@ -76,22 +76,22 @@ function clientCode(Downloader $subject)
     // ...
 
     $result = $subject->download("http://example.com/");
-    echo "Downloaded chars: " . strlen($result) . "\n";
+    print("Downloaded chars: " . strlen($result) . "\n");
 
     // Duplicate download requests could be cached for a speed gain.
 
     $result = $subject->download("http://example.com/");
-    echo "Downloaded chars: " . strlen($result) . "\n";
+    print("Downloaded chars: " . strlen($result) . "\n");
 
     // ...
 }
 
-echo "Executing client code with real subject:\n";
+print("Executing client code with real subject:\n");
 $realSubject = new SimpleDownloader();
 clientCode($realSubject);
 
-echo "\n";
+print("\n");
 
-echo "Executing the same client code with a proxy:\n";
+print("Executing the same client code with a proxy:\n");
 $proxy = new CachingDownloader($realSubject);
 clientCode($proxy);

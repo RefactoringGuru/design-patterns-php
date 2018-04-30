@@ -103,18 +103,18 @@ class FacebookConnector implements SocialNetworkConnector
 
     public function logIn()
     {
-        echo "Send HTTP API request to log in user $this->login with " .
-            "password $this->password\n";
+        print("Send HTTP API request to log in user $this->login with " .
+            "password $this->password\n");
     }
 
     public function logOut()
     {
-        echo "Send HTTP API request to log out user $this->login\n";
+        print("Send HTTP API request to log out user $this->login\n");
     }
 
     public function createPost($content)
     {
-        echo "Send HTTP API requests to create a post in Facebook timeline.\n";
+        print("Send HTTP API requests to create a post in Facebook timeline.\n");
     }
 }
 
@@ -133,18 +133,18 @@ class LinkedInConnector implements SocialNetworkConnector
 
     public function logIn()
     {
-        echo "Send HTTP API request to log in user $this->email with " .
-            "password $this->password\n";
+        print("Send HTTP API request to log in user $this->email with " .
+            "password $this->password\n");
     }
 
     public function logOut()
     {
-        echo "Send HTTP API request to log out user $this->email\n";
+        print("Send HTTP API request to log out user $this->email\n");
     }
 
     public function createPost($content)
     {
-        echo "Send HTTP API requests to create a post in LinkedIn timeline.\n";
+        print("Send HTTP API requests to create a post in LinkedIn timeline.\n");
     }
 }
 
@@ -162,9 +162,9 @@ function clientCode(SocialNetworkPoster $creator)
 /**
  * Application initialization.
  */
-echo "Testing ConcreteCreator1:\n";
+print("Testing ConcreteCreator1:\n");
 clientCode(new FacebookPoster("john_smith", "******"));
-echo "\n\n";
+print("\n\n");
 
-echo "Testing ConcreteCreator2:\n";
+print("Testing ConcreteCreator2:\n");
 clientCode(new LinkedInPoster("john_smith@example.com", "******"));

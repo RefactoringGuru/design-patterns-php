@@ -146,7 +146,7 @@ function displayCommentAsAWebsite(InputFormat $format, string $text)
 {
     //..
 
-    echo $format->formatText($text);
+    print($format->formatText($text));
 
     //..
 }
@@ -168,17 +168,17 @@ HERE;
  * Naive comment rendering (unsafe).
  */
 $naiveInput = new TextInput();
-echo "Website renders comments without filtering (unsafe):\n";
+print("Website renders comments without filtering (unsafe):\n");
 displayCommentAsAWebsite($naiveInput, $dangerousComment);
-echo "\n\n\n";
+print("\n\n\n");
 
 /**
  * Filtered comment rendering (safe).
  */
 $filteredInput = new PlainTextFilter($naiveInput);
-echo "Website renders comments after stripping all tags (safe):\n";
+print("Website renders comments after stripping all tags (safe):\n");
 displayCommentAsAWebsite($filteredInput, $dangerousComment);
-echo "\n\n\n";
+print("\n\n\n");
 
 
 /**
@@ -199,9 +199,9 @@ HERE;
  * Naive post rendering (unsafe, no formatting).
  */
 $naiveInput = new TextInput();
-echo "Website renders a forum post without filtering and formatting (unsafe, ugly):\n";
+print("Website renders a forum post without filtering and formatting (unsafe, ugly):\n");
 displayCommentAsAWebsite($naiveInput, $dangerousForumPost);
-echo "\n\n\n";
+print("\n\n\n");
 
 /**
  * Markdown formatter + filtering dangerous tags (safe, pretty).
@@ -209,8 +209,8 @@ echo "\n\n\n";
 $text = new TextInput();
 $markdown = new MarkdownFormat($text);
 $filteredInput = new DangerousHTMLTagsFilter($markdown);
-echo "Website renders a forum post after translating markdown markup" .
-    "and filtering some dangerous HTML tags and attributes (safe, pretty):\n";
+print("Website renders a forum post after translating markdown markup" .
+    "and filtering some dangerous HTML tags and attributes (safe, pretty):\n");
 displayCommentAsAWebsite($filteredInput, $dangerousForumPost);
-echo "\n\n\n";
+print("\n\n\n");
 

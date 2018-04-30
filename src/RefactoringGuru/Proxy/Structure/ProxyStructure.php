@@ -27,7 +27,7 @@ class RealSubject implements Subject
 {
     public function request()
     {
-        echo "REAL_SUBJECT: Handling request.\n";
+        print("REAL_SUBJECT: Handling request.\n");
     }
 }
 
@@ -67,13 +67,13 @@ class Proxy implements Subject
     private function checkAccess()
     {
         // Some real checks should go here, bu we just:
-        echo "PROXY: Checking access prior to firing a real request.\n";
+        print("PROXY: Checking access prior to firing a real request.\n");
         return true;
     }
 
     private function logAccess()
     {
-        echo "PROXY: Logging the time of request.\n";
+        print("PROXY: Logging the time of request.\n");
     }
 
 }
@@ -88,17 +88,17 @@ function clientCode(Subject $subject)
 {
     // ...
 
-    echo $subject->request();
+    print($subject->request());
 
     // ...
 }
 
-echo "Executing client code with real subject:\n";
+print("Executing client code with real subject:\n");
 $realSubject = new RealSubject();
 clientCode($realSubject);
 
-echo "\n";
+print("\n");
 
-echo "Executing the same client code with a proxy:\n";
+print("Executing the same client code with a proxy:\n");
 $proxy = new Proxy($realSubject);
 clientCode($proxy);

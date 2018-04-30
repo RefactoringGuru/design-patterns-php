@@ -10,12 +10,11 @@ namespace RefactoringGuru\AbstractFactory\Structure;
  */
 
 /**
- * Base AbstractFactory interface declares operations that create abstract
- * product objects.
- *
- * Abstract factory can produce a whole product family: several related
- * types of products. Products of one family can even collaborate between
- * themselves.
+ * The Abstract Factory interface declares a set of methods that return
+ * different abstract products. These products are related and called a family.
+ * Products of one family are usually able to collaborate between themselves. A
+ * family of products may have several variations, but the products of one
+ * variation are incompatible with products of another.
  */
 interface AbstractFactory
 {
@@ -25,11 +24,10 @@ interface AbstractFactory
 }
 
 /**
- * Concrete factories create product family of a single variation.
- * This guarantees that resulting products can collaborate.
- *
- * Note that concrete factory returns abstract products, even though it
- * creates concrete product objects. This will make factories interchangeable.
+ * Concrete Factories produce a family of products that belong to a single
+ * variation. The factory guarantees that resulting products will be compatible.
+ * Note that signatures of the Concrete Factory's methods return an abstract
+ * product, while inside the method a concrete product is instantiated.
  */
 class ConcreteFactory1 implements AbstractFactory
 {
@@ -45,11 +43,7 @@ class ConcreteFactory1 implements AbstractFactory
 }
 
 /**
- * Concrete factories create product family of a single variation.
- * This guarantees that resulting products can collaborate.
- *
- * Note that concrete factory returns abstract products, even though it
- * creates concrete product objects. This will make factories interchangeable.
+ * Each concrete factory has a corresponding product variation.
  */
 class ConcreteFactory2 implements AbstractFactory
 {
@@ -65,8 +59,8 @@ class ConcreteFactory2 implements AbstractFactory
 }
 
 /**
- * Each distinct product of a family should have a base interface.
- * Product variations must implement these common interfaces.
+ * Each distinct product of a product family should have a base interface. All
+ * variations of the product must implement this interface.
  */
 interface AbstractProductA
 {
@@ -74,44 +68,41 @@ interface AbstractProductA
 }
 
 /**
- * Concrete products will be created by the corresponding concrete factory.
+ * Concrete Products will be created by the corresponding concrete factory.
  */
 class ConcreteProductA1 implements AbstractProductA
 {
     public function usefulFunctionA()
     {
-        return "Result of product A1.\n";
+        return "The result of the A1 product.\n";
     }
 }
 
-/**
- * Concrete products will be created by the corresponding concrete factory.
- */
 class ConcreteProductA2 implements AbstractProductA
 {
     public function usefulFunctionA()
     {
-        return "Result of product A2.\n";
+        return "The result of the A2 product.\n";
     }
 }
 
 /**
- * Base interface for another product. Products can interact with each other,
- * however proper interaction is possible only between products of the same
+ * The base interface of another product. Products can interact with each other,
+ * however a proper interaction is possible only between products of the same
  * concrete variation.
  */
 interface AbstractProductB
 {
     /**
-     * ProductB does its own thing.
+     * The ProductB is able to do its own thing...
      */
     public function usefulFunctionB();
 
     /**
-     * But also collaborates with ProductA.
+     * ...but it also can collaborate with the ProductA.
      *
-     * AbstractFactory handles production of compatible product variations that
-     * can work together.
+     * The Abstract Factory will make sure that the products it produces will be
+     * of the same variation, which will make them compatible.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator);
 }
@@ -123,61 +114,58 @@ class ConcreteProductB1 implements AbstractProductB
 {
     public function usefulFunctionB()
     {
-        return "Result of product B1.\n";
+        return "The result of the B1 product.\n";
     }
 
     /**
-     * Product B1 correctly works only with product A1.
-     * But it depends only on abstract type.
+     * The B1 product is only able to work correctly with the A1 product.
+     * However, it still lists an abstract product A in its signature.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator)
     {
         $result = $collaborator->usefulFunctionA();
-        return "Result of B1 collaborating with: {$result}";
+        return "The result of the B1 collaborating with the {$result}";
     }
 }
 
-/**
- * Concrete products will be created by the corresponding concrete factory.
- */
 class ConcreteProductB2 implements AbstractProductB
 {
     public function usefulFunctionB()
     {
-        return "Result of product B2.\n";
+        return "The result of the B2 product.\n";
     }
 
     /**
-     * Product B2 correctly works only with product A2.
-     * But it only depends on abstract product type.
+     * The B2 product is only able to work correctly with the A2 product.
+     * However, it still lists an abstract product A in its signature.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator)
     {
         $result = $collaborator->usefulFunctionA();
-        return "Result of B2 collaborating with: {$result}";
+        return "The result of the B2 collaborating with the {$result}";
     }
 }
 
 /**
- * Client code works only with abstract types: AbstractFactory and
- * AbstractProducts. This allows it to work with concrete factories and
- * products of any kind.
+ * The client code works with factories and products only through abstract
+ * types: AbstractFactory and AbstractProducts. This let you pass any subtype of
+ * the factory or product to the client code without breaking it.
  */
 function clientCode(AbstractFactory $factory)
 {
     $product_a = $factory->createProductA();
     $product_b = $factory->createProductB();
 
-    echo $product_b->usefulFunctionB();
-    echo $product_b->anotherUsefulFunctionB($product_a);
+    print($product_b->usefulFunctionB());
+    print($product_b->anotherUsefulFunctionB($product_a));
 }
 
 /**
- * Client code can be launched with any factory type.
+ * The client code can work with any concrete factory class.
  */
-echo "Testing client code with the first factory type:\n";
+print("Testing client code with the first factory type:\n");
 clientCode(new ConcreteFactory1());
-echo "\n";
+print("\n");
 
-echo "Testing the same client code with the second factory type:\n";
+print("Testing the same client code with the second factory type:\n");
 clientCode(new ConcreteFactory2());

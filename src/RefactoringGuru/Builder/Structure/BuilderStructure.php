@@ -144,19 +144,19 @@ function clientCode(Director $director)
     $builder = new ConcreteBuilder1();
     $director->setBuilder($builder);
 
-    echo "Standard basic product:\n";
+    print("Standard basic product:\n");
     $director->buildMinimalViableProduct();
-    echo $builder->getProduct()->listParts();
+    print($builder->getProduct()->listParts());
 
-    echo "Standard full featured product:\n";
+    print("Standard full featured product:\n");
     $director->buildFullFeaturedProduct();
-    echo $builder->getProduct()->listParts();
+    print($builder->getProduct()->listParts());
 
     // By the way, builder can be used without a director.
-    echo "Custom product:\n";
+    print("Custom product:\n");
     $builder->producePartA();
     $builder->producePartC();
-    echo $builder->getProduct()->listParts();
+    print($builder->getProduct()->listParts());
 }
 
 $director = new Director();

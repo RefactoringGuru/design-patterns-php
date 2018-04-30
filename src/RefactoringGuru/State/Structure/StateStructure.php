@@ -85,13 +85,13 @@ class ConcreteStateA extends State
 {
     public function handle1()
     {
-        echo "ConcreteStateB handles request1.";
+        print("ConcreteStateB handles request1.");
         $this->context->transitionTo(new ConcreteStateB());
     }
 
     public function handle2()
     {
-        echo "ConcreteStateB handles request2.";
+        print("ConcreteStateB handles request2.");
     }
 }
 
@@ -102,12 +102,12 @@ class ConcreteStateB extends State
 {
     public function handle1()
     {
-        echo "ConcreteStateB handles request1.";
+        print("ConcreteStateB handles request1.");
     }
 
     public function handle2()
     {
-        echo "ConcreteStateAB handles request2.";
+        print("ConcreteStateAB handles request2.");
         $this->context->transitionTo(new ConcreteStateA());
     }
 }

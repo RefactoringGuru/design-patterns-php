@@ -95,7 +95,7 @@ class ConcreteProduct2 implements Product
 function clientCode(Creator $creator)
 {
     //...
-    echo $creator->someOperation();
+    print($creator->someOperation());
     //...
 }
 
@@ -103,9 +103,9 @@ function clientCode(Creator $creator)
  * Application picks a creator's type depending on configuration or
  * environment.
  */
-echo "Testing ConcreteCreator1:\n";
+print("Testing ConcreteCreator1:\n");
 clientCode(new ConcreteCreator1());
-echo "\n\n";
+print("\n\n");
 
-echo "Testing ConcreteCreator2:\n";
+print("Testing ConcreteCreator2:\n");
 clientCode(new ConcreteCreator2());

@@ -120,9 +120,9 @@ $monkey->setNext($squirrel)->setNext($dog);
 /**
  * Client can accept any handler, not just the one that starts a chain.
  */
-echo "Chain: Monkey > Squirrel > Dog\n\n";
+print("Chain: Monkey > Squirrel > Dog\n\n");
 clientCode($monkey);
-echo "\n";
+print("\n");
 
-echo "Subchain: Squirrel > Dog\n\n";
+print("Subchain: Squirrel > Dog\n\n");
 clientCode($squirrel);

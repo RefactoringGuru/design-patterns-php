@@ -55,20 +55,20 @@ class Adapter extends Target
  */
 function clientCode(Target $target)
 {
-    echo $target->request();
+    print($target->request());
 }
 
-echo "Client code correctly works with normal targets:\n";
+print("Client code correctly works with normal targets:\n");
 $target = new Target();
 clientCode($target);
-echo "\n\n";
+print("\n\n");
 
 $adaptee = new Adaptee();
-echo "External adaptee has a weird interface, client code does not understand it:\n";
-echo $adaptee->specificRequest();
-echo "\n\n";
+print("External adaptee has a weird interface, client code does not understand it:\n");
+print($adaptee->specificRequest());
+print("\n\n");
 
 
-echo "But the same client code can work fine with external adaptee via adapter:\n";
+print("But the same client code can work fine with external adaptee via adapter:\n");
 $adapter = new Adapter($adaptee);
 clientCode($adapter);

@@ -99,7 +99,7 @@ function clientCode(Facade $facade)
 {
     // ...
 
-    echo $facade->operation();
+    print($facade->operation());
 
     // ...
 }

@@ -136,7 +136,7 @@ function clientCode(Component $component)
 {
     //...
 
-    echo "CLIENT SAYS: " . $component->operation();
+    print("CLIENT SAYS: " . $component->operation());
 
     //...
 }
@@ -145,9 +145,9 @@ function clientCode(Component $component)
  * This way Client code can support both simple leaf components...
  */
 $simple = new Leaf();
-echo "Client code gets a simple component:\n";
+print("Client code gets a simple component:\n");
 clientCode($simple);
-echo "\n\n";
+print("\n\n");
 
 /**
  * ...and complex composites.
@@ -160,9 +160,9 @@ $branch2 = new Composite();
 $branch2->add(new Leaf());
 $tree->add($branch1);
 $tree->add($branch2);
-echo "Same client code gets a composite tree:\n";
+print("Same client code gets a composite tree:\n");
 clientCode($tree);
-echo "\n\n";
+print("\n\n");
 
 
 /**
@@ -176,10 +176,10 @@ function clientCode2(Component $component1, Component $component2)
     if ($component1->isComposite()) {
         $component1->add($component2);
     }
-    echo $component1->operation();
+    print($component1->operation());
 
     // ...
 }
 
-echo "Client merges two components without checking their classes:\n";
+print("Client merges two components without checking their classes:\n");
 clientCode2($tree, $simple);

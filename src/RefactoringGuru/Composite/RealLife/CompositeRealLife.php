@@ -196,7 +196,7 @@ function renderProduct(FormElement $form)
 {
     //..
 
-    echo $form->render();
+    print($form->render());
 
     //..
 }

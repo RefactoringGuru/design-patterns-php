@@ -64,26 +64,26 @@ function clientCode()
 
     $p2 = clone $p1;
     if ($p1->primitive === $p2->primitive) {
-        echo "Primitive field values have not been copied. Booo!\n";
+        print("Primitive field values have not been copied. Booo!\n");
     } else {
-        echo "Primitive field values have been carried over to a clone. Yay!\n";
+        print("Primitive field values have been carried over to a clone. Yay!\n");
     }
     if ($p1->component === $p2->component) {
-        echo "Simple component have not been cloned. Booo!\n";
+        print("Simple component have not been cloned. Booo!\n");
     } else {
-        echo "Simple component have been cloned. Yay!\n";
+        print("Simple component have been cloned. Yay!\n");
     }
 
     if ($p1->circularReference === $p2->circularReference) {
-        echo "Component with back reference have not been cloned. Booo!\n";
+        print("Component with back reference have not been cloned. Booo!\n");
     } else {
-        echo "Component with back reference have been cloned. Yay!\n";
+        print("Component with back reference have been cloned. Yay!\n");
     }
 
     if ($p1->circularReference->prototype === $p2->circularReference->prototype) {
-        echo "Component with back reference is linked to original object. Booo!\n";
+        print("Component with back reference is linked to original object. Booo!\n");
     } else {
-        echo "Component with back reference is linked to the clone. Yay!\n";
+        print("Component with back reference is linked to the clone. Yay!\n");
     }
 }
 

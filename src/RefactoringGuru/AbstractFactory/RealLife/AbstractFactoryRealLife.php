@@ -8,10 +8,10 @@ namespace RefactoringGuru\AbstractFactory\RealLife;
  * Intent: Provide an interface for creating families of related or dependent
  * objects without specifying their concrete classes.
  *
- * Example: Abstract Factory provides interface for creating templates
- * for various elements of a page. A website can support several rendering
- * engines by implementing separate concrete factory classes. They will
- * create different template classes for the same page elements.
+ * Example: Abstract Factory provides interface for creating templates for
+ * various elements of a page. A website can support several rendering engines
+ * by implementing separate concrete factory classes. They will create different
+ * template classes for the same page elements.
  */
 
 /**
@@ -71,7 +71,7 @@ class TwigTitleTemplate implements TitleTemplate
 {
     public function render(): string
     {
-        return '<h1>{{ title }}</h1>';
+        return "<h1>{{ title }}</h1>";
     }
 }
 
@@ -82,7 +82,7 @@ class PHPTitleTemplate implements TitleTemplate
 {
     public function render(): string
     {
-        return '<h1><?php echo $title ?></h1>';
+        return "<h1><?php print(\$title) ?></h1>";
     }
 }
 
@@ -125,7 +125,7 @@ class PHPPageTemplate implements PageTemplate
         return <<<EOF
 <div class="page">
   $title
-  <article class="content"><?php echo \$content ?></article>
+  <article class="content"><?php print(\$content) ?></article>
 </div>
 EOF;
     }
@@ -139,15 +139,15 @@ function templateRenderer(TemplateFactory $factory)
     $titleTemplate = $factory->createTitleTemplate();
     $pageTemplate = $factory->createPageTemplate();
 
-    echo $pageTemplate->render($titleTemplate);
+    print($pageTemplate->render($titleTemplate));
 }
 
 /**
  * Client code can be launched with any factory type.
  */
-echo "Testing rendering with the Twig factory:\n";
+print("Testing rendering with the Twig factory:\n");
 templateRenderer(new TwigTemplateFactory());
-echo "\n\n";
+print("\n\n");
 
-echo "Testing rendering with the PHPTemplate factory:\n";
+print("Testing rendering with the PHPTemplate factory:\n");
 templateRenderer(new PHPTemplateFactory());

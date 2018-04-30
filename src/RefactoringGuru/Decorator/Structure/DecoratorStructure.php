@@ -91,7 +91,7 @@ function clientCode(Component $component)
 {
     //...
 
-    echo "CLIENT SAYS: " . $component->operation();
+    print("CLIENT SAYS: " . $component->operation());
 
     //...
 }
@@ -100,9 +100,9 @@ function clientCode(Component $component)
  * This way Client code can support both simple components...
  */
 $simple = new ConcreteComponent();
-echo "Client code gets a simple component:\n";
+print("Client code gets a simple component:\n");
 clientCode($simple);
-echo "\n\n";
+print("\n\n");
 
 /**
  * ...as well as the decorated ones.
@@ -112,5 +112,5 @@ echo "\n\n";
  */
 $decorator1 = new ConcreteDecoratorA($simple);
 $decorator2 = new ConcreteDecoratorB($decorator1);
-echo "Same client code gets a decorated component:\n";
+print("Same client code gets a decorated component:\n");
 clientCode($decorator2);

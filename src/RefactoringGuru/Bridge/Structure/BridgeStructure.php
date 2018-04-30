@@ -98,7 +98,7 @@ function clientCode(Abstraction $abstraction)
 {
     // ...
 
-    echo $abstraction->operation();
+    print($abstraction->operation());
 
     // ...
 }
@@ -111,7 +111,7 @@ $implementation = new ConcreteImplementorA();
 $abstraction = new Abstraction($implementation);
 clientCode($abstraction);
 
-echo "\n";
+print("\n");
 
 $implementation = new ConcreteImplementorB();
 $abstraction = new ExtendedAbstraction($implementation);
