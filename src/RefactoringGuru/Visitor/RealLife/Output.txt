@@ -1,0 +1,29 @@
+Client: I can print a report for a whole company:
+
+SuperStarDevelopment (USD550,000.00)
+
+--Mobile Development (USD351,000.00)
+
+    $100,000.00 Albert Falmore (designer)
+    $100,000.00 Ali Halabay (programmer)
+    $ 90,000.00 Sarah Konor (programmer)
+    $ 31,000.00 Monica Ronaldino (QA engineer)
+    $ 30,000.00 James Smith (QA engineer)
+
+--Tech Support (USD199,000.00)
+
+    $ 70,000.00 Larry Ulbrecht (supervisor)
+    $ 30,000.00 Elton Pale (operator)
+    $ 30,000.00 Rajeet Kumar (operator)
+    $ 34,000.00 John Burnovsky (operator)
+    $ 35,000.00 Sergey Korolev (operator)
+
+Client: ...or just for a single department:
+
+Tech Support (USD199,000.00)
+
+    $ 70,000.00 Larry Ulbrecht (supervisor)
+    $ 30,000.00 Elton Pale (operator)
+    $ 30,000.00 Rajeet Kumar (operator)
+    $ 34,000.00 John Burnovsky (operator)
+    $ 35,000.00 Sergey Korolev (operator)
