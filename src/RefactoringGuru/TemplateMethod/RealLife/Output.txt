@@ -1,0 +1,20 @@
+Username:
+> neo
+Password:
+> 123123
+Message:
+> What is the Matrix?
+
+Choose the social network to post the message:
+1 - Facebook
+2 - Twitter
+> 1
+
+Checking user's credentials...
+Name: neo
+Password: ******
+.....
+
+Facebook: 'neo' has logged in successfully.
+Facebook: 'neo' has posted 'What is the Matrix?'.
+Facebook: 'neo' has been logged out.

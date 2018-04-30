@@ -20,7 +20,7 @@ namespace RefactoringGuru\Visitor\RealLife;
  */
 interface Entity
 {
-    function accept(Visitor $visitor);
+    public function accept(Visitor $visitor);
 }
 
 /**
@@ -53,7 +53,7 @@ class Company implements Entity
 
     // ...
 
-    function accept(Visitor $visitor)
+    public function accept(Visitor $visitor)
     {
         return $visitor->visitCompany($this);
     }
@@ -99,7 +99,7 @@ class Department implements Entity
 
     // ...
 
-    function accept(Visitor $visitor)
+    public function accept(Visitor $visitor)
     {
         return $visitor->visitDepartment($this);
     }
@@ -140,7 +140,7 @@ class Employee implements Entity
 
     // ...
 
-    function accept(Visitor $visitor)
+    public function accept(Visitor $visitor)
     {
         return $visitor->visitEmployee($this);
     }
