@@ -6,8 +6,8 @@ It contains PHP examples for all classic GoF design patterns.
 
 Each pattern includes two examples:
 
-- **Structure**: pure pattern structure with detailed comments.
-- **RealLife**: potential usage of a pattern in real PHP project.
+- **Structure**: a pure structure of a pattern with detailed comments.
+- **RealLife**: a potential usage of a pattern in a real PHP project.
 
 
 ## Requirements
@@ -15,7 +15,7 @@ Each pattern includes two examples:
 These examples require PHP 7.0 and newer, although they can be easily
 replicated in older versions of PHP.
 
-This version was picked because it provides explicit argument and return type declarations. This helps to better understand some features of patterns that are not very obvious in dynamically typed language.
+This particular version was picked because it provides explicit argument and return type declarations. This helps to better understand some features of patterns that are not very obvious in dynamically typed language.
 
 All examples can be launched in command line, using a PHP executable as follows:
 
@@ -28,17 +28,10 @@ For the best experience, we recommend working with examples in [PHPStorm](https:
 
 ## Roadmap
 
-- [ ] Flyweight: Structure + RealLife
-- [ ] Chain of Responsibility: RealLife
 - [ ] Command: RealLife
-- [ ] Iterator: Structure + RealLife
-- [ ] Mediator: Structure + RealLife
-- [ ] Memento: Structure + RealLife
-- [ ] Observer: Structure + RealLife
+- [ ] Iterator: RealLife
+- [ ] Memento: RealLife
 - [ ] State: RealLife
-- [ ] Strategy: RealLife
-- [ ] Template Method: RealLife
-- [ ] Visitor: RealLife
 
 
 ## Contributor's Guide
@@ -51,7 +44,7 @@ Here's a style guide which might help you to keep your changes consistent with o
 
 2. Try to hard wrap the code at 80th's character. It helps to list the code on the website without scrollbars.
 
-3. Examples should match following namespace convention: RefactoringGuru/{название паттерна}/{название примера}. Example:
+3. Examples should match following namespace convention: RefactoringGuru/{pattern-name}/{example-name}. For instance:
 
     ```php
     <?php
