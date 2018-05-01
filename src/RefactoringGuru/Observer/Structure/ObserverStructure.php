@@ -6,107 +6,141 @@ namespace RefactoringGuru\Observer\Structure;
  * Observer Design Pattern
  *
  * Intent: Define a one-to-many dependency between objects so that when one
- * object changes state, all its dependents are notified and updated
+ * object changes state, all of its dependents are notified and updated
  * automatically.
+ *
+ * Note that there's a lot of similar terminology used along with this pattern.
+ * Just remember that the Subject is also called the Publisher and the Observer
+ * is often called the Subscriber and vise versa.
  */
 
 /**
- * Publisher.
+ * PHP has a couple of built-in interfaces related to the Observer pattern.
+ *
+ * Here's how the Subject interface looks like:
+ *
+ * @link http://php.net/manual/en/class.splsubject.php
+ *
+ *     interface SplSubject
+ *     {
+ *         // Attach an observer to the subject.
+ *         public function attach(SplObserver $observer);
+ *
+ *         // Detach an observer from the subject.
+ *         public function detach(SplObserver $observer);
+ *
+ *         // Notify all observers about an event.
+ *         public function notify();
+ *     }
+ *
+ * There's also a built-in interface for collections:
+ * @link http://php.net/manual/en/class.splobserver.php
+ *
+ *    interface SplObserver
+ *    {
+ *        public function update(SplSubject $subject);
+ *    }
  */
-class Publisher
+
+/**
+ * The Subject owns some important state and notifies observers when the state
+ * changes.
+ */
+class Subject implements \SplSubject
 {
     /**
-     * @var int For the sake of simplicity, the Publisher's
-     * state important for all subscribers, will be stored in
-     * this variable.
+     * @var int
+     *
+     * For the sake of simplicity, the Subject's state that is important to
+     * all subscribers, will be stored in this variable.
      */
     public $state;
 
     /**
-     * @var array List of subscribers. In real life the list of subscribers can
-     * be stored in more comprehensive manner, categorized by events types, etc.
+     * @var array List of subscribers.
+     *
+     * In real life the list of subscribers can be stored in more comprehensive
+     * manner, categorized by event types, etc.
      */
-    private $subscribers = [];
+    private $observers = [];
 
     /**
-     * @param Subscriber $subscriber Subscription management.
+     * Subscription management.
      */
-    public function subscribe(Subscriber $subscriber)
+    public function attach(\SplObserver $observer)
     {
-        print("Publisher: Subscribed an object.\n");
-        $this->subscribers[] = $subscriber;
+        print("Subject: Attached an observer.\n");
+        $this->observers[] = $observer;
     }
 
     /**
-     * @param Subscriber $subscriber Subscription management.
+     * Subscription management.
      */
-    public function unsubscribe(Subscriber $subscriber)
+    public function detach(\SplObserver $observer)
     {
-        foreach ($this->subscribers as $key => $s) {
-            if ($s === $subscriber) {
-                unset($this->subscribers[$key]);
-                print("Publisher: Unsubscribed an object.\n");
+        foreach ($this->observers as $key => $s) {
+            if ($s === $observer) {
+                unset($this->observers[$key]);
+                print("Subject: Detached an observer.\n");
             }
         }
     }
 
     /**
-     * The method that fires update for all subscribers.
+     * Fire an update for each subscriber.
      */
-    public function notifySubscribers()
+    public function notify()
     {
-        print("Publisher: Notifying subscribers.\n");
-        foreach ($this->subscribers as $subscriber) {
-            $subscriber->update($this);
+        print("Subject: Notifying observers...\n");
+        foreach ($this->observers as $observer) {
+            $observer->update($this);
         }
     }
 
     /**
-     * The subscription logic is only a fraction of the real behavior of the
-     * Publisher. Usually it holds some important business logic, that uses
-     * notification methods to notify all of the subscribers (or just the ones,
-     * which subscribed for particular event) about some important event or
-     * change of the Publisher's state.
+     * Usually, the subscription logic is only a fraction of what a Subject
+     * can really do. Subjects commonly hold some important business logic,
+     * that triggers notification method each time something important is about
+     * to happen (or after it).
      */
     public function someBusinessLogic()
     {
-        print("\nPublisher: I'm doing something important.\n");
+        print("\nSubject: I'm doing something important.\n");
         $this->state = rand(0, 10);
 
-        print("Publisher: My state has just changed to: {$this->state}\n");
-        $this->notifySubscribers();
+        print("Subject: My state has just changed to: {$this->state}\n");
+        $this->notify();
     }
 }
 
 /**
- * Subscriber interface defines the method for accepting updates from
- * publishers. Usually it describes just a single method.
+ * Concrete Observers react to the updates issued by the Subject
+ * they'd been attached to.
  */
-interface Subscriber
+class ConcreteObserverA implements \SplObserver
 {
-    /**
-     * You can either pass an entire publisher object to the subscribers or just
-     * a specific set of data, related to the event.
-     */
-    public function update(Publisher $publisher);
-}
-
-class ConcreteSubscriberA implements Subscriber
-{
-    public function update(Publisher $publisher)
+    public function update(\SplSubject $subject)
     {
-        if ($publisher->state < 3) {
-            print("ConcreteSubscriberA: Reacted to the event.\n");
+        if (! $subject instanceof Subject) {
+            return;
+        }
+
+        if ($subject->state < 3) {
+            print("ConcreteObserverA: Reacted to the event.\n");
         }
     }
 }
 
-class ConcreteSubscriberB implements Subscriber
+class ConcreteObserverB implements \SplObserver
 {
-    public function update(Publisher $publisher)
+    public function update(\SplSubject $subject)
     {
-        if ($publisher->state == 0 || $publisher->state >= 2) {
-            print("ConcreteSubscriberB: Reacted to the event.\n");
+        if (! $subject instanceof Subject) {
+            return;
+        }
+
+        if ($subject->state == 0 || $subject->state >= 2) {
+            print("ConcreteObserverB: Reacted to the event.\n");
         }
     }
 }
@@ -115,14 +149,17 @@ class ConcreteSubscriberB implements Subscriber
  * Client code.
  */
 
-$publisher = new Publisher();
+$subject = new Subject();
 
-$s1 = new ConcreteSubscriberA();
-$publisher->subscribe($s1);
+$o1 = new ConcreteObserverA();
+$subject->attach($o1);
 
-$s2 = new ConcreteSubscriberB();
-$publisher->subscribe($s2);
+$o2 = new ConcreteObserverB();
+$subject->attach($o2);
 
-$publisher->someBusinessLogic();
-$publisher->someBusinessLogic();
-$publisher->someBusinessLogic();
+$subject->someBusinessLogic();
+$subject->someBusinessLogic();
+
+$subject->detach($o2);
+
+$subject->someBusinessLogic();

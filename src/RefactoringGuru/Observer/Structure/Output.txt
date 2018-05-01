@@ -1,18 +1,20 @@
-Publisher: Subscribed an object.
-Publisher: Subscribed an object.
+Subject: Attached an observer.
+Subject: Attached an observer.
 
-Publisher: I'm doing something important.
-Publisher: My state has just changed to: 2
-Publisher: Notifying subscribers.
-ConcreteSubscriberA: Reacted to the event.
-ConcreteSubscriberB: Reacted to the event.
+Subject: I'm doing something important.
+Subject: My state has just changed to: 2
+Subject: Notifying observers...
+ConcreteObserverA: Reacted to the event.
+ConcreteObserverB: Reacted to the event.
 
-Publisher: I'm doing something important.
-Publisher: My state has just changed to: 1
-Publisher: Notifying subscribers.
-ConcreteSubscriberA: Reacted to the event.
+Subject: I'm doing something important.
+Subject: My state has just changed to: 4
+Subject: Notifying observers...
+ConcreteObserverB: Reacted to the event.
 
-Publisher: I'm doing something important.
-Publisher: My state has just changed to: 5
-Publisher: Notifying subscribers.
-ConcreteSubscriberB: Reacted to the event.
+Subject: Detached an observer.
+
+Subject: I'm doing something important.
+Subject: My state has just changed to: 1
+Subject: Notifying observers...
+ConcreteObserverA: Reacted to the event.

@@ -15,9 +15,8 @@ use Iterator;
  * PHP has a built-in Iterator interface that provides a very
  * convenient integration with foreach loops.
  *
- * @link http://php.net/manual/en/class.iterator.php
- *
  * Here's how the interface looks like:
+ * @link http://php.net/manual/en/class.iterator.php
  *
  *     interface Iterator extends Traversable {
  *         // Return the current element
@@ -37,6 +36,7 @@ use Iterator;
  *     }
  *
  * There's also a built-in interface for collections:
+ * @link http://php.net/manual/en/class.iteratoraggregate.php
  *
  *     interface IteratorAggregate extends Traversable {
  *         public getIterator(): Traversable;
