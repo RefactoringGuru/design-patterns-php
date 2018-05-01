@@ -1,9 +1,11 @@
 UserRepository: Loading user records from a file.
-Logger: I've written 'initialization' entry to the log.
-
-UserRepository: Creating a user...
+EventDispatcher: Broadcasting the 'users:init' event.
+Logger: I've written 'users:init' entry to the log.
+UserRepository: Creating a user.
+EventDispatcher: Broadcasting the 'users:created' event.
 OnboardingNotification: The notification has been emailed!
-Logger: I've written 'user_created' entry to the log.
-
-UserRepository: Deleting a user...
-Logger: I've written 'user_deleted' entry to the log.
+Logger: I've written 'users:created' entry to the log.
+User: I can now delete myself without worrying about the repository.
+EventDispatcher: Broadcasting the 'users:deleted' event.
+UserRepository: Deleting a user.
+Logger: I've written 'users:deleted' entry to the log.

@@ -1,3 +1,3 @@
-2018-05-01 12:10:07: 'initialization' with data '"users.csv"'
-2018-05-01 12:10:07: 'user_created' with data '[{"name":"John Smith","email":"john99@example.com"}]'
-2018-05-01 12:10:07: 'user_deleted' with data '[{"attributes":{"name":"John Smith","email":"john99@example.com","id":"3292f2cba9f55dd2061e1f7c366dacd8"}}]'
+2018-05-01 15:06:00: 'users:init' with data '"users.csv"'
+2018-05-01 15:06:00: 'users:created' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"4535868987f9f75966eb10073fb259ee"}}'
+2018-05-01 15:06:00: 'users:deleted' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"4535868987f9f75966eb10073fb259ee"}}'

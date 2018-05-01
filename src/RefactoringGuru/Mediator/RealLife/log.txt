@@ -1,0 +1,3 @@
+2018-05-01 15:30:12: 'users:init' with data '"users.csv"'
+2018-05-01 15:30:12: 'users:created' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"23d8e66d78b4daf57684c20375c0cbcc"}}'
+2018-05-01 15:30:12: 'users:deleted' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"23d8e66d78b4daf57684c20375c0cbcc"}}'

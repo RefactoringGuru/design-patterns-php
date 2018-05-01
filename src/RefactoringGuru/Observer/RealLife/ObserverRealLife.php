@@ -37,15 +37,14 @@ class UserRepository implements \SplSubject
         $this->observers["*"] = [];
     }
 
-    private function initEventGroup(string &$event = null)
+    private function initEventGroup(string $event = "*")
     {
-        $event = $event ?? "*";
         if (! isset($this->observers[$event])) {
             $this->observers[$event] = [];
         }
     }
 
-    private function getEventObservers(string $event = null)
+    private function getEventObservers(string $event = "*")
     {
         $this->initEventGroup($event);
         $group = $this->observers[$event];
@@ -54,14 +53,14 @@ class UserRepository implements \SplSubject
         return array_merge($group, $all);
     }
 
-    public function attach(\SplObserver $observer, string $event = null)
+    public function attach(\SplObserver $observer, string $event = "*")
     {
         $this->initEventGroup($event);
 
         $this->observers[$event][] = $observer;
     }
 
-    public function detach(\SplObserver $observer, string $event = null)
+    public function detach(\SplObserver $observer, string $event = "*")
     {
         foreach ($this->getEventObservers($event) as $key => $s) {
             if ($s === $observer) {
@@ -70,8 +69,9 @@ class UserRepository implements \SplSubject
         }
     }
 
-    public function notify(string $event = null, $data = null)
+    public function notify(string $event = "*", $data = null)
     {
+        print("UserRepository: Broadcasting the '$event' event.\n");
         foreach ($this->getEventObservers($event) as $observer) {
             $observer->update($this, $event, $data);
         }
@@ -81,13 +81,14 @@ class UserRepository implements \SplSubject
 
     public function initialize($filename)
     {
-        print("\nUserRepository: Loading user records from a file.\n");
-        $this->notify("initialization", $filename);
+        print("UserRepository: Loading user records from a file.\n");
+        // ...
+        $this->notify("users:init", $filename);
     }
 
     public function createUser(array $data)
     {
-        print("\nUserRepository: Creating a user...\n");
+        print("UserRepository: Creating a user.\n");
 
         $user = new User();
         $user->update($data);
@@ -96,14 +97,14 @@ class UserRepository implements \SplSubject
         $user->update(["id" => $id]);
         $this->users[$id] = $user;
 
-        $this->notify("user_created", func_get_args());
+        $this->notify("users:created", $user);
 
         return $user;
     }
 
     public function updateUser(User $user, array $data)
     {
-        print("\nUserRepository: Updating a user...\n");
+        print("UserRepository: Updating a user.\n");
 
         $id = $user->attributes["id"];
         if (! isset($this->users[$id])) {
@@ -113,14 +114,14 @@ class UserRepository implements \SplSubject
         $user = $this->users[$id];
         $user->update($data);
 
-        $this->notify("user_updated", func_get_args());
+        $this->notify("users:updated", $user);
 
         return $user;
     }
 
     public function deleteUser(User $user)
     {
-        print("\nUserRepository: Deleting a user...\n");
+        print("UserRepository: Deleting a user.\n");
 
         $id = $user->attributes["id"];
         if (! isset($this->users[$id])) {
@@ -129,12 +130,12 @@ class UserRepository implements \SplSubject
 
         unset($this->users[$id]);
 
-        $this->notify("user_deleted", func_get_args());
+        $this->notify("users:deleted", $user);
     }
 }
 
 /**
- * The User class very simple since it's not the central part of the example.
+ * The User class is trivial since it's not the central part of the example.
  */
 class User
 {
@@ -156,14 +157,13 @@ class Logger implements \SplObserver
     public function __construct($filename)
     {
         $this->filename = $filename;
+        if (file_exists($this->filename)) {
+            unlink($this->filename);
+        }
     }
 
     public function update(\SplSubject $repository, string $event = null, $data = null)
     {
-        if (! $repository instanceof UserRepository) {
-            return;
-        }
-
         $entry = date("Y-m-d H:i:s").": '$event' with data '".json_encode($data)."'\n";
         file_put_contents($this->filename, $entry, FILE_APPEND);
 
@@ -185,10 +185,6 @@ class OnboardingNotification implements \SplObserver
 
     public function update(\SplSubject $repository, string $event = null, $data = null)
     {
-        if (! $repository instanceof UserRepository) {
-            return;
-        }
-
         //mail($this->adminEmail,
         //    "Onboarding required",
         //    "We have a new user. Here's his info: " .json_encode($data));
@@ -202,8 +198,8 @@ class OnboardingNotification implements \SplObserver
  */
 
 $repository = new UserRepository();
-$repository->attach(new Logger("log.txt"));
-$repository->attach(new OnboardingNotification("1@example.com"), "user_created");
+$repository->attach(new Logger("log.txt"), "*");
+$repository->attach(new OnboardingNotification("1@example.com"), "users:created");
 
 $repository->initialize("users.csv");
 
