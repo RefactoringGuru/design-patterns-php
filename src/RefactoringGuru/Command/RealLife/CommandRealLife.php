@@ -72,7 +72,7 @@ abstract class WebScrapingCommand implements Command
     public function download()
     {
         $html = file_get_contents($this->getURL());
-        print("WebScrapingCommand: Downloaded {$this->url}");
+        print("WebScrapingCommand: Downloaded {$this->url}\n");
         return $html;
     }
 
@@ -102,7 +102,7 @@ class IMDBGenresScrappingCommand extends WebScrapingCommand
     public function parse($html)
     {
         preg_match_all("|href=\"(https://www.imdb.com/search/title\?genres=.*?)\"|", $html, $matches);
-        print("IMDBGenresScrappingCommand: Discovered " . count($matches[1]) . " genres.");
+        print("IMDBGenresScrappingCommand: Discovered " . count($matches[1]) . " genres.\n");
 
         foreach ($matches[1] as $genre) {
             Queue::get()->add(new IMDBGenrePageScrappingCommand($genre));
@@ -135,7 +135,7 @@ class IMDBGenrePageScrappingCommand extends WebScrapingCommand
     public function parse($html)
     {
         preg_match_all("|href=\"(/title/.*?/)\?ref_=adv_li_tt\"|", $html, $matches);
-        print("IMDBGenrePageScrappingCommand: Discovered " . count($matches[1]) . " movies.");
+        print("IMDBGenrePageScrappingCommand: Discovered " . count($matches[1]) . " movies.\n");
 
         foreach ($matches[1] as $moviePath) {
             $url = "https://www.imdb.com" . $moviePath;
@@ -163,7 +163,7 @@ class IMDBMovieScrappingCommand extends WebScrapingCommand
         if (preg_match("|<h1 itemprop=\"name\" class=\"\">(.*?)</h1>|", $html, $matches)) {
             $title = $matches[1];
         }
-        print("IMDBMovieScrappingCommand: Parsed movie $title.");
+        print("IMDBMovieScrappingCommand: Parsed movie $title.\n");
     }
 }
 
@@ -204,7 +204,7 @@ class Queue
 
     public function getCommand(): Command
     {
-        $query = 'SELECT * FROM "commands" WHERE "status" = 0 DESC LIMIT 1';
+        $query = 'SELECT * FROM "commands" WHERE "status" = 0 LIMIT 1';
         $record = $this->db->querySingle($query, true);
         $command = unserialize(base64_decode($record["command"]));
         $command->id = $record['id'];
