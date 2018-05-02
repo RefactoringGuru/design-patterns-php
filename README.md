@@ -28,7 +28,6 @@ For the best experience, we recommend working with examples in [PHPStorm](https:
 
 ## Roadmap
 
-- [ ] Command: RealLife
 - [ ] Memento: RealLife
 - [ ] State: RealLife
 
