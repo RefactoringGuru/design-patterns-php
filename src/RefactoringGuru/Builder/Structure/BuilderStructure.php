@@ -10,8 +10,8 @@ namespace RefactoringGuru\Builder\Structure;
  */
 
 /**
- * Base Builder interface specifies operations for creating parts of a
- * Product object.
+ * The Builder interface specifies operations for creating parts of the
+ * Product objects.
  */
 interface Builder
 {
@@ -23,17 +23,17 @@ interface Builder
 }
 
 /**
- * Concrete Builders implement the common Builder interface and provide specific
- * implementations of the building steps. Program may have several Builder
- * variations with different implementations.
+ * The Concrete Builder classes follow the Builder interface and provide specific
+ * implementations of the building steps. Your program may have several variations of Builders,
+ *  implemented differently.
  */
 class ConcreteBuilder1 implements Builder
 {
     private $product;
 
     /**
-     * New builder already contains a blank product that will be used in
-     * further assembly.
+     * A new builder instance should contain a blank product object that will
+     * be used in further assembly.
      */
     public function __construct()
     {
@@ -64,27 +64,26 @@ class ConcreteBuilder1 implements Builder
     }
 
     /**
-     * Provide an interface for retrieving the product. Builders may create
-     * different product types. That's why this method is not defined in base
-     * interface.
+     * Concrete builders are supposed to provide an interface for retrieving the final product. Various types of builders may create
+     * different product types. That's why in a statically typed language this method can not be declared in the base Builder
+     * interface. Note, that PHP is a dynamic typed language and this method CAN be declared in the base class. However, we won't do that for the sake of clarity.
      *
-     * Once product is completed, prepare a blank product object so that new
-     * product could be built.
+     * Usually, after returning the end result to the client, the builder instance is expected to be ready to start producing another product. That's why inside this method we're calling the reset method. But this behavior is not mandatory and you can make your builders wait for a explicit reset call from the client code before disposing previous result.
      */
     public function getProduct(): Product1
     {
         $result = $this->product;
         $this->reset();
+
         return $result;
     }
 }
 
 /**
- * Product class represents a complex object under construction.
+ * It makes sense to use the Builder pattern only when your products are quite complex and require extensive configuration.
  *
- * Unlike in other creational patterns, different builders can produce
- * unrelated products. In other words, products of different Builders don't need
- * to follow a common interface.
+ * Unlike in other creational patterns, different concrete builders can produce
+ * unrelated products. In other words, results of various builders may not always follow the same interface.
  */
 class Product1
 {
@@ -92,13 +91,12 @@ class Product1
 
     public function listParts()
     {
-        return "Product parts: " . implode(', ', $this->parts) . "\n\n";
+        return "Product parts: ".implode(', ', $this->parts)."\n\n";
     }
 }
 
 /**
- * Director controls sequence of building steps, while delegating most of the
- * work to a Builder instance.
+ * The Director is only responsible for executing the building steps in a particular sequence in order to produce a product with the particular configuration. Strictly speaking, the Director class is optional, since the client can control builders directly.
  */
 class Director
 {
@@ -108,8 +106,8 @@ class Director
     private $builder;
 
     /**
-     * Director works with any Builder instance client code passes to it.
-     * This way, client code may vary the type of product that will be
+     * The Director works with any builder instance that the client code passes to it.
+     * This way, the client code may alter the type of a product that will be
      * produced in the end.
      */
     public function setBuilder(Builder $builder)
@@ -118,7 +116,7 @@ class Director
     }
 
     /**
-     * Director can construct several product variations using the same building
+     * The Director can construct several product variations using the same building
      * steps.
      */
     public function buildMinimalViableProduct()
@@ -135,9 +133,8 @@ class Director
 }
 
 /**
- * Client code may reuse single instance of the Director. It creates builder
- * objects and passes them to director and then initiates the construction
- * process. The end result is returned by the builder.
+ * The client code creates a builder object, passes it to the director and then initiates the construction
+ * process. The end result is retrieved from the builder object.
  */
 function clientCode(Director $director)
 {

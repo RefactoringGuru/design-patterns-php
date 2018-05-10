@@ -1,8 +1,8 @@
-Client code correctly works with normal targets:
-Default target behavior.
+Client: I can work just fine with the Target objects:
+Target: The default target's behavior.
 
-External adaptee has a weird interface, client code does not understand it:
-.eetpadA fo roivaheb laicepS
+Client: The Adaptee class has a weird interface. See, I don't understand it:
+.eetpadA eht fo roivaheb laicepS
 
-But the same client code can work fine with external adaptee via adapter:
-TRANSLATED: Special behavior of Adaptee.
+Client: But I can work with it via the Adapter:
+Adapter: (TRANSLATED) Special behavior of the Adaptee.

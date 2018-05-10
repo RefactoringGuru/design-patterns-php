@@ -11,7 +11,7 @@ namespace RefactoringGuru\ChainOfResponsibility\Structure;
  */
 
 /**
- * Define an interface for handling requests.
+ * The Handler interface declares a method for building the chain of handlers along with a method for executing a request.
  */
 interface Handler
 {
@@ -21,7 +21,7 @@ interface Handler
 }
 
 /**
- * Base handler class implements the standard linking behavior.
+ * The default chaining behavior can be implemented inside a base handler class.
  */
 abstract class AbstractHandler implements Handler
 {
@@ -38,7 +38,9 @@ abstract class AbstractHandler implements Handler
     {
         $this->nextHandler = $handler;
 
-        // Returning a handler will let us link handlers in a convenient way.
+        // Returning a handler from here will let us link handlers in a
+        // convenient way like this:
+        // $monkey->setNext($squirrel)->setNext($dog);
         return $handler;
     }
 
@@ -51,14 +53,15 @@ abstract class AbstractHandler implements Handler
 }
 
 /**
- * Handle request, otherwise forward it to the successor.
+ * All Concrete Handlers either handle a request or pass it to the next handler
+ * in the chain.
  */
 class MonkeyHandler extends AbstractHandler
 {
     public function handle($request)
     {
         if ($request == "Banana") {
-            return "Monkey: I'll eat the " . $request . ".\n";
+            return "Monkey: I'll eat the ".$request.".\n";
         } else {
             return parent::handle($request);
         }
@@ -70,7 +73,7 @@ class SquirrelHandler extends AbstractHandler
     public function handle($request)
     {
         if ($request == "Nut") {
-            return "Squirrel: I'll eat the " . $request . ".\n";
+            return "Squirrel: I'll eat the ".$request.".\n";
         } else {
             return parent::handle($request);
         }
@@ -82,7 +85,7 @@ class DogHandler extends AbstractHandler
     public function handle($request)
     {
         if ($request == "MeatBall") {
-            return "Dog: I'll eat the " . $request . ".\n";
+            return "Dog: I'll eat the ".$request.".\n";
         } else {
             parent::handle($request);
         }
@@ -90,26 +93,23 @@ class DogHandler extends AbstractHandler
 }
 
 /**
- * Client code works only with abstract types: AbstractFactory and
- * AbstractProducts. This allows it to work with concrete factories and
- * products of any kind.
+ * The client code is usually suited to work with a single handler. In most cases, it is not even aware that the handler is part of a chain.
  */
 function clientCode(Handler $handler)
 {
     foreach (["Nut", "Banana", "Cup of coffee"] as $food) {
-        print("Client: Who wants a " . $food . "?\n");
+        print("Client: Who wants a ".$food."?\n");
         $result = $handler->handle($food);
         if ($result) {
-            print("  " . $result);
+            print("  ".$result);
         } else {
-            print("  " . $food . " was left untouched.\n");
+            print("  ".$food." was left untouched.\n");
         }
     }
 }
 
-
 /**
- * Client code. That's how a chain is constructed.
+ * The other part of the client code constructs the actual chain.
  */
 $monkey = new MonkeyHandler();
 $squirrel = new SquirrelHandler();
@@ -118,7 +118,7 @@ $dog = new DogHandler();
 $monkey->setNext($squirrel)->setNext($dog);
 
 /**
- * Client can accept any handler, not just the one that starts a chain.
+ * The client can send a request to any handler, not just the one first one in a chain.
  */
 print("Chain: Monkey > Squirrel > Dog\n\n");
 clientCode($monkey);

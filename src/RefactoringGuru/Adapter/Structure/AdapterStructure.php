@@ -11,29 +11,29 @@ namespace RefactoringGuru\Adater\Structure;
  */
 
 /**
- * Defines the domain-specific interface that Client uses.
+ * The Target defines the domain-specific interface used by the client code.
  */
 class Target
 {
     public function request()
     {
-        return "Default target behavior.";
+        return "Target: The default target's behavior.";
     }
 }
 
 /**
- * Defines a useful, but incompatible interface that needs adapting.
+ * The Adaptee defines a useful interface, which is incompatible with the existing client code. The Adaptee needs some adaptation before it can be used by the client code.
  */
 class Adaptee
 {
     public function specificRequest()
     {
-        return ".eetpadA fo roivaheb laicepS";
+        return ".eetpadA eht fo roivaheb laicepS";
     }
 }
 
 /**
- * Converts the interface of Adaptee to the Target interface.
+ * The Adapter makes the Adaptee's interface compatible with the Target's interface.
  */
 class Adapter extends Target
 {
@@ -46,29 +46,29 @@ class Adapter extends Target
 
     public function request()
     {
-        return "TRANSLATED: " . strrev($this->adaptee->specificRequest());
+        return "Adapter: (TRANSLATED) " . strrev($this->adaptee->specificRequest());
     }
 }
 
 /**
- * Client code supports all classes, that follow the Target interface.
+ * The client code supports all classes that follow the Target interface.
  */
 function clientCode(Target $target)
 {
     print($target->request());
 }
 
-print("Client code correctly works with normal targets:\n");
+print("Client: I can work just fine with the Target objects:\n");
 $target = new Target();
 clientCode($target);
 print("\n\n");
 
 $adaptee = new Adaptee();
-print("External adaptee has a weird interface, client code does not understand it:\n");
+print("Client: The Adaptee class has a weird interface. See, I don't understand it:\n");
 print($adaptee->specificRequest());
 print("\n\n");
 
 
-print("But the same client code can work fine with external adaptee via adapter:\n");
+print("Client: But I can work with it via the Adapter:\n");
 $adapter = new Adapter($adaptee);
 clientCode($adapter);

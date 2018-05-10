@@ -16,9 +16,9 @@ namespace RefactoringGuru\Bridge\Structure;
  */
 
 /**
- * Abstraction defines interface for the control part of two class hierarchies.
- * Abstraction maintains a reference to the Implementor object and delegates
- * any real work to it.
+ * The Abstraction defines the interface for the "control" part of the two class hierarchies.
+ * It maintains a reference to a Implementor object and delegates it
+ * all of the real work.
  */
 class Abstraction
 {
@@ -34,29 +34,29 @@ class Abstraction
 
     public function operation()
     {
-        return "Base operation with:\n" .
+        return "Abstraction: Base operation with:\n" .
             $this->implementor->operationImplementation();
     }
 }
 
 /**
- * Abstraction can be easily extended without touching implementation classes.
+ * You can extend the Abstraction without changing the Implementor classes.
  */
 class ExtendedAbstraction extends Abstraction
 {
     public function operation()
     {
-        return "Extended operation with:\n" .
+        return "ExtendedAbstraction: Extended operation with:\n" .
             $this->implementor->operationImplementation();
     }
 }
 
 /**
- * Implementor defines the interface for all implementation classes. This
- * interface doesn't have to correspond exactly to Abstraction's interface.
+ * The Implementor defines the interface for all implementation classes. This
+ * interface doesn't have to match the methods of the Abstraction's interface.
  * In fact the two interfaces can be quite different. Typically the Implementor
- * interface provides only primitive operations, and Abstraction defines
- * higher-level operations based on these primitives.
+ * interface provides only primitive operations, while the Abstraction defines
+ * higher-level operations based on those primitives.
  */
 interface Implementor
 {
@@ -64,35 +64,29 @@ interface Implementor
 }
 
 /**
- * Each Concrete Implementor provides implementation for a specific platform.
+ * Each Concrete Implementor corresponds to the specific platform and implements the Implementor interface using that platform's API.
  */
 class ConcreteImplementorA implements Implementor
 {
     public function operationImplementation()
     {
-        return "Result of ConcreteImplementorA in platform A.\n";
+        return "ConcreteImplementorA: The result in platform A.\n";
     }
 }
 
-/**
- * Each Concrete Implementor provides implementation for a specific platform.
- */
 class ConcreteImplementorB implements Implementor
 {
     public function operationImplementation()
     {
-        return "Result of ConcreteImplementorB in platform B.\n";
+        return "ConcreteImplementorB: The result in platform B.\n";
     }
 }
 
 /**
- * In most cases, Client code should only work with abstractions. It allows
- * supporting any abstraction-implementation combination as long as the
- * client code work with abstraction through a base class (though it is not
- * strictly required).
- *
- * The Client code may be aware of implementor classes only if abstractions
- * should be able to change implementations in run time.
+ * Except for an initialization phase, where an abstraction is linked with a
+ * specific implementation object, the client code should only work directly
+ * with the abstraction objects. This way the client code will be able to
+ * support with any abstraction-implementation combination.
  */
 function clientCode(Abstraction $abstraction)
 {
@@ -104,7 +98,7 @@ function clientCode(Abstraction $abstraction)
 }
 
 /**
- * Client code can be launched with any pre-configured
+ * The client code should be able to run with any pre-configured
  * abstraction-implementation combination.
  */
 $implementation = new ConcreteImplementorA();

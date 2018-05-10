@@ -1,5 +1,5 @@
-Base operation with:
-Result of ConcreteImplementorA in platform A.
+Abstraction: Base operation with:
+ConcreteImplementorA: The result in platform A.
 
-Extended operation with:
-Result of ConcreteImplementorB in platform B.
+ExtendedAbstraction: Extended operation with:
+ConcreteImplementorB: The result in platform B.

@@ -74,7 +74,7 @@ class ConcreteProductA1 implements AbstractProductA
 {
     public function usefulFunctionA()
     {
-        return "The result of the A1 product.\n";
+        return "The result of the product A1.";
     }
 }
 
@@ -82,7 +82,7 @@ class ConcreteProductA2 implements AbstractProductA
 {
     public function usefulFunctionA()
     {
-        return "The result of the A2 product.\n";
+        return "The result of the product A2.";
     }
 }
 
@@ -114,17 +114,17 @@ class ConcreteProductB1 implements AbstractProductB
 {
     public function usefulFunctionB()
     {
-        return "The result of the B1 product.\n";
+        return "The result of the product B1.\n";
     }
 
     /**
-     * The B1 product is only able to work correctly with the A1 product.
+     * The product B1 is only able to work correctly with the A1 product.
      * However, it still lists an abstract product A in its signature.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator)
     {
         $result = $collaborator->usefulFunctionA();
-        return "The result of the B1 collaborating with the {$result}";
+        return "The result of the B1 collaborating with the ({$result})";
     }
 }
 
@@ -132,17 +132,17 @@ class ConcreteProductB2 implements AbstractProductB
 {
     public function usefulFunctionB()
     {
-        return "The result of the B2 product.\n";
+        return "The result of the product B2.\n";
     }
 
     /**
-     * The B2 product is only able to work correctly with the A2 product.
+     * The product B2 is only able to work correctly with the A2 product.
      * However, it still lists an abstract product A in its signature.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator)
     {
         $result = $collaborator->usefulFunctionA();
-        return "The result of the B2 collaborating with the {$result}";
+        return "The result of the B2 collaborating with the ({$result})";
     }
 }
 
@@ -163,9 +163,9 @@ function clientCode(AbstractFactory $factory)
 /**
  * The client code can work with any concrete factory class.
  */
-print("Testing client code with the first factory type:\n");
+print("Client: Testing client code with the first factory type:\n");
 clientCode(new ConcreteFactory1());
-print("\n");
+print("\n\n");
 
-print("Testing the same client code with the second factory type:\n");
+print("Client: Testing the same client code with the second factory type:\n");
 clientCode(new ConcreteFactory2());
