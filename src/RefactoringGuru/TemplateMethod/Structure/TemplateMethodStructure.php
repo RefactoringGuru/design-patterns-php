@@ -14,8 +14,8 @@ namespace RefactoringGuru\TemplateMethod\Structure;
  * AbstractClass defines a template method that contains skeleton of some
  * algorithm, composed of calls to (usually) abstract primitive operations.
  *
- * Concrete subclasses should provide the implementations for steps but the
- * leave the template method intact.
+ * Concrete subclasses should implement these operations, but the
+ * leave the template method itself intact.
  */
 abstract class AbstractClass
 {

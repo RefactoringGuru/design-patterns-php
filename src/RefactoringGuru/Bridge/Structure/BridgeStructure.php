@@ -34,7 +34,7 @@ class Abstraction
 
     public function operation()
     {
-        return "Abstraction: Base operation with:\n" .
+        return "Abstraction: Base operation with:\n".
             $this->implementor->operationImplementation();
     }
 }
@@ -46,7 +46,7 @@ class ExtendedAbstraction extends Abstraction
 {
     public function operation()
     {
-        return "ExtendedAbstraction: Extended operation with:\n" .
+        return "ExtendedAbstraction: Extended operation with:\n".
             $this->implementor->operationImplementation();
     }
 }

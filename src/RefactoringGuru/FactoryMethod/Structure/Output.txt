@@ -1,5 +1,7 @@
-Testing ConcreteCreator1:
-Same creator's code worked with: Result of ConcreteProduct1
+App: Launched with the ConcreteCreator1
+Client: I'm not aware of the creator's class, but it still works:
+Creator: Same creator's code worked with (The result of the ConcreteProduct1)
 
-Testing ConcreteCreator2:
-Same creator's code worked with: Result of ConcreteProduct2
+App: Launched with the ConcreteCreator2
+Client: I'm not aware of the creator's class, but it still works:
+Creator: Same creator's code worked with (The result of the ConcreteProduct2)

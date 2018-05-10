@@ -5,39 +5,36 @@ namespace RefactoringGuru\Facade\Structure;
 /**
  * Facade Design Pattern
  *
- * Intent: Provide a unified interface to a set of interfaces in a subsystem.
- * Facade defines a higher-level interface that makes the subsystem easier
+ * Intent: Provide a unified interface to a number of classes/interfaces of a complex subsystem.
+ * The Facade pattern defines a higher-level interface that makes the subsystem easier
  * to use.
  */
 
 /**
- * Facade provides simple interface for the complex logic of one or
- * multiple subsystems. Facade delegate client requests to appropriate
- * subsystem objects.
- *
- * Usually, Facade knows which subsystem classes are responsible for a
- * request and able to manage their lifecycle. This way the client won't be
- * exposed to any subsystem classes.
+ * The Facade class provides a simple interface to the complex logic of one or
+ * several subsystems. The Facade delegates the client requests to the appropriate objects within the
+ * subsystem. The Facade is also responsible for managing their lifecycle. All of this shields the client from the undesired complexity of the subsystem.
  */
 class Facade
 {
     protected $subsystem1;
+
     protected $subsystem2;
 
     /**
-     * Facade can either work with existing subsystems objects or create them
-     * on its own.
+     * Depending on your application needs, you can provide the Facade with existing subsystems objects or force it to create them on its own.
      */
-    public function __construct(Subsystem1 $subsystem1 = null,
-                                Subsystem2 $subsystem2 = null)
-    {
+    public function __construct(
+        Subsystem1 $subsystem1 = null,
+        Subsystem2 $subsystem2 = null
+    ) {
         $this->subsystem1 = $subsystem1 ?: new Subsystem1();
         $this->subsystem2 = $subsystem2 ?: new Subsystem2();
     }
 
     /**
-     * Facade's methods are convenient shortcuts to the complex functionality of
-     * subsystems. On the other hand, client gets access only to a fraction of
+     * The Facade's methods are convenient shortcuts to the complex functionality of the
+     * subsystems. But on the other hand, clients get only to a fraction of
      * subsystem's capabilities.
      */
     public function operation()
@@ -48,13 +45,13 @@ class Facade
         $result .= "Facade orders subsystems to perform the action:\n";
         $result .= $this->subsystem1->operationN();
         $result .= $this->subsystem2->operationZ();
+
         return $result;
     }
 }
 
 /**
- * Subsystem handles the work assigned by a Facade object. Subsystems are not
- * aware about facade objects.
+ * The Subsystem can accept requests from the Facade or directly from the client. To the Subsystem, the Facade is yet another client and it's not a part of the Subsystem.
  */
 class Subsystem1
 {
@@ -72,7 +69,7 @@ class Subsystem1
 }
 
 /**
- * Single facade can work with multiple subsystems.
+ * Some facades can work with multiple subsystems at the same time.
  */
 class Subsystem2
 {
@@ -90,10 +87,9 @@ class Subsystem2
 }
 
 /**
- * Client code works with complex subsystems through a simple interface provided
- * by the Facade. Client might not even know that there's any subsystem, if
- * facade manages lifecycle of the subsystem on its own. That helps to keep
- * complexity under control.
+ * The client code works with complex subsystems through a simple interface provided
+ * by the Facade. When the lifecycle of the subsystem is managed by the Facade, the
+ * client might not even know about the existence of the subsystem. This let you keep the complexity under control.
  */
 function clientCode(Facade $facade)
 {
@@ -105,8 +101,7 @@ function clientCode(Facade $facade)
 }
 
 /**
- * Client code may already have the subsystem objects created that could be
- * passed to a facade object.
+ * The client code may have some of the subsystem's objects already created. In this case, it might be worth to initialize the Facade with these objects, instead of letting the Facade create new instances.
  */
 $subsystem1 = new Subsystem1();
 $subsystem2 = new Subsystem2();

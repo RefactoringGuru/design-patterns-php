@@ -1,5 +1,5 @@
-Client code gets a simple component:
-CLIENT SAYS: ConcreteComponent
+Client: I get a simple component:
+RESULT: ConcreteComponent
 
-Same client code gets a decorated component:
-CLIENT SAYS: ConcreteDecoratorB(ConcreteDecoratorA(ConcreteComponent))
+Client: Now I get a decorated component:
+RESULT: ConcreteDecoratorB(ConcreteDecoratorA(ConcreteComponent))

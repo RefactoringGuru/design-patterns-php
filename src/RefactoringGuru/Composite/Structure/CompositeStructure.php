@@ -11,11 +11,7 @@ namespace RefactoringGuru\Composite\Structure;
  */
 
 /**
- * Base Component declares common operations for simple and complex objects
- * in the composition.
- *
- * Declare an interface for accessing and managing its child
- * components.
+ * The Base Component class declares common operations for both simple and complex objects of a composition.
  */
 abstract class Component
 {
@@ -25,15 +21,15 @@ abstract class Component
     protected $parent;
 
     /**
-     * Base Component may implement some default behavior or leave it to the
-     * concrete classes while staying abstract.
+     * The Base Component may implement some default behavior or leave it to
+     * concrete classes by declaring it abstract.
      */
     public abstract function operation();
 
     /**
-     * Optionally, the base Component can declare interface for setting and
-     * accessing its parent in the recursive structure, and implement it if
-     * that's appropriate.
+     * Optionally, the base Component can declare an interface for setting and
+     * accessing a parent of the component in a tree structure. It can even provide a default implementation of these methods, if
+     * that's appropriate in your application.
      */
     public function setParent(Component $parent)
     {
@@ -46,16 +42,17 @@ abstract class Component
     }
 
     /**
-     * In some cases it would be beneficial to define child-management
-     * operations right in the base component class. This way, you won't need
-     * to expose the composite classes to client even during the tree assembly.
+     * In some cases it would be beneficial to define the child-management
+     * operations right in the Base Component class. This way, you won't need
+     * to expose any concrete component classes to the client code, even during
+     * assembly of an object tree. The downside is that these methods will be empty for the leaf-level components.
      */
     public function add(Component $component) { }
 
     public function remove(Component $component) { }
 
     /**
-     * In these cases, special method is required to figure out that the
+     * You can provide a method that let the client code figure out whether a
      * component can bear children.
      */
     public function isComposite(): bool
@@ -65,9 +62,9 @@ abstract class Component
 }
 
 /**
- * Leaf class represents end objects in the composition. A leaf has no
- * children. Leaf classes define behavior for primitive objects in the
- * composition.
+ * The Leaf class represents the end objects of a composition. A leaf can't have any children.
+ *
+ * Usually, it's the Leaf objects that do the actual work, whereas Composite objects only delegate to their sub-components.
  */
 class Leaf extends Component
 {
@@ -78,9 +75,9 @@ class Leaf extends Component
 }
 
 /**
- * Composite defines behavior for components having children.
- * Store child components.
- * Implement child-related operations in the Component interface.
+ * The Composite class represents the complex components that may have children.
+ * Usually, the Composite objects delegate the actual work to their children and
+ * then "sum-up" the result.
  */
 class Composite extends Component
 {
@@ -90,7 +87,7 @@ class Composite extends Component
     protected $children = [];
 
     /**
-     * Composite object can add or remove other components—simple and complex—to
+     * A composite object can add or remove other components (both simple or complex) to
      * or from its child list.
      */
     public function add(Component $component)
@@ -113,10 +110,10 @@ class Composite extends Component
     }
 
     /**
-     * Composite executes the main component logic in a special way. It
+     * The Composite executes the main component logic in a special way. It
      * traverses recursively through all its children, collects and sums-up
      * their results. The whole tree will be traversed this way, since
-     * composite children pass these calls to their children and so forth.
+     * composite's children pass these calls to their children and so forth.
      */
     public function operation()
     {
@@ -124,33 +121,33 @@ class Composite extends Component
         foreach ($this->children as $child) {
             $results[] = $child->operation();
         }
-        return "Branch(" . implode("+", $results) . ")";
+
+        return "Branch(".implode("+", $results).")";
     }
 }
 
-
 /**
- * The Client code works with all components using the base interface.
+ * The client code works with all of the components via the base interface.
  */
 function clientCode(Component $component)
 {
     //...
 
-    print("CLIENT SAYS: " . $component->operation());
+    print("RESULT: ".$component->operation());
 
     //...
 }
 
 /**
- * This way Client code can support both simple leaf components...
+ * This way the client code is able to support the simple leaf components...
  */
 $simple = new Leaf();
-print("Client code gets a simple component:\n");
+print("Client: I get a simple component:\n");
 clientCode($simple);
 print("\n\n");
 
 /**
- * ...and complex composites.
+ * ...as well as the complex composites.
  */
 $tree = new Composite();
 $branch1 = new Composite();
@@ -160,14 +157,12 @@ $branch2 = new Composite();
 $branch2->add(new Leaf());
 $tree->add($branch1);
 $tree->add($branch2);
-print("Same client code gets a composite tree:\n");
+print("Client: Now I get a composite tree:\n");
 clientCode($tree);
 print("\n\n");
 
-
 /**
- * Thanks to operations in base class, client can work with composite
- * operations without depending on concrete composite classes.
+ * Thanks to the child-management operations declared in the Base Component class, the client code is able to work with any component, simple or complex, without depending on their concrete classes.
  */
 function clientCode2(Component $component1, Component $component2)
 {
@@ -176,10 +171,10 @@ function clientCode2(Component $component1, Component $component2)
     if ($component1->isComposite()) {
         $component1->add($component2);
     }
-    print($component1->operation());
+    print("RESULT: ".$component1->operation());
 
     // ...
 }
 
-print("Client merges two components without checking their classes:\n");
+print("Client: I can merge two components without checking their classes:\n");
 clientCode2($tree, $simple);

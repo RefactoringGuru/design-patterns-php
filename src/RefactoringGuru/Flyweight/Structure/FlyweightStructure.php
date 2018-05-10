@@ -5,14 +5,16 @@ namespace RefactoringGuru\Flyweight\Structure;
 /**
  * Flyweight Design Pattern
  *
- * Intent: Use sharing to support a large number of objects that have part of
- * their internal state in common where the other part of state can vary.
+ * Intent: Use sharing to fit more objects into the available amount of RAM by
+ * sharing common parts of object state among multiple objects, instead of
+ * keeping it in each object.
  */
 
 /**
- * FlyweightFactory creates and manages flyweight objects. It ensures that
- * flyweights are shared properly. When a client requests a flyweight, the
- * factory object supplies an existing instance creates one, if none exists.
+ * The FlyweightFactory creates and manages the Flyweight objects. It ensures
+ * that flyweights are shared properly. When the client requests a flyweight,
+ * the factory either returns an existing instance or creates a new one, if it
+ * doesn't exists.
  */
 class FlyweightFactory
 {
@@ -29,7 +31,7 @@ class FlyweightFactory
     }
 
     /**
-     * Return a string hash for a given state.
+     * Returns a Flyweight's string hash for a given state.
      *
      * @param array $state
      * @return string
@@ -42,7 +44,7 @@ class FlyweightFactory
     }
 
     /**
-     * Return an existing flyweight with a given state or create a new one.
+     * Returns an existing Flyweight with a given state or creates a new one.
      *
      * @param $sharedState
      * @return Flyweight
@@ -72,9 +74,8 @@ class FlyweightFactory
 }
 
 /**
- * Flyweight stores portion of the state that belongs to multiple real business
- * entities (also called intrinsic state). The rest of the state, which is
- * unique for each entity, it accepts via parameters of specific methods.
+ * The Flyweight stores a common portion of the state (also called intrinsic state) that belongs to multiple real business
+ * entities. The Flyweight accepts the rest of the state (unique for each entity) via its method parameters.
  */
 class Flyweight
 {
@@ -94,7 +95,8 @@ class Flyweight
 }
 
 /**
- * Client code.
+ * The client code usually creates a bunch of flyweights in the initialization
+ * stage of the application.
  */
 $factory = new FlyweightFactory([
     ["Chevrolet", "Camaro2018", "pink"],
@@ -114,6 +116,9 @@ function addCarToPoliceDatabase(
 ) {
     print("\nClient: Adding a car to database.\n");
     $flyweight = $ff->getFlyweight([$brand, $model, $color]);
+
+    // The client code stores or calculates extrinsic state and passes it to
+    // the flyweight methods.
     $flyweight->operation([$plates, $owner]);
 }
 

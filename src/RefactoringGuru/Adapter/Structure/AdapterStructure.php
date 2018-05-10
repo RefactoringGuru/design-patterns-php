@@ -46,7 +46,7 @@ class Adapter extends Target
 
     public function request()
     {
-        return "Adapter: (TRANSLATED) " . strrev($this->adaptee->specificRequest());
+        return "Adapter: (TRANSLATED) ".strrev($this->adaptee->specificRequest());
     }
 }
 
@@ -67,7 +67,6 @@ $adaptee = new Adaptee();
 print("Client: The Adaptee class has a weird interface. See, I don't understand it:\n");
 print($adaptee->specificRequest());
 print("\n\n");
-
 
 print("Client: But I can work with it via the Adapter:\n");
 $adapter = new Adapter($adaptee);

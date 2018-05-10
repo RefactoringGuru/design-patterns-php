@@ -11,44 +11,44 @@ namespace RefactoringGuru\FactoryMethod\Structure;
  */
 
 /**
- * Declare the factory method, which returns an object of type Product.
+ * The Creator class declares the factory method that suppose to return an object of a Product class. The implementation of this method is usually provided by the Creator's subclasses.
  */
 abstract class Creator
 {
     /**
-     * Creator may also define a default implementation of the factory
-     * method that returns a default ConcreteProduct object.
+     * Note, that the Creator may also provide some default implementation of the factory
+     * method.
      */
     public abstract function factoryMethod(): Product;
 
     /**
-     * Creator class should have some primary business logic. Factory method
-     * acts just as a helper in such code.
+     * Also, note that despite its name, the Creator's primary responsibility is not creating products. Usually, it contains some core business logic that relies on Product objects, returned by the factory method. Subclasses can indirectly change that business logic by overriding the factory method and returning a different type of product from it.
      */
     public function someOperation(): string
     {
         // Call the factory method to create a Product object.
         $product = $this->factoryMethod();
-        // Now, use product.
-        $result = "Same creator's code worked with: " . $product->operation();
+        // Now, use the product.
+        $result = "Creator: Same creator's code worked with (".$product->operation().")";
+
         return $result;
     }
 }
 
 /**
- * Override the factory method to return an instance of a ConcreteProduct1.
+ * The Concrete Creators override the factory method in order to change the resulting product's type.
  */
 class ConcreteCreator1 extends Creator
 {
+    /**
+     * Note that the signature of the method still uses the abstract product type, even though the concrete product is actually returned from the method. This way the Creator can stay independent of concrete product classes.
+     */
     public function factoryMethod(): Product
     {
         return new ConcreteProduct1();
     }
 }
 
-/**
- * Override the factory method to return an instance of a ConcreteProduct2.
- */
 class ConcreteCreator2 extends Creator
 {
     public function factoryMethod(): Product
@@ -58,7 +58,7 @@ class ConcreteCreator2 extends Creator
 }
 
 /**
- * Define the interface of objects the factory method creates.
+ * The Product interface declares the operations that all concrete products must implement.
  */
 interface Product
 {
@@ -66,46 +66,44 @@ interface Product
 }
 
 /**
- * Implement the Product interface.
+ * Concrete Products provide various implementations of the Product interface.
  */
 class ConcreteProduct1 implements Product
 {
     public function operation()
     {
-        return "Result of ConcreteProduct1";
+        return "The result of the ConcreteProduct1";
     }
 }
 
-/**
- * Implement the Product interface.
- */
 class ConcreteProduct2 implements Product
 {
     public function operation()
     {
-        return "Result of ConcreteProduct2";
+        return "The result of the ConcreteProduct2";
     }
 }
 
 /**
- * Client code produces a concrete creator object of certain kind instead of
- * base creator's class. As long as client works with creators using
- * base interface, you can make it work with any creator subclass.
+ * The client code works with an instance of a concrete creator, albeit through
+ * its base interface. As long as the client keeps working with the creator via
+ * the base interface, you can pass it any creator's subclass.
  */
 function clientCode(Creator $creator)
 {
     //...
-    print($creator->someOperation());
+    print("Client: I'm not aware of the creator's class, but it still works:\n"
+        .$creator->someOperation());
     //...
 }
 
 /**
- * Application picks a creator's type depending on configuration or
+ * The Application picks a creator's type depending on configuration or
  * environment.
  */
-print("Testing ConcreteCreator1:\n");
+print("App: Launched with the ConcreteCreator1\n");
 clientCode(new ConcreteCreator1());
 print("\n\n");
 
-print("Testing ConcreteCreator2:\n");
+print("App: Launched with the ConcreteCreator2\n");
 clientCode(new ConcreteCreator2());
