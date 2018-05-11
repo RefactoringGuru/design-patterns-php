@@ -9,7 +9,7 @@ namespace RefactoringGuru\Observer\Structure;
  * object changes state, all of its dependents are notified and updated
  * automatically.
  *
- * Note that there's a lot of similar terminology used along with this pattern.
+ * Note that there's a lot of different terminology with similar meaning used along with this pattern.
  * Just remember that the Subject is also called the Publisher and the Observer
  * is often called the Subscriber and vise versa.
  */
@@ -33,7 +33,8 @@ namespace RefactoringGuru\Observer\Structure;
  *         public function notify();
  *     }
  *
- * There's also a built-in interface for collections:
+ * There's also a built-in interface for Observers:
+ *
  * @link http://php.net/manual/en/class.splobserver.php
  *
  *    interface SplObserver
@@ -49,23 +50,19 @@ namespace RefactoringGuru\Observer\Structure;
 class Subject implements \SplSubject
 {
     /**
-     * @var int
-     *
-     * For the sake of simplicity, the Subject's state that is important to
+     * @var int For the sake of simplicity, the Subject's state that is important to
      * all subscribers, will be stored in this variable.
      */
     public $state;
 
     /**
-     * @var array List of subscribers.
-     *
-     * In real life the list of subscribers can be stored in more comprehensive
-     * manner, categorized by event types, etc.
+     * @var array List of subscribers. In real life the list of subscribers can be stored in more comprehensive
+     * manner, categorized by event type, etc.
      */
     private $observers = [];
 
     /**
-     * Subscription management.
+     * The subscription management methods.
      */
     public function attach(\SplObserver $observer)
     {
@@ -73,9 +70,6 @@ class Subject implements \SplSubject
         $this->observers[] = $observer;
     }
 
-    /**
-     * Subscription management.
-     */
     public function detach(\SplObserver $observer)
     {
         foreach ($this->observers as $key => $s) {
@@ -87,7 +81,7 @@ class Subject implements \SplSubject
     }
 
     /**
-     * Fire an update for each subscriber.
+     * Trigger an update in each subscriber.
      */
     public function notify()
     {
@@ -100,7 +94,7 @@ class Subject implements \SplSubject
     /**
      * Usually, the subscription logic is only a fraction of what a Subject
      * can really do. Subjects commonly hold some important business logic,
-     * that triggers notification method each time something important is about
+     * that triggers notification method whenever something important is about
      * to happen (or after it).
      */
     public function someBusinessLogic()
@@ -115,7 +109,7 @@ class Subject implements \SplSubject
 
 /**
  * Concrete Observers react to the updates issued by the Subject
- * they'd been attached to.
+ * they had been attached to.
  */
 class ConcreteObserverA implements \SplObserver
 {
@@ -146,7 +140,7 @@ class ConcreteObserverB implements \SplObserver
 }
 
 /**
- * Client code.
+ * The client code.
  */
 
 $subject = new Subject();

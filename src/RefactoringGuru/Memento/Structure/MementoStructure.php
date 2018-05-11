@@ -29,9 +29,9 @@ class Originator
     }
 
     /**
-     * Originator's business logic may affect its internal state. Therefore,
-     * client should backup it prior to launching methods of business logic
-     * via the save() method.
+     * The Originator's business logic may affect its internal state. Therefore,
+     * client should backup the state prior to launching methods of the business
+     * logic via the save() method.
      */
     public function doSomething()
     {
@@ -51,6 +51,7 @@ class Originator
 
     /**
      * Save current state inside a memento.
+     *
      * @return Memento
      */
     public function save(): Memento
@@ -60,13 +61,14 @@ class Originator
 
     /**
      * Restore originator's state from a memento object.
+     *
      * @param Memento $memento
      * @throws \Exception
      */
     public function restore(Memento $memento)
     {
-        if (!$memento instanceof ConcreteMemento) {
-            throw new \Exception("Unknown memento class " . get_class($memento));
+        if (! $memento instanceof ConcreteMemento) {
+            throw new \Exception("Unknown memento class ".get_class($memento));
         }
 
         $this->state = $memento->getState();
@@ -80,7 +82,6 @@ class Originator
  */
 interface Memento
 {
-
     public function getName();
 
     public function getDate();
@@ -92,6 +93,7 @@ interface Memento
 class ConcreteMemento implements Memento
 {
     private $state;
+
     private $date;
 
     public function __construct($state)
@@ -113,7 +115,7 @@ class ConcreteMemento implements Memento
      */
     public function getName()
     {
-        return $this->date . " / (" . substr($this->state, 0, 9) . "...)";
+        return $this->date." / (".substr($this->state, 0, 9)."...)";
     }
 
     public function getDate()
@@ -152,12 +154,12 @@ class Caretaker
 
     public function undo()
     {
-        if (!count($this->mementos)) {
+        if (! count($this->mementos)) {
             return;
         }
         $memento = array_pop($this->mementos);
 
-        print("Caretaker: Restoring state to: " . $memento->getName() . "\n");
+        print("Caretaker: Restoring state to: ".$memento->getName()."\n");
         try {
             $this->originator->restore($memento);
         } catch (\Exception $e) {
@@ -169,7 +171,7 @@ class Caretaker
     {
         print("Caretaker: Here's the list of mementos:\n");
         foreach ($this->mementos as $memento) {
-            print($memento->getName() . "\n");
+            print($memento->getName()."\n");
         }
     }
 }

@@ -16,26 +16,28 @@ use Iterator;
  * convenient integration with foreach loops.
  *
  * Here's how the interface looks like:
+ *
  * @link http://php.net/manual/en/class.iterator.php
  *
  *     interface Iterator extends Traversable {
  *         // Return the current element
  *         public function current();
- *    
+ *
  *         // Move forward to next element
  *         public function next();
- *    
+ *
  *         // Return the key of the current element
  *         public function key();
- *    
+ *
  *         // Checks if current position is valid
  *         public function valid();
- *    
+ *
  *         // Rewind the Iterator to the first element
  *         public function rewind();
  *     }
  *
  * There's also a built-in interface for collections:
+ *
  * @link http://php.net/manual/en/class.iteratoraggregate.php
  *
  *     interface IteratorAggregate extends Traversable {
@@ -44,8 +46,8 @@ use Iterator;
  */
 
 /**
- * Concrete Iterator implements various traversal algorythms.
- * It stores the current traversal position at all times.
+ * Concrete Iterators implement various traversal algorithms. These classes
+ * store the current traversal position at all times.
  */
 class AlphabeticalOrderIterator implements \Iterator
 {
@@ -57,7 +59,7 @@ class AlphabeticalOrderIterator implements \Iterator
     /**
      * @var int Stores the current traversal position. An iterator may have a
      * lot of other fields for storing iteration state, especially when it is
-     * supposed to works with a special kind of collection.
+     * supposed to work with a special kind of collection.
      */
     private $position = 0;
 
@@ -100,8 +102,8 @@ class AlphabeticalOrderIterator implements \Iterator
 }
 
 /**
- * Concrete Collection provides one or several methods for retrieving a fresh
- * iterator instance, compatible with this collection.
+ * The Concrete Collection provides one or several methods for retrieving a
+ * fresh iterator instance, compatible with the collection class.
  */
 class WordsCollection implements \IteratorAggregate
 {
@@ -129,7 +131,7 @@ class WordsCollection implements \IteratorAggregate
 }
 
 /**
- * Client code may or may not know about concrete iterator and collection
+ * The client code may or may not know about concrete iterator and collection
  * classes, depending on the level of indirection you want to keep in your
  * program.
  */

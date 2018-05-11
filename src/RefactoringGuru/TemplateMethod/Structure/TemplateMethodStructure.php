@@ -11,19 +11,16 @@ namespace RefactoringGuru\TemplateMethod\Structure;
  */
 
 /**
- * AbstractClass defines a template method that contains skeleton of some
+ * The AbstractClass defines a template method that contains a skeleton of some
  * algorithm, composed of calls to (usually) abstract primitive operations.
  *
- * Concrete subclasses should implement these operations, but the
+ * Concrete subclasses should implement these operations, but
  * leave the template method itself intact.
  */
 abstract class AbstractClass
 {
     /**
-     * Template method defines the skeleton of an algorithm.
-     *
-     * The template method calls primitive operations as well as operations
-     * defined in AbstractClass or those of other objects.
+     * The template method defines the skeleton of an algorithm.
      */
     final public function templateMethod()
     {
@@ -37,7 +34,7 @@ abstract class AbstractClass
     }
 
     /**
-     * These operations already do something in a base class.
+     * These operations already have implementations.
      */
     protected function baseOperation1()
     {
@@ -63,7 +60,7 @@ abstract class AbstractClass
 
     /**
      * These are "hooks". They may be overridden by subclasses, but it's
-     * not mandatory, since hooks already have default (but empty)
+     * not mandatory, since the hooks already have default (but empty)
      * implementation. Hooks provide additional extension points in some crucial
      * places of the algorithm.
      */
@@ -73,8 +70,8 @@ abstract class AbstractClass
 }
 
 /**
- * Implements the primitive operations to carry out subclass-specific steps of
- * the algorithm.
+ * Concrete classes have to implement all abstract operations of the base class.
+ * They can also override some operations with default implementation.
  */
 class ConcreteClass1 extends AbstractClass
 {
@@ -90,7 +87,7 @@ class ConcreteClass1 extends AbstractClass
 }
 
 /**
- * Usually concrete classes override only fraction of base class' steps.
+ * Usually concrete classes override only fraction of base class' operations.
  */
 class ConcreteClass2 extends AbstractClass
 {
@@ -111,8 +108,8 @@ class ConcreteClass2 extends AbstractClass
 }
 
 /**
- * Client code calls the template method to execute the algorithm. Client
- * code does not have to know the concrete class of object it works with, as
+ * The client code calls the template method to execute the algorithm. Client
+ * code does not have to know the concrete class of an object it works with, as
  * long as it works with objects through the interface of their base class.
  */
 function clientCode(AbstractClass $class)

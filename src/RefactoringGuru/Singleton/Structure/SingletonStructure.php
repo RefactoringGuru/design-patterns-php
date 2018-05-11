@@ -10,16 +10,16 @@ namespace RefactoringGuru\Singleton\Structure;
  */
 
 /**
- * Defines a `getInstance` operation that lets clients access unique singleton
- * instance.
+ * The Singleton class defines the `getInstance` method that lets clients access
+ * the unique singleton instance.
  */
 class Singleton
 {
-    private static $instances = array();
+    private static $instances = [];
 
     /**
-     * Singleton constructor should always be private to block direct
-     * construction call with `new` operator.
+     * The Singleton's constructor should always be private to prevent direct
+     * construction calls with the `new` operator.
      */
     protected function __construct() { }
 
@@ -33,27 +33,28 @@ class Singleton
      */
     public function __wakeup()
     {
-        throw new \Exception("Cannot unserialize singleton");
+        throw new \Exception("Cannot unserialize a singleton.");
     }
 
     /**
-     * Static method, which controls access to singleton instance.
+     * The static method that controls the access to the singleton instance.
      *
-     * This implementation allows creating singleton subclasses and having
-     * just one instance of each subclcass.
+     * This implementation let you subclass the Singleton class while keeping
+     * just one instance of each subclass around.
      */
     public static function getInstance(): Singleton
     {
         $cls = get_called_class();
-        if (!isset(self::$instances[$cls])) {
+        if (! isset(self::$instances[$cls])) {
             self::$instances[$cls] = new static;
         }
+
         return self::$instances[$cls];
     }
 
     /**
-     * Finally, singleton has some business logic, which can be executed on
-     * its instance.
+     * Finally, any singleton should define some business logic, which can be
+     * executed on its instance.
      */
     public function someBusinessLogic()
     {
@@ -62,7 +63,7 @@ class Singleton
 }
 
 /**
- * Client code.
+ * The client code.
  */
 function clientCode()
 {

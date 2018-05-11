@@ -11,21 +11,21 @@ namespace RefactoringGuru\Strategy\Structure;
  */
 
 /**
- * Context defines the interface of interest to clients.
+ * The Context defines the interface of interest to clients.
  */
 class Context
 {
     /**
-     * Context maintains a reference to a Strategy object. Context does not
-     * know the concrete class of a Strategy object. It works with Strategies
-     * through a common interface.
-     * @var Strategy
+     * @var Strategy The Context maintains a reference to one of the Strategy objects. The Context does not
+     * know the concrete class of a strategy. It should work with all strategies
+     * via the Strategy interface.
      */
     private $strategy;
 
     /**
-     * Usually context accepts strategy in constructor, but provides a way
-     * top change it in runtime.
+     * Usually the Context accepts a strategy through the constructor, but also provides a setter
+     * to change it in runtime.
+     *
      * @param Strategy $strategy
      */
     public function __constructor(Strategy $strategy)
@@ -34,7 +34,8 @@ class Context
     }
 
     /**
-     * Usually context allows changing strategy object in run time.
+     * Usually the Context allows changing a strategy in run time.
+     *
      * @param Strategy $strategy
      */
     public function setStrategy(Strategy $strategy)
@@ -43,26 +44,26 @@ class Context
     }
 
     /**
-     * Context delegates work to a strategy object instead of implementing
-     * multiple versions of the algorithm on its own.
+     * The Context delegates some work to the strategy object instead of
+     * implementing multiple versions of the algorithm on its own.
      */
     public function doSomeBusinessLogic()
     {
         //...
 
-        print("Context sort its data using strategy:\n");
+        print("Context: Sorting data using the strategy (not sure how it'll do it)\n");
         $result = $this->strategy->doAlgorithm(["a", "b", "c", "d", "e"]);
-        print(implode(",", $result) . "\n");
+        print(implode(",", $result)."\n");
 
         //...
     }
 }
 
 /**
- * Strategy interface declares operations common to all supported
+ * The Strategy interface declares operations common to all supported
  * versions of some algorithm.
  *
- * Context uses this interface to call the algorithm defined by
+ * The Context uses this interface to call the algorithm defined by
  * ConcreteStrategies.
  */
 interface Strategy
@@ -71,14 +72,15 @@ interface Strategy
 }
 
 /**
- * Concrete strategies implement the algorithm using the common Strategy
- * interface. This makes them interchangeable in the context.
+ * Concrete Strategies implement the algorithm using the common Strategy
+ * interface. This makes them interchangeable in the Context.
  */
 class ConcreteStrategyA implements Strategy
 {
     public function doAlgorithm($data)
     {
         sort($data);
+
         return $data;
     }
 }
@@ -88,22 +90,23 @@ class ConcreteStrategyB implements Strategy
     public function doAlgorithm($data)
     {
         rsort($data);
+
         return $data;
     }
 }
 
 /**
- * Client code picks concrete strategy and passes it to the context. Client
+ * The client code picks a concrete strategy and passes it to the context. The client
  * should be aware of the differences between strategies in order to make the
  * right choice.
  */
 $context = new Context();
 
-print("[Strategy is set to normal sorting]\n");
+print("Client: Strategy is set to normal sorting.\n");
 $context->setStrategy(new ConcreteStrategyA());
 $context->doSomeBusinessLogic();
 print("\n");
 
-print("[Strategy is set to reverse sorting]\n");
+print("Client: Strategy is set to reverse sorting.\n");
 $context->setStrategy(new ConcreteStrategyB());
 $context->doSomeBusinessLogic();

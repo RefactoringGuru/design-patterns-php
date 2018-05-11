@@ -10,14 +10,14 @@ namespace RefactoringGuru\State\Structure;
  */
 
 /**
- * Define the interface of interest to clients.
- * Maintain an instance of a ConcreteState subclass that defines the
- * current state.
+ * The Context defines the interface of interest to clients. It also maintain a
+ * reference to an instance of a State subclass, which represents the
+ * current state of the Context.
  */
 class Context
 {
     /**
-     * @var State
+     * @var State A reference to the current state of the Context.
      */
     private $state;
 
@@ -30,36 +30,36 @@ class Context
     }
 
     /**
-     * Usually context allows changing strategy object in run time.
+     * The Context allows changing the State object in run time.
+     *
      * @param State $state
      */
     public function transitionTo(State $state)
     {
+        print("Context: Transition to ".get_class($state).".\n");
         $this->state = $state;
         $this->state->setContext($this);
     }
 
     /**
-     *
+     * The Context delegates part of its behavior to the current State object.
      */
     public function request1()
     {
         $this->state->handle1();
     }
 
-    /**
-     *
-     */
     public function request2()
     {
         $this->state->handle2();
     }
-
 }
 
 /**
- * Define an interface for encapsulating the behavior associated with a
- * particular state of the Context.
+ * The base State class declares methods that all Concrete State should
+ * implement and also provides a back-reference to the Context object,
+ * associated with the State. This back-reference can be used by States to
+ * transition the Context to another State.
  */
 abstract class State
 {
@@ -79,39 +79,41 @@ abstract class State
 }
 
 /**
- * Implement a behavior associated with a state of the Context.
+ * Concrete States implement various behaviors, associated with a state of the Context.
  */
 class ConcreteStateA extends State
 {
     public function handle1()
     {
-        print("ConcreteStateB handles request1.");
+        print("ConcreteStateA handles request1.\n");
+        print("ConcreteStateA wants to change the state of the context.\n");
         $this->context->transitionTo(new ConcreteStateB());
     }
 
     public function handle2()
     {
-        print("ConcreteStateB handles request2.");
+        print("ConcreteStateA handles request2.\n");
     }
 }
 
-/**
- * Implement a behavior associated with a state of the Context.
- */
 class ConcreteStateB extends State
 {
     public function handle1()
     {
-        print("ConcreteStateB handles request1.");
+        print("ConcreteStateB handles request1.\n");
     }
 
     public function handle2()
     {
-        print("ConcreteStateAB handles request2.");
+        print("ConcreteStateB handles request2.\n");
+        print("ConcreteStateB wants to change the state of the context.\n");
         $this->context->transitionTo(new ConcreteStateA());
     }
 }
 
+/**
+ * The client code.
+ */
 $context = new Context(new ConcreteStateA());
 $context->request1();
 $context->request2();

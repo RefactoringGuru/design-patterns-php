@@ -11,30 +11,35 @@ namespace RefactoringGuru\Mediator\Structure;
  */
 
 /**
- * Mediator Interface declares a method that is used by components to notify
+ * The Mediator interface declares a method that is used by components to notify
  * mediator about various events. Mediator may react on these events and pass
  * the execution to other components.
  */
-interface Mediator {
+interface Mediator
+{
     public function notify($sender, $event);
 }
 
 /**
- * Concrete Mediator implements cooperative behavior by coordinating several
+ * The Concrete Mediator implements cooperative behavior by coordinating several
  * components.
  */
-class ConcreteMediator implements Mediator {
+class ConcreteMediator implements Mediator
+{
     private $component1;
+
     private $component2;
 
-    public function __construct(Component1 $c1, Component2 $c2) {
+    public function __construct(Component1 $c1, Component2 $c2)
+    {
         $this->component1 = $c1;
         $this->component1->setMediator($this);
         $this->component2 = $c2;
         $this->component2->setMediator($this);
     }
 
-    public function notify($sender, $event) {
+    public function notify($sender, $event)
+    {
         if ($event == "A") {
             print("Mediator reacts on A and triggers following operations:\n");
             $this->component2->doC();
@@ -49,51 +54,60 @@ class ConcreteMediator implements Mediator {
 }
 
 /**
- * Base Component provides a basic functionality to store a mediator's instance
- * inside component objects.
+ * The Base Component provides a basic functionality of storing a mediator's
+ * instance inside component objects.
  */
-class BaseComponent {
+class BaseComponent
+{
     protected $mediator;
 
-    public function __construct(Mediator $mediator = null) {
+    public function __construct(Mediator $mediator = null)
+    {
         $this->mediator = $mediator;
     }
 
-    function setMediator(Mediator $mediator) {
+    function setMediator(Mediator $mediator)
+    {
         $this->mediator = $mediator;
     }
 }
 
 /**
  * Concrete Components implement various functionality. They don't depend on
- * other components. They also don't depend on a concrete mediator class.
+ * other components. They also don't depend on any concrete mediator classes.
  */
-class Component1 extends BaseComponent {
-    public function doA() {
+class Component1 extends BaseComponent
+{
+    public function doA()
+    {
         print("Component 1 does A.\n");
         $this->mediator->notify($this, "A");
     }
 
-    public function doB() {
+    public function doB()
+    {
         print("Component 1 does B.\n");
         $this->mediator->notify($this, "B");
     }
 }
 
-class Component2 extends BaseComponent {
-    public function doC() {
+class Component2 extends BaseComponent
+{
+    public function doC()
+    {
         print("Component 2 does C.\n");
         $this->mediator->notify($this, "C");
     }
 
-    public function doD() {
+    public function doD()
+    {
         print("Component 2 does D.\n");
         $this->mediator->notify($this, "D");
     }
 }
 
 /**
- * Client code.
+ * The client code.
  */
 $c1 = new Component1();
 $c2 = new Component2();

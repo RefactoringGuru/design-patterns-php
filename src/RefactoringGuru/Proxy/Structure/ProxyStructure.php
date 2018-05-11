@@ -10,8 +10,9 @@ namespace RefactoringGuru\Proxy\Structure;
  */
 
 /**
- * The common interface for RealSubject and Proxy. It allows passing Proxy
- * objects to any method, which expects a RealSubject.
+ * The Subject interface declares common operation for both the RealSubject and
+ * the Proxy. As long as the Client works with real subject using this
+ * interface, you'll be able to pass it a proxy instead of a real subject.
  */
 interface Subject
 {
@@ -19,20 +20,21 @@ interface Subject
 }
 
 /**
- * Contains a core business logic. Usually, real subjects do some useful, but
- * very slow or insecure work. Proxies can solve these issues without
- * any changes to a real subject's code.
+ * The RealSubject contains some core business logic. Usually, RealSubjects are able
+ * of doing some useful work, which is also very slow or sensitive to correct
+ * input data. A Proxy can solve these issues without any changes to the real
+ * subject's code.
  */
 class RealSubject implements Subject
 {
     public function request()
     {
-        print("REAL_SUBJECT: Handling request.\n");
+        print("RealSubject: Handling request.\n");
     }
 }
 
 /**
- * Proxy has an interface identical to Subject's.
+ * The Proxy has an interface identical to the RealSubject.
  */
 class Proxy implements Subject
 {
@@ -42,8 +44,8 @@ class Proxy implements Subject
     private $realSubject;
 
     /**
-     * Proxy object maintains a reference that lets the proxy access the
-     * object of real subject.
+     * The Proxy maintains a reference to an object of the RealSubject class. It
+     * can be either lazy-loaded or passed to the Proxy by the client.
      */
     public function __construct(RealSubject $realSubject)
     {
@@ -51,10 +53,10 @@ class Proxy implements Subject
     }
 
     /**
-     * The most common applications of proxy are: lazy loading, caching,
-     * controlling the access, logging, etc. Proxy does on of these things
-     * inside its subject methods and then executes the same method in a linked
-     * real subject object.
+     * The most common applications of the Proxy pattern are: lazy loading,
+     * caching, controlling the access, logging, etc. A Proxy can perform one
+     * of these things and then, depending on the result, pass the execution to
+     * the same method in a linked RealSubject object.
      */
     public function request()
     {
@@ -66,23 +68,24 @@ class Proxy implements Subject
 
     private function checkAccess()
     {
-        // Some real checks should go here, bu we just:
-        print("PROXY: Checking access prior to firing a real request.\n");
+        // Some real checks should go here.
+        print("Proxy: Checking access prior to firing a real request.\n");
+
         return true;
     }
 
     private function logAccess()
     {
-        print("PROXY: Logging the time of request.\n");
+        print("Proxy: Logging the time of request.\n");
     }
-
 }
 
 /**
- * Client code is suppose to work with a common subject interface in order to
- * support both real subjects and proxies. In real life, clients usually
- * already work with real subjects directly, so you create proxy by extending
- * the real subject class.
+ * The client code is supposed to work with all objects (both subjects and
+ * proxies) via the Subject interface in order to support both real subjects and
+ * proxies. In real life, however, clients mostly work with their real subjects
+ * directly. In this case, to implement the pattern more easily, you can extend
+ * your proxy from the real subject's class.
  */
 function clientCode(Subject $subject)
 {
@@ -93,12 +96,12 @@ function clientCode(Subject $subject)
     // ...
 }
 
-print("Executing client code with real subject:\n");
+print("Client: Executing the client code with a real subject:\n");
 $realSubject = new RealSubject();
 clientCode($realSubject);
 
 print("\n");
 
-print("Executing the same client code with a proxy:\n");
+print("Client: Executing the same client code with a proxy:\n");
 $proxy = new Proxy($realSubject);
 clientCode($proxy);

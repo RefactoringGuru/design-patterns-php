@@ -5,12 +5,12 @@ namespace RefactoringGuru\Prototype\Structure;
 /**
  * Prototype Design Pattern
  *
- * Intent: Specify the kinds of objects to create using a prototypical instance,
- * and create new objects by copying this prototype.
+ * Intent: Produce new objects by copying existing ones without compromising
+ * their internal structure.
  */
 
 /**
- * Example class to be copied.
+ * The example class that has cloning ability.
  */
 class Prototype
 {
@@ -30,8 +30,10 @@ class Prototype
     {
         $this->component = clone $this->component;
 
-        // Components with back references require special treatment so that
-        // their references point to cloned object, but not the original.
+        // Cloning an object that has a nested object with back reference
+        // requires special treatment. After the cloning is completed, the
+        // nested object should point to the cloned object, instead of the
+        // original object.
         $this->circularReference = clone $this->circularReference;
         $this->circularReference->prototype = $this;
     }
@@ -43,8 +45,8 @@ class ComponentWithBackReference
 
     /**
      * Note that the constructor won't be executed during cloning. If you
-     * have a complex logic in constructor, you may need to execute it in
-     * the `__clone` method as well.
+     * have a complex logic inside the constructor, you may need to execute it
+     * in the `__clone` method as well.
      */
     public function __construct(Prototype $prototype)
     {
@@ -53,7 +55,7 @@ class ComponentWithBackReference
 }
 
 /**
- * Client code.
+ * The client code.
  */
 function clientCode()
 {
