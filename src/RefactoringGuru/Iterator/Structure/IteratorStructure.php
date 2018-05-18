@@ -5,15 +5,15 @@ namespace RefactoringGuru\Iterator\Structure;
 /**
  * Iterator Design Pattern
  *
- * Intent: Provide a way to access the elements of an aggregate objects
- * without exposing its underlying representation.
+ * Intent: Provide a way to access the elements of an aggregate objects without
+ * exposing its underlying representation.
  */
 
 use Iterator;
 
 /**
- * PHP has a built-in Iterator interface that provides a very
- * convenient integration with foreach loops.
+ * PHP has a built-in Iterator interface that provides a very convenient
+ * integration with foreach loops.
  *
  * Here's how the interface looks like:
  *

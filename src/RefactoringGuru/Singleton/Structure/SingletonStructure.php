@@ -5,8 +5,8 @@ namespace RefactoringGuru\Singleton\Structure;
 /**
  * Singleton Design Pattern
  *
- * Intent: Ensure that class has a single instance, and provide a global
- * point of access to it.
+ * Intent: Ensure that class has a single instance, and provide a global point
+ * of access to it.
  */
 
 /**

@@ -6,8 +6,8 @@ namespace RefactoringGuru\Composite\RealLife;
  * Composite Design Pattern
  *
  * Intent: Compose objects into tree structures to represent part-whole
- * hierarchies. Composite lets clients treat individual objects and
- * compositions of objects uniformly.
+ * hierarchies. Composite lets clients treat individual objects and compositions
+ * of objects uniformly.
  *
  * Example: Composite pattern can streamline the work with any tree-like
  * recursive structures. HTML DOM tree is an example of such structure. For
@@ -170,9 +170,9 @@ function getProductForm(): FormElement
 }
 
 /**
- * Form structure can be filled with data from various sources. Client
- * doesn't have to traverse through form fields to assign data to various
- * fields, the form itself will handle that.
+ * Form structure can be filled with data from various sources. Client doesn't
+ * have to traverse through form fields to assign data to various fields, the
+ * form itself will handle that.
  */
 function loadProductData(FormElement $form)
 {
@@ -194,11 +194,11 @@ function loadProductData(FormElement $form)
  */
 function renderProduct(FormElement $form)
 {
-    //..
+    // ..
 
     print($form->render());
 
-    //..
+    // ..
 }
 
 $form = getProductForm();

@@ -8,10 +8,10 @@ namespace RefactoringGuru\Prototype\RealLife;
  * Intent: Specify the kinds of objects to create using a prototypical instance,
  * and create new objects by copying this prototype.
  *
- * Example: Prototype provides a convenient way to replicate existing
- * objects instead of re-constructing them and copying over all of their
- * fields. Prototype allows cloning even private field since the copying is
- * performed within the cloned class.
+ * Example: Prototype provides a convenient way to replicate existing objects
+ * instead of re-constructing them and copying over all of their fields.
+ * Prototype allows cloning even private field since the copying is performed
+ * within the cloned class.
  */
 
 /**
@@ -55,8 +55,8 @@ class Page
      * When a page is cloned, it should get a new default title and empty
      * comments.
      *
-     * Author of the page remains the same, therefore we leave the
-     * reference to existing object. But we add the clone to list of his pages.
+     * Author of the page remains the same, therefore we leave the reference to
+     * existing object. But we add the clone to list of his pages.
      *
      * A clone also gets a new date object.
      */
@@ -97,11 +97,11 @@ function clientCode()
     $author = new Author("John Smith");
     $page = new Page("Tip of the day", "Keep calm and carry on.", $author);
 
-    //...
+    // ...
 
     $page->addComment("Nice tip, thanks!");
 
-    //...
+    // ...
 
     $draft = clone $page;
     print("Dump of the clone. Note that the author is now referencing two objects.\n\n");

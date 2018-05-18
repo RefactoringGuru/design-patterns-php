@@ -6,19 +6,19 @@ namespace RefactoringGuru\Facade\RealLife;
  * Facade Design Pattern
  *
  * Intent: Provide a unified interface to a set of interfaces in a subsystem.
- * Facade defines a higher-level interface that makes the subsystem easier
- * to use.
+ * Facade defines a higher-level interface that makes the subsystem easier to
+ * use.
  *
  * Example: Facades are simplicity adapters over complex code. They isolate
- * complexity within a single class and allow other application code to
- * use straightforward interface. In this example, facade hides from a client
- * code the complexity of Youtube API and ffmpeg library. Instead working
- * with dozen of classes, client uses one simple method of the facade.
+ * complexity within a single class and allow other application code to use
+ * straightforward interface. In this example, facade hides from a client code
+ * the complexity of Youtube API and ffmpeg library. Instead working with dozen
+ * of classes, client uses one simple method of the facade.
  */
 
 /**
- * Facade. Provides a simple interface for a single operations that
- * uses complex Youtube and FFMpeg subsystems.
+ * Facade. Provides a simple interface for a single operations that uses complex
+ * Youtube and FFMpeg subsystems.
  */
 class YoutubeDownloader
 {
@@ -35,33 +35,33 @@ class YoutubeDownloader
     }
 
     /**
-     * Facade provides simple method for downloading video and encoding it to
-     * a target format (for the sake of simplicity, the real-world code is
+     * Facade provides simple method for downloading video and encoding it to a
+     * target format (for the sake of simplicity, the real-world code is
      * commented).
      */
     public function downloadVideo(string $url)
     {
         print("Fetching video metadata from youtube...\n");
-        //$title = $this->youtube->fetchVideo($url)->getTitle();
+        // $title = $this->youtube->fetchVideo($url)->getTitle();
         print("Saving video file to a temporary file...\n");
-        //$this->youtube->saveAs($url, "video.mpg");
+        // $this->youtube->saveAs($url, "video.mpg");
 
         print("Processing source video...\n");
-        //$video = $this->ffmpeg->open('video.mpg');
+        // $video = $this->ffmpeg->open('video.mpg');
         print("Normalizing and resizing the video to smaller dimensions...\n");
-        //$video
-        //    ->filters()
-        //    ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
-        //    ->synchronize();
+        // $video
+        //     ->filters()
+        //     ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
+        //     ->synchronize();
         print("Capturing preview image...\n");
-        //$video
-        //    ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(10))
-        //    ->save($title . 'frame.jpg');
+        // $video
+        //     ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(10))
+        //     ->save($title . 'frame.jpg');
         print("Saving video in target formats...\n");
-        //$video
-        //    ->save(new FFMpeg\Format\Video\X264(), $title . '.mp4')
-        //    ->save(new FFMpeg\Format\Video\WMV(), $title . '.wmv')
-        //    ->save(new FFMpeg\Format\Video\WebM(), $title . '.webm');
+        // $video
+        //     ->save(new FFMpeg\Format\Video\X264(), $title . '.mp4')
+        //     ->save(new FFMpeg\Format\Video\WMV(), $title . '.wmv')
+        //     ->save(new FFMpeg\Format\Video\WebM(), $title . '.webm');
         print("Done!\n");
     }
 }
@@ -108,8 +108,8 @@ class FFMpegVideo
 
 /**
  * Client code does not depend on any subsystem classes. Any changes inside
- * subsystem code won't affect the client code. You will only need to update
- * the facade.
+ * subsystem code won't affect the client code. You will only need to update the
+ * facade.
  */
 function clientCode(YoutubeDownloader $facade)
 {

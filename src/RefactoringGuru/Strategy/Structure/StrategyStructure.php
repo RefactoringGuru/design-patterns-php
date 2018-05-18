@@ -6,8 +6,8 @@ namespace RefactoringGuru\Strategy\Structure;
  * Strategy Design Pattern
  *
  * Intent: Define a family of algorithms, encapsulate each one, and make them
- * interchangeable. Strategy lets the algorithm vary independently from
- * clients that use it.
+ * interchangeable. Strategy lets the algorithm vary independently from clients
+ * that use it.
  */
 
 /**
@@ -16,15 +16,15 @@ namespace RefactoringGuru\Strategy\Structure;
 class Context
 {
     /**
-     * @var Strategy The Context maintains a reference to one of the Strategy objects. The Context does not
-     * know the concrete class of a strategy. It should work with all strategies
-     * via the Strategy interface.
+     * @var Strategy The Context maintains a reference to one of the Strategy
+     * objects. The Context does not know the concrete class of a strategy. It
+     * should work with all strategies via the Strategy interface.
      */
     private $strategy;
 
     /**
-     * Usually the Context accepts a strategy through the constructor, but also provides a setter
-     * to change it in runtime.
+     * Usually the Context accepts a strategy through the constructor, but also
+     * provides a setter to change it in runtime.
      *
      * @param Strategy $strategy
      */
@@ -49,19 +49,19 @@ class Context
      */
     public function doSomeBusinessLogic()
     {
-        //...
+        // ...
 
         print("Context: Sorting data using the strategy (not sure how it'll do it)\n");
         $result = $this->strategy->doAlgorithm(["a", "b", "c", "d", "e"]);
         print(implode(",", $result)."\n");
 
-        //...
+        // ...
     }
 }
 
 /**
- * The Strategy interface declares operations common to all supported
- * versions of some algorithm.
+ * The Strategy interface declares operations common to all supported versions
+ * of some algorithm.
  *
  * The Context uses this interface to call the algorithm defined by
  * ConcreteStrategies.
@@ -96,9 +96,9 @@ class ConcreteStrategyB implements Strategy
 }
 
 /**
- * The client code picks a concrete strategy and passes it to the context. The client
- * should be aware of the differences between strategies in order to make the
- * right choice.
+ * The client code picks a concrete strategy and passes it to the context. The
+ * client should be aware of the differences between strategies in order to make
+ * the right choice.
  */
 $context = new Context();
 

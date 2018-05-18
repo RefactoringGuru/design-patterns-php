@@ -5,14 +5,14 @@ namespace RefactoringGuru\Iterator\RealLife;
 /**
  * Iterator Design Pattern
  *
- * Intent: Provide a way to access the elements of an aggregate objects
- * without exposing its underlying representation.
+ * Intent: Provide a way to access the elements of an aggregate objects without
+ * exposing its underlying representation.
  *
  * Example: The Iterator pattern allows easy access to CSV files.
  */
 
 /**
- * CSV File Iterator
+ * CSV File Iterator.
  *
  * @author Josh Lockhart
  */
@@ -24,16 +24,13 @@ class CsvIterator implements \Iterator
      * The pointer to the cvs file.
      *
      * @var resource
-     * @access protected
      */
     protected $filePointer = null;
 
     /**
-     * The current element, which will
-     * be returned on each iteration.
+     * The current element, which will be returned on each iteration.
      *
      * @var array
-     * @access protected
      */
     protected $currentElement = null;
 
@@ -41,23 +38,20 @@ class CsvIterator implements \Iterator
      * The row counter.
      *
      * @var int
-     * @access protected
      */
     protected $rowCounter = null;
 
     /**
      * The delimiter for the csv file.
      *
-     * @var str
-     * @access protected
+     * @var string
      */
     protected $delimiter = null;
 
     /**
-     * This is the constructor.It try to open the csv file.The method throws an exception
-     * on failure.
+     * The constructor tries to open the csv file. It throws an exception on a
+     * failure.
      *
-     * @access public
      * @param string $file The csv file.
      * @param string $delimiter The delimiter.
      *
@@ -75,8 +69,6 @@ class CsvIterator implements \Iterator
 
     /**
      * This method resets the file pointer.
-     *
-     * @access public
      */
     public function rewind()
     {
@@ -87,7 +79,6 @@ class CsvIterator implements \Iterator
     /**
      * This method returns the current csv row as a 2 dimensional array
      *
-     * @access public
      * @return array The current csv row as a 2 dimensional array
      */
     public function current()
@@ -101,7 +92,6 @@ class CsvIterator implements \Iterator
     /**
      * This method returns the current row number.
      *
-     * @access public
      * @return int The current row number
      */
     public function key()
@@ -112,7 +102,6 @@ class CsvIterator implements \Iterator
     /**
      * This method checks if the end of file is reached.
      *
-     * @access public
      * @return boolean Returns true on EOF reached, false otherwise.
      */
     public function next()
@@ -127,7 +116,6 @@ class CsvIterator implements \Iterator
     /**
      * This method checks if the next row is a valid row.
      *
-     * @access public
      * @return boolean If the next row is a valid row.
      */
     public function valid()

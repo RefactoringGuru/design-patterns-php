@@ -11,7 +11,8 @@ namespace RefactoringGuru\Decorator\Structure;
  */
 
 /**
- * The base Component interface defines operations that can be altered by decorators.
+ * The base Component interface defines operations that can be altered by
+ * decorators.
  */
 interface Component
 {
@@ -19,7 +20,8 @@ interface Component
 }
 
 /**
- * The Concrete Component provides a default implementations of the operation. There might be several variations of these classes.
+ * The Concrete Component provides a default implementations of the operation.
+ * There might be several variations of these classes.
  */
 class ConcreteComponent implements Component
 {
@@ -30,8 +32,10 @@ class ConcreteComponent implements Component
 }
 
 /**
- * The base Decorator class follows the same interface as the other components. The main
- * purpose of this class is to define the wrapping interface for all concrete decorators. This might include a field for storing the wrapped component and the means to initialize it.
+ * The base Decorator class follows the same interface as the other components.
+ * The main purpose of this class is to define the wrapping interface for all
+ * concrete decorators. This might include a field for storing the wrapped
+ * component and the means to initialize it.
  */
 class Decorator implements Component
 {
@@ -60,7 +64,9 @@ class Decorator implements Component
 class ConcreteDecoratorA extends Decorator
 {
     /**
-     * Decorators may call parent implementation of the operation, instead of calling the wrapped object directly. This allows extending decorator classes.
+     * Decorators may call parent implementation of the operation, instead of
+     * calling the wrapped object directly. This allows extending decorator
+     * classes.
      */
     public function operation()
     {
@@ -69,7 +75,8 @@ class ConcreteDecoratorA extends Decorator
 }
 
 /**
- * Decorators can execute their behavior either before or after the call to a wrapped object.
+ * Decorators can execute their behavior either before or after the call to a
+ * wrapped object.
  */
 class ConcreteDecoratorB extends Decorator
 {
@@ -81,15 +88,16 @@ class ConcreteDecoratorB extends Decorator
 
 /**
  * The client code works with all objects using the Component interface. This
- * way it can stay independent of the concrete classes of components it works with.
+ * way it can stay independent of the concrete classes of components it works
+ * with.
  */
 function clientCode(Component $component)
 {
-    //...
+    // ...
 
     print("RESULT: ".$component->operation());
 
-    //...
+    // ...
 }
 
 /**
@@ -103,8 +111,8 @@ print("\n\n");
 /**
  * ...as well as decorated ones.
  *
- * Note how decorators can wrap not only simple components, but other
- * decorators as well.
+ * Note how decorators can wrap not only simple components, but other decorators
+ * as well.
  */
 $decorator1 = new ConcreteDecoratorA($simple);
 $decorator2 = new ConcreteDecoratorB($decorator1);

@@ -77,8 +77,8 @@ class Originator
 }
 
 /**
- * Memento interface provides a way to retrieve the memento's meta data, such
- * as a creation date. However, it doesn't expose the originator's state.
+ * Memento interface provides a way to retrieve the memento's meta data, such as
+ * a creation date. However, it doesn't expose the originator's state.
  */
 interface Memento
 {

@@ -20,10 +20,10 @@ interface Subject
 }
 
 /**
- * The RealSubject contains some core business logic. Usually, RealSubjects are able
- * of doing some useful work, which is also very slow or sensitive to correct
- * input data. A Proxy can solve these issues without any changes to the real
- * subject's code.
+ * The RealSubject contains some core business logic. Usually, RealSubjects are
+ * able of doing some useful work, which is also very slow or sensitive to
+ * correct input data. A Proxy can solve these issues without any changes to the
+ * real subject's code.
  */
 class RealSubject implements Subject
 {
@@ -54,9 +54,9 @@ class Proxy implements Subject
 
     /**
      * The most common applications of the Proxy pattern are: lazy loading,
-     * caching, controlling the access, logging, etc. A Proxy can perform one
-     * of these things and then, depending on the result, pass the execution to
-     * the same method in a linked RealSubject object.
+     * caching, controlling the access, logging, etc. A Proxy can perform one of
+     * these things and then, depending on the result, pass the execution to the
+     * same method in a linked RealSubject object.
      */
     public function request()
     {

@@ -5,14 +5,14 @@ namespace RefactoringGuru\Bridge\RealLife;
 /**
  * Bridge Design Pattern
  *
- * Intent: Decouple an abstraction from its implementation so that the two
- * can vary independently.
+ * Intent: Decouple an abstraction from its implementation so that the two can
+ * vary independently.
  *
- *             A
- *          /     \                        A         N
- *        Aa      Ab        ===>        /     \     / \
- *       / \     /  \                 Aa(N) Ab(N)  1   2
- *     Aa1 Aa2  Ab1 Ab2
+ *               A
+ *            /     \                        A         N
+ *          Aa      Ab        ===>        /     \     / \
+ *         / \     /  \                 Aa(N) Ab(N)  1   2
+ *        Aa1 Aa2  Ab1 Ab2
  *
  * Example: Bridge pattern allows to connect orthogonal class hierarchies
  * instead of merging them together. The Page hierarchy acts as abstraction, it
@@ -249,8 +249,8 @@ function clientCode(Page $page)
 }
 
 /**
- * Client code can be launched with any pre-configured
- * abstraction-implementation combination.
+ * Client code can be launched with any pre-configured abstraction-
+ * implementation combination.
  */
 $HTMLRenderer = new HTMLRenderer();
 $JSONRenderer = new JsonRenderer();

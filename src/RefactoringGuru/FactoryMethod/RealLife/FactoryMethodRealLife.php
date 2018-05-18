@@ -6,8 +6,8 @@ namespace RefactoringGuru\FactoryMethod\RealLife;
  * Factory Method Design Pattern
  *
  * Intent: Define an interface for creating an object, but let subclasses decide
- * which class to instantiate. Factory Method lets a class defer
- * instantiation to subclasses.
+ * which class to instantiate. Factory Method lets a class defer instantiation
+ * to subclasses.
  *
  * Example: Factory method provides interface for creating social network
  * connectors that are used to log in and create posts in various social
@@ -153,10 +153,10 @@ class LinkedInConnector implements SocialNetworkConnector
  */
 function clientCode(SocialNetworkPoster $creator)
 {
-    //...
+    // ...
     $creator->post("Hello world!");
     $creator->post("I had a large burger this morning!");
-    //...
+    // ...
 }
 
 /**

@@ -11,7 +11,8 @@ namespace RefactoringGuru\ChainOfResponsibility\Structure;
  */
 
 /**
- * The Handler interface declares a method for building the chain of handlers along with a method for executing a request.
+ * The Handler interface declares a method for building the chain of handlers
+ * along with a method for executing a request.
  */
 interface Handler
 {
@@ -93,7 +94,8 @@ class DogHandler extends AbstractHandler
 }
 
 /**
- * The client code is usually suited to work with a single handler. In most cases, it is not even aware that the handler is part of a chain.
+ * The client code is usually suited to work with a single handler. In most
+ * cases, it is not even aware that the handler is part of a chain.
  */
 function clientCode(Handler $handler)
 {
@@ -118,7 +120,8 @@ $dog = new DogHandler();
 $monkey->setNext($squirrel)->setNext($dog);
 
 /**
- * The client can send a request to any handler, not just the one first one in a chain.
+ * The client should be able to send a request to any handler, not just the
+ * first one in the chain.
  */
 print("Chain: Monkey > Squirrel > Dog\n\n");
 clientCode($monkey);

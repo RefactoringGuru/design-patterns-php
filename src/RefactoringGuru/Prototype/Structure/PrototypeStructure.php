@@ -20,11 +20,11 @@ class Prototype
 
     /**
      * PHP has built-in cloning support. You can `clone` an object without
-     * defying any special methods as long as it have fields of primitive
-     * types. Fields that contain objects, retain their references to old
-     * sub-object in a cloned object. Therefore, in some cases you might
-     * want to clone those referenced objects as well. You can do this in a
-     * special `__clone()` method.
+     * defying any special methods as long as it have fields of primitive types.
+     * Fields that contain objects, retain their references to old sub-object in
+     * a cloned object. Therefore, in some cases you might want to clone those
+     * referenced objects as well. You can do this in a special `__clone()`
+     * method.
      */
     public function __clone()
     {
@@ -44,9 +44,9 @@ class ComponentWithBackReference
     public $prototype;
 
     /**
-     * Note that the constructor won't be executed during cloning. If you
-     * have a complex logic inside the constructor, you may need to execute it
-     * in the `__clone` method as well.
+     * Note that the constructor won't be executed during cloning. If you have a
+     * complex logic inside the constructor, you may need to execute it in the
+     * `__clone` method as well.
      */
     public function __construct(Prototype $prototype)
     {

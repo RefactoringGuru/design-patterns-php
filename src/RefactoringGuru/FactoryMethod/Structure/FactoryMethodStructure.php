@@ -6,23 +6,29 @@ namespace RefactoringGuru\FactoryMethod\Structure;
  * Factory Method Design Pattern
  *
  * Intent: Define an interface for creating an object, but let subclasses decide
- * which class to instantiate. Factory Method lets a class defer
- * instantiation to subclasses.
+ * which class to instantiate. Factory Method lets a class defer instantiation
+ * to subclasses.
  */
 
 /**
- * The Creator class declares the factory method that suppose to return an object of a Product class. The implementation of this method is usually provided by the Creator's subclasses.
+ * The Creator class declares the factory method that suppose to return an
+ * object of a Product class. The implementation of this method is usually
+ * provided by the Creator's subclasses.
  */
 abstract class Creator
 {
     /**
-     * Note, that the Creator may also provide some default implementation of the factory
-     * method.
+     * Note, that the Creator may also provide some default implementation of
+     * the factory method.
      */
     public abstract function factoryMethod(): Product;
 
     /**
-     * Also, note that despite its name, the Creator's primary responsibility is not creating products. Usually, it contains some core business logic that relies on Product objects, returned by the factory method. Subclasses can indirectly change that business logic by overriding the factory method and returning a different type of product from it.
+     * Also, note that despite its name, the Creator's primary responsibility is
+     * not creating products. Usually, it contains some core business logic that
+     * relies on Product objects, returned by the factory method. Subclasses can
+     * indirectly change that business logic by overriding the factory method
+     * and returning a different type of product from it.
      */
     public function someOperation(): string
     {
@@ -36,12 +42,16 @@ abstract class Creator
 }
 
 /**
- * The Concrete Creators override the factory method in order to change the resulting product's type.
+ * The Concrete Creators override the factory method in order to change the
+ * resulting product's type.
  */
 class ConcreteCreator1 extends Creator
 {
     /**
-     * Note that the signature of the method still uses the abstract product type, even though the concrete product is actually returned from the method. This way the Creator can stay independent of concrete product classes.
+     * Note that the signature of the method still uses the abstract product
+     * type, even though the concrete product is actually returned from the
+     * method. This way the Creator can stay independent of concrete product
+     * classes.
      */
     public function factoryMethod(): Product
     {
@@ -58,7 +68,8 @@ class ConcreteCreator2 extends Creator
 }
 
 /**
- * The Product interface declares the operations that all concrete products must implement.
+ * The Product interface declares the operations that all concrete products must
+ * implement.
  */
 interface Product
 {
@@ -91,10 +102,10 @@ class ConcreteProduct2 implements Product
  */
 function clientCode(Creator $creator)
 {
-    //...
+    // ...
     print("Client: I'm not aware of the creator's class, but it still works:\n"
         .$creator->someOperation());
-    //...
+    // ...
 }
 
 /**

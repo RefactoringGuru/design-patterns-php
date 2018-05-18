@@ -17,9 +17,9 @@ namespace RefactoringGuru\Flyweight\RealLife;
  * 2. Shared (intrinsic) data such as a breed name, color, texture, etc.
  *
  * The first part is stored directly inside the Cat class that serves as a
- * context. The second part, however, is stored separately and can be shared
- * by multiple cats. This shareable data resides inside the CatVariation class.
- * Two cats that have similar features, reference to the same CatVariation class
+ * context. The second part, however, is stored separately and can be shared by
+ * multiple cats. This shareable data resides inside the CatVariation class. Two
+ * cats that have similar features, reference to the same CatVariation class
  * instead of storing the duplicate data in each of their object.
  */
 

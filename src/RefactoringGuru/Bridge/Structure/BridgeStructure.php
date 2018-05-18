@@ -5,20 +5,20 @@ namespace RefactoringGuru\Bridge\Structure;
 /**
  * Bridge Design Pattern
  *
- * Intent: Decouple an abstraction from its implementation so that the two
- * can vary independently.
+ * Intent: Decouple an abstraction from its implementation so that the two can
+ * vary independently.
  *
- *             A
- *          /     \                        A         N
- *        Aa      Ab        ===>        /     \     / \
- *       / \     /  \                 Aa(N) Ab(N)  1   2
- *     Aa1 Aa2  Ab1 Ab2
+ *               A
+ *            /     \                        A         N
+ *          Aa      Ab        ===>        /     \     / \
+ *         / \     /  \                 Aa(N) Ab(N)  1   2
+ *         Aa1 Aa2  Ab1 Ab2
  */
 
 /**
- * The Abstraction defines the interface for the "control" part of the two class hierarchies.
- * It maintains a reference to a Implementor object and delegates it
- * all of the real work.
+ * The Abstraction defines the interface for the "control" part of the two class
+ * hierarchies. It maintains a reference to a Implementor object and delegates
+ * it all of the real work.
  */
 class Abstraction
 {
@@ -56,7 +56,7 @@ class ExtendedAbstraction extends Abstraction
  * interface doesn't have to match the methods of the Abstraction's interface.
  * In fact the two interfaces can be quite different. Typically the Implementor
  * interface provides only primitive operations, while the Abstraction defines
- * higher-level operations based on those primitives.
+ * higher- level operations based on those primitives.
  */
 interface Implementor
 {
@@ -64,7 +64,8 @@ interface Implementor
 }
 
 /**
- * Each Concrete Implementor corresponds to the specific platform and implements the Implementor interface using that platform's API.
+ * Each Concrete Implementor corresponds to the specific platform and implements
+ * the Implementor interface using that platform's API.
  */
 class ConcreteImplementorA implements Implementor
 {
@@ -98,8 +99,8 @@ function clientCode(Abstraction $abstraction)
 }
 
 /**
- * The client code should be able to run with any pre-configured
- * abstraction-implementation combination.
+ * The client code should be able to run with any pre-configured abstraction-
+ * implementation combination.
  */
 $implementation = new ConcreteImplementorA();
 $abstraction = new Abstraction($implementation);

@@ -6,8 +6,8 @@ namespace RefactoringGuru\TemplateMethod\RealLife;
  * Template Method Design Pattern
  *
  * Intent: Define the skeleton of an algorithm in an operation, deferring some
- * steps to subclasses. Template Method lets subclasses redefine certain
- * steps of an algorithm without changing the algorithm's structure.
+ * steps to subclasses. Template Method lets subclasses redefine certain steps
+ * of an algorithm without changing the algorithm's structure.
  *
  * Example: In this example the Template Method defines an algorithm of posting
  * a message to a social network. Each subclass represents an actual social

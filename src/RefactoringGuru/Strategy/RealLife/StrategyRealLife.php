@@ -6,8 +6,8 @@ namespace RefactoringGuru\Strategy\RealLife;
  * Strategy Design Pattern
  *
  * Intent: Define a family of algorithms, encapsulate each one, and make them
- * interchangeable. Strategy lets the algorithm vary independently from
- * clients that use it.
+ * interchangeable. Strategy lets the algorithm vary independently from clients
+ * that use it.
  *
  * Example: In this example the Strategy pattern is used to represent payment
  * methods in an e-commerce application. Each payment method is able to display
@@ -24,11 +24,11 @@ namespace RefactoringGuru\Strategy\RealLife;
  * to process the request. Thus, the class looks as the Context and the Client
  * at the same time.
  *
- * RU: Это роутер и контроллер нашего приложения.
- * При получении запроса, он передаст выполнение одному из своих методов. В
- * случае, если приходит запрос на оплату, OrderController дополнительно выберет
- * соотвествующий класс платёжного метода и использует его для оплаты. Таким
- * образом, этот класс одновременно отыгрывает и роль Контекста и роль Клиента.
+ * RU: Это роутер и контроллер нашего приложения. При получении запроса, он
+ * передаст выполнение одному из своих методов. В случае, если приходит запрос
+ * на оплату, OrderController дополнительно выберет соотвествующий класс
+ * платёжного метода и использует его для оплаты. Таким образом, этот класс
+ * одновременно отыгрывает и роль Контекста и роль Клиента.
  */
 class OrderController
 {

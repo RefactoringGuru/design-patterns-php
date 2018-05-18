@@ -5,13 +5,13 @@ namespace RefactoringGuru\Builder\Structure;
 /**
  * Builder Design Pattern
  *
- * Intent: Separate the construction of a complex object from its representation so
- * that the same construction process can create different representations.
+ * Intent: Separate the construction of a complex object from its representation
+ * so that the same construction process can create different representations.
  */
 
 /**
- * The Builder interface specifies operations for creating parts of the
- * Product objects.
+ * The Builder interface specifies operations for creating parts of the Product
+ * objects.
  */
 interface Builder
 {
@@ -23,17 +23,17 @@ interface Builder
 }
 
 /**
- * The Concrete Builder classes follow the Builder interface and provide specific
- * implementations of the building steps. Your program may have several variations of Builders,
- *  implemented differently.
+ * The Concrete Builder classes follow the Builder interface and provide
+ * specific implementations of the building steps. Your program may have several
+ * variations of Builders, implemented differently.
  */
 class ConcreteBuilder1 implements Builder
 {
     private $product;
 
     /**
-     * A new builder instance should contain a blank product object that will
-     * be used in further assembly.
+     * A new builder instance should contain a blank product object that will be
+     * used in further assembly.
      */
     public function __construct()
     {
@@ -64,11 +64,19 @@ class ConcreteBuilder1 implements Builder
     }
 
     /**
-     * Concrete builders are supposed to provide an interface for retrieving the final product. Various types of builders may create
-     * different product types. That's why in a statically typed language this method can not be declared in the base Builder
-     * interface. Note, that PHP is a dynamic typed language and this method CAN be declared in the base class. However, we won't do that for the sake of clarity.
+     * Concrete builders are supposed to provide an interface for retrieving the
+     * final product. Various types of builders may create different product
+     * types. That's why in a statically typed language this method can not be
+     * declared in the base Builder interface. Note, that PHP is a dynamic typed
+     * language and this method CAN be declared in the base class. However, we
+     * won't do that for the sake of clarity.
      *
-     * Usually, after returning the end result to the client, the builder instance is expected to be ready to start producing another product. That's why inside this method we're calling the reset method. But this behavior is not mandatory and you can make your builders wait for a explicit reset call from the client code before disposing previous result.
+     * Usually, after returning the end result to the client, the builder
+     * instance is expected to be ready to start producing another product.
+     * That's why inside this method we're calling the reset method. But this
+     * behavior is not mandatory and you can make your builders wait for an
+     * explicit reset call from the client code before disposing previous
+     * result.
      */
     public function getProduct(): Product1
     {
@@ -80,10 +88,12 @@ class ConcreteBuilder1 implements Builder
 }
 
 /**
- * It makes sense to use the Builder pattern only when your products are quite complex and require extensive configuration.
+ * It makes sense to use the Builder pattern only when your products are quite
+ * complex and require extensive configuration.
  *
  * Unlike in other creational patterns, different concrete builders can produce
- * unrelated products. In other words, results of various builders may not always follow the same interface.
+ * unrelated products. In other words, results of various builders may not
+ * always follow the same interface.
  */
 class Product1
 {
@@ -96,7 +106,10 @@ class Product1
 }
 
 /**
- * The Director is only responsible for executing the building steps in a particular sequence in order to produce a product with the particular configuration. Strictly speaking, the Director class is optional, since the client can control builders directly.
+ * The Director is only responsible for executing the building steps in a
+ * particular sequence in order to produce a product with the particular
+ * configuration. Strictly speaking, the Director class is optional, since the
+ * client can control builders directly.
  */
 class Director
 {
@@ -106,9 +119,9 @@ class Director
     private $builder;
 
     /**
-     * The Director works with any builder instance that the client code passes to it.
-     * This way, the client code may alter the type of a product that will be
-     * produced in the end.
+     * The Director works with any builder instance that the client code passes
+     * to it. This way, the client code may alter the type of a product that
+     * will be produced in the end.
      */
     public function setBuilder(Builder $builder)
     {
@@ -116,8 +129,8 @@ class Director
     }
 
     /**
-     * The Director can construct several product variations using the same building
-     * steps.
+     * The Director can construct several product variations using the same
+     * building steps.
      */
     public function buildMinimalViableProduct()
     {
@@ -133,8 +146,9 @@ class Director
 }
 
 /**
- * The client code creates a builder object, passes it to the director and then initiates the construction
- * process. The end result is retrieved from the builder object.
+ * The client code creates a builder object, passes it to the director and then
+ * initiates the construction process. The end result is retrieved from the
+ * builder object.
  */
 function clientCode(Director $director)
 {

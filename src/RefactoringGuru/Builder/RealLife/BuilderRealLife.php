@@ -10,20 +10,20 @@ namespace RefactoringGuru\Builder\RealLife;
  *
  * Example: Builder can be used to construct complex product in several steps
  * without exposing its incomplete state between the construction steps.
- * Application may have several builder classes with a common interface
- * that create different types of products.
+ * Application may have several builder classes with a common interface that
+ * create different types of products.
  *
  * Query builder is a common example of Builder. Builder interface has common
- * steps to build a generic SQL query. Concrete builders correspond to
- * different SQL dialects and produce SQL queries that can be executed in
- * particular database engine.
+ * steps to build a generic SQL query. Concrete builders correspond to different
+ * SQL dialects and produce SQL queries that can be executed in particular
+ * database engine.
  */
 
 /**
  * Builder interface.
  *
- * Construction steps are supposed to return same query builder object to
- * allow chained calls.
+ * Construction steps are supposed to return same query builder object to allow
+ * chained calls.
  */
 interface SQLQueryBuilder
 {
@@ -101,9 +101,9 @@ class MysqlQueryBuilder implements SQLQueryBuilder
 }
 
 /**
- * Concrete builder. Builds SQL queries compatible with PostgresSQL.
- * Postgres is very much like Mysql, with few differences. That's why we
- * extend it from the Mysql builder.
+ * Concrete builder. Builds SQL queries compatible with PostgresSQL. Postgres is
+ * very much like Mysql, with few differences. That's why we extend it from the
+ * Mysql builder.
  */
 class PostgresQueryBuilder extends MysqlQueryBuilder
 {
@@ -132,7 +132,7 @@ class PostgresQueryBuilder extends MysqlQueryBuilder
  */
 function clientCode(SQLQueryBuilder $queryBuilder)
 {
-    //...
+    // ...
 
     $query = $queryBuilder
         ->select("users", ["name", "email", "password"])
@@ -143,20 +143,18 @@ function clientCode(SQLQueryBuilder $queryBuilder)
 
     print($query);
 
-    //...
+    // ...
 }
 
 
 /**
  * Application picks proper query builder, depending on current configuration.
  */
-//if ($_ENV['database_type'] == 'postgres') {
-//    $builder = new PostgresQueryBuilder();
-//} else {
-//    $builder = new MysqlQueryBuilder();
-//}
+// if ($_ENV['database_type'] == 'postgres') {
+//     $builder = new PostgresQueryBuilder(); } else {
+//     $builder = new MysqlQueryBuilder(); }
 //
-//clientCode($builder);
+// clientCode($builder);
 
 
 print("Testing MySQL query builder:\n");

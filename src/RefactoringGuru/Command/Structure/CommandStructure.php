@@ -37,7 +37,8 @@ class SimpleCommand implements Command
 }
 
 /**
- * And some commands can delegate more complex operations to other objects, called "receivers".
+ * And some commands can delegate more complex operations to other objects,
+ * called "receivers".
  */
 class ComplexCommand implements Command
 {
@@ -76,9 +77,9 @@ class ComplexCommand implements Command
 }
 
 /**
- * The Receiver classes contain some important business logic. They know how to perform
- * all kinds of operations, associated with carrying out a request. In fact, any class may
- * serve as a Receiver.
+ * The Receiver classes contain some important business logic. They know how to
+ * perform all kinds of operations, associated with carrying out a request. In
+ * fact, any class may serve as a Receiver.
  */
 class Receiver
 {
@@ -94,7 +95,8 @@ class Receiver
 }
 
 /**
- * The Invoker is associated with one or several commands. It sends a request to the command.
+ * The Invoker is associated with one or several commands. It sends a request to
+ * the command.
  */
 class Invoker
 {
@@ -124,7 +126,9 @@ class Invoker
     }
 
     /**
-     * The Invoker does not depend on concrete command or receiver classes. The Invoker passes a request to a receiver indirectly, by executing a command.
+     * The Invoker does not depend on concrete command or receiver classes. The
+     * Invoker passes a request to a receiver indirectly, by executing a
+     * command.
      */
     public function doSomethingImportant()
     {

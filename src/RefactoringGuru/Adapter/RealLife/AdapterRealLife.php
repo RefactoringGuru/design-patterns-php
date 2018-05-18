@@ -10,10 +10,10 @@ namespace RefactoringGuru\Adater\RealLife;
  * incompatible interfaces.
  *
  * Example: Adapter allows using 3rd-party or legacy classes even if they are
- * incompatible with a bulk of your code. Instead of rewriting the
- * notification interface of your app for each 3rd-party service (Slack,
- * Facebook, SMS, you-name-it), you create a special wrapper, that adapts
- * calls of your app to the interface and format supported by 3rd-party classes.
+ * incompatible with a bulk of your code. Instead of rewriting the notification
+ * interface of your app for each 3rd-party service (Slack, Facebook, SMS, you-
+ * name- it), you create a special wrapper, that adapts calls of your app to the
+ * interface and format supported by 3rd-party classes.
  */
 
 /**

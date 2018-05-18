@@ -22,7 +22,9 @@ class Target
 }
 
 /**
- * The Adaptee defines a useful interface, which is incompatible with the existing client code. The Adaptee needs some adaptation before it can be used by the client code.
+ * The Adaptee defines a useful interface, which is incompatible with the
+ * existing client code. The Adaptee needs some adaptation before it can be used
+ * by the client code.
  */
 class Adaptee
 {
@@ -33,7 +35,8 @@ class Adaptee
 }
 
 /**
- * The Adapter makes the Adaptee's interface compatible with the Target's interface.
+ * The Adapter makes the Adaptee's interface compatible with the Target's
+ * interface.
  */
 class Adapter extends Target
 {

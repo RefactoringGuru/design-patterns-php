@@ -231,6 +231,6 @@ print($company->accept($report));
 print("\nClient: ...or just for a single department:\n\n");
 print($techSupport->accept($report));
 
-//$export = new JSONExport();
-//print($company->accept($export));
+// $export = new JSONExport(); 
+// print($company->accept($export));
 

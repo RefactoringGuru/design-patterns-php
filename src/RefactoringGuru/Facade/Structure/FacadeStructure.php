@@ -5,15 +5,17 @@ namespace RefactoringGuru\Facade\Structure;
 /**
  * Facade Design Pattern
  *
- * Intent: Provide a unified interface to a number of classes/interfaces of a complex subsystem.
- * The Facade pattern defines a higher-level interface that makes the subsystem easier
- * to use.
+ * Intent: Provide a unified interface to a number of classes/interfaces of a
+ * complex subsystem. The Facade pattern defines a higher-level interface that
+ * makes the subsystem easier to use.
  */
 
 /**
  * The Facade class provides a simple interface to the complex logic of one or
- * several subsystems. The Facade delegates the client requests to the appropriate objects within the
- * subsystem. The Facade is also responsible for managing their lifecycle. All of this shields the client from the undesired complexity of the subsystem.
+ * several subsystems. The Facade delegates the client requests to the
+ * appropriate objects within the subsystem. The Facade is also responsible for
+ * managing their lifecycle. All of this shields the client from the undesired
+ * complexity of the subsystem.
  */
 class Facade
 {
@@ -22,7 +24,8 @@ class Facade
     protected $subsystem2;
 
     /**
-     * Depending on your application needs, you can provide the Facade with existing subsystems objects or force it to create them on its own.
+     * Depending on your application needs, you can provide the Facade with
+     * existing subsystems objects or force it to create them on its own.
      */
     public function __construct(
         Subsystem1 $subsystem1 = null,
@@ -33,9 +36,9 @@ class Facade
     }
 
     /**
-     * The Facade's methods are convenient shortcuts to the complex functionality of the
-     * subsystems. But on the other hand, clients get only to a fraction of
-     * subsystem's capabilities.
+     * The Facade's methods are convenient shortcuts to the complex
+     * functionality of the subsystems. But on the other hand, clients get only
+     * to a fraction of subsystem's capabilities.
      */
     public function operation()
     {
@@ -51,7 +54,9 @@ class Facade
 }
 
 /**
- * The Subsystem can accept requests from the Facade or directly from the client. To the Subsystem, the Facade is yet another client and it's not a part of the Subsystem.
+ * The Subsystem can accept requests from the Facade or directly from the
+ * client. To the Subsystem, the Facade is yet another client and it's not a
+ * part of the Subsystem.
  */
 class Subsystem1
 {
@@ -87,9 +92,10 @@ class Subsystem2
 }
 
 /**
- * The client code works with complex subsystems through a simple interface provided
- * by the Facade. When the lifecycle of the subsystem is managed by the Facade, the
- * client might not even know about the existence of the subsystem. This let you keep the complexity under control.
+ * The client code works with complex subsystems through a simple interface
+ * provided by the Facade. When the lifecycle of the subsystem is managed by the
+ * Facade, the client might not even know about the existence of the subsystem.
+ * This let you keep the complexity under control.
  */
 function clientCode(Facade $facade)
 {
@@ -101,7 +107,9 @@ function clientCode(Facade $facade)
 }
 
 /**
- * The client code may have some of the subsystem's objects already created. In this case, it might be worth to initialize the Facade with these objects, instead of letting the Facade create new instances.
+ * The client code may have some of the subsystem's objects already created. In
+ * this case, it might be worth to initialize the Facade with these objects,
+ * instead of letting the Facade create new instances.
  */
 $subsystem1 = new Subsystem1();
 $subsystem2 = new Subsystem2();

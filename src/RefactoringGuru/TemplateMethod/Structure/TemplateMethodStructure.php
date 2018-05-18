@@ -6,16 +6,16 @@ namespace RefactoringGuru\TemplateMethod\Structure;
  * Template Method Design Pattern
  *
  * Intent: Define the skeleton of an algorithm in an operation, deferring some
- * steps to subclasses. Template Method lets subclasses redefine certain
- * steps of an algorithm without changing the algorithm's structure.
+ * steps to subclasses. Template Method lets subclasses redefine certain steps
+ * of an algorithm without changing the algorithm's structure.
  */
 
 /**
  * The AbstractClass defines a template method that contains a skeleton of some
  * algorithm, composed of calls to (usually) abstract primitive operations.
  *
- * Concrete subclasses should implement these operations, but
- * leave the template method itself intact.
+ * Concrete subclasses should implement these operations, but leave the template
+ * method itself intact.
  */
 abstract class AbstractClass
 {
@@ -59,8 +59,8 @@ abstract class AbstractClass
     protected abstract function requiredOperation2();
 
     /**
-     * These are "hooks". They may be overridden by subclasses, but it's
-     * not mandatory, since the hooks already have default (but empty)
+     * These are "hooks". They may be overridden by subclasses, but it's not
+     * mandatory, since the hooks already have default (but empty)
      * implementation. Hooks provide additional extension points in some crucial
      * places of the algorithm.
      */
@@ -116,7 +116,7 @@ function clientCode(AbstractClass $class)
 {
     // ...
     $class->templateMethod();
-    //...
+    // ...
 }
 
 print("Same client code can work with different subclasses:\n");

@@ -140,9 +140,9 @@ class ConcreteVisitor2 implements Visitor
 }
 
 /**
- * EN: The client code can run visitor operations over any set of elements without
- * figuring out their concrete classes. The accept operation directs call to the
- * appropriate operation in the visitor object.
+ * EN: The client code can run visitor operations over any set of elements
+ * without figuring out their concrete classes. The accept operation directs
+ * call to the appropriate operation in the visitor object.
  *
  * RU: Клиентский код может запускать операции посетителя над любым набором
  * компонентов, не привязываясь к их конкретным классам. Метод `accept`

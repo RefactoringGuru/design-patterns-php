@@ -5,14 +5,14 @@ namespace RefactoringGuru\Singleton\RealLife;
 /**
  * Singleton Design Pattern
  *
- * Intent: Ensure that class has a single instance, and provide a global
- * point of access to it.
+ * Intent: Ensure that class has a single instance, and provide a global point
+ * of access to it.
  *
  * Example: Singleton pattern is notorious for limiting code reuse and
- * complicating unit testing. But it still very useful in some cases.
- * In particular, it's useful to control some shared resources. For example,
- * a global logging object controls access to a log file. Another
- * good example: a shared runtime configuration storage.
+ * complicating unit testing. But it still very useful in some cases. In
+ * particular, it's useful to control some shared resources. For example, a
+ * global logging object controls access to a log file. Another good example: a
+ * shared runtime configuration storage.
  */
 
 /**
@@ -42,9 +42,9 @@ class Singleton
 }
 
 /**
- * A logging class is most known and appreciated application of singleton.
- * In most cases, you need a single logging object that writes to one log file.
- * You also need global and convenient way to access that instance.
+ * A logging class is most known and appreciated application of singleton. In
+ * most cases, you need a single logging object that writes to one log file. You
+ * also need global and convenient way to access that instance.
  */
 class Logger extends Singleton
 {
@@ -85,9 +85,9 @@ class Logger extends Singleton
 }
 
 /**
- * A configuration singleton can is also justifiable solution. Often you need
- * to access application configurations from different places in program.
- * Singleton gives you that comfort.
+ * A configuration singleton can is also justifiable solution. Often you need to
+ * access application configurations from different places in program. Singleton
+ * gives you that comfort.
  */
 class Config extends Singleton
 {

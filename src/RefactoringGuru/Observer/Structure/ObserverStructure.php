@@ -9,9 +9,9 @@ namespace RefactoringGuru\Observer\Structure;
  * object changes state, all of its dependents are notified and updated
  * automatically.
  *
- * Note that there's a lot of different terminology with similar meaning used along with this pattern.
- * Just remember that the Subject is also called the Publisher and the Observer
- * is often called the Subscriber and vise versa.
+ * Note that there's a lot of different terminology with similar meaning used
+ * along with this pattern. Just remember that the Subject is also called the
+ * Publisher and the Observer is often called the Subscriber and vise versa.
  */
 
 /**
@@ -37,10 +37,10 @@ namespace RefactoringGuru\Observer\Structure;
  *
  * @link http://php.net/manual/en/class.splobserver.php
  *
- *    interface SplObserver
- *    {
- *        public function update(SplSubject $subject);
- *    }
+ *     interface SplObserver
+ *     {
+ *         public function update(SplSubject $subject);
+ *     }
  */
 
 /**
@@ -50,14 +50,14 @@ namespace RefactoringGuru\Observer\Structure;
 class Subject implements \SplSubject
 {
     /**
-     * @var int For the sake of simplicity, the Subject's state that is important to
-     * all subscribers, will be stored in this variable.
+     * @var int For the sake of simplicity, the Subject's state that is
+     * important to all subscribers, will be stored in this variable.
      */
     public $state;
 
     /**
-     * @var array List of subscribers. In real life the list of subscribers can be stored in more comprehensive
-     * manner, categorized by event type, etc.
+     * @var array List of subscribers. In real life the list of subscribers can
+     * be stored in more comprehensive manner, categorized by event type, etc.
      */
     private $observers = [];
 
@@ -92,10 +92,10 @@ class Subject implements \SplSubject
     }
 
     /**
-     * Usually, the subscription logic is only a fraction of what a Subject
-     * can really do. Subjects commonly hold some important business logic,
-     * that triggers notification method whenever something important is about
-     * to happen (or after it).
+     * Usually, the subscription logic is only a fraction of what a Subject can
+     * really do. Subjects commonly hold some important business logic, that
+     * triggers notification method whenever something important is about to
+     * happen (or after it).
      */
     public function someBusinessLogic()
     {
@@ -108,8 +108,8 @@ class Subject implements \SplSubject
 }
 
 /**
- * Concrete Observers react to the updates issued by the Subject
- * they had been attached to.
+ * Concrete Observers react to the updates issued by the Subject they had been
+ * attached to.
  */
 class ConcreteObserverA implements \SplObserver
 {

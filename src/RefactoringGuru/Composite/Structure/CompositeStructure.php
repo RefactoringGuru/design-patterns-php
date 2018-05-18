@@ -6,12 +6,13 @@ namespace RefactoringGuru\Composite\Structure;
  * Composite Design Pattern
  *
  * Intent: Compose objects into tree structures to represent part-whole
- * hierarchies. Composite lets clients treat individual objects and
- * compositions of objects uniformly.
+ * hierarchies. Composite lets clients treat individual objects and compositions
+ * of objects uniformly.
  */
 
 /**
- * The Base Component class declares common operations for both simple and complex objects of a composition.
+ * The Base Component class declares common operations for both simple and
+ * complex objects of a composition.
  */
 abstract class Component
 {
@@ -28,8 +29,9 @@ abstract class Component
 
     /**
      * Optionally, the base Component can declare an interface for setting and
-     * accessing a parent of the component in a tree structure. It can even provide a default implementation of these methods, if
-     * that's appropriate in your application.
+     * accessing a parent of the component in a tree structure. It can even
+     * provide a default implementation of these methods, if that's appropriate
+     * in your application.
      */
     public function setParent(Component $parent)
     {
@@ -43,9 +45,10 @@ abstract class Component
 
     /**
      * In some cases it would be beneficial to define the child-management
-     * operations right in the Base Component class. This way, you won't need
-     * to expose any concrete component classes to the client code, even during
-     * assembly of an object tree. The downside is that these methods will be empty for the leaf-level components.
+     * operations right in the Base Component class. This way, you won't need to
+     * expose any concrete component classes to the client code, even during
+     * assembly of an object tree. The downside is that these methods will be
+     * empty for the leaf-level components.
      */
     public function add(Component $component) { }
 
@@ -62,9 +65,11 @@ abstract class Component
 }
 
 /**
- * The Leaf class represents the end objects of a composition. A leaf can't have any children.
+ * The Leaf class represents the end objects of a composition. A leaf can't have
+ * any children.
  *
- * Usually, it's the Leaf objects that do the actual work, whereas Composite objects only delegate to their sub-components.
+ * Usually, it's the Leaf objects that do the actual work, whereas Composite
+ * objects only delegate to their sub-components.
  */
 class Leaf extends Component
 {
@@ -87,8 +92,8 @@ class Composite extends Component
     protected $children = [];
 
     /**
-     * A composite object can add or remove other components (both simple or complex) to
-     * or from its child list.
+     * A composite object can add or remove other components (both simple or
+     * complex) to or from its child list.
      */
     public function add(Component $component)
     {
@@ -131,11 +136,11 @@ class Composite extends Component
  */
 function clientCode(Component $component)
 {
-    //...
+    // ...
 
     print("RESULT: ".$component->operation());
 
-    //...
+    // ...
 }
 
 /**
@@ -162,7 +167,9 @@ clientCode($tree);
 print("\n\n");
 
 /**
- * Thanks to the child-management operations declared in the Base Component class, the client code is able to work with any component, simple or complex, without depending on their concrete classes.
+ * Thanks to the child-management operations declared in the Base Component
+ * class, the client code is able to work with any component, simple or complex,
+ * without depending on their concrete classes.
  */
 function clientCode2(Component $component1, Component $component2)
 {

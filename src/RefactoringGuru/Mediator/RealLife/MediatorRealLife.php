@@ -16,8 +16,8 @@ namespace RefactoringGuru\Mediator\RealLife;
  */
 
 /**
- * EventDispatcher class acts as the Mediator and contains the subscription
- * and notification logic. While the classic Mediator may depend on the concrete
+ * EventDispatcher class acts as the Mediator and contains the subscription and
+ * notification logic. While the classic Mediator may depend on the concrete
  * components, this one is tied only to the abstract interfaces. Such level of
  * indirection was possible to achieve because all connections between the
  * components are established by their own objects or by the client code via
@@ -261,9 +261,9 @@ class OnboardingNotification implements Observer
 
     public function update(string $event, object $emitter, $data = null)
     {
-        //mail($this->adminEmail,
-        //    "Onboarding required",
-        //    "We have a new user. Here's his info: " .json_encode($data));
+        // mail($this->adminEmail,
+        //     "Onboarding required",
+        //     "We have a new user. Here's his info: " .json_encode($data));
 
         print("OnboardingNotification: The notification has been emailed!\n");
     }

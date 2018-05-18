@@ -5,14 +5,14 @@ namespace RefactoringGuru\State\Structure;
 /**
  * State Design Pattern
  *
- * Intent: Allow an object to alter its behavior when its internal state changes.
- * The object will appear to change its class.
+ * Intent: Allow an object to alter its behavior when its internal state
+ * changes. The object will appear to change its class.
  */
 
 /**
  * The Context defines the interface of interest to clients. It also maintain a
- * reference to an instance of a State subclass, which represents the
- * current state of the Context.
+ * reference to an instance of a State subclass, which represents the current
+ * state of the Context.
  */
 class Context
 {
@@ -79,7 +79,8 @@ abstract class State
 }
 
 /**
- * Concrete States implement various behaviors, associated with a state of the Context.
+ * Concrete States implement various behaviors, associated with a state of the
+ * Context.
  */
 class ConcreteStateA extends State
 {

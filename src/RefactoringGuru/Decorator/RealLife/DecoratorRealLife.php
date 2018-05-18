@@ -144,17 +144,17 @@ class MarkdownFormat extends TextFormat
  */
 function displayCommentAsAWebsite(InputFormat $format, string $text)
 {
-    //..
+    // ..
 
     print($format->formatText($text));
 
-    //..
+    // ..
 }
 
 /**
  * Input formatters are very handy to deal with user-generated content.
- * Displaying it as is could be very dangerous, especially if anonymous
- * users can create it (such as comments).
+ * Displaying it as is could be very dangerous, especially if anonymous users
+ * can create it (such as comments).
  */
 $dangerousComment = <<<HERE
 Hello! Nice blog post!

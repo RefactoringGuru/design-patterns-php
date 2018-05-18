@@ -185,9 +185,9 @@ class OnboardingNotification implements \SplObserver
 
     public function update(\SplSubject $repository, string $event = null, $data = null)
     {
-        //mail($this->adminEmail,
-        //    "Onboarding required",
-        //    "We have a new user. Here's his info: " .json_encode($data));
+        // mail($this->adminEmail,
+        //     "Onboarding required",
+        //     "We have a new user. Here's his info: " .json_encode($data));
 
         print("OnboardingNotification: The notification has been emailed!\n");
     }

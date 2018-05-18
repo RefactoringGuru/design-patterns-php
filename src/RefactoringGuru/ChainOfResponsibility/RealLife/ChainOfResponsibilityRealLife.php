@@ -10,8 +10,8 @@ namespace RefactoringGuru\ChainOfResponsibility\RealLife;
  * and pass the request along the chain until an object handles it.
  *
  * Example: In this example, the Chain of Responsibility pattern helps to
- * structure authentication and authorization as a chain and execute them one
- * by one.
+ * structure authentication and authorization as a chain and execute them one by
+ * one.
  */
 
 /**
@@ -161,8 +161,8 @@ class Server
     private $middleware;
 
     /**
-     * Client passes a chain of object to server. This improves flexibility
-     * and makes testing the server class easier.
+     * Client passes a chain of object to server. This improves flexibility and
+     * makes testing the server class easier.
      */
     public function setMiddleware(Middleware $middleware)
     {
@@ -170,8 +170,8 @@ class Server
     }
 
     /**
-     * Server gets email and password from client and sends the
-     * authorization request to the chain.
+     * Server gets email and password from client and sends the authorization
+     * request to the chain.
      */
     public function logIn(string $email, string $password)
     {
@@ -209,8 +209,8 @@ $server = new Server();
 $server->register("admin@example.com", "admin_pass");
 $server->register("user@example.com", "user_pass");
 
-// All checks are linked. Client can build various chains using the
-// same components.
+// All checks are linked. Client can build various chains using the same
+// components.
 $middleware = new ThrottlingMiddleware(2);
 $middleware
     ->linkWith(new UserExistsMiddleware($server))

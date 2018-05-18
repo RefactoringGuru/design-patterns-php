@@ -9,8 +9,8 @@ namespace RefactoringGuru\Proxy\RealLife;
  * access to it or add other responsibilities.
  *
  * Example: There are dozens of ways proxies can be used: caching, logging,
- * access control, delayed initialization, etc. This example shows how proxy
- * can improve a some real object by caching its results.
+ * access control, delayed initialization, etc. This example shows how proxy can
+ * improve a some real object by caching its results.
  */
 
 /**
@@ -68,8 +68,8 @@ class CachingDownloader implements Downloader
 }
 
 /**
- * Client code may issue several equal download requests. In this case
- * caching proxy can save time and traffic by serving results from cache.
+ * Client code may issue several equal download requests. In this case caching
+ * proxy can save time and traffic by serving results from cache.
  */
 function clientCode(Downloader $subject)
 {
