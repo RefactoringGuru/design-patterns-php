@@ -3,15 +3,50 @@
 namespace RefactoringGuru\AbstractFactory\RealLife;
 
 /**
- * Abstract Factory Design Pattern
+ * EN: Abstract Factory Design Pattern
  *
  * Intent: Provide an interface for creating families of related or dependent
  * objects without specifying their concrete classes.
  *
- * Example: Abstract Factory provides interface for creating templates for
- * various elements of a page. A website can support several rendering engines
- * by implementing separate concrete factory classes. They will create different
- * template classes for the same page elements.
+ * Example: In this example the Abstract Factory pattern provides an
+ * infrastructure for creating various types of templates for different elements
+ * of a web page.
+ *
+ * A web application can support different rendering engines at the same time,
+ * but only if its classes are independent from concrate classes of rendering
+ * engines. Hence, the application's objects must communicate with template
+ * objects only via their abstract interfaces. Your code should not create the
+ * template objects directly, but delegate the creation to special factory
+ * objects. Finally, your code should not depend on the factory objects either,
+ * but work with them via abstract factory interface.
+ *
+ * As a result, you will be able to provide the app with the factory object that
+ * corresponds to one of the rendering engines. All templates, created in the
+ * app, will be created by that factory and their type will match the type of
+ * the factory. If you decide to change the rendering engine, you'll be able to
+ * pass a different factory and all the code will remain functional.
+ *
+ * RU: Паттерн Абстрактная Фабрика
+ *
+ * Назначение: Предоставляет интерфейс для создания семейств связанных или
+ * зависимых объектов, без привязки к их конкретным классам.
+ *
+ * Пример: В этом примере паттерн Абстрактная Фабрика предоставляет
+ * инфраструктуру для создания нескольких разновидностей шаблонов для одних и
+ * тех же элементов веб-страницы.
+ *
+ * Чтобы веб- приложение могло поддерживать сразу несколько разных движков
+ * рендеринга страниц, его классы должны работать с шаблонами только через
+ * интерфейсы, не привязываясь к их конкретным классам. В то же время, объекты
+ * приложения не должны создавать шаблоны напрямую, а поручать это спецальным
+ * объектам фабрик, с которыми тоже надо работать через абстрактный интерфейс.
+ *
+ * Благодаря этому, вы можете подать в приложение фабрику, соотвествующую одному
+ * из движков рендеринга, зная что с этого момента, все шаблоны будут
+ * порождаться именно этой фабрикой, и будут соотвествовать движку рендеринга
+ * этой фабрики. Если вы захотите сменить движок рендеринга, то всё что нужно
+ * будет сделать — это подать в приложение объект фабрики другого типа и ничего
+ * при этом не сломается.
  */
 
 /**
@@ -57,7 +92,7 @@ class PHPTemplateFactory implements TemplateFactory
 }
 
 /**
- * Abstract product. Template of the page title.
+ * Abstract product: the page title template.
  */
 interface TitleTemplate
 {
@@ -87,13 +122,10 @@ class PHPTitleTemplate implements TitleTemplate
 }
 
 /**
- * Abstract product. Template of the whole page.
+ * Abstract product: the whole page template.
  */
 interface PageTemplate
 {
-    /**
-     * ProductB does its own thing.
-     */
     public function render(TitleTemplate $titleTemplate): string;
 }
 
@@ -143,7 +175,7 @@ function templateRenderer(TemplateFactory $factory)
 }
 
 /**
- * Client code can be launched with any factory type.
+ * The client code can be accept a factory object of any type.
  */
 print("Testing rendering with the Twig factory:\n");
 templateRenderer(new TwigTemplateFactory());

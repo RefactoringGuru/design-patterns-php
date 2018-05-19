@@ -9,11 +9,12 @@ namespace RefactoringGuru\Adater\RealLife;
  * expect. Adapter lets classes work together that couldn't otherwise because of
  * incompatible interfaces.
  *
- * Example: Adapter allows using 3rd-party or legacy classes even if they are
- * incompatible with a bulk of your code. Instead of rewriting the notification
- * interface of your app for each 3rd-party service (Slack, Facebook, SMS, you-
- * name- it), you create a special wrapper, that adapts calls of your app to the
- * interface and format supported by 3rd-party classes.
+ * Example: The Adapter pattern allows you to use 3rd-party or legacy classes
+ * even if they are incompatible with the bulk of your code. For example,
+ * instead of rewriting the notification interface of your to support each 3rd-
+ * party service such as Slack, Facebook, SMS or {you-name-it}, you can create a
+ * set of special wrappers that will adapt calls from your app to an interface
+ * and format required by each 3rd-party class.
  */
 
 /**
@@ -25,7 +26,7 @@ interface Notification
 }
 
 /**
- * Existing class, that successfully follows Target interface.
+ * Existing class, that successfully follows the Target interface.
  */
 class EmailNotification implements Notification
 {
@@ -44,8 +45,8 @@ class EmailNotification implements Notification
 }
 
 /**
- * Adaptee. This is useful class incompatible with a Target interface. You can't
- * change its code directly since it is provided by a 3rd-party library.
+ * Adaptee. This is a useful class, incompatible with the Target interface. You
+ * can't change its code directly since it is provided by a 3rd-party library.
  */
 class SlackApi
 {
@@ -72,7 +73,7 @@ class SlackApi
 }
 
 /**
- * Adapter. Allows sending notifications using the SlackApi.
+ * Adapter. Allows the client code to send notifications using the Slack API.
  */
 class SlackNotification implements Notification
 {
@@ -86,8 +87,8 @@ class SlackNotification implements Notification
     }
 
     /**
-     * Adapter not only adapts interfaces, but also converts incoming data to
-     * the format, supported by adaptee class.
+     * Adapter is not only able of adapting interfaces, but it also can convert
+     * incoming data to the format, required by the Adaptee.
      */
     public function send(string $title, string $message)
     {
@@ -106,8 +107,8 @@ function clientCode(Notification $notification)
     // ...
 
     print($notification->send("Website is down!",
-        "<strong style='color:red;font-size: 50px;'>Alert!</strong> ".
-        "Our website is not responding. Call the admins and bring it up!"));
+        "<strong style='color:red;font-size: 50px;'>Alert!</strong> " .
+        "Our website is not responding. Call admins and bring it up!"));
 
     // ...
 }
