@@ -11,7 +11,7 @@ namespace RefactoringGuru\Flyweight\Structure;
  */
 
 /**
- * The FlyweightFactory creates and manages the Flyweight objects. It ensures
+ * The Flyweight Factory creates and manages the Flyweight objects. It ensures
  * that flyweights are shared properly. When the client requests a flyweight,
  * the factory either returns an existing instance or creates a new one, if it
  * doesn't exists.

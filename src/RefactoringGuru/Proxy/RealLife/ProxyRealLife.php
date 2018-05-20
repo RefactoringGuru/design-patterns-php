@@ -22,7 +22,7 @@ interface Downloader
 }
 
 /**
- * RealSubject. Downloads a web page.
+ * Real Subject. Downloads a web page.
  */
 class SimpleDownloader implements Downloader
 {

@@ -88,7 +88,7 @@ interface Memento
 }
 
 /**
- * ConcreteMemento contains the infrastructure for storing Originator's state.
+ * Concrete Memento contains the infrastructure for storing Originator's state.
  */
 class ConcreteMemento implements Memento
 {
@@ -125,7 +125,7 @@ class ConcreteMemento implements Memento
 }
 
 /**
- * Caretaker doesn't depend on the ConcreteMemento class. Therefore, it doesn't
+ * Caretaker doesn't depend on the Concrete Memento class. Therefore, it doesn't
  * have access to originator's state, stored inside the memento. It works with
  * all mementos via the common Memento interface.
  */

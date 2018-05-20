@@ -10,14 +10,14 @@ namespace RefactoringGuru\Mediator\RealLife;
  * other explicitly, and it lets you vary their interaction independently.
  *
  * Example: In this example the Mediator pattern expands the idea of the
- * Observer pattern and provides the central EventDispatcher that lets any
- * object track and trigger events in other objects without depending on their
+ * Observer pattern by providing a central event dispatcher, which lets any
+ * object track & trigger events in other objects without depending on their
  * classes.
  */
 
 /**
- * EventDispatcher class acts as the Mediator and contains the subscription and
- * notification logic. While the classic Mediator may depend on the concrete
+ * The Event Dispatcher class acts as the Mediator and contains the subscription
+ * and notification logic. While the classic Mediator may depend on the concrete
  * components, this one is tied only to the abstract interfaces. Such level of
  * indirection was possible to achieve because all connections between the
  * components are established by their own objects or by the client code via
@@ -100,10 +100,10 @@ interface Observer
 }
 
 /**
- * Unlike in our example of the Observer pattern, here the UserRepository acts
- * as a regular component, which doesn't have any special event-related methods.
- * Like any other component, this class relies on the EventDispatcher to
- * broadcast its own events and listen for the other ones.
+ * Unlike our example of the Observer pattern, this example makes the
+ * UserRepository act as a regular component that doesn't have any special
+ * event-related methods. Like any other component, this class relies on the
+ * EventDispatcher to broadcast its own events and listen for the other ones.
  *
  * @see \RefactoringGuru\Observer\RealLife\UserRepository
  */

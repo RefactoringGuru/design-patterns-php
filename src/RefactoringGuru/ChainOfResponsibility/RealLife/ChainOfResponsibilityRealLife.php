@@ -15,7 +15,7 @@ namespace RefactoringGuru\ChainOfResponsibility\RealLife;
  */
 
 /**
- * BaseHandler.
+ * Base Handler.
  */
 abstract class Middleware
 {
@@ -54,7 +54,7 @@ abstract class Middleware
 }
 
 /**
- * ConcreteHandler. Checks whether a user with the given credentials exists.
+ * Concrete Handler. Checks whether a user with the given credentials exists.
  */
 class UserExistsMiddleware extends Middleware
 {
@@ -84,7 +84,7 @@ class UserExistsMiddleware extends Middleware
 }
 
 /**
- * ConcreteHandler. Checks a user's role.
+ * Concrete Handler. Checks a user's role.
  */
 class RoleCheckMiddleware extends Middleware
 {
@@ -102,7 +102,7 @@ class RoleCheckMiddleware extends Middleware
 }
 
 /**
- * ConcreteHandler. Checks whether there are too many failed login requests.
+ * Concrete Handler. Checks whether there are too many failed login requests.
  */
 class ThrottlingMiddleware extends Middleware
 {

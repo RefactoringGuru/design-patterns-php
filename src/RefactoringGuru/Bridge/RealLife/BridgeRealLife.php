@@ -14,16 +14,16 @@ namespace RefactoringGuru\Bridge\RealLife;
  *         / \     /  \                 Aa(N) Ab(N)  1   2
  *        Aa1 Aa2  Ab1 Ab2
  *
- * Example: Bridge pattern allows to connect orthogonal class hierarchies
- * instead of merging them together. The Page hierarchy acts as abstraction, it
- * is responsible for assembling various pages from a basic page elements
- * provided by a renderer classes, that play role of implementation. While these
- * hierarchies are separated, one can add a new renderer type without touching
- * page classes and vise versa.
+ * Example: In this example the Page hierarchy acts as the Abstraction and the
+ * Renderer hierarchy acts as the Implementation. Objects of the Page class can
+ * assemble web-pages of a certain kind using basic elements provided by a
+ * Renderer object attached to that page. Since both of the class hierarchies
+ * are separate, you can add a new Renderer class without changing any of the
+ * Page classes and vise versa.
  */
 
 /**
- * Abstraction's interface.
+ * Abstraction.
  */
 abstract class Page
 {
@@ -33,7 +33,8 @@ abstract class Page
     protected $renderer;
 
     /**
-     * Abstraction usually initialized with one of the implementation objects.
+     * The Abstraction is usually initialized with one of the Implementation
+     * objects.
      */
     public function __construct(Renderer $renderer)
     {
@@ -41,7 +42,8 @@ abstract class Page
     }
 
     /**
-     * Bridge pattern allows changing the implementation dynamically.
+     * The Bridge pattern allows replacing the attached Implementation object
+     * dynamically.
      */
     public function changeRenderer(Renderer $renderer)
     {
@@ -49,13 +51,14 @@ abstract class Page
     }
 
     /**
-     * View makes sense only in concrete abstractions, so we leave it abstract.
+     * The view behavior stays abstract, since it can only be provided by the
+     * Concrete Abstractions classes.
      */
     abstract public function view();
 }
 
 /**
- * Concrete abstraction.
+ * Concrete Abstraction.
  */
 class SimplePage extends Page
 {
@@ -81,7 +84,7 @@ class SimplePage extends Page
 }
 
 /**
- * Another concrete abstraction.
+ * Another Concrete Abstraction.
  */
 class ProductPage extends Page
 {
@@ -135,7 +138,7 @@ class Product
 
 
 /**
- * Implementor.
+ * Implementation.
  */
 interface Renderer
 {
@@ -155,7 +158,7 @@ interface Renderer
 }
 
 /**
- * ConcreteImplementor. Renders stuff as HTML.
+ * Concrete Implementation. Renders stuff as HTML.
  */
 class HTMLRenderer implements Renderer
 {
@@ -196,7 +199,7 @@ class HTMLRenderer implements Renderer
 }
 
 /**
- * ConcreteImplementor. Renders stuff as JSON strings.
+ * Concrete Implementation. Renders stuff as JSON strings.
  */
 class JsonRenderer implements Renderer
 {
@@ -237,7 +240,7 @@ class JsonRenderer implements Renderer
 }
 
 /**
- * Client code. In most cases works only with abstraction.
+ * The client code is usually dealing only with Abstraction objects.
  */
 function clientCode(Page $page)
 {
@@ -249,8 +252,8 @@ function clientCode(Page $page)
 }
 
 /**
- * Client code can be launched with any pre-configured abstraction-
- * implementation combination.
+ * The client code can be executed with any pre-configured combination of the
+ * Abstraction+Implementation.
  */
 $HTMLRenderer = new HTMLRenderer();
 $JSONRenderer = new JsonRenderer();
@@ -261,7 +264,7 @@ clientCode($page);
 print("\n\n");
 
 /**
- * Abstraction can change the implementation in run time if needed.
+ * The Abstraction can change the linked Implementation in run time if needed.
  */
 $page->changeRenderer($JSONRenderer);
 print("JSON view of a simple content page, rendered with a same client code:\n");

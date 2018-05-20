@@ -1,5 +1,5 @@
 Abstraction: Base operation with:
-ConcreteImplementorA: The result in platform A.
+ConcreteImplementationA: The result in platform A.
 
 ExtendedAbstraction: Extended operation with:
-ConcreteImplementorB: The result in platform B.
+ConcreteImplementationB: The result in platform B.

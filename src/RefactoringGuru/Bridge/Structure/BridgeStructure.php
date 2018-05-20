@@ -17,69 +17,69 @@ namespace RefactoringGuru\Bridge\Structure;
 
 /**
  * The Abstraction defines the interface for the "control" part of the two class
- * hierarchies. It maintains a reference to a Implementor object and delegates
- * it all of the real work.
+ * hierarchies. It maintains a reference to an object of the Implementation
+ * hierarchy and delegates it all of the real work.
  */
 class Abstraction
 {
     /**
-     * @var Implementor
+     * @var Implementation
      */
-    protected $implementor;
+    protected $implementation;
 
-    public function __construct(Implementor $implementor)
+    public function __construct(Implementation $implementation)
     {
-        $this->implementor = $implementor;
+        $this->implementation = $implementation;
     }
 
     public function operation()
     {
         return "Abstraction: Base operation with:\n".
-            $this->implementor->operationImplementation();
+            $this->implementation->operationImplementation();
     }
 }
 
 /**
- * You can extend the Abstraction without changing the Implementor classes.
+ * You can extend the Abstraction without changing the Implementation classes.
  */
 class ExtendedAbstraction extends Abstraction
 {
     public function operation()
     {
         return "ExtendedAbstraction: Extended operation with:\n".
-            $this->implementor->operationImplementation();
+            $this->implementation->operationImplementation();
     }
 }
 
 /**
- * The Implementor defines the interface for all implementation classes. This
+ * The Implementation defines the interface for all implementation classes. This
  * interface doesn't have to match the methods of the Abstraction's interface.
- * In fact the two interfaces can be quite different. Typically the Implementor
- * interface provides only primitive operations, while the Abstraction defines
- * higher- level operations based on those primitives.
+ * In fact the two interfaces can be quite different. Typically the
+ * Implementation interface provides only primitive operations, while the
+ * Abstraction defines higher-level operations based on those primitives.
  */
-interface Implementor
+interface Implementation
 {
     public function operationImplementation();
 }
 
 /**
- * Each Concrete Implementor corresponds to the specific platform and implements
- * the Implementor interface using that platform's API.
+ * Each Concrete Implementation corresponds to the specific platform and
+ * implements the Implementation interface using that platform's API.
  */
-class ConcreteImplementorA implements Implementor
+class ConcreteImplementationA implements Implementation
 {
     public function operationImplementation()
     {
-        return "ConcreteImplementorA: The result in platform A.\n";
+        return "ConcreteImplementationA: The result in platform A.\n";
     }
 }
 
-class ConcreteImplementorB implements Implementor
+class ConcreteImplementationB implements Implementation
 {
     public function operationImplementation()
     {
-        return "ConcreteImplementorB: The result in platform B.\n";
+        return "ConcreteImplementationB: The result in platform B.\n";
     }
 }
 
@@ -102,12 +102,12 @@ function clientCode(Abstraction $abstraction)
  * The client code should be able to run with any pre-configured abstraction-
  * implementation combination.
  */
-$implementation = new ConcreteImplementorA();
+$implementation = new ConcreteImplementationA();
 $abstraction = new Abstraction($implementation);
 clientCode($abstraction);
 
 print("\n");
 
-$implementation = new ConcreteImplementorB();
+$implementation = new ConcreteImplementationB();
 $abstraction = new ExtendedAbstraction($implementation);
 clientCode($abstraction);

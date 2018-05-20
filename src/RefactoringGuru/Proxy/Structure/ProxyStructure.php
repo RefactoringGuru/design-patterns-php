@@ -20,7 +20,7 @@ interface Subject
 }
 
 /**
- * The RealSubject contains some core business logic. Usually, RealSubjects are
+ * The Real Subject contains some core business logic. Usually, RealSubjects are
  * able of doing some useful work, which is also very slow or sensitive to
  * correct input data. A Proxy can solve these issues without any changes to the
  * real subject's code.

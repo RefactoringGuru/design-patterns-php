@@ -24,7 +24,7 @@ namespace RefactoringGuru\Flyweight\RealLife;
  */
 
 /**
- * FlyweightFactory. This class stores both contexts and flyweights objects,
+ * Flyweight Factory. This class stores both contexts and flyweights objects,
  * effectively hiding any notion of flyweights from a client.
  */
 class CatDataBase

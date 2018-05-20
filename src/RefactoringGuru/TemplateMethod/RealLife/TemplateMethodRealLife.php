@@ -15,7 +15,7 @@ namespace RefactoringGuru\TemplateMethod\RealLife;
  */
 
 /**
- * Abstract class.
+ * Abstract Class.
  */
 abstract class SocialNetwork
 {
@@ -55,7 +55,7 @@ abstract class SocialNetwork
 }
 
 /**
- * ConcreteClass.
+ * Concrete Class.
  */
 class Facebook extends SocialNetwork
 {
@@ -86,7 +86,7 @@ class Facebook extends SocialNetwork
 }
 
 /**
- * ConcreteClass.
+ * Concrete Class.
  */
 class Twitter extends SocialNetwork
 {

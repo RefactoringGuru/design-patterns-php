@@ -16,7 +16,7 @@ namespace RefactoringGuru\Visitor\RealLife;
  */
 
 /**
- * ComponentInterface.
+ * Component Interface.
  */
 interface Entity
 {
@@ -24,7 +24,7 @@ interface Entity
 }
 
 /**
- * ConcreteComponent.
+ * Concrete Component.
  */
 class Company implements Entity
 {
@@ -60,7 +60,7 @@ class Company implements Entity
 }
 
 /**
- * ConcreteComponent.
+ * Concrete Component.
  */
 class Department implements Entity
 {
@@ -106,7 +106,7 @@ class Department implements Entity
 }
 
 /**
- * ConcreteComponent.
+ * Concrete Component.
  */
 class Employee implements Entity
 {
@@ -147,7 +147,7 @@ class Employee implements Entity
 }
 
 /**
- * VisitorInterface.
+ * Visitor Interface.
  */
 interface Visitor
 {
@@ -159,7 +159,7 @@ interface Visitor
 }
 
 /**
- * ConcreteVisitor.
+ * Concrete Visitor.
  */
 class SalaryReport implements Visitor
 {

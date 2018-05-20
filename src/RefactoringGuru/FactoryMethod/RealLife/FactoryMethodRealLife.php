@@ -39,7 +39,7 @@ abstract class SocialNetworkPoster
 }
 
 /**
- * ConcreteCreator.
+ * Concrete Creator.
  */
 class FacebookPoster extends SocialNetworkPoster
 {
@@ -58,7 +58,7 @@ class FacebookPoster extends SocialNetworkPoster
 }
 
 /**
- * ConcreteCreator.
+ * Concrete Creator.
  */
 class LinkedInPoster extends SocialNetworkPoster
 {
@@ -89,7 +89,7 @@ interface SocialNetworkConnector
 }
 
 /**
- * ConcreteProduct.
+ * Concrete Product.
  */
 class FacebookConnector implements SocialNetworkConnector
 {
@@ -119,7 +119,7 @@ class FacebookConnector implements SocialNetworkConnector
 }
 
 /**
- * ConcreteProduct.
+ * Concrete Product.
  */
 class LinkedInConnector implements SocialNetworkConnector
 {

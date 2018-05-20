@@ -19,10 +19,10 @@ namespace RefactoringGuru\Strategy\RealLife;
 
 /**
  * EN: This is the router and controller of our application. Upon receiving a
- * request, it decides what method should be executed. When it's a payment
- * request, the OrderController also decides what payment method should it use
- * to process the request. Thus, the class looks as the Context and the Client
- * at the same time.
+ * request, this class decides what behavior should be executed. When the app
+ * receives a payment request, the OrderController class also decides which
+ * payment method should it use to process the request. Thus, the class looks as
+ * the Context and the Client at the same time.
  *
  * RU: Это роутер и контроллер нашего приложения. При получении запроса, он
  * передаст выполнение одному из своих методов. В случае, если приходит запрос

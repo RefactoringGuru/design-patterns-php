@@ -24,7 +24,7 @@ interface InputFormat
 }
 
 /**
- * ConcreteComponent. Original text, as is, no filtering and formatting.
+ * Concrete Component. Original text, as is, no filtering and formatting.
  */
 class TextInput implements InputFormat
 {
@@ -59,7 +59,7 @@ class TextFormat implements InputFormat
 }
 
 /**
- * ConcreteDecorator. Filters all tags from text.
+ * Concrete Decorator. Filters all tags from text.
  */
 class PlainTextFilter extends TextFormat
 {
@@ -71,7 +71,7 @@ class PlainTextFilter extends TextFormat
 }
 
 /**
- * ConcreteDecorator. Filters some of the tags from text.
+ * Concrete Decorator. Filters some of the tags from text.
  */
 class DangerousHTMLTagsFilter extends TextFormat
 {
@@ -104,7 +104,7 @@ class DangerousHTMLTagsFilter extends TextFormat
 }
 
 /**
- * ConcreteDecorator. Basic markdown formatter.
+ * Concrete Decorator. Basic markdown formatter.
  */
 class MarkdownFormat extends TextFormat
 {
