@@ -5,8 +5,8 @@ namespace RefactoringGuru\Adater\Structure;
 /**
  * Adapter Design Pattern
  *
- * Intent: Convert the interface of a class into another interface clients
- * expect. Adapter lets classes work together that couldn't otherwise because of
+ * Intent: Convert the interface of a class into the interface clients expect.
+ * Adapter lets classes work together that couldn't otherwise because of
  * incompatible interfaces.
  */
 
@@ -22,9 +22,9 @@ class Target
 }
 
 /**
- * The Adaptee defines a useful interface, which is incompatible with the
- * existing client code. The Adaptee needs some adaptation before it can be used
- * by the client code.
+ * The Adaptee contains some useful behavior, but its interface is incompatible
+ * with the existing client code. The Adaptee needs some adaptation before it
+ * can be used by the client code.
  */
 class Adaptee
 {
