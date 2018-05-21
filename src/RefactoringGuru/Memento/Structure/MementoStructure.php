@@ -10,9 +10,9 @@ namespace RefactoringGuru\Memento\Structure;
  */
 
 /**
- * The Originator holds some important state that may change with time. It also
+ * The Originator holds some important state that may change over time. It also
  * defines a method for saving the state inside a memento and another method for
- * restoring the state from a memento.
+ * restoring the state from it.
  */
 class Originator
 {
@@ -50,7 +50,7 @@ class Originator
     }
 
     /**
-     * Save current state inside a memento.
+     * Saves the current state inside a memento.
      *
      * @return Memento
      */
@@ -60,7 +60,7 @@ class Originator
     }
 
     /**
-     * Restore originator's state from a memento object.
+     * Restores the Originator's state from a memento object.
      *
      * @param Memento $memento
      * @throws \Exception
@@ -77,8 +77,8 @@ class Originator
 }
 
 /**
- * Memento interface provides a way to retrieve the memento's metadata, such as
- * creation date. However, it doesn't expose the originator's state.
+ * The Memento interface provides a way to retrieve the memento's metadata, such
+ * as creation date or name. However, it doesn't expose the Originator's state.
  */
 interface Memento
 {
@@ -88,7 +88,8 @@ interface Memento
 }
 
 /**
- * Concrete Memento contains the infrastructure for storing Originator's state.
+ * The Concrete Memento contains the infrastructure for storing the Originator's
+ * state.
  */
 class ConcreteMemento implements Memento
 {

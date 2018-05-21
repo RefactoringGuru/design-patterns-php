@@ -9,7 +9,7 @@ namespace RefactoringGuru\Observer\Structure;
  * object changes state, all of its dependents are notified and updated
  * automatically.
  *
- * Note that there's a lot of different terms with similar meaning used along
+ * Note that there's a lot of different terms with similar meaning associated
  * with this pattern. Just remember that the Subject is also called the
  * Publisher and the Observer is often called the Subscriber and vise versa.
  */

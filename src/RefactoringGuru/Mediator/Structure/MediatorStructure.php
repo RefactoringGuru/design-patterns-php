@@ -21,7 +21,7 @@ interface Mediator
 }
 
 /**
- * The Concrete Mediator implements cooperative behavior by coordinating several
+ * Concrete Mediators implement cooperative behavior by coordinating several
  * components.
  */
 class ConcreteMediator implements Mediator

@@ -102,8 +102,8 @@ class AlphabeticalOrderIterator implements \Iterator
 }
 
 /**
- * The Concrete Collection provides one or several methods for retrieving a
- * fresh iterator instance, compatible with the collection class.
+ * Concrete Collections provide one or several methods for retrieving fresh
+ * iterator instances, compatible with the collection class.
  */
 class WordsCollection implements \IteratorAggregate
 {
@@ -131,7 +131,7 @@ class WordsCollection implements \IteratorAggregate
 }
 
 /**
- * The client code may or may not know about concrete iterator and collection
+ * The client code may or may not know about the Concrete Iterator or Collection
  * classes, depending on the level of indirection you want to keep in your
  * program.
  */
