@@ -10,7 +10,7 @@ namespace RefactoringGuru\State\Structure;
  */
 
 /**
- * The Context defines the interface of interest to clients. It also maintain a
+ * The Context defines the interface of interest to clients. It also maintains a
  * reference to an instance of a State subclass, which represents the current
  * state of the Context.
  */
@@ -30,7 +30,7 @@ class Context
     }
 
     /**
-     * The Context allows changing the State object in run time.
+     * The Context allows changing the State object in runtime.
      *
      * @param State $state
      */

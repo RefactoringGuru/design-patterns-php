@@ -9,8 +9,8 @@ namespace RefactoringGuru\Observer\Structure;
  * object changes state, all of its dependents are notified and updated
  * automatically.
  *
- * Note that there's a lot of different terminology with similar meaning used
- * along with this pattern. Just remember that the Subject is also called the
+ * Note that there's a lot of different terms with similar meaning used along
+ * with this pattern. Just remember that the Subject is also called the
  * Publisher and the Observer is often called the Subscriber and vise versa.
  */
 
@@ -50,14 +50,14 @@ namespace RefactoringGuru\Observer\Structure;
 class Subject implements \SplSubject
 {
     /**
-     * @var int For the sake of simplicity, the Subject's state that is
-     * important to all subscribers, will be stored in this variable.
+     * @var int For the sake of simplicity, the Subject's state, essential to
+     * all subscribers, is stored in this variable.
      */
     public $state;
 
     /**
-     * @var array List of subscribers. In real life the list of subscribers can
-     * be stored in more comprehensive manner, categorized by event type, etc.
+     * @var array List of subscribers. In real life, the list of subscribers can
+     * be stored more comprehensively (categorized by event type, etc.)
      */
     private $observers = [];
 

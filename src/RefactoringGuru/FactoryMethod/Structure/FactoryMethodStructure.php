@@ -11,9 +11,9 @@ namespace RefactoringGuru\FactoryMethod\Structure;
  */
 
 /**
- * The Creator class declares the factory method that suppose to return an
- * object of a Product class. The implementation of this method is usually
- * provided by the Creator's subclasses.
+ * The Creator class declares the factory method that is supposed to return an
+ * object of a Product class. The Creator's subclasses usually provide the
+ * implementation of this method.
  */
 abstract class Creator
 {
@@ -42,7 +42,7 @@ abstract class Creator
 }
 
 /**
- * The Concrete Creators override the factory method in order to change the
+ * Concrete Creators override the factory method in order to change the
  * resulting product's type.
  */
 class ConcreteCreator1 extends Creator

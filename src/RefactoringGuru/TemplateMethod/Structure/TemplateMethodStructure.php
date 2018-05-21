@@ -5,8 +5,8 @@ namespace RefactoringGuru\TemplateMethod\Structure;
 /**
  * Template Method Design Pattern
  *
- * Intent: Define the skeleton of an algorithm in an operation, deferring some
- * steps to subclasses. Template Method lets subclasses redefine certain steps
+ * Intent: Define the skeleton of an algorithm in operation, deferring some
+ * steps to subclasses. Template Method lets subclasses redefine specific steps
  * of an algorithm without changing the algorithm's structure.
  */
 
@@ -59,10 +59,10 @@ abstract class AbstractClass
     protected abstract function requiredOperation2();
 
     /**
-     * These are "hooks". They may be overridden by subclasses, but it's not
-     * mandatory, since the hooks already have default (but empty)
-     * implementation. Hooks provide additional extension points in some crucial
-     * places of the algorithm.
+     * These are "hooks." Subclasses may override them, but it's not mandatory
+     * since the hooks already have default (but empty) implementation. Hooks
+     * provide additional extension points in some crucial places of the
+     * algorithm.
      */
     protected function hook1() { }
 
@@ -71,7 +71,7 @@ abstract class AbstractClass
 
 /**
  * Concrete classes have to implement all abstract operations of the base class.
- * They can also override some operations with default implementation.
+ * They can also override some operations with a default implementation.
  */
 class ConcreteClass1 extends AbstractClass
 {
@@ -87,7 +87,7 @@ class ConcreteClass1 extends AbstractClass
 }
 
 /**
- * Usually concrete classes override only fraction of base class' operations.
+ * Usually, concrete classes override only a fraction of base class' operations.
  */
 class ConcreteClass2 extends AbstractClass
 {

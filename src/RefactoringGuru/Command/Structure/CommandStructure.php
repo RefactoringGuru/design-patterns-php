@@ -11,7 +11,7 @@ namespace RefactoringGuru\Command\Structure;
  */
 
 /**
- * The Command interface declares a method for executing the command.
+ * The Command interface declares a method for executing a command.
  */
 interface Command
 {
@@ -37,8 +37,8 @@ class SimpleCommand implements Command
 }
 
 /**
- * And some commands can delegate more complex operations to other objects,
- * called "receivers".
+ * However, some commands can delegate more complex operations to other objects,
+ * called "receivers."
  */
 class ComplexCommand implements Command
 {
@@ -56,7 +56,7 @@ class ComplexCommand implements Command
 
     /**
      * Complex commands can accept one or several receiver objects along with
-     * any context data via constructor.
+     * any context data via the constructor.
      */
     public function __construct(Receiver $receiver, $a, $b)
     {

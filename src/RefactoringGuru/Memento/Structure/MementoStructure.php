@@ -17,7 +17,7 @@ namespace RefactoringGuru\Memento\Structure;
 class Originator
 {
     /**
-     * @var mixed For the sake of simplicity, originator's state will be stored
+     * @var mixed For the sake of simplicity, originator's state is stored
      * inside a single variable.
      */
     private $state;
@@ -30,8 +30,8 @@ class Originator
 
     /**
      * The Originator's business logic may affect its internal state. Therefore,
-     * client should backup the state prior to launching methods of the business
-     * logic via the save() method.
+     * the client should backup the state before launching methods of the
+     * business logic via the save() method.
      */
     public function doSomething()
     {
@@ -77,8 +77,8 @@ class Originator
 }
 
 /**
- * Memento interface provides a way to retrieve the memento's meta data, such as
- * a creation date. However, it doesn't expose the originator's state.
+ * Memento interface provides a way to retrieve the memento's metadata, such as
+ * creation date. However, it doesn't expose the originator's state.
  */
 interface Memento
 {
@@ -111,7 +111,7 @@ class ConcreteMemento implements Memento
     }
 
     /**
-     * The rest of the methods are used by the Caretaker to display meta data.
+     * The rest of the methods are used by the Caretaker to display metadata.
      */
     public function getName()
     {
@@ -125,9 +125,9 @@ class ConcreteMemento implements Memento
 }
 
 /**
- * Caretaker doesn't depend on the Concrete Memento class. Therefore, it doesn't
- * have access to originator's state, stored inside the memento. It works with
- * all mementos via the common Memento interface.
+ * The Caretaker doesn't depend on the Concrete Memento class. Therefore, it
+ * doesn't have access to originator's state, stored inside the memento. It
+ * works with all mementos via the base Memento interface.
  */
 class Caretaker
 {

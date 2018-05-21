@@ -11,9 +11,9 @@ namespace RefactoringGuru\Mediator\Structure;
  */
 
 /**
- * The Mediator interface declares a method that is used by components to notify
- * mediator about various events. Mediator may react on these events and pass
- * the execution to other components.
+ * The Mediator interface declares a method used by components to notify the
+ * mediator about various events. The Mediator may react to these events and
+ * pass the execution to other components.
  */
 interface Mediator
 {
@@ -54,7 +54,7 @@ class ConcreteMediator implements Mediator
 }
 
 /**
- * The Base Component provides a basic functionality of storing a mediator's
+ * The Base Component provides the basic functionality of storing a mediator's
  * instance inside component objects.
  */
 class BaseComponent

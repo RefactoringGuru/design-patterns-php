@@ -34,8 +34,8 @@ class ConcreteComponentA implements Component
 {
     /**
      * EN: Note that we're calling `visitConcreteComponentA`, which matches the
-     * current class name. This way we will let the visitor know the class of
-     * the component it works with.
+     * current class name. This way we let the visitor know the class of the
+     * component it works with.
      *
      * RU: Обратите внимание, что мы вызываем `visitConcreteComponentA`, что
      * совпадает с названием  текущего класса. Этим мы дадим посетителю знать с
@@ -47,9 +47,9 @@ class ConcreteComponentA implements Component
     }
 
     /**
-     * EN: Concrete Components may have special methods that don't exists in
-     * their base class or interface. The Visitor will still be able to use
-     * these methods, since it's aware of the component's concrete class.
+     * EN: Concrete Components may have special methods that don't exist in
+     * their base class or interface. The Visitor is still able to use these
+     * methods since it's aware of the component's concrete class.
      *
      * RU: Конкретные Компоненты могут иметь особые методы, не объявленные в их
      * базовом классе или интерфейсе. Несмотря на это, посетитель всё-равно
@@ -97,7 +97,7 @@ interface Visitor
 
 /**
  * EN: Concrete Visitors implement several versions of the same algorithm, which
- * are able to work with all concrete component classes.
+ * can work with all concrete component classes.
  *
  * You can experience the biggest benefit of the Visitor pattern when using it
  * with a complex object structure, such as a Composite tree. In this case, it
@@ -141,7 +141,7 @@ class ConcreteVisitor2 implements Visitor
 
 /**
  * EN: The client code can run visitor operations over any set of elements
- * without figuring out their concrete classes. The accept operation directs
+ * without figuring out their concrete classes. The accept operation directs a
  * call to the appropriate operation in the visitor object.
  *
  * RU: Клиентский код может запускать операции посетителя над любым набором

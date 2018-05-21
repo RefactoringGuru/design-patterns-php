@@ -5,14 +5,14 @@ namespace RefactoringGuru\ChainOfResponsibility\Structure;
 /**
  * Chain of Responsibility Design Pattern
  *
- * Intent: Avoid coupling the sender of a request to its receiver by giving more
+ * Intent: Avoid coupling a sender of a request to its receiver by giving more
  * than one object a chance to handle the request. Chain the receiving objects
- * and pass the request along the chain until an object handles it.
+ * and then pass the request through the chain until some receiver handles it.
  */
 
 /**
- * The Handler interface declares a method for building the chain of handlers
- * along with a method for executing a request.
+ * The Handler interface declares a method for building the chain of handlers.
+ * It also declares a method for executing a request.
  */
 interface Handler
 {

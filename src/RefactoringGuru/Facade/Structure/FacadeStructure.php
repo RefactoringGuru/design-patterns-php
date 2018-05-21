@@ -24,8 +24,9 @@ class Facade
     protected $subsystem2;
 
     /**
-     * Depending on your application needs, you can provide the Facade with
-     * existing subsystems objects or force it to create them on its own.
+     * Depending on your application's needs, you can provide the Facade with
+     * existing subsystem's objects or force the Facade to create them on its
+     * own.
      */
     public function __construct(
         Subsystem1 $subsystem1 = null,
@@ -36,9 +37,9 @@ class Facade
     }
 
     /**
-     * The Facade's methods are convenient shortcuts to the complex
-     * functionality of the subsystems. But on the other hand, clients get only
-     * to a fraction of subsystem's capabilities.
+     * The Facade's methods are convenient shortcuts to the sophisticated
+     * functionality of the subsystems. However, clients get only to a fraction
+     * of subsystem's capabilities.
      */
     public function operation()
     {
@@ -54,9 +55,9 @@ class Facade
 }
 
 /**
- * The Subsystem can accept requests from the Facade or directly from the
- * client. To the Subsystem, the Facade is yet another client and it's not a
- * part of the Subsystem.
+ * The Subsystem can accept requests either from the facade or client directly.
+ * In any case, to the Subsystem, the Facade is yet another client, and it's not
+ * a part of the Subsystem.
  */
 class Subsystem1
 {
@@ -93,9 +94,9 @@ class Subsystem2
 
 /**
  * The client code works with complex subsystems through a simple interface
- * provided by the Facade. When the lifecycle of the subsystem is managed by the
- * Facade, the client might not even know about the existence of the subsystem.
- * This let you keep the complexity under control.
+ * provided by the Facade. When a facade manages the lifecycle of the subsystem,
+ * the client might not even know about the existence of the subsystem. This
+ * approach lets you keep the complexity under control.
  */
 function clientCode(Facade $facade)
 {

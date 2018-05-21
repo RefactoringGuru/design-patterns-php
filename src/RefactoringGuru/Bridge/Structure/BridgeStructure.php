@@ -52,11 +52,11 @@ class ExtendedAbstraction extends Abstraction
 }
 
 /**
- * The Implementation defines the interface for all implementation classes. This
- * interface doesn't have to match the methods of the Abstraction's interface.
- * In fact the two interfaces can be quite different. Typically the
- * Implementation interface provides only primitive operations, while the
- * Abstraction defines higher-level operations based on those primitives.
+ * The Implementation defines the interface for all implementation classes. It
+ * doesn't have to match the Abstraction's interface. In fact, the two
+ * interfaces can be entirely different. Typically the Implementation interface
+ * provides only primitive operations, while the Abstraction defines higher-
+ * level operations based on those primitives.
  */
 interface Implementation
 {
@@ -64,7 +64,7 @@ interface Implementation
 }
 
 /**
- * Each Concrete Implementation corresponds to the specific platform and
+ * Each Concrete Implementation corresponds to a specific platform and
  * implements the Implementation interface using that platform's API.
  */
 class ConcreteImplementationA implements Implementation
@@ -84,10 +84,10 @@ class ConcreteImplementationB implements Implementation
 }
 
 /**
- * Except for an initialization phase, where an abstraction is linked with a
- * specific implementation object, the client code should only work directly
- * with the abstraction objects. This way the client code will be able to
- * support with any abstraction-implementation combination.
+ * Except for the initialization phase, where an Abstraction object gets linked
+ * with a specific Implementation object, the client code should only depend on
+ * the Abstraction class. This way the client code can support any abstraction-
+ * implementation combination.
  */
 function clientCode(Abstraction $abstraction)
 {

@@ -23,15 +23,15 @@ abstract class Component
 
     /**
      * The Base Component may implement some default behavior or leave it to
-     * concrete classes by declaring it abstract.
+     * concrete classes (by declaring "abstract" the method containing the
+     * behavior).
      */
     public abstract function operation();
 
     /**
      * Optionally, the base Component can declare an interface for setting and
-     * accessing a parent of the component in a tree structure. It can even
-     * provide a default implementation of these methods, if that's appropriate
-     * in your application.
+     * accessing a parent of the component in a tree structure. It can also
+     * provide some default implementation for these methods.
      */
     public function setParent(Component $parent)
     {
@@ -44,18 +44,18 @@ abstract class Component
     }
 
     /**
-     * In some cases it would be beneficial to define the child-management
+     * In some cases, it would be beneficial to define the child-management
      * operations right in the Base Component class. This way, you won't need to
-     * expose any concrete component classes to the client code, even during
-     * assembly of an object tree. The downside is that these methods will be
-     * empty for the leaf-level components.
+     * expose any concrete component classes to the client code, even during the
+     * object tree assembly. The downside is that these methods will be empty
+     * for the leaf-level components.
      */
     public function add(Component $component) { }
 
     public function remove(Component $component) { }
 
     /**
-     * You can provide a method that let the client code figure out whether a
+     * You can provide a method that lets the client code figure out whether a
      * component can bear children.
      */
     public function isComposite(): bool
@@ -115,10 +115,10 @@ class Composite extends Component
     }
 
     /**
-     * The Composite executes the main component logic in a special way. It
-     * traverses recursively through all its children, collects and sums-up
-     * their results. The whole tree will be traversed this way, since
-     * composite's children pass these calls to their children and so forth.
+     * The Composite executes the primary component's logic in a particular way.
+     * It traverses recursively through all its children, collects and sums-up
+     * their results. Since composite's children pass these calls to their
+     * children and so forth, the whole object tree is traversed as a result.
      */
     public function operation()
     {
@@ -144,7 +144,7 @@ function clientCode(Component $component)
 }
 
 /**
- * This way the client code is able to support the simple leaf components...
+ * This way the client code can support the simple leaf components...
  */
 $simple = new Leaf();
 print("Client: I get a simple component:\n");
@@ -167,9 +167,9 @@ clientCode($tree);
 print("\n\n");
 
 /**
- * Thanks to the child-management operations declared in the Base Component
- * class, the client code is able to work with any component, simple or complex,
- * without depending on their concrete classes.
+ * Thanks to the fact that the child-management operations declared in the Base
+ * Component class, the client code can work with any component, simple or
+ * complex, without depending on their concrete classes.
  */
 function clientCode2(Component $component1, Component $component2)
 {

@@ -5,7 +5,7 @@ namespace RefactoringGuru\Iterator\Structure;
 /**
  * Iterator Design Pattern
  *
- * Intent: Provide a way to access the elements of an aggregate objects without
+ * Intent: Provide a way to access the elements of an aggregate object without
  * exposing its underlying representation.
  */
 
@@ -59,7 +59,7 @@ class AlphabeticalOrderIterator implements \Iterator
     /**
      * @var int Stores the current traversal position. An iterator may have a
      * lot of other fields for storing iteration state, especially when it is
-     * supposed to work with a special kind of collection.
+     * supposed to work with a particular kind of collection.
      */
     private $position = 0;
 

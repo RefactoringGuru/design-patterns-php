@@ -10,8 +10,8 @@ namespace RefactoringGuru\Proxy\Structure;
  */
 
 /**
- * The Subject interface declares common operation for both the RealSubject and
- * the Proxy. As long as the Client works with real subject using this
+ * The Subject interface declares common operations for both the Real Subject
+ * and the Proxy. As long as the client works with the Real Subject using this
  * interface, you'll be able to pass it a proxy instead of a real subject.
  */
 interface Subject
@@ -53,7 +53,7 @@ class Proxy implements Subject
     }
 
     /**
-     * The most common applications of the Proxy pattern are: lazy loading,
+     * The most common applications of the Proxy pattern are lazy loading,
      * caching, controlling the access, logging, etc. A Proxy can perform one of
      * these things and then, depending on the result, pass the execution to the
      * same method in a linked RealSubject object.

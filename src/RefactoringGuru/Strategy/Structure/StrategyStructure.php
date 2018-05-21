@@ -23,8 +23,8 @@ class Context
     private $strategy;
 
     /**
-     * Usually the Context accepts a strategy through the constructor, but also
-     * provides a setter to change it in runtime.
+     * Usually, the Context accepts a strategy through the constructor, but also
+     * provides a setter to change it at runtime.
      *
      * @param Strategy $strategy
      */
@@ -34,7 +34,7 @@ class Context
     }
 
     /**
-     * Usually the Context allows changing a strategy in run time.
+     * Usually, the Context allows replacing a Strategy object at runtime.
      *
      * @param Strategy $strategy
      */
@@ -72,8 +72,8 @@ interface Strategy
 }
 
 /**
- * Concrete Strategies implement the algorithm using the common Strategy
- * interface. This makes them interchangeable in the Context.
+ * Concrete Strategies implement the algorithm while following the base Strategy
+ * interface. The interface makes them interchangeable in the Context.
  */
 class ConcreteStrategyA implements Strategy
 {
