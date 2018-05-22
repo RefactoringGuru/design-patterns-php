@@ -35,7 +35,8 @@ abstract class Creator
         // Call the factory method to create a Product object.
         $product = $this->factoryMethod();
         // Now, use the product.
-        $result = "Creator: Same creator's code worked with (".$product->operation().")";
+        $result = "Creator: The same creator's code has just worked with ".
+            $product->operation();
 
         return $result;
     }
@@ -83,7 +84,7 @@ class ConcreteProduct1 implements Product
 {
     public function operation(): string
     {
-        return "The result of the ConcreteProduct1";
+        return "{Result of the ConcreteProduct1}";
     }
 }
 
@@ -91,7 +92,7 @@ class ConcreteProduct2 implements Product
 {
     public function operation(): string
     {
-        return "The result of the ConcreteProduct2";
+        return "{Result of the ConcreteProduct2}";
     }
 }
 
@@ -103,7 +104,7 @@ class ConcreteProduct2 implements Product
 function clientCode(Creator $creator)
 {
     // ...
-    print("Client: I'm not aware of the creator's class, but it still works:\n"
+    print("Client: I'm not aware of the creator's class, but it still works.\n"
         .$creator->someOperation());
     // ...
 }
@@ -112,9 +113,9 @@ function clientCode(Creator $creator)
  * The Application picks a creator's type depending on configuration or
  * environment.
  */
-print("App: Launched with the ConcreteCreator1\n");
+print("App: Launched with the ConcreteCreator1.\n");
 clientCode(new ConcreteCreator1());
 print("\n\n");
 
-print("App: Launched with the ConcreteCreator2\n");
+print("App: Launched with the ConcreteCreator2.\n");
 clientCode(new ConcreteCreator2());
