@@ -114,7 +114,7 @@ class ConcreteProductB1 implements AbstractProductB
 {
     public function usefulFunctionB()
     {
-        return "The result of the product B1.\n";
+        return "The result of the product B1.";
     }
 
     /**
@@ -134,7 +134,7 @@ class ConcreteProductB2 implements AbstractProductB
 {
     public function usefulFunctionB()
     {
-        return "The result of the product B2.\n";
+        return "The result of the product B2.";
     }
 
     /**
@@ -160,16 +160,16 @@ function clientCode(AbstractFactory $factory)
     $product_a = $factory->createProductA();
     $product_b = $factory->createProductB();
 
-    print($product_b->usefulFunctionB());
-    print($product_b->anotherUsefulFunctionB($product_a));
+    print($product_b->usefulFunctionB() . "\n");
+    print($product_b->anotherUsefulFunctionB($product_a) . "\n");
 }
 
 /**
  * The client code can work with any concrete factory class.
  */
-print("Client: Testing client code with the first factory type:\n");
+print("Client: Testing client code with the first factory type...\n");
 clientCode(new ConcreteFactory1());
 print("\n\n");
 
-print("Client: Testing the same client code with the second factory type:\n");
+print("Client: Testing the same client code with the second factory type...\n");
 clientCode(new ConcreteFactory2());
