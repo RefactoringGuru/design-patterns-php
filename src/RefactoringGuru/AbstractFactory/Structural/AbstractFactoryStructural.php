@@ -64,7 +64,7 @@ class ConcreteFactory2 implements AbstractFactory
  */
 interface AbstractProductA
 {
-    public function usefulFunctionA();
+    public function usefulFunctionA(): string;
 }
 
 /**
@@ -72,7 +72,7 @@ interface AbstractProductA
  */
 class ConcreteProductA1 implements AbstractProductA
 {
-    public function usefulFunctionA()
+    public function usefulFunctionA(): string
     {
         return "The result of the product A1.";
     }
@@ -80,7 +80,7 @@ class ConcreteProductA1 implements AbstractProductA
 
 class ConcreteProductA2 implements AbstractProductA
 {
-    public function usefulFunctionA()
+    public function usefulFunctionA(): string
     {
         return "The result of the product A2.";
     }
@@ -96,7 +96,7 @@ interface AbstractProductB
     /**
      * The ProductB is able to do its own thing...
      */
-    public function usefulFunctionB();
+    public function usefulFunctionB(): string;
 
     /**
      * ...but it also can collaborate with the ProductA.
@@ -104,7 +104,7 @@ interface AbstractProductB
      * The Abstract Factory makes sure that all products it creates are of the
      * same variation and thus, compatible.
      */
-    public function anotherUsefulFunctionB(AbstractProductA $collaborator);
+    public function anotherUsefulFunctionB(AbstractProductA $collaborator): string;
 }
 
 /**
@@ -112,7 +112,7 @@ interface AbstractProductB
  */
 class ConcreteProductB1 implements AbstractProductB
 {
-    public function usefulFunctionB()
+    public function usefulFunctionB(): string
     {
         return "The result of the product B1.";
     }
@@ -122,7 +122,7 @@ class ConcreteProductB1 implements AbstractProductB
      * Nevertheless, it accepts any instance of Abstract Product A as an
      * argument.
      */
-    public function anotherUsefulFunctionB(AbstractProductA $collaborator)
+    public function anotherUsefulFunctionB(AbstractProductA $collaborator): string
     {
         $result = $collaborator->usefulFunctionA();
 
@@ -132,7 +132,7 @@ class ConcreteProductB1 implements AbstractProductB
 
 class ConcreteProductB2 implements AbstractProductB
 {
-    public function usefulFunctionB()
+    public function usefulFunctionB(): string
     {
         return "The result of the product B2.";
     }
@@ -142,7 +142,7 @@ class ConcreteProductB2 implements AbstractProductB
      * Nevertheless, it accepts any instance of Abstract Product A as an
      * argument.
      */
-    public function anotherUsefulFunctionB(AbstractProductA $collaborator)
+    public function anotherUsefulFunctionB(AbstractProductA $collaborator): string
     {
         $result = $collaborator->usefulFunctionA();
 
@@ -169,7 +169,8 @@ function clientCode(AbstractFactory $factory)
  */
 print("Client: Testing client code with the first factory type...\n");
 clientCode(new ConcreteFactory1());
-print("\n\n");
+
+print("\n");
 
 print("Client: Testing the same client code with the second factory type...\n");
 clientCode(new ConcreteFactory2());

@@ -102,7 +102,7 @@ class Product1
 
     public function listParts()
     {
-        return "Product parts: ".implode(', ', $this->parts)."\n\n";
+        print("Product parts: ".implode(', ', $this->parts)."\n\n");
     }
 }
 
@@ -158,17 +158,17 @@ function clientCode(Director $director)
 
     print("Standard basic product:\n");
     $director->buildMinimalViableProduct();
-    print($builder->getProduct()->listParts());
+    $builder->getProduct()->listParts();
 
     print("Standard full featured product:\n");
     $director->buildFullFeaturedProduct();
-    print($builder->getProduct()->listParts());
+    $builder->getProduct()->listParts();
 
     // Remember, the Builder pattern can be used without a Director class.
     print("Custom product:\n");
     $builder->producePartA();
     $builder->producePartC();
-    print($builder->getProduct()->listParts());
+    $builder->getProduct()->listParts();
 }
 
 $director = new Director();

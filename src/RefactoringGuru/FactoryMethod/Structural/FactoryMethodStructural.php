@@ -73,7 +73,7 @@ class ConcreteCreator2 extends Creator
  */
 interface Product
 {
-    public function operation();
+    public function operation(): string;
 }
 
 /**
@@ -81,7 +81,7 @@ interface Product
  */
 class ConcreteProduct1 implements Product
 {
-    public function operation()
+    public function operation(): string
     {
         return "The result of the ConcreteProduct1";
     }
@@ -89,7 +89,7 @@ class ConcreteProduct1 implements Product
 
 class ConcreteProduct2 implements Product
 {
-    public function operation()
+    public function operation(): string
     {
         return "The result of the ConcreteProduct2";
     }
