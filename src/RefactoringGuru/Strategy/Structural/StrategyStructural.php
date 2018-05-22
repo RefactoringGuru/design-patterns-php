@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Strategy\Structure;
+namespace RefactoringGuru\Strategy\Structural;
 
 /**
  * Strategy Design Pattern

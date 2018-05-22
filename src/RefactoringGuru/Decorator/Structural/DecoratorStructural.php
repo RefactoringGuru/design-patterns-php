@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Decorator\Structure;
+namespace RefactoringGuru\Decorator\Structural;
 
 /**
  * Decorator Design Pattern

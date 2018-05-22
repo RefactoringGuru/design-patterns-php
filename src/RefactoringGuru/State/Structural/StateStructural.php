@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\State\Structure;
+namespace RefactoringGuru\State\Structural;
 
 /**
  * State Design Pattern

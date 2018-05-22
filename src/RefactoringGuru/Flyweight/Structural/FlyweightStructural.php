@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Flyweight\Structure;
+namespace RefactoringGuru\Flyweight\Structural;
 
 /**
  * Flyweight Design Pattern

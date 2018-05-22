@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Visitor\Structure;
+namespace RefactoringGuru\Visitor\Structural;
 
 /**
  * Visitor Design Pattern

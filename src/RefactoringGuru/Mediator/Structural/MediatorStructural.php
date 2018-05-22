@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Mediator\Structure;
+namespace RefactoringGuru\Mediator\Structural;
 
 /**
  * Mediator Design Pattern

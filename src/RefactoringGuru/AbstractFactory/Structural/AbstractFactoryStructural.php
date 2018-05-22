@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\AbstractFactory\Structure;
+namespace RefactoringGuru\AbstractFactory\Structural;
 
 /**
  * Abstract Factory Design Pattern

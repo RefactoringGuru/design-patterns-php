@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\ChainOfResponsibility\Structure;
+namespace RefactoringGuru\ChainOfResponsibility\Structural;
 
 /**
  * Chain of Responsibility Design Pattern

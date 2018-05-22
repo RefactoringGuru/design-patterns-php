@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Builder\Structure;
+namespace RefactoringGuru\Builder\Structural;
 
 /**
  * Builder Design Pattern

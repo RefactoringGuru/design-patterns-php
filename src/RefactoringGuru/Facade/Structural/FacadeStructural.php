@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Facade\Structure;
+namespace RefactoringGuru\Facade\Structural;
 
 /**
  * Facade Design Pattern

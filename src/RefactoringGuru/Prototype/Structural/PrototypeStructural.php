@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Prototype\Structure;
+namespace RefactoringGuru\Prototype\Structural;
 
 /**
  * Prototype Design Pattern

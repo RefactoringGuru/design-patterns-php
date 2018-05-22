@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Iterator\Structure;
+namespace RefactoringGuru\Iterator\Structural;
 
 /**
  * Iterator Design Pattern

@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Command\Structure;
+namespace RefactoringGuru\Command\Structural;
 
 /**
  * Command Design Pattern

@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Observer\Structure;
+namespace RefactoringGuru\Observer\Structural;
 
 /**
  * Observer Design Pattern

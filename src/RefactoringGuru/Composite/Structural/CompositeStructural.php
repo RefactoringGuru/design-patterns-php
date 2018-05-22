@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Composite\Structure;
+namespace RefactoringGuru\Composite\Structural;
 
 /**
  * Composite Design Pattern

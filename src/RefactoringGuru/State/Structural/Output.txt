@@ -1,7 +1,7 @@
-Context: Transition to RefactoringGuru\State\Structure\ConcreteStateA.
+Context: Transition to RefactoringGuru\State\Structural\ConcreteStateA.
 ConcreteStateA handles request1.
 ConcreteStateA wants to change the state of the context.
-Context: Transition to RefactoringGuru\State\Structure\ConcreteStateB.
+Context: Transition to RefactoringGuru\State\Structural\ConcreteStateB.
 ConcreteStateB handles request2.
 ConcreteStateB wants to change the state of the context.
-Context: Transition to RefactoringGuru\State\Structure\ConcreteStateA.
+Context: Transition to RefactoringGuru\State\Structural\ConcreteStateA.

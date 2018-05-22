@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Bridge\Structure;
+namespace RefactoringGuru\Bridge\Structural;
 
 /**
  * Bridge Design Pattern

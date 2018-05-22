@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Memento\Structure;
+namespace RefactoringGuru\Memento\Structural;
 
 /**
  * Memento Design Pattern

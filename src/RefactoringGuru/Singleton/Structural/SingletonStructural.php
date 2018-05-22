@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Singleton\Structure;
+namespace RefactoringGuru\Singleton\Structural;
 
 /**
  * Singleton Design Pattern

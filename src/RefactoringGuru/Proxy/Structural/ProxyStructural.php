@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Proxy\Structure;
+namespace RefactoringGuru\Proxy\Structural;
 
 /**
  * Proxy Design Pattern

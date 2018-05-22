@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\FactoryMethod\Structure;
+namespace RefactoringGuru\FactoryMethod\Structural;
 
 /**
  * Factory Method Design Pattern

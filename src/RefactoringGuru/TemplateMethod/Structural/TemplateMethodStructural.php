@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\TemplateMethod\Structure;
+namespace RefactoringGuru\TemplateMethod\Structural;
 
 /**
  * Template Method Design Pattern
