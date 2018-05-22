@@ -6,8 +6,8 @@ It contains PHP examples for all classic GoF design patterns.
 
 Each pattern includes two examples:
 
-- **Structure**: a pure structure of a pattern with detailed comments.
-- **RealLife**: a potential usage of a pattern in a real PHP project.
+- **Structural** examples show the internal structure of patterns with detailed comments.
+- **RealWold** examples show how the patterns can be used in a real-world PHP application.
 
 
 ## Requirements

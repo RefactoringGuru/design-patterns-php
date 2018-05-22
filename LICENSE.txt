@@ -1,4 +1,5 @@
-Refactoring.Guru: Design Patterns in PHP © by Alexander Shvets
+Refactoring.Guru: Design Patterns in PHP
+© Alexander Shvets
 
 This work is licensed under a
 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.

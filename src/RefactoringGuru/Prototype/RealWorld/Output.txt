@@ -1,0 +1,49 @@
+Dump of the clone. Note that the author is now referencing two objects.
+
+RefactoringGuru\Prototype\RealWorld\Page Object
+(
+    [title:RefactoringGuru\Prototype\RealWorld\Page:private] => Copy of Tip of the day
+    [body:RefactoringGuru\Prototype\RealWorld\Page:private] => Keep calm and carry on.
+    [author:RefactoringGuru\Prototype\RealWorld\Page:private] => RefactoringGuru\Prototype\RealWorld\Author Object
+        (
+            [name:RefactoringGuru\Prototype\RealWorld\Author:private] => John Smith
+            [pages:RefactoringGuru\Prototype\RealWorld\Author:private] => Array
+                (
+                    [0] => RefactoringGuru\Prototype\RealWorld\Page Object
+                        (
+                            [title:RefactoringGuru\Prototype\RealWorld\Page:private] => Tip of the day
+                            [body:RefactoringGuru\Prototype\RealWorld\Page:private] => Keep calm and carry on.
+                            [author:RefactoringGuru\Prototype\RealWorld\Page:private] => RefactoringGuru\Prototype\RealWorld\Author Object
+ *RECURSION*
+                            [comments:RefactoringGuru\Prototype\RealWorld\Page:private] => Array
+                                (
+                                    [0] => Nice tip, thanks!
+                                )
+
+                            [date:RefactoringGuru\Prototype\RealWorld\Page:private] => DateTime Object
+                                (
+                                    [date] => 2017-04-14 14:55:58.801916
+                                    [timezone_type] => 3
+                                    [timezone] => Europe/Helsinki
+                                )
+
+                        )
+
+                    [1] => RefactoringGuru\Prototype\RealWorld\Page Object
+ *RECURSION*
+                )
+
+        )
+
+    [comments:RefactoringGuru\Prototype\RealWorld\Page:private] => Array
+        (
+        )
+
+    [date:RefactoringGuru\Prototype\RealWorld\Page:private] => DateTime Object
+        (
+            [date] => 2017-04-14 14:55:58.801946
+            [timezone_type] => 3
+            [timezone] => Europe/Helsinki
+        )
+
+)
