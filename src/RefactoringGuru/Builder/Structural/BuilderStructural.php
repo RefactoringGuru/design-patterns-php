@@ -10,8 +10,8 @@ namespace RefactoringGuru\Builder\Structural;
  */
 
 /**
- * The Builder interface specifies operations for creating parts of the Product
- * objects.
+ * The Builder interface specifies methods for creating the different parts of 
+ * the Product objects.
  */
 interface Builder
 {
@@ -67,17 +67,17 @@ class ConcreteBuilder1 implements Builder
      * Concrete Builders are supposed to provide their own methods for
      * retrieving results. That's because various types of builders may create
      * entirely different products that don't follow the same interface.
-     * Therefore, such method cannot be declared in the base Builder interface
-     * (at least in a statically typed programming language). Note, that PHP is
+     * Therefore, such methods cannot be declared in the base Builder interface
+     * (at least in a statically typed programming language). Note that PHP is
      * a dynamically typed language and this method CAN be in the base
      * interface. However, we won't declare it there for the sake of clarity.
      *
      * Usually, after returning the end result to the client, a builder instance
      * is expected to be ready to start producing another product. That's why
      * it's a usual practice to call the reset method at the end of the
-     * `getResult` method body. However, this behavior is not mandatory, and you
+     * `getProduct` method body. However, this behavior is not mandatory, and you
      * can make your builders wait for an explicit reset call from the client
-     * code before disposing the previous result.
+     * code before disposing of the previous result.
      */
     public function getProduct(): Product1
     {
@@ -108,9 +108,9 @@ class Product1
 
 /**
  * The Director is only responsible for executing the building steps in a
- * particular sequence. It helps to produce products with a particular
- * configuration. Strictly speaking, the Director class is optional, since the
- * client can control builders directly.
+ * particular sequence. It is helpful when producing products according to a
+ * specific order or configuration. Strictly speaking, the Director class is 
+ * optional, since the client can control builders directly.
  */
 class Director
 {
@@ -121,8 +121,8 @@ class Director
 
     /**
      * The Director works with any builder instance that the client code passes
-     * to it. This way, the client code may alter the type of a product
-     * assembled in the end.
+     * to it. This way, the client code may alter the final type of the newly
+     * assembled product.
      */
     public function setBuilder(Builder $builder)
     {
