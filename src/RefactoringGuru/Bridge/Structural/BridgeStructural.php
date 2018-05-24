@@ -18,7 +18,7 @@ namespace RefactoringGuru\Bridge\Structural;
 /**
  * The Abstraction defines the interface for the "control" part of the two class
  * hierarchies. It maintains a reference to an object of the Implementation
- * hierarchy and delegates it all of the real work.
+ * hierarchy and delegates all of the real work to this object.
  */
 class Abstraction
 {
