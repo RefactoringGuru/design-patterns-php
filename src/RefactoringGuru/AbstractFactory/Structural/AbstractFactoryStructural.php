@@ -11,10 +11,11 @@ namespace RefactoringGuru\AbstractFactory\Structural;
 
 /**
  * The Abstract Factory interface declares a set of methods that return
- * different abstract products. These products are related and called a family.
- * Products of one family are usually able to collaborate among themselves. A
- * family of products may have several variations, but the products of one
- * variation are incompatible with products of another.
+ * different abstract products. These products are called a family and are
+ * related by a high-level theme or concept. Products of one family are usually 
+ * able to collaborate among themselves. A family of products may have several 
+ * variations, but the products of one variation are incompatible with products 
+ * of another.
  */
 interface AbstractFactory
 {
@@ -43,7 +44,7 @@ class ConcreteFactory1 implements AbstractFactory
 }
 
 /**
- * Each concrete factory has a corresponding product variation.
+ * Each Concrete Factory has a corresponding product variation.
  */
 class ConcreteFactory2 implements AbstractFactory
 {
@@ -94,12 +95,12 @@ class ConcreteProductA2 implements AbstractProductA
 interface AbstractProductB
 {
     /**
-     * The ProductB is able to do its own thing...
+     * Product B is able to do its own thing...
      */
     public function usefulFunctionB(): string;
 
     /**
-     * ...but it also can collaborate with the ProductA.
+     * ... but it can also collaborate with Product A.
      *
      * The Abstract Factory makes sure that all products it creates are of the
      * same variation and thus, compatible.
@@ -118,9 +119,9 @@ class ConcreteProductB1 implements AbstractProductB
     }
 
     /**
-     * The product B1 is only able to work correctly with the product A1.
-     * Nevertheless, it accepts any instance of Abstract Product A as an
-     * argument.
+     * The variant, Product B1, is only able to work correctly with the variant,
+     * Product A1. Nevertheless, it accepts any instance of AbstractProductA as 
+     * an argument.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator): string
     {
@@ -138,9 +139,9 @@ class ConcreteProductB2 implements AbstractProductB
     }
 
     /**
-     * The product B2 is only able to work correctly with the product A2.
-     * Nevertheless, it accepts any instance of Abstract Product A as an
-     * argument.
+     * The variant, Product B2, is only able to work correctly with the variant,
+     * Product A2. Nevertheless, it accepts any instance of AbstractProductA as
+     * an argument.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator): string
     {
@@ -152,8 +153,8 @@ class ConcreteProductB2 implements AbstractProductB
 
 /**
  * The client code works with factories and products only through abstract
- * types: AbstractFactory and AbstractProduct. It lets you pass any factory or
- * product subclass to the client code without breaking it.
+ * types: AbstractFactory and AbstractProduct. This lets you pass any factory 
+ * or product subclass to the client code without breaking it.
  */
 function clientCode(AbstractFactory $factory)
 {
