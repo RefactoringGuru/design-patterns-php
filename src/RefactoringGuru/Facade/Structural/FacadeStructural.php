@@ -25,7 +25,7 @@ class Facade
 
     /**
      * Depending on your application's needs, you can provide the Facade with
-     * existing subsystem's objects or force the Facade to create them on its
+     * existing subsystem objects or force the Facade to create them on its
      * own.
      */
     public function __construct(
@@ -39,7 +39,7 @@ class Facade
     /**
      * The Facade's methods are convenient shortcuts to the sophisticated
      * functionality of the subsystems. However, clients get only to a fraction
-     * of subsystem's capabilities.
+     * of a subsystem's capabilities.
      */
     public function operation()
     {
@@ -109,7 +109,7 @@ function clientCode(Facade $facade)
 
 /**
  * The client code may have some of the subsystem's objects already created. In
- * this case, it might be worth to initialize the Facade with these objects,
+ * this case, it might be worthwhile to initialize the Facade with these objects
  * instead of letting the Facade create new instances.
  */
 $subsystem1 = new Subsystem1();
