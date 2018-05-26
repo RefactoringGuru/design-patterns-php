@@ -18,13 +18,13 @@ namespace RefactoringGuru\FactoryMethod\Structural;
 abstract class Creator
 {
     /**
-     * Note, that the Creator may also provide some default implementation of
+     * Note that the Creator may also provide some default implementation of
      * the factory method.
      */
     public abstract function factoryMethod(): Product;
 
     /**
-     * Also, note that despite its name, the Creator's primary responsibility is
+     * Also note that, despite its name, the Creator's primary responsibility is
      * not creating products. Usually, it contains some core business logic that
      * relies on Product objects, returned by the factory method. Subclasses can
      * indirectly change that business logic by overriding the factory method
@@ -110,7 +110,7 @@ function clientCode(Creator $creator)
 }
 
 /**
- * The Application picks a creator's type depending on configuration or
+ * The Application picks a creator's type depending on the configuration or
  * environment.
  */
 print("App: Launched with the ConcreteCreator1.\n");
