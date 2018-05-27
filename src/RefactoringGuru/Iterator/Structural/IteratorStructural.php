@@ -15,7 +15,7 @@ use Iterator;
  * PHP has a built-in Iterator interface that provides a very convenient
  * integration with foreach loops.
  *
- * Here's how the interface looks like:
+ * Here's what the interface looks like:
  *
  * @link http://php.net/manual/en/class.iterator.php
  *
