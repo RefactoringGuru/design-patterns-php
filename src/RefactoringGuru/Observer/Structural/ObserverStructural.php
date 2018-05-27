@@ -11,13 +11,13 @@ namespace RefactoringGuru\Observer\Structural;
  *
  * Note that there's a lot of different terms with similar meaning associated
  * with this pattern. Just remember that the Subject is also called the
- * Publisher and the Observer is often called the Subscriber and vise versa.
+ * Publisher and the Observer is often called the Subscriber and vice versa.
  */
 
 /**
  * PHP has a couple of built-in interfaces related to the Observer pattern.
  *
- * Here's how the Subject interface looks like:
+ * Here's what the Subject interface looks like:
  *
  * @link http://php.net/manual/en/class.splsubject.php
  *
@@ -57,7 +57,7 @@ class Subject implements \SplSubject
 
     /**
      * @var array List of subscribers. In real life, the list of subscribers can
-     * be stored more comprehensively (categorized by event type, etc.)
+     * be stored more comprehensively (categorized by event type, etc.).
      */
     private $observers = [];
 
@@ -94,7 +94,7 @@ class Subject implements \SplSubject
     /**
      * Usually, the subscription logic is only a fraction of what a Subject can
      * really do. Subjects commonly hold some important business logic, that
-     * triggers notification method whenever something important is about to
+     * triggers a notification method whenever something important is about to
      * happen (or after it).
      */
     public function someBusinessLogic()
