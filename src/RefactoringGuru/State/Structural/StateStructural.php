@@ -30,7 +30,7 @@ class Context
     }
 
     /**
-     * The Context allows changing the State object in runtime.
+     * The Context allows changing the State object at runtime.
      *
      * @param State $state
      */
@@ -57,8 +57,8 @@ class Context
 
 /**
  * The base State class declares methods that all Concrete State should
- * implement and also provides a back-reference to the Context object,
- * associated with the State. This back-reference can be used by States to
+ * implement and also provides a backreference to the Context object,
+ * associated with the State. This backreference can be used by States to
  * transition the Context to another State.
  */
 abstract class State
