@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Adater\Structural;
+namespace RefactoringGuru\Adapter\Structural;
 
 /**
  * Adapter Design Pattern

@@ -54,7 +54,7 @@ class FlyweightFactory
         $key = $this->getKey($sharedState);
 
         if (! isset($this->flyweights[$key])) {
-            print("FlyweightFactory: Can't find a flyweight, crating new one.\n");
+            print("FlyweightFactory: Can't find a flyweight, creating new one.\n");
             $this->flyweights[$key] = new Flyweight($sharedState);
         } else {
             print("FlyweightFactory: Reusing existing flyweight.\n");

@@ -140,7 +140,7 @@ $collection->addItem("First");
 $collection->addItem("Second");
 $collection->addItem("Third");
 
-print("Strait traversal:\n");
+print("Straight traversal:\n");
 foreach ($collection->getIterator() as $item) {
     print($item."\n");
 }

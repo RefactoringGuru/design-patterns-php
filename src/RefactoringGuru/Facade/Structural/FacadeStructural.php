@@ -63,14 +63,14 @@ class Subsystem1
 {
     function operation1()
     {
-        return "Sybsystem1: Ready!\n";
+        return "Subsystem1: Ready!\n";
     }
 
     // ...
 
     function operationN()
     {
-        return "Sybsystem1: Go!\n";
+        return "Subsystem1: Go!\n";
     }
 }
 
@@ -81,14 +81,14 @@ class Subsystem2
 {
     public function operation1()
     {
-        return "Sybsystem2: Get ready!\n";
+        return "Subsystem2: Get ready!\n";
     }
 
     // ...
 
     public function operationZ()
     {
-        return "Sybsystem2: Fire!\n";
+        return "Subsystem2: Fire!\n";
     }
 }
 

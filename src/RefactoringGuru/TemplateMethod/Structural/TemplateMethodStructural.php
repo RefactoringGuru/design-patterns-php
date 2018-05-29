@@ -38,17 +38,17 @@ abstract class AbstractClass
      */
     protected function baseOperation1()
     {
-        print("AbstractClass says: I am doing bulk of the work\n");
+        print("AbstractClass says: I am doing the bulk of the work\n");
     }
 
     protected function baseOperation2()
     {
-        print("AbstractClass says: But I let subclasses to override some operations\n");
+        print("AbstractClass says: But I let subclasses override some operations\n");
     }
 
     protected function baseOperation3()
     {
-        print("AbstractClass says: But I am doing bulk of the work anyway\n");
+        print("AbstractClass says: But I am doing the bulk of the work anyway\n");
     }
 
     /**
