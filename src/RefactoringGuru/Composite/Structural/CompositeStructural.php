@@ -11,7 +11,7 @@ namespace RefactoringGuru\Composite\Structural;
  */
 
 /**
- * The Base Component class declares common operations for both simple and
+ * The base Component class declares common operations for both simple and
  * complex objects of a composition.
  */
 abstract class Component
@@ -22,9 +22,9 @@ abstract class Component
     protected $parent;
 
     /**
-     * The Base Component may implement some default behavior or leave it to
-     * concrete classes (by declaring "abstract" the method containing the
-     * behavior).
+     * The base Component may implement some default behavior or leave it to
+     * concrete classes (by declaring the method containing the behavior as 
+     * "abstract").
      */
     public abstract function operation();
 
@@ -45,7 +45,7 @@ abstract class Component
 
     /**
      * In some cases, it would be beneficial to define the child-management
-     * operations right in the Base Component class. This way, you won't need to
+     * operations right in the base Component class. This way, you won't need to
      * expose any concrete component classes to the client code, even during the
      * object tree assembly. The downside is that these methods will be empty
      * for the leaf-level components.
@@ -116,8 +116,8 @@ class Composite extends Component
 
     /**
      * The Composite executes the primary component's logic in a particular way.
-     * It traverses recursively through all its children, collects and sums-up
-     * their results. Since composite's children pass these calls to their
+     * It traverses recursively through all its children, collecting and summing
+     * their results. Since the composite's children pass these calls to their
      * children and so forth, the whole object tree is traversed as a result.
      */
     public function operation()
@@ -152,7 +152,7 @@ clientCode($simple);
 print("\n\n");
 
 /**
- * ...as well as the complex composites.
+ * ... as well as the complex composites.
  */
 $tree = new Composite();
 $branch1 = new Composite();
@@ -167,8 +167,8 @@ clientCode($tree);
 print("\n\n");
 
 /**
- * Thanks to the fact that the child-management operations declared in the Base
- * Component class, the client code can work with any component, simple or
+ * Thanks to the fact that the child-management operations are declared in the 
+ * base Component class, the client code can work with any component, simple or
  * complex, without depending on their concrete classes.
  */
 function clientCode2(Component $component1, Component $component2)

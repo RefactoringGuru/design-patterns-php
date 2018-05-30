@@ -1,12 +1,12 @@
 <?php
 
-namespace RefactoringGuru\Adater\Structural;
+namespace RefactoringGuru\Adapter\Structural;
 
 /**
  * Adapter Design Pattern
  *
  * Intent: Convert the interface of a class into the interface clients expect.
- * Adapter lets classes work together that couldn't work otherwise because of
+ * Adapter lets classes work together where they otherwise couldn't, due to
  * incompatible interfaces.
  */
 

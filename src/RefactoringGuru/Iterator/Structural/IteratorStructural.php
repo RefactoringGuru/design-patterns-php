@@ -15,7 +15,7 @@ use Iterator;
  * PHP has a built-in Iterator interface that provides a very convenient
  * integration with foreach loops.
  *
- * Here's how the interface looks like:
+ * Here's what the interface looks like:
  *
  * @link http://php.net/manual/en/class.iterator.php
  *
@@ -140,7 +140,7 @@ $collection->addItem("First");
 $collection->addItem("Second");
 $collection->addItem("Third");
 
-print("Strait traversal:\n");
+print("Straight traversal:\n");
 foreach ($collection->getIterator() as $item) {
     print($item."\n");
 }

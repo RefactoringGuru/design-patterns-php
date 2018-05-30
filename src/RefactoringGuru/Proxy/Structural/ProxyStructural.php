@@ -6,12 +6,12 @@ namespace RefactoringGuru\Proxy\Structural;
  * Proxy Design Pattern
  *
  * Intent: Provide a surrogate or placeholder for another object to control
- * access to it or add other responsibilities.
+ * access to the original object or to add other responsibilities.
  */
 
 /**
- * The Subject interface declares common operations for both the Real Subject
- * and the Proxy. As long as the client works with the Real Subject using this
+ * The Subject interface declares common operations for both RealSubject
+ * and the Proxy. As long as the client works with RealSubject using this
  * interface, you'll be able to pass it a proxy instead of a real subject.
  */
 interface Subject
@@ -20,10 +20,10 @@ interface Subject
 }
 
 /**
- * The Real Subject contains some core business logic. Usually, RealSubjects are
- * able of doing some useful work, which is also very slow or sensitive to
- * correct input data. A Proxy can solve these issues without any changes to the
- * real subject's code.
+ * The RealSubject contains some core business logic. Usually, RealSubjects are
+ * capable of doing some useful work which may also be very slow or sensitive -
+ * e.g. correcting input data. A Proxy can solve these issues without any 
+ * changes to the RealSubject's code.
  */
 class RealSubject implements Subject
 {

@@ -6,15 +6,15 @@ namespace RefactoringGuru\Flyweight\Structural;
  * Flyweight Design Pattern
  *
  * Intent: Use sharing to fit more objects into the available amount of RAM by
- * sharing common parts of object state among multiple objects, instead of
- * keeping it in each object.
+ * sharing common parts of the object state among multiple objects, instead of
+ * keeping the entire state in each object.
  */
 
 /**
  * The Flyweight Factory creates and manages the Flyweight objects. It ensures
  * that flyweights are shared correctly. When the client requests a flyweight,
  * the factory either returns an existing instance or creates a new one, if it
- * still doesn't exist.
+ * doesn't exist yet.
  */
 class FlyweightFactory
 {
@@ -54,7 +54,7 @@ class FlyweightFactory
         $key = $this->getKey($sharedState);
 
         if (! isset($this->flyweights[$key])) {
-            print("FlyweightFactory: Can't find a flyweight, crating new one.\n");
+            print("FlyweightFactory: Can't find a flyweight, creating new one.\n");
             $this->flyweights[$key] = new Flyweight($sharedState);
         } else {
             print("FlyweightFactory: Reusing existing flyweight.\n");
@@ -97,8 +97,8 @@ class Flyweight
 }
 
 /**
- * The client code usually creates a bunch of flyweights in the initialization
- * stage of the application.
+ * The client code usually creates a bunch of pre-populated flyweights in the 
+ * initialization stage of the application.
  */
 $factory = new FlyweightFactory([
     ["Chevrolet", "Camaro2018", "pink"],

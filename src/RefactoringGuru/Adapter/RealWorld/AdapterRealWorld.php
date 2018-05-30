@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Adater\RealWorld;
+namespace RefactoringGuru\Adapter\RealWorld;
 
 /**
  * Adapter Design Pattern

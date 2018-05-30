@@ -110,7 +110,7 @@ clientCode($simple);
 print("\n\n");
 
 /**
- * ...as well as decorated ones.
+ * ... as well as decorated ones.
  *
  * Note how decorators can wrap not only simple components but the other
  * decorators as well.

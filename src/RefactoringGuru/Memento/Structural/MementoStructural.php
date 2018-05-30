@@ -17,7 +17,7 @@ namespace RefactoringGuru\Memento\Structural;
 class Originator
 {
     /**
-     * @var mixed For the sake of simplicity, originator's state is stored
+     * @var mixed For the sake of simplicity, the originator's state is stored
      * inside a single variable.
      */
     private $state;
@@ -127,7 +127,7 @@ class ConcreteMemento implements Memento
 
 /**
  * The Caretaker doesn't depend on the Concrete Memento class. Therefore, it
- * doesn't have access to originator's state, stored inside the memento. It
+ * doesn't have access to the originator's state, stored inside the memento. It
  * works with all mementos via the base Memento interface.
  */
 class Caretaker

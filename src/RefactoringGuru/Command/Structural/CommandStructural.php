@@ -6,8 +6,8 @@ namespace RefactoringGuru\Command\Structural;
  * Command Design Pattern
  *
  * Intent: Encapsulate a request as an object, thereby letting you parameterize
- * clients with different requests, queue or log requests, and support undoable
- * operations.
+ * clients with different requests (e.g. queue or log requests) and support 
+ * undoable operations.
  */
 
 /**
@@ -147,7 +147,7 @@ class Invoker
 }
 
 /**
- * The client code can parametrize an invoker with any commands.
+ * The client code can parameterize an invoker with any commands.
  */
 $invoker = new Invoker();
 $invoker->setOnStart(new SimpleCommand("Say Hi!"));
