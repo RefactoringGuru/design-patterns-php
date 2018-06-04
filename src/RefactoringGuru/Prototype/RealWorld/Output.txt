@@ -22,9 +22,9 @@ RefactoringGuru\Prototype\RealWorld\Page Object
 
                             [date:RefactoringGuru\Prototype\RealWorld\Page:private] => DateTime Object
                                 (
-                                    [date] => 2017-04-14 14:55:58.801916
+                                    [date] => 2018-06-04 14:50:39.306237
                                     [timezone_type] => 3
-                                    [timezone] => Europe/Helsinki
+                                    [timezone] => UTC
                                 )
 
                         )
@@ -41,9 +41,9 @@ RefactoringGuru\Prototype\RealWorld\Page Object
 
     [date:RefactoringGuru\Prototype\RealWorld\Page:private] => DateTime Object
         (
-            [date] => 2017-04-14 14:55:58.801946
+            [date] => 2018-06-04 14:50:39.306272
             [timezone_type] => 3
-            [timezone] => Europe/Helsinki
+            [timezone] => UTC
         )
 
 )

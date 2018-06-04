@@ -1,3 +1,4 @@
+
 FlyweightFactory: I have 5 flyweights:
 Chevrolet_Camaro2018_pink
 Mercedes Benz_C300_black
@@ -10,7 +11,7 @@ FlyweightFactory: Reusing existing flyweight.
 Flyweight: Displaying shared (["BMW","M5","red"]) and unique (["CL234IR","James Doe"]) state.
 
 Client: Adding a car to database.
-FlyweightFactory: Can't find a flyweight, crating new one.
+FlyweightFactory: Can't find a flyweight, creating new one.
 Flyweight: Displaying shared (["BMW","X1","red"]) and unique (["CL234IR","James Doe"]) state.
 
 FlyweightFactory: I have 6 flyweights:

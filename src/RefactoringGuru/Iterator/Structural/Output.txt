@@ -1,4 +1,4 @@
-Strait traversal:
+Straight traversal:
 First
 Second
 Third

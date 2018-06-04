@@ -25,7 +25,7 @@ class Originator
     public function __construct($state)
     {
         $this->state = $state;
-        print("Originator: My initial state is: {$this->state} \n");
+        print("Originator: My initial state is: {$this->state}\n");
     }
 
     /**

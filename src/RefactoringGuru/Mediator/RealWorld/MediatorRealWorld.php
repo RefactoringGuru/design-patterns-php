@@ -276,7 +276,7 @@ class OnboardingNotification implements Observer
 $repository = new UserRepository();
 events()->attach($repository, "facebook:update");
 
-$logger = new Logger("log.txt");
+$logger = new Logger(__DIR__ . "/log.txt");
 events()->attach($logger, "*");
 
 $onboarding = new OnboardingNotification("1@example.com");
@@ -284,7 +284,7 @@ events()->attach($onboarding, "users:created");
 
 // ...
 
-$repository->initialize("users.csv");
+$repository->initialize(__DIR__ . "users.csv");
 
 // ...
 

@@ -198,10 +198,10 @@ class OnboardingNotification implements \SplObserver
  */
 
 $repository = new UserRepository();
-$repository->attach(new Logger("log.txt"), "*");
+$repository->attach(new Logger(__DIR__ . "/log.txt"), "*");
 $repository->attach(new OnboardingNotification("1@example.com"), "users:created");
 
-$repository->initialize("users.csv");
+$repository->initialize(__DIR__ . "/users.csv");
 
 // ...
 

@@ -1,6 +1,6 @@
 Facade initializes subsystems:
-Sybsystem1: Ready!
-Sybsystem2: Get ready!
+Subsystem1: Ready!
+Subsystem2: Get ready!
 Facade orders subsystems to perform the action:
-Sybsystem1: Go!
-Sybsystem2: Fire!
+Subsystem1: Go!
+Subsystem2: Fire!

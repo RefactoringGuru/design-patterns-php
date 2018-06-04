@@ -1,3 +1,3 @@
-2018-05-01 15:06:00: 'users:init' with data '"users.csv"'
-2018-05-01 15:06:00: 'users:created' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"4535868987f9f75966eb10073fb259ee"}}'
-2018-05-01 15:06:00: 'users:deleted' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"4535868987f9f75966eb10073fb259ee"}}'
+2018-06-04 14:59:48: 'users:init' with data '"\/Users\/neochief\/www\/dev.refactoring.guru\/resources\/examples\/design-patterns-php\/src\/RefactoringGuru\/Observer\/RealWorld\/users.csv"'
+2018-06-04 14:59:48: 'users:created' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"75b7f717bae23472ee1665bf5bfd2425"}}'
+2018-06-04 14:59:48: 'users:deleted' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"75b7f717bae23472ee1665bf5bfd2425"}}'

@@ -135,7 +135,7 @@ class CsvIterator implements \Iterator
 /**
  * Client code.
  */
-$csv = new CsvIterator('cats.csv');
+$csv = new CsvIterator(__DIR__ . '/cats.csv');
 
 foreach ($csv as $key => $row) {
     print_r($row);

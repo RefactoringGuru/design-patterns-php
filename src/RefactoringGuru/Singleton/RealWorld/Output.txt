@@ -1,4 +1,4 @@
-2017-04-14: Started!
-2017-04-14: Logger has a single instance.
-2017-04-14: Config singleton also works fine.
-2017-04-14: Finished!
+2018-06-04: Started!
+2018-06-04: Logger has a single instance.
+2018-06-04: Config singleton also works fine.
+2018-06-04: Finished!
