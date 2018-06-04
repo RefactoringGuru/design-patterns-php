@@ -5,13 +5,20 @@ namespace RefactoringGuru\Prototype\RealWorld;
 /**
  * Prototype Design Pattern
  *
- * Intent: Specify the kinds of objects to create using a prototypical instance,
- * and create new objects by copying this prototype.
+ * Intent: Produce new objects by copying existing ones without compromising
+ * their internal structure.
  *
- * Example: Prototype provides a convenient way to replicate existing objects
- * instead of re-constructing them and copying over all of their fields.
- * Prototype allows cloning even private field since the copying is performed
- * within the cloned class.
+ * Example: The Prototype pattern provides a convenient way to replicate
+ * existing objects instead of re-constructing them and copying over all of
+ * their fields directly. The direct approach not only couples you to the
+ * classes of the objects being cloned, but also doesn't allow you to copy over
+ * the contents of the private fields. Since with the Prototype pattern the
+ * cloning is performed within the context of the cloned class, the access to
+ * the class' own private fields is not restricted.
+ *
+ * This example shows you how to clone a complex Page object using the Prototype
+ * pattern. The Page class has lots of private fields that will be carried over
+ * to the cloned object thanks to the Prototype pattern.
  */
 
 /**
@@ -52,13 +59,15 @@ class Page
     }
 
     /**
-     * When a page is cloned, it should get a new default title and empty
-     * comments.
+     * You can control what data you want to carry over to the cloned object.
      *
-     * Author of the page remains the same, therefore we leave the reference to
-     * existing object. But we add the clone to list of his pages.
-     *
-     * A clone also gets a new date object.
+     * For instance, when a page is cloned:
+     * - It gets a new "Copy of ..." title.
+     * - The author of the page remains the same, therefore we leave the
+     * reference to existing object. But we add the clone to list of the
+     * author's pages.
+     * - We don't carry over the comments from the old page.
+     * - We also attach a fresh date object to the page.
      */
     public function __clone()
     {
@@ -90,7 +99,7 @@ class Author
 }
 
 /**
- * Client code.
+ * The client code.
  */
 function clientCode()
 {

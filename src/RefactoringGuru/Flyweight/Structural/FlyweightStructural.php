@@ -97,7 +97,7 @@ class Flyweight
 }
 
 /**
- * The client code usually creates a bunch of pre-populated flyweights in the 
+ * The client code usually creates a bunch of pre-populated flyweights in the
  * initialization stage of the application.
  */
 $factory = new FlyweightFactory([

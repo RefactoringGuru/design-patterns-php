@@ -23,9 +23,8 @@ interface Component
 }
 
 /**
- * EN: Each Concrete Component must implement the `accept` method in such a
- * way that it calls the visitor's method corresponding to the component's
- * class.
+ * EN: Each Concrete Component must implement the `accept` method in such a way
+ * that it calls the visitor's method corresponding to the component's class.
  *
  * RU: Каждый конкретный компонент должен реализовать метод `accept` таким
  * образом, чтобы вызвать метод посетителя, соотвествующий текущему классу.

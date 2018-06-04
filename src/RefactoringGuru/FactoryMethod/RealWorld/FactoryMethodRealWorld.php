@@ -9,10 +9,21 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
  * which class to instantiate. Factory Method lets a class defer instantiation
  * to subclasses.
  *
- * Example: Factory method provides interface for creating social network
- * connectors that are used to log in and create posts in various social
- * networks. To add new social network support, you need to create a new
- * creator's subclass and create a different social connector object in it.
+ * Example: In this example the Factory Method pattern provides an interface for
+ * creating social network connectors, which can be used to log in to the
+ * network, create posts and potentially perform other activities—and all of
+ * this without coupling the client code to specific classes of the particular
+ * social network.
+ *
+ * Instead of calling constructor of social network connectors directly, there
+ * is a special method All social network connectors follow the same interface,
+ * which lets the client treat any connector it gets from the factory method in
+ * the same way.
+ *
+ * To add a new social network support to the program, you'll need implement a
+ * new connector subclass to create a new Creator's subclass, which will be
+ * creating a connector object  and after that create a different social
+ * connector object in it.
  */
 
 /**
@@ -21,17 +32,20 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
 abstract class SocialNetworkPoster
 {
     /**
-     * Factory Method.
+     * The actual factory method.
      */
     public abstract function getSocialNetwork(): SocialNetworkConnector;
 
     /**
-     * Primary business logic. Will be reused by all subclasses.
+     * The factory method is used inside the Creator's business logic.
+     * Subclasses may alter this logic indirectly by returning different types
+     * of the connector from the factory method.
      */
     public function post($content)
     {
-        // Call the factory method to create a Product object.
+        // Call the factory method to create a Product object...
         $network = $this->getSocialNetwork();
+        // ...then use it as you will.
         $network->logIn();
         $network->createPost($content);
         $network->logout();
@@ -39,7 +53,8 @@ abstract class SocialNetworkPoster
 }
 
 /**
- * Concrete Creator.
+ * The Concrete Creator, which supports Facebook. Remember, that this class also
+ * inherits the 'post' method from the parent class.
  */
 class FacebookPoster extends SocialNetworkPoster
 {
@@ -58,7 +73,7 @@ class FacebookPoster extends SocialNetworkPoster
 }
 
 /**
- * Concrete Creator.
+ * The Concrete Creator, which supports LinkedIn.
  */
 class LinkedInPoster extends SocialNetworkPoster
 {
@@ -77,7 +92,7 @@ class LinkedInPoster extends SocialNetworkPoster
 }
 
 /**
- * Product.
+ * The Product interface.
  */
 interface SocialNetworkConnector
 {
@@ -89,7 +104,7 @@ interface SocialNetworkConnector
 }
 
 /**
- * Concrete Product.
+ * Concrete Product. The FacebookConnector implements Facebook API.
  */
 class FacebookConnector implements SocialNetworkConnector
 {
@@ -119,7 +134,7 @@ class FacebookConnector implements SocialNetworkConnector
 }
 
 /**
- * Concrete Product.
+ * Concrete Product. The LinkedInConnector implements LinkedIn API.
  */
 class LinkedInConnector implements SocialNetworkConnector
 {
@@ -149,18 +164,20 @@ class LinkedInConnector implements SocialNetworkConnector
 }
 
 /**
- * Client code.
+ * The client code can work with any type of social network poster since it
+ * doesn't depend on concrete classes.
  */
 function clientCode(SocialNetworkPoster $creator)
 {
     // ...
     $creator->post("Hello world!");
-    $creator->post("I had a large burger this morning!");
+    $creator->post("I had a large hamburger this morning!");
     // ...
 }
 
 /**
- * Application initialization.
+ * During the initialization phase, the app can decide which social network it
+ * wants to work with, create it and pass it to the client code.
  */
 print("Testing ConcreteCreator1:\n");
 clientCode(new FacebookPoster("john_smith", "******"));

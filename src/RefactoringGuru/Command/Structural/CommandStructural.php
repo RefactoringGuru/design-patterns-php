@@ -6,7 +6,7 @@ namespace RefactoringGuru\Command\Structural;
  * Command Design Pattern
  *
  * Intent: Encapsulate a request as an object, thereby letting you parameterize
- * clients with different requests (e.g. queue or log requests) and support 
+ * clients with different requests (e.g. queue or log requests) and support
  * undoable operations.
  */
 

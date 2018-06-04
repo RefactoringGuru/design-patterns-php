@@ -37,9 +37,10 @@ namespace RefactoringGuru\AbstractFactory\RealWorld;
  *
  * Чтобы веб-приложение могло поддерживать сразу несколько разных движков
  * рендеринга страниц, его классы должны работать с шаблонами только через
- * интерфейсы, не привязываясь к их конкретным классам. В то же время, объекты
- * приложения не должны создавать шаблоны напрямую, а поручать это спецальным
- * объектам фабрик, с которыми тоже надо работать через абстрактный интерфейс.
+ * интерфейсы, не привязываясь к конкретным классам. Чтобы этого достичь,
+ * объекты приложения не должны создавать шаблоны напрямую, а поручать создание
+ * спецальным объектам-фабрикам, с которыми тоже надо работать через абстрактный
+ * интерфейс.
  *
  * Благодаря этому, вы можете подать в приложение фабрику, соотвествующую одному
  * из движков рендеринга, зная что с этого момента, все шаблоны будут
@@ -60,7 +61,7 @@ interface TemplateFactory
 }
 
 /**
- * Concrete Factory. Creates Twig variant of products.
+ * Concrete Factory that creates all Twig templates.
  */
 class TwigTemplateFactory implements TemplateFactory
 {
@@ -76,7 +77,7 @@ class TwigTemplateFactory implements TemplateFactory
 }
 
 /**
- * Concrete Factory. Creates PHPTemplate variant of products.
+ * Concrete Factory that creates all PHPTemplate templates.
  */
 class PHPTemplateFactory implements TemplateFactory
 {
@@ -92,7 +93,7 @@ class PHPTemplateFactory implements TemplateFactory
 }
 
 /**
- * Abstract product: the page title template.
+ * Abstract product. The page title template.
  */
 interface TitleTemplate
 {
@@ -100,7 +101,7 @@ interface TitleTemplate
 }
 
 /**
- * Concrete product. Twig variant.
+ * Concrete product. The page title as a Twig template.
  */
 class TwigTitleTemplate implements TitleTemplate
 {
@@ -111,7 +112,7 @@ class TwigTitleTemplate implements TitleTemplate
 }
 
 /**
- * Concrete product. PHPTemplate variant.
+ * Concrete product. The page title as a PHPTemplate template.
  */
 class PHPTitleTemplate implements TitleTemplate
 {
@@ -122,7 +123,7 @@ class PHPTitleTemplate implements TitleTemplate
 }
 
 /**
- * Abstract product: the whole page template.
+ * Abstract product. The whole page template.
  */
 interface PageTemplate
 {
@@ -130,7 +131,7 @@ interface PageTemplate
 }
 
 /**
- * Concrete product. Twig variant.
+ * Concrete product. The whole page as a Twig template.
  */
 class TwigPageTemplate implements PageTemplate
 {
@@ -147,7 +148,7 @@ EOF;
 }
 
 /**
- * Concrete product. PHPTemplate variant.
+ * Concrete product. The whole page as a PHPTemplate template.
  */
 class PHPPageTemplate implements PageTemplate
 {
@@ -164,7 +165,7 @@ EOF;
 }
 
 /**
- * Client code.
+ * The client code. Note that it accepts abstract factory class as a parameter.
  */
 function templateRenderer(TemplateFactory $factory)
 {
@@ -175,7 +176,7 @@ function templateRenderer(TemplateFactory $factory)
 }
 
 /**
- * The client code can be accept a factory object of any type.
+ * The client code can accept factory objects of any type.
  */
 print("Testing rendering with the Twig factory:\n");
 templateRenderer(new TwigTemplateFactory());

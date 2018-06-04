@@ -18,8 +18,8 @@ namespace RefactoringGuru\FactoryMethod\Structural;
 abstract class Creator
 {
     /**
-     * Note that the Creator may also provide some default implementation of
-     * the factory method.
+     * Note that the Creator may also provide some default implementation of the
+     * factory method.
      */
     public abstract function factoryMethod(): Product;
 

@@ -25,8 +25,7 @@ class Facade
 
     /**
      * Depending on your application's needs, you can provide the Facade with
-     * existing subsystem objects or force the Facade to create them on its
-     * own.
+     * existing subsystem objects or force the Facade to create them on its own.
      */
     public function __construct(
         Subsystem1 $subsystem1 = null,

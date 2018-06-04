@@ -23,7 +23,7 @@ abstract class Component
 
     /**
      * The base Component may implement some default behavior or leave it to
-     * concrete classes (by declaring the method containing the behavior as 
+     * concrete classes (by declaring the method containing the behavior as
      * "abstract").
      */
     public abstract function operation();
@@ -167,7 +167,7 @@ clientCode($tree);
 print("\n\n");
 
 /**
- * Thanks to the fact that the child-management operations are declared in the 
+ * Thanks to the fact that the child-management operations are declared in the
  * base Component class, the client code can work with any component, simple or
  * complex, without depending on their concrete classes.
  */

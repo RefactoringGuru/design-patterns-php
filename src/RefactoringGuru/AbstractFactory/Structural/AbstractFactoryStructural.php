@@ -12,9 +12,9 @@ namespace RefactoringGuru\AbstractFactory\Structural;
 /**
  * The Abstract Factory interface declares a set of methods that return
  * different abstract products. These products are called a family and are
- * related by a high-level theme or concept. Products of one family are usually 
- * able to collaborate among themselves. A family of products may have several 
- * variations, but the products of one variation are incompatible with products 
+ * related by a high-level theme or concept. Products of one family are usually
+ * able to collaborate among themselves. A family of products may have several
+ * variations, but the products of one variation are incompatible with products
  * of another.
  */
 interface AbstractFactory
@@ -120,7 +120,7 @@ class ConcreteProductB1 implements AbstractProductB
 
     /**
      * The variant, Product B1, is only able to work correctly with the variant,
-     * Product A1. Nevertheless, it accepts any instance of AbstractProductA as 
+     * Product A1. Nevertheless, it accepts any instance of AbstractProductA as
      * an argument.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator): string
@@ -153,7 +153,7 @@ class ConcreteProductB2 implements AbstractProductB
 
 /**
  * The client code works with factories and products only through abstract
- * types: AbstractFactory and AbstractProduct. This lets you pass any factory 
+ * types: AbstractFactory and AbstractProduct. This lets you pass any factory
  * or product subclass to the client code without breaking it.
  */
 function clientCode(AbstractFactory $factory)

@@ -5,18 +5,20 @@ namespace RefactoringGuru\Singleton\RealWorld;
 /**
  * Singleton Design Pattern
  *
- * Intent: Ensure that class has a single instance, and provide a global point
+ * Intent: Ensure that a class has a single instance, and provide a global point
  * of access to it.
  *
- * Example: Singleton pattern is notorious for limiting code reuse and
- * complicating unit testing. But it still very useful in some cases. In
- * particular, it's useful to control some shared resources. For example, a
- * global logging object controls access to a log file. Another good example: a
- * shared runtime configuration storage.
+ * Example: The Singleton pattern is notorious for limiting code reuse and
+ * complicating unit testing. However it is still very useful in some cases. In
+ * particular, it's handy when you need control some shared resources. For
+ * example, a global logging object that have to control the access to a log
+ * file. Another good example: a shared runtime configuration storage.
  */
 
 /**
- * Singleton.
+ * If you need to support several types of Singletons in your app, you can
+ * define the basic features of the Singleton in a base class, while moving the
+ * actual business logic (i.e. logging) to subclasses.
  */
 class Singleton
 {
@@ -42,22 +44,23 @@ class Singleton
 }
 
 /**
- * A logging class is most known and appreciated application of singleton. In
- * most cases, you need a single logging object that writes to one log file. You
- * also need global and convenient way to access that instance.
+ * The logging class is most known and appreciated application of the Singleton
+ * pattern. In most cases, you need a single logging object that writes to one
+ * log file. You also need global and convenient way to access that instance.
  */
 class Logger extends Singleton
 {
     /**
-     * Handle to opened file resource.
+     * A file pointer resource of the log file.
      */
     private $fileHandle;
 
     /**
-     * Singleton's constructor is called just once, therefore just one file
-     * handle will be opened at all times.
+     * Since the Singleton's constructor is called only once, just a single file
+     * resource will be opened at all times.
      *
-     * We open the console stream instead of file for the sake of simplicity.
+     * Note, for the sake of simplicity we open the console stream instead of
+     * the actual file here.
      */
     protected function __construct()
     {
@@ -65,7 +68,7 @@ class Logger extends Singleton
     }
 
     /**
-     * Write log entry to the opened stream.
+     * Write a log entry to the opened file resource.
      */
     public function writeLog(string $message)
     {
@@ -74,8 +77,8 @@ class Logger extends Singleton
     }
 
     /**
-     * Handy shortcut to reduce amount of code needed to log a message from
-     * client code.
+     * Just a handy shortcut to reduce the amount of code needed to log messages
+     * from the client code.
      */
     public static function log(string $message)
     {
@@ -85,9 +88,9 @@ class Logger extends Singleton
 }
 
 /**
- * A configuration singleton can is also justifiable solution. Often you need to
- * access application configurations from different places in program. Singleton
- * gives you that comfort.
+ * Applying singleton to the configuration storage is also a common practice.
+ * Often you need to access application configurations from different places in
+ * program. Singleton gives you that comfort.
  */
 class Config extends Singleton
 {
@@ -105,7 +108,7 @@ class Config extends Singleton
 }
 
 /**
- * Client code.
+ * The client code.
  */
 function clientCode()
 {
