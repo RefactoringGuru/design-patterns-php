@@ -51,7 +51,8 @@ namespace RefactoringGuru\AbstractFactory\RealWorld;
  */
 
 /**
- * Abstract Factory.
+ * The Abstract Factory interface declares creation methods for each distinct
+ * product type.
  */
 interface TemplateFactory
 {
@@ -61,7 +62,10 @@ interface TemplateFactory
 }
 
 /**
- * Concrete Factory that creates all Twig templates.
+ * Each Concrete Factory corresponds to a specific variant (or family) of
+ * products.
+ *
+ * This Concrete Factory creates Twig templates.
  */
 class TwigTemplateFactory implements TemplateFactory
 {
@@ -77,23 +81,27 @@ class TwigTemplateFactory implements TemplateFactory
 }
 
 /**
- * Concrete Factory that creates all PHPTemplate templates.
+ * And this Concrete Factory creates only Blade templates.
  */
-class PHPTemplateFactory implements TemplateFactory
+class BladeFactory implements TemplateFactory
 {
     public function createTitleTemplate(): TitleTemplate
     {
-        return new PHPTitleTemplate();
+        return new BladeTitleTemplate();
     }
 
     public function createPageTemplate(): PageTemplate
     {
-        return new PHPPageTemplate();
+        return new BladePageTemplate();
     }
 }
 
 /**
- * Abstract product. The page title template.
+ * Each distinct product type should have its own interface. All variants of the
+ * product must follow the same interface.
+ *
+ * For instance, this Abstract Product interface describes the behavior of page
+ * title templates.
  */
 interface TitleTemplate
 {
@@ -101,7 +109,7 @@ interface TitleTemplate
 }
 
 /**
- * Concrete product. The page title as a Twig template.
+ * This Concrete Product provides Twig page title templates.
  */
 class TwigTitleTemplate implements TitleTemplate
 {
@@ -112,9 +120,9 @@ class TwigTitleTemplate implements TitleTemplate
 }
 
 /**
- * Concrete product. The page title as a PHPTemplate template.
+ * And this Concrete Product provides Blade page title templates.
  */
-class PHPTitleTemplate implements TitleTemplate
+class BladeTitleTemplate implements TitleTemplate
 {
     public function render(): string
     {
@@ -123,7 +131,7 @@ class PHPTitleTemplate implements TitleTemplate
 }
 
 /**
- * Abstract product. The whole page template.
+ * This is another Abstract Product type, which describes whole page templates.
  */
 interface PageTemplate
 {
@@ -131,7 +139,7 @@ interface PageTemplate
 }
 
 /**
- * Concrete product. The whole page as a Twig template.
+ * The Twig variant of the whole page templates.
  */
 class TwigPageTemplate implements PageTemplate
 {
@@ -148,9 +156,9 @@ EOF;
 }
 
 /**
- * Concrete product. The whole page as a PHPTemplate template.
+ * The Blade variant of the whole page templates.
  */
-class PHPPageTemplate implements PageTemplate
+class BladePageTemplate implements PageTemplate
 {
     public function render(TitleTemplate $titleTemplate): string
     {
@@ -165,7 +173,8 @@ EOF;
 }
 
 /**
- * The client code. Note that it accepts abstract factory class as a parameter.
+ * The client code. Note that it accepts the Abstract Factory class as the
+ * parameter, which allows the client to work with any concrete factory type.
  */
 function templateRenderer(TemplateFactory $factory)
 {
@@ -176,11 +185,12 @@ function templateRenderer(TemplateFactory $factory)
 }
 
 /**
- * The client code can accept factory objects of any type.
+ * Somewhere in other parts of the app... The client code can accept factory
+ * objects of any type.
  */
 print("Testing rendering with the Twig factory:\n");
 templateRenderer(new TwigTemplateFactory());
 print("\n\n");
 
-print("Testing rendering with the PHPTemplate factory:\n");
-templateRenderer(new PHPTemplateFactory());
+print("Testing rendering with the Blade factory:\n");
+templateRenderer(new BladeFactory());

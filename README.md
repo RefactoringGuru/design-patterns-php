@@ -31,6 +31,14 @@ For the best experience, we recommend working with examples in [PHPStorm](https:
 - [ ] Memento: RealLife
 - [ ] State: RealLife
 
+I'm out of decent ideas for real-world usages for these two in PHP apps. If you had used them in your project, feel free to suggest me an idea by posting an Issue.
+
+## FAQ
+
+#### 1. What is the _Client Code_?
+
+_Client_ means _client of classes, defined as part of a pattern_, which is simply the caller of the given methods or user of the given classes. In other words, it's the part of your application's code that uses the pattern's classes.
+
 
 ## Contributor's Guide
 

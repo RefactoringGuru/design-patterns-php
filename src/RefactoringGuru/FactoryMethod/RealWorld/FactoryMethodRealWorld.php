@@ -27,19 +27,28 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
  */
 
 /**
- * Creator.
+ * The Creator declares a factory method that can be used as a substitution for
+ * the direct constructor calls of products, for instance:
+ *
+ * - Before: $p = new FacebookConnector()
+ * - After: $p = $this->getSocialNetwork()
+ *
+ * This allows changing the type the product being created by
+ * SocialNetworkPoster's subclasses.
  */
 abstract class SocialNetworkPoster
 {
     /**
-     * The actual factory method.
+     * The actual factory method. Note that it returns the abstract connector.
+     * This lets subclasses return any concrete connectors without breaking
+     * superclass' contract.
      */
     public abstract function getSocialNetwork(): SocialNetworkConnector;
 
     /**
-     * The factory method is used inside the Creator's business logic.
-     * Subclasses may alter this logic indirectly by returning different types
-     * of the connector from the factory method.
+     * When the factory method is used inside the Creator's business logic, the
+     * subclasses may alter the logic indirectly by returning different types of
+     * the connector from the factory method.
      */
     public function post($content)
     {
@@ -53,8 +62,9 @@ abstract class SocialNetworkPoster
 }
 
 /**
- * The Concrete Creator, which supports Facebook. Remember, that this class also
- * inherits the 'post' method from the parent class.
+ * This Concrete Creator supports Facebook. Remember, that this class also
+ * inherits the 'post' method from the parent class. Theses are the classes that
+ * the Client actually uses.
  */
 class FacebookPoster extends SocialNetworkPoster
 {
@@ -73,7 +83,7 @@ class FacebookPoster extends SocialNetworkPoster
 }
 
 /**
- * The Concrete Creator, which supports LinkedIn.
+ * This Concrete Creator supports LinkedIn.
  */
 class LinkedInPoster extends SocialNetworkPoster
 {
@@ -92,7 +102,7 @@ class LinkedInPoster extends SocialNetworkPoster
 }
 
 /**
- * The Product interface.
+ * The Product interface declares behaviors of various types of products.
  */
 interface SocialNetworkConnector
 {
@@ -104,7 +114,7 @@ interface SocialNetworkConnector
 }
 
 /**
- * Concrete Product. The FacebookConnector implements Facebook API.
+ * This Concrete Product implements Facebook API.
  */
 class FacebookConnector implements SocialNetworkConnector
 {
@@ -134,7 +144,7 @@ class FacebookConnector implements SocialNetworkConnector
 }
 
 /**
- * Concrete Product. The LinkedInConnector implements LinkedIn API.
+ * This Concrete Product implements LinkedIn API.
  */
 class LinkedInConnector implements SocialNetworkConnector
 {
@@ -164,7 +174,7 @@ class LinkedInConnector implements SocialNetworkConnector
 }
 
 /**
- * The client code can work with any type of social network poster since it
+ * The client code can work with any subclass of SocialNetworkPoster since it
  * doesn't depend on concrete classes.
  */
 function clientCode(SocialNetworkPoster $creator)
@@ -177,7 +187,8 @@ function clientCode(SocialNetworkPoster $creator)
 
 /**
  * During the initialization phase, the app can decide which social network it
- * wants to work with, create it and pass it to the client code.
+ * wants to work with, create an object of the proper subclass and pass it to
+ * the client code.
  */
 print("Testing ConcreteCreator1:\n");
 clientCode(new FacebookPoster("john_smith", "******"));

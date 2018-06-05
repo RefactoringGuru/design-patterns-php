@@ -18,14 +18,26 @@ namespace RefactoringGuru\Singleton\RealWorld;
 /**
  * If you need to support several types of Singletons in your app, you can
  * define the basic features of the Singleton in a base class, while moving the
- * actual business logic (i.e. logging) to subclasses.
+ * actual business logic (like logging) to subclasses.
  */
 class Singleton
 {
+    /**
+     * The actual singleton's instance almost always reside inside a static
+     * field. In this case, the static field is an array, where each subclasses
+     * of the Singleton stores its own instance.
+     */
     private static $instances = array();
 
+    /**
+     * Singleton's constructor should not be public. But it can't be private
+     * either, if we want to allow subclassing.
+     */
     protected function __construct() { }
 
+    /**
+     * Cloning and unserialization is not permitted for singletons.
+     */
     protected function __clone() { }
 
     public function __wakeup()
@@ -33,20 +45,30 @@ class Singleton
         throw new \Exception("Cannot unserialize singleton");
     }
 
+    /**
+     * The method you use to get the Singleton's instance.
+     */
     public static function getInstance()
     {
-        $cls = get_called_class();
-        if (!isset(self::$instances[$cls])) {
-            self::$instances[$cls] = new static;
+        $subclass = get_called_class();
+        if (!isset(self::$instances[$subclass])) {
+            // Note that here we use the "static" keyword instead of the actual
+            // class name. In this context the "static" keyword means "the name
+            // of the current class". That detail is important because when the
+            // method is called on the subclass, we want an instance of that
+            // subclass to be created here.
+            self::$instances[$subclass] = new static;
         }
-        return self::$instances[$cls];
+        return self::$instances[$subclass];
     }
 }
 
 /**
  * The logging class is most known and appreciated application of the Singleton
- * pattern. In most cases, you need a single logging object that writes to one
- * log file. You also need global and convenient way to access that instance.
+ * pattern. In most cases, you need a single logging object that writes to a
+ * single log file (control over shared resource). You also need a convenient
+ * way to access that instance from any context of you app (global access
+ * point).
  */
 class Logger extends Singleton
 {
@@ -88,9 +110,9 @@ class Logger extends Singleton
 }
 
 /**
- * Applying singleton to the configuration storage is also a common practice.
- * Often you need to access application configurations from different places in
- * program. Singleton gives you that comfort.
+ * Applying the Singleton pattern to the configuration storage is also a common
+ * practice. Often you need to access application configurations from a lot of
+ * different places of the program. Singleton gives you that comfort.
  */
 class Config extends Singleton
 {
@@ -110,34 +132,29 @@ class Config extends Singleton
 /**
  * The client code.
  */
-function clientCode()
-{
-    Logger::log("Started!");
+Logger::log("Started!");
 
-    // Compare values of Logger singleton.
-    $l1 = Logger::getInstance();
-    $l2 = Logger::getInstance();
-    if ($l1 === $l2) {
-        Logger::log("Logger has a single instance.");
-    } else {
-        Logger::log("Loggers are different.");
-    }
-
-    // Check how Config singleton saves data...
-    $config1 = Config::getInstance();
-    $login = "test_login";
-    $password = "test_password";
-    $config1->setValue("login", $login);
-    $config1->setValue("password", $password);
-    // ...and restores it.
-    $config2 = Config::getInstance();
-    if ($login == $config2->getValue("login") &&
-        $password == $config2->getValue("password")
-    ) {
-        Logger::log("Config singleton also works fine.");
-    }
-
-    Logger::log("Finished!");
+// Compare values of Logger singleton.
+$l1 = Logger::getInstance();
+$l2 = Logger::getInstance();
+if ($l1 === $l2) {
+    Logger::log("Logger has a single instance.");
+} else {
+    Logger::log("Loggers are different.");
 }
 
-clientCode();
+// Check how Config singleton saves data...
+$config1 = Config::getInstance();
+$login = "test_login";
+$password = "test_password";
+$config1->setValue("login", $login);
+$config1->setValue("password", $password);
+// ...and restores it.
+$config2 = Config::getInstance();
+if ($login == $config2->getValue("login") &&
+    $password == $config2->getValue("password")
+) {
+    Logger::log("Config singleton also works fine.");
+}
+
+Logger::log("Finished!");

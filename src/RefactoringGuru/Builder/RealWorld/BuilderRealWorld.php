@@ -16,8 +16,10 @@ namespace RefactoringGuru\Builder\RealWorld;
  */
 
 /**
- * The Builder interface. All of the construction steps are returning the
- * builder object to allow chaining: $builder->select(...)->where(...)
+ * The Builder interface declares a set of methods to assemble an SQL query.
+ *
+ * All of the construction steps are returning the current builder object to
+ * allow chaining: $builder->select(...)->where(...)
  */
 interface SQLQueryBuilder
 {
@@ -33,7 +35,10 @@ interface SQLQueryBuilder
 }
 
 /**
- * Concrete Builder. Builds SQL queries compatible with MySQL.
+ * Each Concrete Builder corresponds to a specific SQL dialect and may implement
+ * the builder steps a little bit different from the others.
+ *
+ * This Concrete Builder can build SQL queries compatible with MySQL.
  */
 class MysqlQueryBuilder implements SQLQueryBuilder
 {
@@ -101,9 +106,9 @@ class MysqlQueryBuilder implements SQLQueryBuilder
 }
 
 /**
- * Concrete Builder. Builds SQL queries compatible with PostgresSQL. Postgres is
- * very similar to Mysql, but still has a few differences. That's why we extend
- * it from the MySQL builder.
+ * This Concrete Builder is compatible with PostgresSQL. While Postgres is very
+ * similar to Mysql, it still has several differences. To reuse the common code,
+ * we extend it from the MySQL builder, but override some of the building steps.
  */
 class PostgresQueryBuilder extends MysqlQueryBuilder
 {
@@ -124,14 +129,16 @@ class PostgresQueryBuilder extends MysqlQueryBuilder
 
 
 /**
- * Note that the client code uses the builder directly. A designated Director
- * class is not necessary in this case, because the client code needs a
- * different query almost every time, so the sequence of the construction steps
- * can not be easily reused.
+ * Note that the client code uses the builder object directly. A designated
+ * Director class is not necessary in this case, because the client code needs
+ * different queries almost every time, so the sequence of the construction
+ * steps can not be easily reused.
  *
- * Since all of the query builders create the same product type (which is a
- * string) we can rely on the Builder interface when interacting with all
- * Concrete Builders.
+ * Since all our query builders create products of the same type (which is a
+ * string), we can interact with all builders using their common interface.
+ * Later, if we implement a new Builder class, we will be able to pass its
+ * instance to the existing client code without breaking it, since it will still
+ * expect any object that follows SQLQueryBuilder interface.
  */
 function clientCode(SQLQueryBuilder $queryBuilder)
 {
@@ -152,7 +159,7 @@ function clientCode(SQLQueryBuilder $queryBuilder)
 
 /**
  * The application selects a proper query builder type depending on a current
- * configuration.
+ * configuration or the environment settings.
  */
 // if ($_ENV['database_type'] == 'postgres') {
 //     $builder = new PostgresQueryBuilder(); } else {
