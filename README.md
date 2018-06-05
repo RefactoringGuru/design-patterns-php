@@ -6,8 +6,9 @@ It contains PHP examples for all classic GoF design patterns.
 
 Each pattern includes two examples:
 
-- **Structural** examples show the internal structure of patterns with detailed comments.
-- **RealWold** examples show how the patterns can be used in a real-world PHP application.
+- **Structural** examples show the internal structure of patterns, including detailed comments.
+
+- **RealWorld** examples show how patterns can be used in real-world PHP applications.
 
 
 ## Requirements
@@ -15,9 +16,9 @@ Each pattern includes two examples:
 These examples require PHP 7.0 and newer, although they can be easily
 replicated in older versions of PHP.
 
-This particular version was picked because it provides explicit argument and return type declarations. This helps to better understand some features of patterns that are not very obvious in dynamically typed language.
+This version provides explicit argument and return type declarations, which help to understand better some patterns' features that are not very obvious in dynamically typed language.
 
-All examples can be launched in command line, using a PHP executable as follows:
+All examples can be launched via the command line, using the PHP executable as follows:
 
 ```
 php src/Path-to-example/Example.php
@@ -37,8 +38,11 @@ I'm out of decent ideas for real-world usages for these two in PHP apps. If you 
 
 #### 1. What is the _Client Code_?
 
-_Client_ means _client of classes, defined as part of a pattern_, which is simply the caller of the given methods or user of the given classes. In other words, it's the part of your application's code that uses the pattern's classes.
+_Client_ means _client of classes, defined as part of a pattern_, which is merely a caller of the given methods or a user of the given classes. In other words, it's the part of your application's code that uses the pattern's classes.
 
+#### 2. I don't understand the roles you're referring to in RealWorld examples.
+
+Take a look at the structural example first. There you'll find detailed descriptions of each class in a pattern, its role, and connection to other classes.
 
 ## Contributor's Guide
 
@@ -48,7 +52,7 @@ Here's a style guide which might help you to keep your changes consistent with o
 
 1. All code should match the [PSR2 coding style guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
 
-2. Try to hard wrap the code at 80th's character. It helps to list the code on the website without scrollbars.
+2. Try to hard-wrap the code at 80th's character. It helps to list the code on the website without scrollbars.
 
 3. Examples should match following namespace convention: RefactoringGuru/{pattern-name}/{example-name}. For instance:
 
@@ -61,7 +65,7 @@ Here's a style guide which might help you to keep your changes consistent with o
     ...
     ```
 
-4. Aim to put all code within one file. We realize that it's not how it supposed to be done in production. But it helps people to better understand examples, since all code fits into one screen.
+4. Aim to put all code within one file. We realize that it's not how it supposed to be done in production. However, it helps people to understand examples better, since all code fits into one screen.
 
 5. Comments may or may not have language tags in them, such as this:
 

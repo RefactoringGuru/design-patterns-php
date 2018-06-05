@@ -18,7 +18,8 @@ namespace RefactoringGuru\Adapter\RealWorld;
  */
 
 /**
- * Target interface.
+ * The Target interface represents the interface that your application's classes
+ * already follow.
  */
 interface Notification
 {
@@ -26,7 +27,13 @@ interface Notification
 }
 
 /**
- * Existing class, that successfully follows the Target interface.
+ * Here's an example of the existing class that follows the Target interface.
+ *
+ * The truth is that many real apps may not have this interface clearly defined.
+ * If you're in that boat, your first bet would be to just extend an Adapter
+ * from one of your existing application classes. If that's awkward (for
+ * instance, SlackNotification doesn't feel as a subclass of EmailNotification),
+ * then extracting an interface should be your first step.
  */
 class EmailNotification implements Notification
 {
@@ -45,8 +52,9 @@ class EmailNotification implements Notification
 }
 
 /**
- * Adaptee. This is a useful class, incompatible with the Target interface. You
- * can't change its code directly since it is provided by a 3rd-party library.
+ * The Adaptee is some useful class, incompatible with the Target interface. You
+ * can't just go in and change the code of the class to follow the Target
+ * interface, since the code might be provided by a 3rd-party library.
  */
 class SlackApi
 {
@@ -73,7 +81,9 @@ class SlackApi
 }
 
 /**
- * Adapter. Allows the client code to send notifications using the Slack API.
+ * The Adapter is a class that links the Target interface and the Adaptee class.
+ * In this case, it allows the application to send notifications using Slack
+ * API.
  */
 class SlackNotification implements Notification
 {
@@ -99,9 +109,8 @@ class SlackNotification implements Notification
 }
 
 /**
- * Client code.
+ * The client code can work with any class that follows the Target interface.
  */
-
 function clientCode(Notification $notification)
 {
     // ...
