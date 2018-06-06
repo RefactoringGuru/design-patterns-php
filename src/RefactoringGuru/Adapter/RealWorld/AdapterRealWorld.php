@@ -5,8 +5,8 @@ namespace RefactoringGuru\Adapter\RealWorld;
 /**
  * Adapter Design Pattern
  *
- * Intent: Convert the interface of a class into another interface clients
- * expect. Adapter lets classes work together that couldn't otherwise because of
+ * Intent: Convert the interface of a class into the interface clients expect.
+ * Adapter lets classes work together where they otherwise couldn't, due to
  * incompatible interfaces.
  *
  * Example: The Adapter pattern allows you to use 3rd-party or legacy classes

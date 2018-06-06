@@ -6,7 +6,7 @@ namespace RefactoringGuru\Proxy\RealWorld;
  * Proxy Design Pattern
  *
  * Intent: Provide a surrogate or placeholder for another object to control
- * access to it or add other responsibilities.
+ * access to the original object or to add other responsibilities.
  *
  * Example: There are dozens of ways proxies can be used: caching, logging,
  * access control, delayed initialization, etc. This example shows how proxy can

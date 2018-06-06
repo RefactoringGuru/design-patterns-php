@@ -24,7 +24,10 @@ All examples can be launched via the command line, using the PHP executable as f
 php src/Path-to-example/Example.php
 ```
 
-For the best experience, we recommend working with examples in [PHPStorm](https://www.jetbrains.com/phpstorm/).
+For the best experience, I recommend working with examples with these IDEs:
+
+- [PHPStorm](https://www.jetbrains.com/phpstorm/)
+- [Visual Studio Code](https://code.visualstudio.com/)
 
 
 ## Roadmap
@@ -33,6 +36,7 @@ For the best experience, we recommend working with examples in [PHPStorm](https:
 - [ ] State: RealLife
 
 I'm out of decent ideas for real-world usages for these two in PHP apps. If you had used them in your project, feel free to suggest me an idea by posting an Issue.
+
 
 ## FAQ
 
@@ -44,11 +48,12 @@ _Client_ means _client of classes, defined as part of a pattern_, which is merel
 
 Take a look at the structural example first. There you'll find detailed descriptions of each class in a pattern, its role, and connection to other classes.
 
+
 ## Contributor's Guide
 
-We appreciate any help, whether it's a simple fix of a typo or a whole new example. Just [make a fork](https://help.github.com/articles/fork-a-repo/), do your change and submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
+I appreciate any help, whether it's a simple fix of a typo or a whole new example. Just [make a fork](https://help.github.com/articles/fork-a-repo/), make your change and submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
-Here's a style guide which might help you to keep your changes consistent with our code:
+Here's a style guide which might help you to keep your changes consistent with the rest of the project's code:
 
 1. All code should match the [PSR2 coding style guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
 
@@ -65,7 +70,7 @@ Here's a style guide which might help you to keep your changes consistent with o
     ...
     ```
 
-4. Aim to put all code within one file. We realize that it's not how it supposed to be done in production. However, it helps people to understand examples better, since all code fits into one screen.
+4. Aim to put all code within one file. Yes, I realize that it's not how it supposed to be done in production. However, it helps people to understand examples better, since all code fits into one screen.
 
 5. Comments may or may not have language tags in them, such as this:
 
@@ -81,8 +86,7 @@ Here's a style guide which might help you to keep your changes consistent with o
      */
     ```
 
-    Don't be scared and ignore the non-English part of such comments. If you want to change something in a comment like this, then do it. Even if you do it wrong, we'll tell you how to fix it during the Pull Request.
-
+    This notation helps to keep the code in one place while allowing the website to generates separate versions of examples for all listed languages. Don't be scared and ignore the non-English part of such comments. If you want to change something in a comment like this, just do it. Even if you do it wrong, we'll tell you how to fix it during the Pull Request.
 
 
 ## License

@@ -5,8 +5,9 @@ namespace RefactoringGuru\Flyweight\RealWorld;
 /**
  * Flyweight Design Pattern
  *
- * Intent: Use sharing to support a large number of objects that have part of
- * their internal state in common where the other part of state can vary.
+ * Intent: Use sharing to fit more objects into the available amount of RAM by
+ * sharing common parts of the object state among multiple objects, instead of
+ * keeping the entire state in each object.
  *
  * Example: In this example, the Flyweight pattern is used to minimize the RAM
  * usage of objects in an animal database of a cat-only veterinary clinic. Each
