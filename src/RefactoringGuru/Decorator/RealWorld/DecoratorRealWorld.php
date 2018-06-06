@@ -9,14 +9,22 @@ namespace RefactoringGuru\Decorator\RealWorld;
  * Decorators provide a flexible alternative to subclassing for extending
  * functionality.
  *
- * Example: Decorator pattern allows to construct complex content filtering
- * rules to clean-up content before rendering it on a web page. Different
- * scenarios, such as comments, forum posts, emails require different sets of
- * filters, that can be assembled and passed along with the source text.
+ * Example: In this example the Decorator pattern helps you to construct complex
+ * text filtering rules to clean-up content before rendering it on a web page.
+ * Different types of content, such as comments, forum posts or private messages
+ * require different sets of filters.
+ *
+ * For example, while you'd want to strip-out all HTML from the comments, you
+ * might still want to keep some basic HTML tags in forum posts. In addition,
+ * you may want to allow posting in Markdown format, which shall be processed
+ * before any HTMl filtering takes place. All these filtering rules can be
+ * represented as separate decorator classes, which can be stacked in a
+ * different way, depending on the nature of the content you have.
  */
 
 /**
- * Component interface.
+ * The Component interface declares a filtering method that will be implemented
+ * by all concrete components and decorators.
  */
 interface InputFormat
 {
@@ -24,7 +32,8 @@ interface InputFormat
 }
 
 /**
- * Concrete Component. Original text, as is, no filtering and formatting.
+ * The Concrete Component is a core element of decoration. It contains the
+ * original text, as is, without any filtering or formatting.
  */
 class TextInput implements InputFormat
 {
@@ -35,7 +44,11 @@ class TextInput implements InputFormat
 }
 
 /**
- * Decorator. Defines basic decoration interface.
+ * The base Decorator class doesn't contain any real filtering or formatting
+ * logic. Its main purpose is to implement the basic decoration infrastructure:
+ * a field for storing a wrapped component or another decorator and the basic
+ * formatting method that delegates the work to the wrapped object. The real
+ * formatting job is done in by subclasses.
  */
 class TextFormat implements InputFormat
 {
@@ -59,7 +72,7 @@ class TextFormat implements InputFormat
 }
 
 /**
- * Concrete Decorator. Filters all tags from text.
+ * This Concrete Decorator strips-out all HTML tags from the given text.
  */
 class PlainTextFilter extends TextFormat
 {
@@ -71,7 +84,8 @@ class PlainTextFilter extends TextFormat
 }
 
 /**
- * Concrete Decorator. Filters some of the tags from text.
+ * This Concrete Decorator strips only dangerous HTML tags and attributes that
+ * may lead to an XSS vulnerability.
  */
 class DangerousHTMLTagsFilter extends TextFormat
 {
@@ -104,7 +118,7 @@ class DangerousHTMLTagsFilter extends TextFormat
 }
 
 /**
- * Concrete Decorator. Basic markdown formatter.
+ * This Concrete Decorator provides a rudimentary Markdown → HTML conversion.
  */
 class MarkdownFormat extends TextFormat
 {
@@ -140,7 +154,10 @@ class MarkdownFormat extends TextFormat
 
 
 /**
- * Client code. Part of a real website that renders user-generated content.
+ * The client code might be a part of a real website, which renders user-
+ * generated content. Since it works with formatters through the Component
+ * interface, it doesn't really care whether it gets a simple component object
+ * or a decorated one.
  */
 function displayCommentAsAWebsite(InputFormat $format, string $text)
 {
@@ -152,9 +169,10 @@ function displayCommentAsAWebsite(InputFormat $format, string $text)
 }
 
 /**
- * Input formatters are very handy to deal with user-generated content.
- * Displaying it as is could be very dangerous, especially if anonymous users
- * can create it (such as comments).
+ * Input formatters are very handy when dealing with user-generated content.
+ * Displaying such content "as is" could be very dangerous, especially when
+ * anonymous users are able generate it (i.e. comments). Your website is not
+ * only risking getting tons of spammy links, but also exposed to XSS attacks.
  */
 $dangerousComment = <<<HERE
 Hello! Nice blog post!
