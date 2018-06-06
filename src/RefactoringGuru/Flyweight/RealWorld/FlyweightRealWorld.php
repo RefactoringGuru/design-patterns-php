@@ -9,10 +9,18 @@ namespace RefactoringGuru\Flyweight\RealWorld;
  * sharing common parts of the object state among multiple objects, instead of
  * keeping the entire state in each object.
  *
- * Example: In this example, the Flyweight pattern is used to minimize the RAM
- * usage of objects in an animal database of a cat-only veterinary clinic. Each
- * record in the database is represented by a Cat object. Its data consists of
- * two parts:
+ * Example: Before we begin, please note that real applications for the
+ * Flyweight pattern in PHP are pretty rare. This comes from a single-thread
+ * nature of PHP, where you're not supposed to be storing ALL of your
+ * application's objects in memory at the same time, in the same thread. While
+ * the idea for this example is only half-serious, and the whole RAM problem
+ * might be solved by structuring the app in a different way, it still
+ * demonstrates the concept of the pattern quite close to the real world.
+ * Alright, I've said it. Now, let's begin.
+ *
+ * In this example, the Flyweight pattern is used to minimize the RAM usage of
+ * objects in an animal database of a cat-only veterinary clinic. Each record in
+ * the database is represented by a Cat object. Its data consists of two parts:
  *
  * 1. Unique (extrinsic) data such as a pet's name, age and owner info.
  * 2. Shared (intrinsic) data such as a breed name, color, texture, etc.
@@ -25,84 +33,13 @@ namespace RefactoringGuru\Flyweight\RealWorld;
  */
 
 /**
- * Flyweight Factory. This class stores both contexts and flyweights objects,
- * effectively hiding any notion of flyweights from a client.
- */
-class CatDataBase
-{
-    /**
-     * @var Cat[] List of cat objects (contexts).
-     */
-    private $cats = [];
-
-    /**
-     * @var CatVariation[] List of cat variations (flyweights).
-     */
-    private $variations = [];
-
-    /**
-     * When adding a cat to the database, we look for an existing cat variation.
-     */
-    public function addCat($name, $age, $owner, $breed, $image, $color, $texture, $fur, $size)
-    {
-        $variation =
-            $this->getVariation($breed, $image, $color, $texture, $fur, $size);
-        $this->cats[] = new Cat($name, $age, $owner, $variation);
-        print("CatDataBase: Added a cat ($name, $breed).\n");
-    }
-
-    /**
-     * Return an existing variation by given data or create a new one if it
-     * doesn't exist yet.
-     *
-     * @return CatVariation
-     */
-    public function getVariation($breed, $image, $color, $texture, $fur, $size)
-    {
-        $key = $this->getKey(get_defined_vars());
-
-        if (! isset($this->variations[$key])) {
-            $this->variations[$key] =
-                new CatVariation($breed, $image, $color, $texture, $fur, $size);
-        }
-
-        return $this->variations[$key];
-    }
-
-    /**
-     * This function helps to generate unique array keys.
-     *
-     * @return string
-     */
-    private function getKey($data)
-    {
-        return md5(implode("_", $data));
-    }
-
-    /**
-     * Look for a cat in the database using the given query parameters.
-     *
-     * @param $query
-     * @return Cat
-     */
-    public function findCat($query)
-    {
-        foreach ($this->cats as $cat) {
-            if ($cat->matches($query)) {
-                return $cat;
-            }
-        }
-        print("CatDataBase: Sorry, your query does not yield any results.");
-    }
-}
-
-/**
- * Flyweight. Stores that data, shared by multiple cats.
+ * Flyweight objects represent the data, shared by multiple Cat objects. This is
+ * the combination of breed, color, texture, etc.
  */
 class CatVariation
 {
     /**
-     * Intrinsic state.
+     * The so called "intrinsic" state.
      */
     public $breed;
 
@@ -130,9 +67,25 @@ class CatVariation
      * Display the cat information. The method accepts extrinsic state as
      * arguments. The rest of the state is stored inside Flyweight's fields.
      *
-     * @param $name
-     * @param $age
-     * @param $owner
+     * You might be wondering why we had put the primary cat logic into the
+     * CatVariation class instead of keeping it in the Cat class. I agree, it
+     * does sound confusing.
+     *
+     * Keep in mind that in real world, the Flyweight pattern can either be
+     * implemented from the start or forced onto an existing application
+     * whenever the developers realize they've hit by a RAM problem.
+     *
+     * In later case, you end-up with the classes like we have here. We kind of
+     * "refactored" an ideal app where all the data was initially inside the Cat
+     * class. If we had implemented the Flyweight from the start, our class
+     * names might be different and less confusing, for example, Cat and
+     * CatContext.
+     *
+     * But the actual reason why the primary behavior should live in the
+     * Flyweight class is because you might not have the Context class declared
+     * at all. The context data might be stored in an array or some other more
+     * efficient data structure. You won't have an other place to put your
+     * methods in, except the Flyweight class.
      */
     public function renderProfile($name, $age, $owner)
     {
@@ -147,12 +100,16 @@ class CatVariation
 }
 
 /**
- * Context. Stores the data, unique for each cat.
+ * The context stores the data, unique for each cat.
+ *
+ * A designated class for storing context is optional and not always viable. The
+ * context may be stored inside a massive data structure within the Client code
+ * and passed to the flyweight methods when needed.
  */
 class Cat
 {
     /**
-     * Extrinsic state.
+     * The so called "extrinsic" state.
      */
     public $name;
 
@@ -174,6 +131,10 @@ class Cat
     }
 
     /**
+     * Since the Context objects don't own all of their state, sometimes you'll
+     * need to provide some convenience method, for example for comparing their
+     * data with other objects.
+     *
      * @param $query
      * @return bool
      */
@@ -197,7 +158,10 @@ class Cat
     }
 
     /**
-     * Context usually delegates most of the work to the Flyweight object.
+     * The Context might also define several shortcut methods, that delegate
+     * execution to the Flyweight object. These methods might be remnants of
+     * real methods, extracted to the Flyweight class during a massive
+     * refactoring to the Flyweight pattern.
      */
     public function render()
     {
@@ -206,14 +170,81 @@ class Cat
 }
 
 /**
- * Client code.
+ * The Flyweight Factory stores both the Context and Flyweight objects,
+ * effectively hiding any notion of the Flyweight pattern from the client.
+ */
+class CatDataBase
+{
+    /**
+     * The list of cat objects (Contexts).
+     */
+    private $cats = [];
+
+    /**
+     * The list of cat variations (Flyweights).
+     */
+    private $variations = [];
+
+    /**
+     * When adding a cat to the database, we look for an existing cat variation
+     * first.
+     */
+    public function addCat($name, $age, $owner, $breed, $image, $color, $texture, $fur, $size)
+    {
+        $variation =
+            $this->getVariation($breed, $image, $color, $texture, $fur, $size);
+        $this->cats[] = new Cat($name, $age, $owner, $variation);
+        print("CatDataBase: Added a cat ($name, $breed).\n");
+    }
+
+    /**
+     * Return an existing variation (Flyweight) by given data or create a new
+     * one if it doesn't exist yet.
+     */
+    public function getVariation($breed, $image, $color, $texture, $fur, $size): CatVariation
+    {
+        $key = $this->getKey(get_defined_vars());
+
+        if (! isset($this->variations[$key])) {
+            $this->variations[$key] =
+                new CatVariation($breed, $image, $color, $texture, $fur, $size);
+        }
+
+        return $this->variations[$key];
+    }
+
+    /**
+     * This function helps to generate unique array keys.
+     */
+    private function getKey($data): string
+    {
+        return md5(implode("_", $data));
+    }
+
+    /**
+     * Look for a cat in the database using the given query parameters.
+     */
+    public function findCat($query)
+    {
+        foreach ($this->cats as $cat) {
+            if ($cat->matches($query)) {
+                return $cat;
+            }
+        }
+        print("CatDataBase: Sorry, your query does not yield any results.");
+    }
+}
+
+/**
+ * The client code.
  */
 $db = new CatDataBase();
 
 print("Client: Let's see what we have in \"cats.csv\".\n");
 
 // To see the real effect of the pattern, the database should contain several
-// million of records.
+// million of records. Feel free to experiment with code to see the real extent
+// of the pattern.
 $handle = fopen(__DIR__."/cats.csv", "r");
 $row = 0;
 $columns = [];

@@ -9,34 +9,38 @@ namespace RefactoringGuru\Facade\RealWorld;
  * Facade defines a higher-level interface that makes the subsystem easier to
  * use.
  *
- * Example: Facades are simplicity adapters over complex code. They isolate
- * complexity within a single class and allow other application code to use
- * straightforward interface. In this example, facade hides from a client code
- * the complexity of Youtube API and ffmpeg library. Instead working with dozen
- * of classes, client uses one simple method of the facade.
+ * Example: Thinks of the Facade as a simplicity adapter for some complex code.
+ * The Facade isolates complexity within a single class and allows other
+ * application code to use straightforward interface.
+ *
+ * In this example, the Facade hides the complexity of YouTube API and ffmpeg
+ * library from the client code. Instead working with dozen of classes, the
+ * client uses a simple method on the Facade.
  */
 
 /**
- * Facade. Provides a simple interface for a single operations that uses complex
- * Youtube and FFMpeg subsystems.
+ * The Facade provides a single method for downloading videos from YouTube. This
+ * methods hides all the complexity of the PHP network layer, YouTube API and
+ * the video conversion library (ffmpeg).
  */
-class YoutubeDownloader
+class YouTubeDownloader
 {
     protected $youtube;
     protected $ffmpeg;
 
     /**
-     * Facade can manage lifecycle of subsystems it uses.
+     * It is handy when the Facade can manage the lifecycle of the subsystem it
+     * uses.
      */
     public function __construct(string $youtubeApiKey)
     {
-        $this->youtube = new Youtube($youtubeApiKey);
+        $this->youtube = new YouTube($youtubeApiKey);
         $this->ffmpeg = new FFMpeg();
     }
 
     /**
-     * Facade provides simple method for downloading video and encoding it to a
-     * target format (for the sake of simplicity, the real-world code is
+     * The Facade provides simple method for downloading video and encoding it
+     * to a target format (for the sake of simplicity, the real-world code is
      * commented).
      */
     public function downloadVideo(string $url)
@@ -67,9 +71,9 @@ class YoutubeDownloader
 }
 
 /**
- * Youtube API subsystem.
+ * The YouTube API subsystem.
  */
-class Youtube
+class YouTube
 {
     function fetchVideo() { /* ... */ }
 
@@ -79,7 +83,7 @@ class Youtube
 }
 
 /**
- * FFMpeg subsystem. Complex video/audio conversion library.
+ * The FFMpeg subsystem (a complex video/audio conversion library).
  */
 class FFMpeg
 {
@@ -107,11 +111,11 @@ class FFMpegVideo
 
 
 /**
- * Client code does not depend on any subsystem classes. Any changes inside
- * subsystem code won't affect the client code. You will only need to update the
- * facade.
+ * The client code does not depend on any subsystem's classes. Any changes
+ * inside the subsystem's code won't affect the client code. You will only need
+ * to update the Facade.
  */
-function clientCode(YoutubeDownloader $facade)
+function clientCode(YouTubeDownloader $facade)
 {
     // ...
 
@@ -120,5 +124,5 @@ function clientCode(YoutubeDownloader $facade)
     // ...
 }
 
-$facade = new YoutubeDownloader("APIKEY-XXXXXXXXX");
+$facade = new YouTubeDownloader("APIKEY-XXXXXXXXX");
 clientCode($facade);

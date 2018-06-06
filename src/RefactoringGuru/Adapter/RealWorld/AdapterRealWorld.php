@@ -30,8 +30,8 @@ interface Notification
  * Here's an example of the existing class that follows the Target interface.
  *
  * The truth is that many real apps may not have this interface clearly defined.
- * If you're in that boat, your first bet would be to just extend an Adapter
- * from one of your existing application classes. If that's awkward (for
+ * If you're in that boat, your first bet would be to just extend the Adapter
+ * from one of your existing application's classes. If that's awkward (for
  * instance, SlackNotification doesn't feel as a subclass of EmailNotification),
  * then extracting an interface should be your first step.
  */

@@ -1,11 +1,10 @@
 Executing client code with real subject:
-Downloading file from Internet...
-Downloaded chars: 1270
-Downloading file from Internet...
-Downloaded chars: 1270
+Downloading a file from the Internet.
+Downloaded bytes: 1270
+Downloading a file from the Internet.
+Downloaded bytes: 1270
 
 Executing the same client code with a proxy:
-CacheProxy MISS. Downloading file from Internet...
-Downloaded chars: 1270
-CacheProxy HIT. Retrieving result from cache...
-Downloaded chars: 1270
+CacheProxy MISS. Downloading a file from the Internet.
+Downloaded bytes: 1270
+CacheProxy HIT. Retrieving result from cache.

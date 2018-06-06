@@ -11,6 +11,29 @@ namespace RefactoringGuru\Flyweight\Structural;
  */
 
 /**
+ * The Flyweight stores a common portion of the state (also called intrinsic
+ * state) that belongs to multiple real business entities. The Flyweight accepts
+ * the rest of the state (extrinsic state, unique for each entity) via its
+ * method parameters.
+ */
+class Flyweight
+{
+    private $sharedState;
+
+    public function __construct($sharedState)
+    {
+        $this->sharedState = $sharedState;
+    }
+
+    public function operation($uniqueState)
+    {
+        $s = json_encode($this->sharedState);
+        $u = json_encode($uniqueState);
+        print("Flyweight: Displaying shared ($s) and unique ($u) state.\n");
+    }
+}
+
+/**
  * The Flyweight Factory creates and manages the Flyweight objects. It ensures
  * that flyweights are shared correctly. When the client requests a flyweight,
  * the factory either returns an existing instance or creates a new one, if it
@@ -70,29 +93,6 @@ class FlyweightFactory
         foreach ($this->flyweights as $key => $flyweight) {
             print($key."\n");
         }
-    }
-}
-
-/**
- * The Flyweight stores a common portion of the state (also called intrinsic
- * state) that belongs to multiple real business entities. The Flyweight accepts
- * the rest of the state (extrinsic state, unique for each entity) via its
- * method parameters.
- */
-class Flyweight
-{
-    private $sharedState;
-
-    public function __construct($sharedState)
-    {
-        $this->sharedState = $sharedState;
-    }
-
-    public function operation($uniqueState)
-    {
-        $s = json_encode($this->sharedState);
-        $u = json_encode($uniqueState);
-        print("Flyweight: Displaying shared ($s) and unique ($u) state.\n");
     }
 }
 

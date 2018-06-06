@@ -8,13 +8,18 @@ namespace RefactoringGuru\Proxy\RealWorld;
  * Intent: Provide a surrogate or placeholder for another object to control
  * access to the original object or to add other responsibilities.
  *
- * Example: There are dozens of ways proxies can be used: caching, logging,
- * access control, delayed initialization, etc. This example shows how proxy can
- * improve a some real object by caching its results.
+ * Example: There are countless ways proxies can be used: caching, logging,
+ * access control, delayed initialization, etc. This example demonstrates how
+ * the Proxy pattern can improve the performance of a downloader object by
+ * caching its results.
  */
 
 /**
- * Subject. Defines the downloading interface.
+ * The Subject interface describes the interface of a real object.
+ *
+ * The truth is that many real apps may not have this interface clearly defined.
+ * If you're in that boat, your first bet would be to just extend the Proxy
+ * from one of your existing application classes. If that's awkward, then extracting a proper interface should be your first step.
  */
 interface Downloader
 {
@@ -22,20 +27,23 @@ interface Downloader
 }
 
 /**
- * Real Subject. Downloads a web page.
+ * The Real Subject does the real job, albeit not in most efficient way. When a client requests the download of the same file for the second time, our download just re-downloads instead of fetching from a cache.
  */
 class SimpleDownloader implements Downloader
 {
     public function download(string $url): string
     {
-        print("Downloading file from Internet...\n");
-        return file_get_contents($url);
+        print("Downloading a file from the Internet.\n");
+        $result = file_get_contents($url);
+        print("Downloaded bytes: " . strlen($result) . "\n");
+        return $result;
     }
 }
 
 /**
- * Proxy. Caches the download result and serves it on subsequent requests
- * instead of downloading it again.
+ * The Proxy class is our attempt to make the download more efficient. It wraps the real downloader object and delegates it the first download calls. The result is then cached, so that subsequent calls would return an existing file instead of downloading it again.
+ *
+ * Note that the Proxy MUST implement the same interface as the Real Subject.
  */
 class CachingDownloader implements Downloader
 {
@@ -61,27 +69,27 @@ class CachingDownloader implements Downloader
             $result = $this->downloader->download($url);
             $this->cache[$url] = $result;
         } else {
-            print("CacheProxy HIT. Retrieving result from cache...\n");
+            print("CacheProxy HIT. Retrieving result from cache.\n");
         }
         return $this->cache[$url];
     }
 }
 
 /**
- * Client code may issue several equal download requests. In this case caching
- * proxy can save time and traffic by serving results from cache.
+ * The client code may issue several equal download requests. In this case caching
+ * proxy saves time and traffic by serving results from cache.
+ *
+ * The client is unaware that it works with a proxy, because it works with downloaders via the abstract interface.
  */
 function clientCode(Downloader $subject)
 {
     // ...
 
     $result = $subject->download("http://example.com/");
-    print("Downloaded chars: " . strlen($result) . "\n");
 
     // Duplicate download requests could be cached for a speed gain.
 
     $result = $subject->download("http://example.com/");
-    print("Downloaded chars: " . strlen($result) . "\n");
 
     // ...
 }

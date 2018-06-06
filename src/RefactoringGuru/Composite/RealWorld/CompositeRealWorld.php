@@ -27,10 +27,16 @@ namespace RefactoringGuru\Composite\RealWorld;
  */
 
 /**
- * Base Component.
+ * The base Component class declares interface for all concrete components, both
+ * simple and complex.
+ *
+ * In or example we're be focusing on the rendering behavior of DOM elements.
  */
 abstract class FormElement
 {
+    /**
+     * We can anticipate that all DOM elements require these 3 fields.
+     */
     protected $name;
     protected $title;
     protected $data;
@@ -56,11 +62,15 @@ abstract class FormElement
         return $this->data;
     }
 
+    /**
+     * Each DOM element will provide its own rendering implementation, but we
+     * can safely assume that all of them will be returning strings.
+     */
     public abstract function render(): string;
 }
 
 /**
- * Leaf.
+ * This is a Leaf component. Like all the Leaves, it can't have any children.
  */
 class Input extends FormElement
 {
@@ -72,6 +82,11 @@ class Input extends FormElement
         $this->type = $type;
     }
 
+    /**
+     * Since Leaf components don't have any children that may handle the bulk of
+     * the work for them, usually its Leaves who do the most of the heavy-
+     * lifting within the Composite pattern.
+     */
     public function render(): string
     {
         return "<label for=\"{$this->name}\">{$this->title}</label>\n" .
@@ -80,7 +95,8 @@ class Input extends FormElement
 }
 
 /**
- * Base Composite.
+ * The base Composite class implements the infrastructure for managing child
+ * objects, reused by all Concrete Composites.
  */
 abstract class FieldComposite extends FormElement
 {
@@ -89,6 +105,9 @@ abstract class FieldComposite extends FormElement
      */
     protected $fields = [];
 
+    /**
+     * The methods for adding/removing sub-objects.
+     */
     public function add(FormElement $field)
     {
         $name = $field->getName();
@@ -102,6 +121,14 @@ abstract class FieldComposite extends FormElement
         });
     }
 
+    /**
+     * Whereas a Leaf's method can just do the job, the Composite's method
+     * almost always has to take its sub-objects into account.
+     *
+     * In this case, the composite can accept structured data.
+     *
+     * @param array $data
+     */
     public function setData($data)
     {
         foreach ($this->fields as $name => $field) {
@@ -111,6 +138,10 @@ abstract class FieldComposite extends FormElement
         }
     }
 
+    /**
+     * The same logic applies to the getter. It returns the structured data of
+     * the composite itself, plus all the children data.
+     */
     public function getData()
     {
         $data = [];
@@ -120,7 +151,11 @@ abstract class FieldComposite extends FormElement
         return $data;
     }
 
-
+    /**
+     * The base implementation of rendering combines rendering results of all
+     * children. Concrete Composites will be able to reuse this implementation
+     * in their real rendering implementations.
+     */
     public function render(): string
     {
         $output = "";
@@ -132,19 +167,21 @@ abstract class FieldComposite extends FormElement
 }
 
 /**
- * Fieldset is a composite.
+ * The fieldset element is a Concrete Composite.
  */
 class Fieldset extends FieldComposite
 {
     public function render(): string
     {
+        // Note how the combined rendering result of children is incorporated
+        // into the fieldset tag.
         $output = parent::render();
         return "<fieldset><legend>{$this->title}</legend>\n$output</fieldset>\n";
     }
 }
 
 /**
- * So as the complete form.
+ * So as the form element.
  */
 class Form extends FieldComposite
 {
@@ -164,7 +201,8 @@ class Form extends FieldComposite
 }
 
 /**
- * Client code gets convenient interface to build complex tree structure.
+ * The client code gets convenient interface for building complex tree
+ * structures.
  */
 function getProductForm(): FormElement
 {
@@ -181,9 +219,9 @@ function getProductForm(): FormElement
 }
 
 /**
- * Form structure can be filled with data from various sources. Client doesn't
- * have to traverse through form fields to assign data to various fields, the
- * form itself will handle that.
+ * The form structure can be filled with data from various sources. The Client
+ * doesn't have to traverse through all form fields to assign data to various
+ * fields, since the form itself can handle that.
  */
 function loadProductData(FormElement $form)
 {
@@ -200,8 +238,9 @@ function loadProductData(FormElement $form)
 }
 
 /**
- * Client code works with form elements using a base interface. This way it
- * doesn't matter whether it is simple component or a complex composite tree.
+ * The client code can work with form elements using the abstract interface.
+ * This way it doesn't matter whether the client works with a simple component
+ * or a complex composite tree.
  */
 function renderProduct(FormElement $form)
 {
