@@ -26,8 +26,7 @@ namespace RefactoringGuru\Mediator\RealWorld;
  * subscription interface.
  *
  * Note, we can't use the PHP's built-in Subject/Observer interfaces here
- * because our subscription methods allow subscribing to the entire event
- * groups.
+ * because we'll be stretching them too far from what they were designed for.
  */
 class EventDispatcher
 {

@@ -9,22 +9,27 @@ namespace RefactoringGuru\Observer\RealWorld;
  * object changes state, all of its dependents are notified and updated
  * automatically.
  *
- * Example: In this example the Observer pattern allows objects to observe the
- * events that happen inside a user repository of an app. The repository lets
- * observers listen for all events types, as well as only for the specific ones.
+ * Example: In this example the Observer pattern allows various objects to
+ * observe events that are happening inside an user repository of an app.
+ *
+ * The repository emits various type of events and allows observers to listen to
+ * all of them, as well as only individual ones.
  */
 
 /**
- * Subject.
+ * The UserRepository represents a Subject. Various objects are interested in
+ * tracking it's internal state, whether it's adding new user or removing one.
  */
 class UserRepository implements \SplSubject
 {
     /**
-     * @var array List of application's users.
+     * @var array The list of users.
      */
     private $users = [];
 
-    // The Observer management infrastructure.
+    // Here goes the actual Observer management infrastructure. Note that it's
+    // not everything that our class is responsible for. It's primary business
+    // logic is listed below these methods.
 
     /**
      * @var array
@@ -77,7 +82,7 @@ class UserRepository implements \SplSubject
         }
     }
 
-    // These methods represent the business logic of the class.
+    // Here are the methods representing the business logic of the class.
 
     public function initialize($filename)
     {
@@ -135,7 +140,7 @@ class UserRepository implements \SplSubject
 }
 
 /**
- * The User class is trivial since it's not the central part of the example.
+ * Let's keep the User class trivial, since it's not the focus of our example.
  */
 class User
 {
@@ -148,7 +153,7 @@ class User
 }
 
 /**
- * Concrete Subscriber.
+ * This Concrete Component logs any events it's subscribed to.
  */
 class Logger implements \SplObserver
 {
@@ -172,7 +177,8 @@ class Logger implements \SplObserver
 }
 
 /**
- * Concrete Subscriber.
+ * This Concrete Component sends initial instructions to new users. The client
+ * is responsible for attaching this component to a proper user creation event.
  */
 class OnboardingNotification implements \SplObserver
 {
@@ -194,7 +200,7 @@ class OnboardingNotification implements \SplObserver
 }
 
 /**
- * Client code.
+ * The client code.
  */
 
 $repository = new UserRepository();

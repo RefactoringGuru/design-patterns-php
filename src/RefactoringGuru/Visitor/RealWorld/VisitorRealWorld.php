@@ -9,14 +9,20 @@ namespace RefactoringGuru\Visitor\RealWorld;
  * structure. The Visitor pattern lets you define a new operation without
  * changing the classes of the elements on which it operates.
  *
- * Example: In this example the Visitor pattern helps to introduces a reporting
- * feature into an existing object hierarchy Company > Department > Employee.
- * Other similar behaviors can be added into the program without changing the
- * actual classes of the hierarchy.
+ * Example: In this example the Visitor pattern helps to introduce a reporting
+ * feature into an existing class hierarchy:
+ *
+ * Company > Department > Employee
+ *
+ * Once the Visitor infrastructure is added to the app, you can easily add other
+ * similar behaviors to the app, without changing the existing classes.
  */
 
 /**
- * Component Interface.
+ * The Component interface declares a method of accepting visitor objects.
+ *
+ * In this method a Concrete Component must call a specific Visitor's method
+ * that has the same parameter type as that component.
  */
 interface Entity
 {
@@ -24,7 +30,7 @@ interface Entity
 }
 
 /**
- * Concrete Component.
+ * The Company Concrete Component.
  */
 class Company implements Entity
 {
@@ -55,12 +61,14 @@ class Company implements Entity
 
     public function accept(Visitor $visitor)
     {
+        // See, the Company component must call the visitCompany method. The
+        // same principle applies to all components.
         return $visitor->visitCompany($this);
     }
 }
 
 /**
- * Concrete Component.
+ * The Department Concrete Component.
  */
 class Department implements Entity
 {
@@ -106,7 +114,7 @@ class Department implements Entity
 }
 
 /**
- * Concrete Component.
+ * The Employee Concrete Component.
  */
 class Employee implements Entity
 {
@@ -147,7 +155,8 @@ class Employee implements Entity
 }
 
 /**
- * Visitor Interface.
+ * The Visitor interface declares a set of visiting methods for each of the
+ * Concrete Component classes.
  */
 interface Visitor
 {
@@ -159,7 +168,8 @@ interface Visitor
 }
 
 /**
- * Concrete Visitor.
+ * The Concrete Visitor must provide implementations for every single class of
+ * the Concrete Components.
  */
 class SalaryReport implements Visitor
 {
@@ -203,7 +213,7 @@ class SalaryReport implements Visitor
 }
 
 /**
- * Client code.
+ * The client code.
  */
 
 $mobileDev = new Department("Mobile Development", [

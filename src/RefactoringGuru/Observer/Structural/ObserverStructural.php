@@ -12,6 +12,7 @@ namespace RefactoringGuru\Observer\Structural;
  * Note that there's a lot of different terms with similar meaning associated
  * with this pattern. Just remember that the Subject is also called the
  * Publisher and the Observer is often called the Subscriber and vice versa.
+ * Also the verbs "observe", "listen" or "track" usually mean the same thing.
  */
 
 /**
