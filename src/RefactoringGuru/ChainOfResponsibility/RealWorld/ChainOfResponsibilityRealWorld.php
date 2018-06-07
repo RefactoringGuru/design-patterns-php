@@ -5,9 +5,9 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
 /**
  * Chain of Responsibility Design Pattern
  *
- * Intent: Avoid coupling the sender of a request to its receiver by giving more
+ * Intent: Avoid coupling a sender of a request to its receiver by giving more
  * than one object a chance to handle the request. Chain the receiving objects
- * and pass the request along the chain until an object handles it.
+ * and then pass the request through the chain until some receiver handles it.
  *
  * Example: In this example, the Chain of Responsibility pattern helps to
  * structure authentication and authorization as a chain and execute them one by

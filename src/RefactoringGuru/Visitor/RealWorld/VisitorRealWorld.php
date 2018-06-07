@@ -5,9 +5,9 @@ namespace RefactoringGuru\Visitor\RealWorld;
 /**
  * Visitor Design Pattern
  *
- * Intent: Represent an operation to be performed on the elements of an object
- * structure. Visitor lets you define a new operation without changing the
- * classes of the elements on which it operates.
+ * Intent: Represent an operation to be performed over elements of an object
+ * structure. The Visitor pattern lets you define a new operation without
+ * changing the classes of the elements on which it operates.
  *
  * Example: In this example the Visitor pattern helps to introduces a reporting
  * feature into an existing object hierarchy Company > Department > Employee.

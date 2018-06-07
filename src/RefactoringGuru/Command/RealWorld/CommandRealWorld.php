@@ -6,8 +6,8 @@ namespace RefactoringGuru\Command\RealWorld;
  * Command Design Pattern
  *
  * Intent: Encapsulate a request as an object, thereby letting you parameterize
- * clients with different requests, queue or log requests, and support undoable
- * operations.
+ * clients with different requests (e.g. queue or log requests) and support
+ * undoable operations.
  *
  * Example: In this example the Command pattern is used to queue web scrapping
  * calls to IMDB website and execute them one by one. The queue itself is kept

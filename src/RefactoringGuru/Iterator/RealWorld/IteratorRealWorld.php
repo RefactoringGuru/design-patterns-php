@@ -5,7 +5,7 @@ namespace RefactoringGuru\Iterator\RealWorld;
 /**
  * Iterator Design Pattern
  *
- * Intent: Provide a way to access the elements of an aggregate objects without
+ * Intent: Provide a way to access the elements of an aggregate object without
  * exposing its underlying representation.
  *
  * Example: The Iterator pattern allows easy access to CSV files.
