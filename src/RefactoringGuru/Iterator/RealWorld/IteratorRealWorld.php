@@ -8,7 +8,11 @@ namespace RefactoringGuru\Iterator\RealWorld;
  * Intent: Provide a way to access the elements of an aggregate object without
  * exposing its underlying representation.
  *
- * Example: The Iterator pattern allows easy access to CSV files.
+ * Example: Since PHP already has a built-in Iterator interface, which provides
+ * a very convenient integration with foreach loops, it is very easy to create
+ * your own iterators for traversing almost every imaginable data structure.
+ *
+ * This example of the Iterator pattern provides an easy access to CSV files.
  */
 
 /**
@@ -21,7 +25,7 @@ class CsvIterator implements \Iterator
     const ROW_SIZE = 4096;
 
     /**
-     * The pointer to the cvs file.
+     * The pointer to the CSV file.
      *
      * @var resource
      */
@@ -49,7 +53,7 @@ class CsvIterator implements \Iterator
     protected $delimiter = null;
 
     /**
-     * The constructor tries to open the csv file. It throws an exception on a
+     * The constructor tries to open the CSV file. It throws an exception on a
      * failure.
      *
      * @param string $file The csv file.
@@ -77,9 +81,9 @@ class CsvIterator implements \Iterator
     }
 
     /**
-     * This method returns the current csv row as a 2 dimensional array
+     * This method returns the current csv row as a 2 dimensional array.
      *
-     * @return array The current csv row as a 2 dimensional array
+     * @return array The current csv row as a 2 dimensional array.
      */
     public function current()
     {
@@ -92,7 +96,7 @@ class CsvIterator implements \Iterator
     /**
      * This method returns the current row number.
      *
-     * @return int The current row number
+     * @return int The current row number.
      */
     public function key()
     {
@@ -133,7 +137,7 @@ class CsvIterator implements \Iterator
 }
 
 /**
- * Client code.
+ * The client code.
  */
 $csv = new CsvIterator(__DIR__ . '/cats.csv');
 

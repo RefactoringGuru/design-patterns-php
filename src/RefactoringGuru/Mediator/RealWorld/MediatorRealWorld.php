@@ -10,18 +10,24 @@ namespace RefactoringGuru\Mediator\RealWorld;
  * other explicitly, and it lets you vary their interaction independently.
  *
  * Example: In this example the Mediator pattern expands the idea of the
- * Observer pattern by providing a central event dispatcher, which lets any
- * object track & trigger events in other objects without depending on their
+ * Observer pattern by providing a centralized event dispatcher. It allows any
+ * object to track & trigger events in other objects without depending on their
  * classes.
  */
 
 /**
- * The Event Dispatcher class acts as the Mediator and contains the subscription
- * and notification logic. While the classic Mediator may depend on the concrete
- * components, this one is tied only to the abstract interfaces. Such level of
- * indirection was possible to achieve because all connections between the
- * components are established by their own objects or by the client code via
- * subscription methods.
+ * The Event Dispatcher class acts as a Mediator and contains the subscription
+ * and notification logic. While a classic Mediator often depends on concrete
+ * component classes, this one is only tied to their abstract interfaces.
+ *
+ * We were able to achieve this level of indirection thanks to the way the
+ * connections between components are established. The components themselves may
+ * subscribe to specific events that they are interested in via Mediator's
+ * subscription interface.
+ *
+ * Note, we can't use the PHP's built-in Subject/Observer interfaces here
+ * because our subscription methods allow subscribing to the entire event
+ * groups.
  */
 class EventDispatcher
 {
@@ -100,10 +106,10 @@ interface Observer
 }
 
 /**
- * Unlike our example of the Observer pattern, this example makes the
- * UserRepository act as a regular component that doesn't have any special
- * event-related methods. Like any other component, this class relies on the
- * EventDispatcher to broadcast its own events and listen for the other ones.
+ * Unlike our Observer pattern example, this example makes the UserRepository
+ * act as a regular component that doesn't have any special event-related
+ * methods. Like any other component, this class relies on the EventDispatcher
+ * to broadcast its own events and listen for the other ones.
  *
  * @see \RefactoringGuru\Observer\RealWorld\UserRepository
  */
@@ -202,7 +208,7 @@ class UserRepository implements Observer
 }
 
 /**
- * The User class is trivial since it's not the central part of the example.
+ * Let's keep the User class trivial, since it's not the focus of our example.
  */
 class User
 {
@@ -224,7 +230,7 @@ class User
 }
 
 /**
- * Concrete Component.
+ * This Concrete Component logs any events it's subscribed to.
  */
 class Logger implements Observer
 {
@@ -248,7 +254,8 @@ class Logger implements Observer
 }
 
 /**
- * Concrete Component.
+ * This Concrete Component sends initial instructions to new users. The client
+ * is responsible for attaching this component to a proper user creation event.
  */
 class OnboardingNotification implements Observer
 {
@@ -270,7 +277,7 @@ class OnboardingNotification implements Observer
 }
 
 /**
- * Client code.
+ * The client code.
  */
 
 $repository = new UserRepository();
