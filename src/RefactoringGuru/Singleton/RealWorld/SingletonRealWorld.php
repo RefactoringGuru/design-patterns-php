@@ -9,9 +9,9 @@ namespace RefactoringGuru\Singleton\RealWorld;
  * of access to it.
  *
  * Example: The Singleton pattern is notorious for limiting code reuse and
- * complicating unit testing. However it is still very useful in some cases. In
+ * complicating unit testing. However, it is still very useful in some cases. In
  * particular, it's handy when you need control some shared resources. For
- * example, a global logging object that have to control the access to a log
+ * example, a global logging object that has to control the access to a log
  * file. Another good example: a shared runtime configuration storage.
  */
 
@@ -23,20 +23,20 @@ namespace RefactoringGuru\Singleton\RealWorld;
 class Singleton
 {
     /**
-     * The actual singleton's instance almost always reside inside a static
-     * field. In this case, the static field is an array, where each subclasses
-     * of the Singleton stores its own instance.
+     * The actual singleton's instance almost always resides inside a static
+     * field. In this case, the static field is an array, where each subclass of
+     * the Singleton stores its own instance.
      */
     private static $instances = array();
 
     /**
-     * Singleton's constructor should not be public. But it can't be private
-     * either, if we want to allow subclassing.
+     * Singleton's constructor should not be public. However, it can't be
+     * private either if we want to allow subclassing.
      */
     protected function __construct() { }
 
     /**
-     * Cloning and unserialization is not permitted for singletons.
+     * Cloning and unserialization are not permitted for singletons.
      */
     protected function __clone() { }
 
@@ -53,8 +53,8 @@ class Singleton
         $subclass = get_called_class();
         if (!isset(self::$instances[$subclass])) {
             // Note that here we use the "static" keyword instead of the actual
-            // class name. In this context the "static" keyword means "the name
-            // of the current class". That detail is important because when the
+            // class name. In this context, the "static" keyword means "the name
+            // of the current class." That detail is important because when the
             // method is called on the subclass, we want an instance of that
             // subclass to be created here.
             self::$instances[$subclass] = new static;
@@ -64,11 +64,10 @@ class Singleton
 }
 
 /**
- * The logging class is most known and appreciated application of the Singleton
- * pattern. In most cases, you need a single logging object that writes to a
- * single log file (control over shared resource). You also need a convenient
- * way to access that instance from any context of you app (global access
- * point).
+ * The logging class is most known and appreciated use of the Singleton pattern.
+ * In most cases, you need a single logging object that writes to a single log
+ * file (control over shared resource). You also need a convenient way to access
+ * that instance from any context of your app (global access point).
  */
 class Logger extends Singleton
 {
@@ -79,7 +78,7 @@ class Logger extends Singleton
 
     /**
      * Since the Singleton's constructor is called only once, just a single file
-     * resource will be opened at all times.
+     * resource is opened at all times.
      *
      * Note, for the sake of simplicity we open the console stream instead of
      * the actual file here.

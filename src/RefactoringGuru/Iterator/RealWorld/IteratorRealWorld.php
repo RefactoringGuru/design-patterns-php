@@ -12,7 +12,7 @@ namespace RefactoringGuru\Iterator\RealWorld;
  * a very convenient integration with foreach loops, it is very easy to create
  * your own iterators for traversing almost every imaginable data structure.
  *
- * This example of the Iterator pattern provides an easy access to CSV files.
+ * This example of the Iterator pattern provides easy access to CSV files.
  */
 
 /**
@@ -32,7 +32,7 @@ class CsvIterator implements \Iterator
     protected $filePointer = null;
 
     /**
-     * The current element, which will be returned on each iteration.
+     * The current element, which is returned on each iteration.
      *
      * @var array
      */
@@ -46,17 +46,17 @@ class CsvIterator implements \Iterator
     protected $rowCounter = null;
 
     /**
-     * The delimiter for the csv file.
+     * The delimiter for the CSV file.
      *
      * @var string
      */
     protected $delimiter = null;
 
     /**
-     * The constructor tries to open the CSV file. It throws an exception on a
+     * The constructor tries to open the CSV file. It throws an exception on
      * failure.
      *
-     * @param string $file The csv file.
+     * @param string $file The CSV file.
      * @param string $delimiter The delimiter.
      *
      * @throws \Exception
@@ -81,9 +81,9 @@ class CsvIterator implements \Iterator
     }
 
     /**
-     * This method returns the current csv row as a 2 dimensional array.
+     * This method returns the current CSV row as a 2-dimensional array.
      *
-     * @return array The current csv row as a 2 dimensional array.
+     * @return array The current CSV row as a 2-dimensional array.
      */
     public function current()
     {

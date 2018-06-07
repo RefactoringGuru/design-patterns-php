@@ -9,21 +9,21 @@ namespace RefactoringGuru\Decorator\RealWorld;
  * Decorators provide a flexible alternative to subclassing for extending
  * functionality.
  *
- * Example: In this example the Decorator pattern helps you to construct complex
- * text filtering rules to clean-up content before rendering it on a web page.
- * Different types of content, such as comments, forum posts or private messages
- * require different sets of filters.
+ * Example: In this example, the Decorator pattern helps you to construct
+ * complex text filtering rules to clean-up content before rendering it on a web
+ * page. Different types of content, such as comments, forum posts or private
+ * messages require different sets of filters.
  *
  * For example, while you'd want to strip-out all HTML from the comments, you
- * might still want to keep some basic HTML tags in forum posts. In addition,
- * you may want to allow posting in Markdown format, which shall be processed
- * before any HTMl filtering takes place. All these filtering rules can be
- * represented as separate decorator classes, which can be stacked in a
- * different way, depending on the nature of the content you have.
+ * might still want to keep some basic HTML tags in forum posts. Also, you may
+ * want to allow posting in Markdown format, which shall be processed before any
+ * HTML filtering takes place. All these filtering rules can be represented as
+ * separate decorator classes, which can be stacked differently, depending on
+ * the nature of the content you have.
  */
 
 /**
- * The Component interface declares a filtering method that will be implemented
+ * The Component interface declares a filtering method that must be implemented
  * by all concrete components and decorators.
  */
 interface InputFormat
@@ -156,8 +156,8 @@ class MarkdownFormat extends TextFormat
 /**
  * The client code might be a part of a real website, which renders user-
  * generated content. Since it works with formatters through the Component
- * interface, it doesn't really care whether it gets a simple component object
- * or a decorated one.
+ * interface, it doesn't care whether it gets a simple component object or a
+ * decorated one.
  */
 function displayCommentAsAWebsite(InputFormat $format, string $text)
 {
@@ -171,8 +171,8 @@ function displayCommentAsAWebsite(InputFormat $format, string $text)
 /**
  * Input formatters are very handy when dealing with user-generated content.
  * Displaying such content "as is" could be very dangerous, especially when
- * anonymous users are able generate it (i.e. comments). Your website is not
- * only risking getting tons of spammy links, but also exposed to XSS attacks.
+ * anonymous users can generate it (i.e., comments). Your website is not only
+ * risking getting tons of spammy links but also exposed to XSS attacks.
  */
 $dangerousComment = <<<HERE
 Hello! Nice blog post!
@@ -200,8 +200,8 @@ print("\n\n\n");
 
 
 /**
- * Decorator allows to stack multiple input formats to get a fine-grained
- * control over the rendered content.
+ * Decorator allows stacking multiple input formats to get fine-grained control
+ * over the rendered content.
  */
 $dangerousForumPost = <<<HERE
 # Welcome

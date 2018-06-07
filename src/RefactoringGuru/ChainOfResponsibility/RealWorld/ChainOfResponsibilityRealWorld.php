@@ -10,17 +10,17 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  * and then pass the request through the chain until some receiver handles it.
  *
  * Example: The most widely known use of the Chain of Responsibility (CoR)
- * pattern in PHP world are request middleware. They are implemented by most
- * popular PHP frameworks and even got standardized as part of PSR-15.
+ * pattern in PHP world are HTTP request middleware. They are implemented by
+ * most popular PHP frameworks and even got standardized as part of PSR-15.
  *
- * It works like this: an HTTP request must pass though a stack of middleware
- * objects in order be handled by the app. Each middleware can either reject the
- * further processing of the request or pass it to the next middleware. Once the
- * request successfully passes all middleware, the primary handler of the app
- * can finally handle it.
+ * It works like this: an HTTP request must pass through a stack of middleware
+ * objects in order to be handled by the app. Each middleware can either reject
+ * the further processing of the request or pass it to the next middleware. Once
+ * the request successfully passes all middleware, the primary handler of the
+ * app can finally handle it.
  *
  * You might have noticed that this approach is kind of inverse to the original
- * intent of the pattern. Indeed, in the classic implementation a request is
+ * intent of the pattern. Indeed, in the typical implementation, a request is
  * only passed along a chain if a current handler CANNOT process it, while a
  * middleware passes the request further down the chain when it thinks that the
  * app CAN handle the request. Nevertheless, since middleware are chained, the
@@ -33,8 +33,8 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  * middleware and a final application's handler, which is executed when a
  * request gets through all the middleware objects.
  *
- * The base Middleware class declares interface for linking middleware objects
- * into a chain.
+ * The base Middleware class declares an interface for linking middleware
+ * objects into a chain.
  */
 abstract class Middleware
 {
@@ -136,7 +136,7 @@ class ThrottlingMiddleware extends Middleware
     }
 
     /**
-     * Please, not that the parent::check call can be inserted both in the
+     * Please, not that the parent::check call can be inserted both at the
      * beginning of this method and in the end.
      *
      * This gives much more flexibility than a simple loop over all middleware
@@ -162,9 +162,9 @@ class ThrottlingMiddleware extends Middleware
 }
 
 /**
- * This is an application's class, that acts as a real handler. The Server class
+ * This is an application's class that acts as a real handler. The Server class
  * uses the CoR pattern to execute a set of various authentication middleware
- * prior to launching some business logic associated with a request.
+ * before launching some business logic associated with a request.
  */
 class Server
 {

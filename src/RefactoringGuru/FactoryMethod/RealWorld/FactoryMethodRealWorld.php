@@ -9,21 +9,11 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
  * which class to instantiate. Factory Method lets a class defer instantiation
  * to subclasses.
  *
- * Example: In this example the Factory Method pattern provides an interface for
- * creating social network connectors, which can be used to log in to the
+ * Example: In this example, the Factory Method pattern provides an interface
+ * for creating social network connectors, which can be used to log in to the
  * network, create posts and potentially perform other activities—and all of
  * this without coupling the client code to specific classes of the particular
  * social network.
- *
- * Instead of calling constructor of social network connectors directly, there
- * is a special method All social network connectors follow the same interface,
- * which lets the client treat any connector it gets from the factory method in
- * the same way.
- *
- * To add a new social network support to the program, you'll need implement a
- * new connector subclass to create a new Creator's subclass, which will be
- * creating a connector object  and after that create a different social
- * connector object in it.
  */
 
 /**
@@ -33,7 +23,7 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
  * - Before: $p = new FacebookConnector()
  * - After: $p = $this->getSocialNetwork()
  *
- * This allows changing the type the product being created by
+ * This allows changing the type of the product being created by
  * SocialNetworkPoster's subclasses.
  */
 abstract class SocialNetworkPoster
@@ -63,7 +53,7 @@ abstract class SocialNetworkPoster
 
 /**
  * This Concrete Creator supports Facebook. Remember, that this class also
- * inherits the 'post' method from the parent class. Theses are the classes that
+ * inherits the 'post' method from the parent class. These are the classes that
  * the Client actually uses.
  */
 class FacebookPoster extends SocialNetworkPoster

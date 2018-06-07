@@ -10,15 +10,15 @@ namespace RefactoringGuru\Observer\RealWorld;
  * automatically.
  *
  * Example: In this example the Observer pattern allows various objects to
- * observe events that are happening inside an user repository of an app.
+ * observe events that are happening inside a user repository of an app.
  *
- * The repository emits various type of events and allows observers to listen to
- * all of them, as well as only individual ones.
+ * The repository emits various types of events and allows observers to listen
+ * to all of them, as well as only individual ones.
  */
 
 /**
  * The UserRepository represents a Subject. Various objects are interested in
- * tracking it's internal state, whether it's adding new user or removing one.
+ * tracking it's internal state, whether it's adding a new user or removing one.
  */
 class UserRepository implements \SplSubject
 {
@@ -28,7 +28,7 @@ class UserRepository implements \SplSubject
     private $users = [];
 
     // Here goes the actual Observer management infrastructure. Note that it's
-    // not everything that our class is responsible for. It's primary business
+    // not everything that our class is responsible for. Its primary business
     // logic is listed below these methods.
 
     /**
@@ -38,7 +38,8 @@ class UserRepository implements \SplSubject
 
     public function __construct()
     {
-        // The special event group for observers that want to listen all events.
+        // A special event group for observers that want to listen to all
+        // events.
         $this->observers["*"] = [];
     }
 
@@ -140,7 +141,7 @@ class UserRepository implements \SplSubject
 }
 
 /**
- * Let's keep the User class trivial, since it's not the focus of our example.
+ * Let's keep the User class trivial since it's not the focus of our example.
  */
 class User
 {

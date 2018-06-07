@@ -14,16 +14,16 @@ namespace RefactoringGuru\Bridge\RealWorld;
  *         / \     /  \                 Aa(N) Ab(N)  1   2
  *        Aa1 Aa2  Ab1 Ab2
  *
- * Example: In this example the Page hierarchy acts as the Abstraction and the
+ * Example: In this example, the Page hierarchy acts as the Abstraction, and the
  * Renderer hierarchy acts as the Implementation. Objects of the Page class can
- * assemble web-pages of a certain kind using basic elements provided by a
+ * assemble web-pages of a particular kind using basic elements provided by a
  * Renderer object attached to that page. Since both of the class hierarchies
  * are separate, you can add a new Renderer class without changing any of the
- * Page classes and vise versa.
+ * Page classes and vice versa.
  */
 
 /**
- * Abstraction.
+ * The Abstraction.
  */
 abstract class Page
 {
@@ -51,14 +51,14 @@ abstract class Page
     }
 
     /**
-     * The view behavior stays abstract, since it can only be provided by the
+     * The "view" behavior stays abstract since it can only be provided by
      * Concrete Abstractions classes.
      */
     abstract public function view();
 }
 
 /**
- * Concrete Abstraction.
+ * This Concrete Abstraction represents a simple page.
  */
 class SimplePage extends Page
 {
@@ -84,7 +84,7 @@ class SimplePage extends Page
 }
 
 /**
- * Another Concrete Abstraction.
+ * This Concrete Abstraction represents a more complex page.
  */
 class ProductPage extends Page
 {
@@ -138,6 +138,11 @@ class Product
 
 
 /**
+ * The Implementation declares a set of "real", "under-the-hood", "platform"
+ * methods.
+ *
+ * In this case, the Implementation lists rendering methods that can be used to
+ * compose any web page. Different Abstractions may use different methods of the
  * Implementation.
  */
 interface Renderer
@@ -158,7 +163,7 @@ interface Renderer
 }
 
 /**
- * Concrete Implementation. Renders stuff as HTML.
+ * This Concrete Implementation renders stuff as HTML.
  */
 class HTMLRenderer implements Renderer
 {
@@ -199,7 +204,7 @@ class HTMLRenderer implements Renderer
 }
 
 /**
- * Concrete Implementation. Renders stuff as JSON strings.
+ * This Concrete Implementation renders stuff as JSON strings.
  */
 class JsonRenderer implements Renderer
 {
@@ -240,7 +245,7 @@ class JsonRenderer implements Renderer
 }
 
 /**
- * The client code is usually dealing only with Abstraction objects.
+ * The client code is usually dealing only with the Abstraction objects.
  */
 function clientCode(Page $page)
 {
@@ -264,7 +269,7 @@ clientCode($page);
 print("\n\n");
 
 /**
- * The Abstraction can change the linked Implementation in run time if needed.
+ * The Abstraction can change the linked Implementation in runtime if needed.
  */
 $page->changeRenderer($JSONRenderer);
 print("JSON view of a simple content page, rendered with a same client code:\n");

@@ -9,21 +9,21 @@ namespace RefactoringGuru\Strategy\RealWorld;
  * interchangeable. Strategy lets the algorithm vary independently from clients
  * that use it.
  *
- * Example: In this example the Strategy pattern is used to represent payment
+ * Example: In this example, the Strategy pattern is used to represent payment
  * methods in an e-commerce application.
  *
- * Each payment method is able to display a payment form to collect proper
- * payment details from a user and send it to the payment processing company.
- * Then, after the payment processing company redirects the user back to our
- * website, the payment method validates the return parameters and helps to
- * decide whether the order was completed.
+ * Each payment method can display a payment form to collect proper payment
+ * details from a user and send it to the payment processing company. Then,
+ * after the payment processing company redirects the user back to our website,
+ * the payment method validates the return parameters and helps to decide
+ * whether the order was completed.
  */
 
 /**
  * EN: This is the router and controller of our application. Upon receiving a
  * request, this class decides what behavior should be executed. When the app
  * receives a payment request, the OrderController class also decides which
- * payment method should it use to process the request. Thus, the class looks as
+ * payment method should it use to process the request. Thus, the class acts as
  * the Context and the Client at the same time.
  *
  * RU: Это роутер и контроллер нашего приложения. При получении запроса, он
@@ -169,7 +169,7 @@ class Order
     }
 
     /**
-     * The Order constructor assigns the values of the order's fields. Too keep
+     * The Order constructor assigns the values of the order's fields. To keep
      * things simple, there is no validation whatsoever.
      *
      * @param array $attributes
@@ -224,8 +224,8 @@ class PaymentFactory
  * Strategies.
  *
  * Note that in most examples you can find on the Web, strategies tend to do
- * some tiny thing within one method. But in reality your strategies can be much
- * more robust, have several methods, etc.
+ * some tiny thing within one method. However, in reality, your strategies can
+ * be much more robust, have several methods, etc.
  */
 interface PaymentMethod
 {

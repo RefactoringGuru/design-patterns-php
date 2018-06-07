@@ -8,23 +8,23 @@ namespace RefactoringGuru\AbstractFactory\RealWorld;
  * Intent: Provide an interface for creating families of related or dependent
  * objects without specifying their concrete classes.
  *
- * Example: In this example the Abstract Factory pattern provides an
+ * Example: In this example, the Abstract Factory pattern provides an
  * infrastructure for creating various types of templates for different elements
  * of a web page.
  *
  * A web application can support different rendering engines at the same time,
- * but only if its classes are independent from concrate classes of rendering
+ * but only if its classes are independent of concrete classes of rendering
  * engines. Hence, the application's objects must communicate with template
  * objects only via their abstract interfaces. Your code should not create the
  * template objects directly, but delegate the creation to special factory
- * objects. Finally, your code should not depend on the factory objects either,
+ * objects. Finally, your code should not depend on the factory objects either
  * but work with them via abstract factory interface.
  *
  * As a result, you will be able to provide the app with the factory object that
  * corresponds to one of the rendering engines. All templates, created in the
  * app, will be created by that factory and their type will match the type of
  * the factory. If you decide to change the rendering engine, you'll be able to
- * pass a different factory and all the code will remain functional.
+ * pass a new factory to the client code, without breaking any existing code.
  *
  * RU: Паттерн Абстрактная Фабрика
  *
@@ -97,8 +97,8 @@ class BladeFactory implements TemplateFactory
 }
 
 /**
- * Each distinct product type should have its own interface. All variants of the
- * product must follow the same interface.
+ * Each distinct product type should have a separate interface. All variants of
+ * the product must follow the same interface.
  *
  * For instance, this Abstract Product interface describes the behavior of page
  * title templates.
@@ -185,7 +185,7 @@ function templateRenderer(TemplateFactory $factory)
 }
 
 /**
- * Somewhere in other parts of the app... The client code can accept factory
+ * Somewhere in other parts of the app. The client code can accept factory
  * objects of any type.
  */
 print("Testing rendering with the Twig factory:\n");

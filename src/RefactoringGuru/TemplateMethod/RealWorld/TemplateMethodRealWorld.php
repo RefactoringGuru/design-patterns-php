@@ -9,7 +9,7 @@ namespace RefactoringGuru\TemplateMethod\RealWorld;
  * steps to subclasses. Template Method lets subclasses redefine specific steps
  * of an algorithm without changing the algorithm's structure.
  *
- * Example: In this example the Template Method defines a skeleton of the
+ * Example: In this example, the Template Method defines a skeleton of the
  * algorithm of message posting to social networks. Each subclass represents a
  * separate social network and implements all the steps differently, but reuses
  * the base algorithm.
@@ -31,16 +31,16 @@ abstract class SocialNetwork
     }
 
     /**
-     * The actual template method calls the abstract steps in a certain order. A
+     * The actual template method calls abstract steps in a specific order. A
      * subclass may implement all of the steps, allowing this method to actually
-     * post messages to some social network.
+     * post something to a social network.
      */
     public function post(string $message): bool
     {
         // Authenticate before posting. Every network uses a different
         // authentication method.
         if ($this->logIn($this->username, $this->password)) {
-            // Send the post data. All networks has different API.
+            // Send the post data. All networks have different API.
             $result = $this->sendData($message);
             // ...
             $this->logOut();
@@ -52,8 +52,8 @@ abstract class SocialNetwork
     }
 
     /**
-     * The steps are declared abstract in order to force the subclasses to
-     * implement them all.
+     * The steps are declared abstract to force the subclasses to implement them
+     * all.
      */
     public abstract function logIn(string $userName, string $password): bool;
 
@@ -63,7 +63,7 @@ abstract class SocialNetwork
 }
 
 /**
- * This Concrete Class implements Facebook API (alright, it pretends to).
+ * This Concrete Class implements Facebook API (all right, it pretends to).
  */
 class Facebook extends SocialNetwork
 {

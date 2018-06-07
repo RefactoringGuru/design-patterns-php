@@ -9,7 +9,7 @@ namespace RefactoringGuru\Visitor\RealWorld;
  * structure. The Visitor pattern lets you define a new operation without
  * changing the classes of the elements on which it operates.
  *
- * Example: In this example the Visitor pattern helps to introduce a reporting
+ * Example: In this example, the Visitor pattern helps to introduce a reporting
  * feature into an existing class hierarchy:
  *
  * Company > Department > Employee
@@ -21,7 +21,7 @@ namespace RefactoringGuru\Visitor\RealWorld;
 /**
  * The Component interface declares a method of accepting visitor objects.
  *
- * In this method a Concrete Component must call a specific Visitor's method
+ * In this method, a Concrete Component must call a specific Visitor's method
  * that has the same parameter type as that component.
  */
 interface Entity

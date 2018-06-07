@@ -10,7 +10,7 @@ namespace RefactoringGuru\Builder\RealWorld;
  *
  * Example: One of the best applications of the Builder pattern is a SQL query
  * builder. The Builder interface defines the common steps required to build a
- * generic SQL query. On the other hand Concrete Builders, corresponding to
+ * generic SQL query. On the other hand, Concrete Builders, corresponding to
  * different SQL dialects, implement these steps by returning parts of SQL
  * queries that can be executed in particular database engine.
  */
@@ -106,9 +106,10 @@ class MysqlQueryBuilder implements SQLQueryBuilder
 }
 
 /**
- * This Concrete Builder is compatible with PostgresSQL. While Postgres is very
+ * This Concrete Builder is compatible with PostgreSQL. While Postgres is very
  * similar to Mysql, it still has several differences. To reuse the common code,
- * we extend it from the MySQL builder, but override some of the building steps.
+ * we extend it from the MySQL builder, while overriding some of the building
+ * steps.
  */
 class PostgresQueryBuilder extends MysqlQueryBuilder
 {
@@ -132,13 +133,13 @@ class PostgresQueryBuilder extends MysqlQueryBuilder
  * Note that the client code uses the builder object directly. A designated
  * Director class is not necessary in this case, because the client code needs
  * different queries almost every time, so the sequence of the construction
- * steps can not be easily reused.
+ * steps cannot be easily reused.
  *
  * Since all our query builders create products of the same type (which is a
  * string), we can interact with all builders using their common interface.
  * Later, if we implement a new Builder class, we will be able to pass its
- * instance to the existing client code without breaking it, since it will still
- * expect any object that follows SQLQueryBuilder interface.
+ * instance to the existing client code without breaking it thanks to the
+ * SQLQueryBuilder interface.
  */
 function clientCode(SQLQueryBuilder $queryBuilder)
 {

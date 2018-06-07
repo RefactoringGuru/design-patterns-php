@@ -11,8 +11,8 @@ namespace RefactoringGuru\Composite\RealWorld;
  *
  * Example: The Composite pattern can streamline the work with any tree-like
  * recursive structures. The HTML DOM tree is an example of such structure. For
- * instance, while the various input elements can act as leafs, the complex
- * elements like forms and fieldsets play role of composites.
+ * instance, while the various input elements can act as leaves, the complex
+ * elements like forms and fieldsets play the role of composites.
  *
  * Having that in mind, you can use the Composite pattern to apply various
  * behaviors to the whole HTML tree in the same way as to its inner elements
@@ -21,16 +21,16 @@ namespace RefactoringGuru\Composite\RealWorld;
  * formats, validating its parts, etc.
  *
  * With the Composite pattern, you don't need to check whether it's the simple
- * or complex type of element prior to executing the behavior. Depending on the
+ * or complex type of element before executing the behavior. Depending on the
  * element's type, it's either get executed right away or passed all the way
  * down to all element's children.
  */
 
 /**
- * The base Component class declares interface for all concrete components, both
- * simple and complex.
+ * The base Component class declares an interface for all concrete components,
+ * both simple and complex.
  *
- * In or example we're be focusing on the rendering behavior of DOM elements.
+ * In our example, we're be focusing on the rendering behavior of DOM elements.
  */
 abstract class FormElement
 {
@@ -63,8 +63,8 @@ abstract class FormElement
     }
 
     /**
-     * Each DOM element will provide its own rendering implementation, but we
-     * can safely assume that all of them will be returning strings.
+     * Each concrete DOM element must provide its rendering implementation, but
+     * we can safely assume that all of them are returning strings.
      */
     public abstract function render(): string;
 }
@@ -122,8 +122,8 @@ abstract class FieldComposite extends FormElement
     }
 
     /**
-     * Whereas a Leaf's method can just do the job, the Composite's method
-     * almost always has to take its sub-objects into account.
+     * Whereas a Leaf's method just does the job, the Composite's method almost
+     * always has to take its sub-objects into account.
      *
      * In this case, the composite can accept structured data.
      *
@@ -152,9 +152,9 @@ abstract class FieldComposite extends FormElement
     }
 
     /**
-     * The base implementation of rendering combines rendering results of all
-     * children. Concrete Composites will be able to reuse this implementation
-     * in their real rendering implementations.
+     * The base implementation of the composite's rendering simply combines
+     * results of all children. Concrete Composites will be able to reuse this
+     * implementation in their real rendering implementations.
      */
     public function render(): string
     {
@@ -201,7 +201,7 @@ class Form extends FieldComposite
 }
 
 /**
- * The client code gets convenient interface for building complex tree
+ * The client code gets a convenient interface for building complex tree
  * structures.
  */
 function getProductForm(): FormElement
@@ -221,7 +221,7 @@ function getProductForm(): FormElement
 /**
  * The form structure can be filled with data from various sources. The Client
  * doesn't have to traverse through all form fields to assign data to various
- * fields, since the form itself can handle that.
+ * fields since the form itself can handle that.
  */
 function loadProductData(FormElement $form)
 {

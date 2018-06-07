@@ -6,17 +6,17 @@ namespace RefactoringGuru\Command\RealWorld;
  * Command Design Pattern
  *
  * Intent: Encapsulate a request as an object, thereby letting you parametrize
- * clients with different requests (e.g. queue or log requests) and support
+ * clients with different requests (e.g., queue or log requests) and support
  * undoable operations.
  *
- * Example: In this example the Command pattern is used to queue web scrapping
+ * Example: In this example, the Command pattern is used to queue web scrapping
  * calls to IMDB website and execute them one by one. The queue itself is kept
  * in a database which helps to preserve commands between script launches.
  */
 
 /**
  * The Command interface declares the execution method as well as several
- * methods to get a command's meta data.
+ * methods to get a command's metadata.
  */
 interface Command
 {
@@ -180,13 +180,13 @@ class IMDBMovieScrappingCommand extends WebScrapingCommand
 
 /**
  * The Queue class acts as an Invoker. It stacks the command objects and
- * executes them one my one. If the script execution is suddenly terminated, the
- * queue and all its commands can easily be restored and you won't need to
- * repeat all of the executed commands again.
+ * executes them one by one. If the script execution is suddenly terminated, the
+ * queue and all its commands can easily be restored, and you won't need to
+ * repeat all of the executed commands.
  *
  * Note that this is a very primitive implementation of the command queue, which
  * stores commands in a local SQLite database. There are dozens of robust queue
- * solution available for using in real apps.
+ * solution available for use in real apps.
  */
 class Queue
 {

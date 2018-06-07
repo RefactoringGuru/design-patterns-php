@@ -9,19 +9,19 @@ namespace RefactoringGuru\Facade\RealWorld;
  * Facade defines a higher-level interface that makes the subsystem easier to
  * use.
  *
- * Example: Thinks of the Facade as a simplicity adapter for some complex code.
- * The Facade isolates complexity within a single class and allows other
- * application code to use straightforward interface.
+ * Example: Thinks of the Facade as a simplicity adapter for some complex
+ * subsystem. The Facade isolates complexity within a single class and allows
+ * other application's code to use the straightforward interface.
  *
- * In this example, the Facade hides the complexity of YouTube API and ffmpeg
- * library from the client code. Instead working with dozen of classes, the
+ * In this example, the Facade hides the complexity of YouTube API and FFmpeg
+ * library from the client code. Instead of working with dozens of classes, the
  * client uses a simple method on the Facade.
  */
 
 /**
  * The Facade provides a single method for downloading videos from YouTube. This
- * methods hides all the complexity of the PHP network layer, YouTube API and
- * the video conversion library (ffmpeg).
+ * method hides all the complexity of the PHP network layer, YouTube API and the
+ * video conversion library (FFmpeg).
  */
 class YouTubeDownloader
 {
@@ -39,7 +39,7 @@ class YouTubeDownloader
     }
 
     /**
-     * The Facade provides simple method for downloading video and encoding it
+     * The Facade provides a simple method for downloading video and encoding it
      * to a target format (for the sake of simplicity, the real-world code is
      * commented).
      */
@@ -83,7 +83,7 @@ class YouTube
 }
 
 /**
- * The FFMpeg subsystem (a complex video/audio conversion library).
+ * The FFmpeg subsystem (a complex video/audio conversion library).
  */
 class FFMpeg
 {

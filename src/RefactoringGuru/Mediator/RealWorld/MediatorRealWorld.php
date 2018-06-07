@@ -9,7 +9,7 @@ namespace RefactoringGuru\Mediator\RealWorld;
  * Mediator promotes loose coupling by keeping objects from referring to each
  * other explicitly, and it lets you vary their interaction independently.
  *
- * Example: In this example the Mediator pattern expands the idea of the
+ * Example: In this example, the Mediator pattern expands the idea of the
  * Observer pattern by providing a centralized event dispatcher. It allows any
  * object to track & trigger events in other objects without depending on their
  * classes.
@@ -37,7 +37,8 @@ class EventDispatcher
 
     public function __construct()
     {
-        // The special event group for observers that want to listen all events.
+        // The special event group for observers that want to listen to all
+        // events.
         $this->observers["*"] = [];
     }
 
@@ -96,7 +97,7 @@ function events(): EventDispatcher
 }
 
 /**
- * The Observer interface defines how components will receive event
+ * The Observer interface defines how components receive the event
  * notifications.
  */
 interface Observer
@@ -108,7 +109,7 @@ interface Observer
  * Unlike our Observer pattern example, this example makes the UserRepository
  * act as a regular component that doesn't have any special event-related
  * methods. Like any other component, this class relies on the EventDispatcher
- * to broadcast its own events and listen for the other ones.
+ * to broadcast its events and listen for the other ones.
  *
  * @see \RefactoringGuru\Observer\RealWorld\UserRepository
  */
@@ -207,7 +208,7 @@ class UserRepository implements Observer
 }
 
 /**
- * Let's keep the User class trivial, since it's not the focus of our example.
+ * Let's keep the User class trivial since it's not the focus of our example.
  */
 class User
 {

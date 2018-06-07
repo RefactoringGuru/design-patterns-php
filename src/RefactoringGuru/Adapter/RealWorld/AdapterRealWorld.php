@@ -13,8 +13,8 @@ namespace RefactoringGuru\Adapter\RealWorld;
  * even if they are incompatible with the bulk of your code. For example,
  * instead of rewriting the notification interface of your to support each 3rd-
  * party service such as Slack, Facebook, SMS or {you-name-it}, you can create a
- * set of special wrappers that will adapt calls from your app to an interface
- * and format required by each 3rd-party class.
+ * set of special wrappers that adapt calls from your app to an interface and
+ * format required by each 3rd-party class.
  */
 
 /**
@@ -30,10 +30,10 @@ interface Notification
  * Here's an example of the existing class that follows the Target interface.
  *
  * The truth is that many real apps may not have this interface clearly defined.
- * If you're in that boat, your first bet would be to just extend the Adapter
- * from one of your existing application's classes. If that's awkward (for
- * instance, SlackNotification doesn't feel as a subclass of EmailNotification),
- * then extracting an interface should be your first step.
+ * If you're in that boat, your first bet would be to extend the Adapter from
+ * one of your existing application's classes. If that's awkward (for instance,
+ * SlackNotification doesn't feel like a subclass of EmailNotification), then
+ * extracting an interface should be your first step.
  */
 class EmailNotification implements Notification
 {
@@ -54,7 +54,7 @@ class EmailNotification implements Notification
 /**
  * The Adaptee is some useful class, incompatible with the Target interface. You
  * can't just go in and change the code of the class to follow the Target
- * interface, since the code might be provided by a 3rd-party library.
+ * interface. The code might be provided by a 3rd-party library.
  */
 class SlackApi
 {
@@ -97,8 +97,8 @@ class SlackNotification implements Notification
     }
 
     /**
-     * Adapter is not only able of adapting interfaces, but it also can convert
-     * incoming data to the format, required by the Adaptee.
+     * An Adapter is not only able of adapting interfaces, but it also can
+     * convert incoming data to the format, required by the Adaptee.
      */
     public function send(string $title, string $message)
     {
