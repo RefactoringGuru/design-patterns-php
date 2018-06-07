@@ -147,7 +147,7 @@ class Invoker
 }
 
 /**
- * The client code can parameterize an invoker with any commands.
+ * The client code can parametrize an invoker with any commands.
  */
 $invoker = new Invoker();
 $invoker->setOnStart(new SimpleCommand("Say Hi!"));

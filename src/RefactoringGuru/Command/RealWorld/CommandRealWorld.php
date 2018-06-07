@@ -5,7 +5,7 @@ namespace RefactoringGuru\Command\RealWorld;
 /**
  * Command Design Pattern
  *
- * Intent: Encapsulate a request as an object, thereby letting you parameterize
+ * Intent: Encapsulate a request as an object, thereby letting you parametrize
  * clients with different requests (e.g. queue or log requests) and support
  * undoable operations.
  *
@@ -15,7 +15,8 @@ namespace RefactoringGuru\Command\RealWorld;
  */
 
 /**
- * Command Interface.
+ * The Command interface declares the execution method as well as several
+ * methods to get a command's meta data.
  */
 interface Command
 {
@@ -27,7 +28,8 @@ interface Command
 }
 
 /**
- * Base Command. Defines the code, common to all commands.
+ * The base web-scrapping Command defines the basic downloading infrastructure,
+ * common to all concrete web-scrapping commands.
  */
 abstract class WebScrapingCommand implements Command
 {
@@ -62,6 +64,14 @@ abstract class WebScrapingCommand implements Command
         return $this->url;
     }
 
+    /**
+     * Since the execution methods for all web-scrapping commands is very
+     * similar, we can provide a default implementation and let subclasses
+     * override it if needed.
+     *
+     * Psst! An observant reader may spot another behavioral pattern in action
+     * here.
+     */
     public function execute()
     {
         $html = $this->download();
@@ -73,6 +83,7 @@ abstract class WebScrapingCommand implements Command
     {
         $html = file_get_contents($this->getURL());
         print("WebScrapingCommand: Downloaded {$this->url}\n");
+
         return $html;
     }
 
@@ -86,7 +97,7 @@ abstract class WebScrapingCommand implements Command
 }
 
 /**
- * Concrete Command.
+ * The Concrete Command for scrapping list of movie genres.
  */
 class IMDBGenresScrappingCommand extends WebScrapingCommand
 {
@@ -102,7 +113,7 @@ class IMDBGenresScrappingCommand extends WebScrapingCommand
     public function parse($html)
     {
         preg_match_all("|href=\"(https://www.imdb.com/search/title\?genres=.*?)\"|", $html, $matches);
-        print("IMDBGenresScrappingCommand: Discovered " . count($matches[1]) . " genres.\n");
+        print("IMDBGenresScrappingCommand: Discovered ".count($matches[1])." genres.\n");
 
         foreach ($matches[1] as $genre) {
             Queue::get()->add(new IMDBGenrePageScrappingCommand($genre));
@@ -111,7 +122,7 @@ class IMDBGenresScrappingCommand extends WebScrapingCommand
 }
 
 /**
- * Concrete Command.
+ * The Concrete Command for scrapping list of the movie in a specific genre.
  */
 class IMDBGenrePageScrappingCommand extends WebScrapingCommand
 {
@@ -125,7 +136,7 @@ class IMDBGenrePageScrappingCommand extends WebScrapingCommand
 
     public function getURL()
     {
-        return $this->url . '?page=' . $this->page;
+        return $this->url.'?page='.$this->page;
     }
 
     /**
@@ -135,10 +146,10 @@ class IMDBGenrePageScrappingCommand extends WebScrapingCommand
     public function parse($html)
     {
         preg_match_all("|href=\"(/title/.*?/)\?ref_=adv_li_tt\"|", $html, $matches);
-        print("IMDBGenrePageScrappingCommand: Discovered " . count($matches[1]) . " movies.\n");
+        print("IMDBGenrePageScrappingCommand: Discovered ".count($matches[1])." movies.\n");
 
         foreach ($matches[1] as $moviePath) {
-            $url = "https://www.imdb.com" . $moviePath;
+            $url = "https://www.imdb.com".$moviePath;
             Queue::get()->add(new IMDBMovieScrappingCommand($url));
         }
 
@@ -150,7 +161,7 @@ class IMDBGenrePageScrappingCommand extends WebScrapingCommand
 }
 
 /**
- * Concrete Command.
+ * The Concrete Command for scrapping the movie details.
  */
 class IMDBMovieScrappingCommand extends WebScrapingCommand
 {
@@ -168,8 +179,14 @@ class IMDBMovieScrappingCommand extends WebScrapingCommand
 }
 
 /**
- * Invoker. This is a very primitive implementation of the command queue. It
- * stores commands in the SQLite database.
+ * The Queue class acts as an Invoker. It stacks the command objects and
+ * executes them one my one. If the script execution is suddenly terminated, the
+ * queue and all its commands can easily be restored and you won't need to
+ * repeat all of the executed commands again.
+ *
+ * Note that this is a very primitive implementation of the command queue, which
+ * stores commands in a local SQLite database. There are dozens of robust queue
+ * solution available for using in real apps.
  */
 class Queue
 {
@@ -190,6 +207,7 @@ class Queue
     public function isEmpty()
     {
         $query = 'SELECT COUNT("id") FROM "commands" WHERE status = 0';
+
         return $this->db->querySingle($query) === 0;
     }
 
@@ -208,6 +226,7 @@ class Queue
         $record = $this->db->querySingle($query, true);
         $command = unserialize(base64_decode($record["command"]));
         $command->id = $record['id'];
+
         return $command;
     }
 
@@ -222,27 +241,28 @@ class Queue
 
     public function work()
     {
-        while (!$this->isEmpty()) {
+        while (! $this->isEmpty()) {
             $command = $this->getCommand();
             $command->execute();
         }
     }
 
     /**
-     * Queue object is a Singleton.
+     * For our convenience, the Queue object is a Singleton.
      */
     public static function get(): Queue
     {
         static $instance;
-        if (!$instance) {
+        if (! $instance) {
             $instance = new Queue();
         }
+
         return $instance;
     }
 }
 
 /**
- * Client code.
+ * The client code.
  */
 
 $queue = Queue::get();
