@@ -13,12 +13,12 @@ namespace RefactoringGuru\AbstractFactory\RealWorld;
  * of a web page.
  *
  * A web application can support different rendering engines at the same time,
- * but only if its classes are independent of concrete classes of rendering
+ * but only if its classes are independent of the concrete classes of rendering
  * engines. Hence, the application's objects must communicate with template
  * objects only via their abstract interfaces. Your code should not create the
- * template objects directly, but delegate the creation to special factory
+ * template objects directly, but delegate their creation to special factory
  * objects. Finally, your code should not depend on the factory objects either
- * but work with them via abstract factory interface.
+ * but, instead, should work with them via the abstract factory interface.
  *
  * As a result, you will be able to provide the app with the factory object that
  * corresponds to one of the rendering engines. All templates, created in the
@@ -81,7 +81,7 @@ class TwigTemplateFactory implements TemplateFactory
 }
 
 /**
- * And this Concrete Factory creates only Blade templates.
+ * And this Concrete Factory creates Blade templates.
  */
 class BladeFactory implements TemplateFactory
 {
@@ -185,8 +185,8 @@ function templateRenderer(TemplateFactory $factory)
 }
 
 /**
- * Somewhere in other parts of the app. The client code can accept factory
- * objects of any type.
+ * Now, in other parts of the app, the client code can accept factory objects
+ * of any type.
  */
 print("Testing rendering with the Twig factory:\n");
 templateRenderer(new TwigTemplateFactory());
