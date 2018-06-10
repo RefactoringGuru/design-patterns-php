@@ -5,13 +5,13 @@ namespace RefactoringGuru\Command\RealWorld;
 /**
  * Command Design Pattern
  *
- * Intent: Encapsulate a request as an object, thereby letting you parametrize
- * clients with different requests (e.g., queue or log requests) and support
+ * Intent: Encapsulate a request as an object, thereby letting you parameterize
+ * clients with different requests (e.g. queue or log requests) and support
  * undoable operations.
  *
- * Example: In this example, the Command pattern is used to queue web scrapping
- * calls to IMDB website and execute them one by one. The queue itself is kept
- * in a database which helps to preserve commands between script launches.
+ * Example: In this example, the Command pattern is used to queue web scraping
+ * calls to the IMDB website and execute them one by one. The queue itself is 
+ * kept in a database which helps to preserve commands between script launches.
  */
 
 /**
@@ -28,8 +28,8 @@ interface Command
 }
 
 /**
- * The base web-scrapping Command defines the basic downloading infrastructure,
- * common to all concrete web-scrapping commands.
+ * The base web scraping Command defines the basic downloading infrastructure,
+ * common to all concrete web scraping commands.
  */
 abstract class WebScrapingCommand implements Command
 {
@@ -65,9 +65,9 @@ abstract class WebScrapingCommand implements Command
     }
 
     /**
-     * Since the execution methods for all web-scrapping commands is very
+     * Since the execution methods for all web scraping commands are very
      * similar, we can provide a default implementation and let subclasses
-     * override it if needed.
+     * override them if needed.
      *
      * Psst! An observant reader may spot another behavioral pattern in action
      * here.
@@ -97,9 +97,9 @@ abstract class WebScrapingCommand implements Command
 }
 
 /**
- * The Concrete Command for scrapping list of movie genres.
+ * The Concrete Command for scraping the list of movie genres.
  */
-class IMDBGenresScrappingCommand extends WebScrapingCommand
+class IMDBGenresScrapingCommand extends WebScrapingCommand
 {
     public function __construct()
     {
@@ -113,18 +113,18 @@ class IMDBGenresScrappingCommand extends WebScrapingCommand
     public function parse($html)
     {
         preg_match_all("|href=\"(https://www.imdb.com/search/title\?genres=.*?)\"|", $html, $matches);
-        print("IMDBGenresScrappingCommand: Discovered ".count($matches[1])." genres.\n");
+        print("IMDBGenresScrapingCommand: Discovered ".count($matches[1])." genres.\n");
 
         foreach ($matches[1] as $genre) {
-            Queue::get()->add(new IMDBGenrePageScrappingCommand($genre));
+            Queue::get()->add(new IMDBGenrePageScrapingCommand($genre));
         }
     }
 }
 
 /**
- * The Concrete Command for scrapping list of the movie in a specific genre.
+ * The Concrete Command for scraping the list of movies in a specific genre.
  */
-class IMDBGenrePageScrappingCommand extends WebScrapingCommand
+class IMDBGenrePageScrapingCommand extends WebScrapingCommand
 {
     private $page;
 
@@ -146,24 +146,24 @@ class IMDBGenrePageScrappingCommand extends WebScrapingCommand
     public function parse($html)
     {
         preg_match_all("|href=\"(/title/.*?/)\?ref_=adv_li_tt\"|", $html, $matches);
-        print("IMDBGenrePageScrappingCommand: Discovered ".count($matches[1])." movies.\n");
+        print("IMDBGenrePageScrapingCommand: Discovered ".count($matches[1])." movies.\n");
 
         foreach ($matches[1] as $moviePath) {
             $url = "https://www.imdb.com".$moviePath;
-            Queue::get()->add(new IMDBMovieScrappingCommand($url));
+            Queue::get()->add(new IMDBMovieScrapingCommand($url));
         }
 
         // Parse the next page URL.
         if (preg_match("|Next &#187;</a>|", $html)) {
-            Queue::get()->add(new IMDBGenrePageScrappingCommand($this->url, $this->page + 1));
+            Queue::get()->add(new IMDBGenrePageScrapingCommand($this->url, $this->page + 1));
         }
     }
 }
 
 /**
- * The Concrete Command for scrapping the movie details.
+ * The Concrete Command for scraping the movie details.
  */
-class IMDBMovieScrappingCommand extends WebScrapingCommand
+class IMDBMovieScrapingCommand extends WebScrapingCommand
 {
     /**
      * Get the movie info from a page like this:
@@ -174,7 +174,7 @@ class IMDBMovieScrappingCommand extends WebScrapingCommand
         if (preg_match("|<h1 itemprop=\"name\" class=\"\">(.*?)</h1>|", $html, $matches)) {
             $title = $matches[1];
         }
-        print("IMDBMovieScrappingCommand: Parsed movie $title.\n");
+        print("IMDBMovieScrapingCommand: Parsed movie $title.\n");
     }
 }
 
@@ -268,7 +268,7 @@ class Queue
 $queue = Queue::get();
 
 if ($queue->isEmpty()) {
-    $queue->add(new IMDBGenresScrappingCommand());
+    $queue->add(new IMDBGenresScrapingCommand());
 }
 
 $queue->work();
