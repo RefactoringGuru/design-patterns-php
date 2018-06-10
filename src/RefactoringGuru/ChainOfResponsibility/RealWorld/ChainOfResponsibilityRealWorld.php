@@ -10,8 +10,9 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  * and then pass the request through the chain until some receiver handles it.
  *
  * Example: The most widely known use of the Chain of Responsibility (CoR)
- * pattern in PHP world are HTTP request middleware. They are implemented by
- * most popular PHP frameworks and even got standardized as part of PSR-15.
+ * pattern in the PHP world is found in HTTP request middleware. These are 
+ * implemented by most popular PHP frameworks and even got standardized as part 
+ * of PSR-15.
  *
  * It works like this: an HTTP request must pass through a stack of middleware
  * objects in order to be handled by the app. Each middleware can either reject
@@ -28,7 +29,7 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  */
 
 /**
- * The classic CoR pattern declares a single role for objects that make-up a
+ * The classic CoR pattern declares a single role for objects that make up a
  * chain, which is a Handler. In our example, let's differentiate between
  * middleware and a final application's handler, which is executed when a
  * request gets through all the middleware objects.
@@ -55,7 +56,7 @@ abstract class Middleware
 
     /**
      * Subclasses must override this method to provide their own checks. A
-     * subclass can fall-back to the parent implementation if it can't process a
+     * subclass can fall back to the parent implementation if it can't process a
      * request.
      */
     public function check(string $email, string $password): bool
@@ -136,8 +137,8 @@ class ThrottlingMiddleware extends Middleware
     }
 
     /**
-     * Please, not that the parent::check call can be inserted both at the
-     * beginning of this method and in the end.
+     * Please, note that the parent::check call can be inserted both at the
+     * beginning of this method and at the end.
      *
      * This gives much more flexibility than a simple loop over all middleware
      * objects. For instance, a middleware can change the order of checks by
@@ -184,7 +185,7 @@ class Server
     }
 
     /**
-     * The server gets email and password from the client and sends the
+     * The server gets the email and password from the client and sends the
      * authorization request to the middleware.
      */
     public function logIn(string $email, string $password)
