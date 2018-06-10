@@ -30,7 +30,7 @@ abstract class SocialNetworkPoster
 {
     /**
      * The actual factory method. Note that it returns the abstract connector.
-     * This lets subclasses return any concrete connectors without breaking
+     * This lets subclasses return any concrete connectors without breaking the
      * superclass' contract.
      */
     public abstract function getSocialNetwork(): SocialNetworkConnector;
@@ -52,7 +52,7 @@ abstract class SocialNetworkPoster
 }
 
 /**
- * This Concrete Creator supports Facebook. Remember, that this class also
+ * This Concrete Creator supports Facebook. Remember that this class also
  * inherits the 'post' method from the parent class. These are the classes that
  * the Client actually uses.
  */
@@ -104,7 +104,7 @@ interface SocialNetworkConnector
 }
 
 /**
- * This Concrete Product implements Facebook API.
+ * This Concrete Product implements the Facebook API.
  */
 class FacebookConnector implements SocialNetworkConnector
 {
@@ -134,7 +134,7 @@ class FacebookConnector implements SocialNetworkConnector
 }
 
 /**
- * This Concrete Product implements LinkedIn API.
+ * This Concrete Product implements the LinkedIn API.
  */
 class LinkedInConnector implements SocialNetworkConnector
 {
@@ -177,7 +177,7 @@ function clientCode(SocialNetworkPoster $creator)
 
 /**
  * During the initialization phase, the app can decide which social network it
- * wants to work with, create an object of the proper subclass and pass it to
+ * wants to work with, create an object of the proper subclass, and pass it to
  * the client code.
  */
 print("Testing ConcreteCreator1:\n");
