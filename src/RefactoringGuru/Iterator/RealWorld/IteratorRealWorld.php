@@ -9,8 +9,8 @@ namespace RefactoringGuru\Iterator\RealWorld;
  * exposing its underlying representation.
  *
  * Example: Since PHP already has a built-in Iterator interface, which provides
- * a very convenient integration with foreach loops, it is very easy to create
- * your own iterators for traversing almost every imaginable data structure.
+ * convenient integration with foreach loops, it is very easy to create your own 
+ * iterators for traversing almost every imaginable data structure.
  *
  * This example of the Iterator pattern provides easy access to CSV files.
  */
@@ -104,7 +104,7 @@ class CsvIterator implements \Iterator
     }
 
     /**
-     * This method checks if the end of file is reached.
+     * This method checks if the end of file has been reached.
      *
      * @return boolean Returns true on EOF reached, false otherwise.
      */
