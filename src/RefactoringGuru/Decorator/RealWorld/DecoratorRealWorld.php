@@ -10,11 +10,11 @@ namespace RefactoringGuru\Decorator\RealWorld;
  * functionality.
  *
  * Example: In this example, the Decorator pattern helps you to construct
- * complex text filtering rules to clean-up content before rendering it on a web
+ * complex text filtering rules to clean up content before rendering it on a web
  * page. Different types of content, such as comments, forum posts or private
  * messages require different sets of filters.
  *
- * For example, while you'd want to strip-out all HTML from the comments, you
+ * For example, while you'd want to strip out all HTML from the comments, you
  * might still want to keep some basic HTML tags in forum posts. Also, you may
  * want to allow posting in Markdown format, which shall be processed before any
  * HTML filtering takes place. All these filtering rules can be represented as
@@ -48,7 +48,7 @@ class TextInput implements InputFormat
  * logic. Its main purpose is to implement the basic decoration infrastructure:
  * a field for storing a wrapped component or another decorator and the basic
  * formatting method that delegates the work to the wrapped object. The real
- * formatting job is done in by subclasses.
+ * formatting job is done by subclasses.
  */
 class TextFormat implements InputFormat
 {
@@ -72,7 +72,7 @@ class TextFormat implements InputFormat
 }
 
 /**
- * This Concrete Decorator strips-out all HTML tags from the given text.
+ * This Concrete Decorator strips out all HTML tags from the given text.
  */
 class PlainTextFilter extends TextFormat
 {
@@ -171,8 +171,8 @@ function displayCommentAsAWebsite(InputFormat $format, string $text)
 /**
  * Input formatters are very handy when dealing with user-generated content.
  * Displaying such content "as is" could be very dangerous, especially when
- * anonymous users can generate it (i.e., comments). Your website is not only
- * risking getting tons of spammy links but also exposed to XSS attacks.
+ * anonymous users can generate it (i.e. comments). Your website is not only
+ * risking getting tons of spammy links but may also be exposed to XSS attacks.
  */
 $dangerousComment = <<<HERE
 Hello! Nice blog post!
