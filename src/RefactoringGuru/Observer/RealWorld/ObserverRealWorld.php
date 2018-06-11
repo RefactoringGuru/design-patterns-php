@@ -18,7 +18,7 @@ namespace RefactoringGuru\Observer\RealWorld;
 
 /**
  * The UserRepository represents a Subject. Various objects are interested in
- * tracking it's internal state, whether it's adding a new user or removing one.
+ * tracking its internal state, whether it's adding a new user or removing one.
  */
 class UserRepository implements \SplSubject
 {
