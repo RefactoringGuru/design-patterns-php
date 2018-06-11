@@ -11,7 +11,7 @@ namespace RefactoringGuru\AbstractFactory\Structural;
  * RU: Паттерн Абстрактная Фабрика
  *
  * Назначение: Предоставляет интерфейс для создания семейств связанных или
- * зависимых объектов, без привязки к их конкретным классам.
+ * зависимых объектов без привязки к их конкретным классам.
  */
 
 /**
@@ -85,8 +85,13 @@ class ConcreteFactory2 implements AbstractFactory
 }
 
 /**
+ * EN:
  * Each distinct product of a product family should have a base interface. All
  * variations of the product must implement this interface.
+ *
+ * RU: 
+ * Каждый отдельный продукт семейства продуктов должен иметь базовый интерфейс.
+ * Все вариации продукта должны реализовывать этот интерфейс.
  */
 interface AbstractProductA
 {
@@ -94,7 +99,11 @@ interface AbstractProductA
 }
 
 /**
+ * EN:
  * Concrete Products are created by corresponding Concrete Factories.
+ *
+ * RU:
+ * Конкретные продукты создаются соответствующими Конкретными Фабриками.
  */
 class ConcreteProductA1 implements AbstractProductA
 {
@@ -113,28 +122,51 @@ class ConcreteProductA2 implements AbstractProductA
 }
 
 /**
+ * EN:
  * The base interface of another product. All products can interact with each
  * other, but proper interaction is possible only between products of the same
  * concrete variation.
- */
+ *
+ * RU:
+ * Базовый интерфейс другого продукта. Все продукты могут взаимодействовать 
+ * друг с другом, но правильное взаимодействие возможно только
+ * между продуктами одной и той же конкретной вариации.
+  */
 interface AbstractProductB
 {
     /**
+     * EN:
      * Product B is able to do its own thing...
+     *
+     * RU:
+     * Продукт B способен работать самостоятельно...
      */
     public function usefulFunctionB(): string;
 
     /**
+     * EN:
      * ... but it can also collaborate with Product A.
      *
+     * RU:
+     * ...но он может также работать совместно с Продуктом А.
+     *
+     * EN:
      * The Abstract Factory makes sure that all products it creates are of the
      * same variation and thus, compatible.
+     *
+     * RU:
+     * Абстрактная Фабрика гарантирует, что все продукты, которые она создает,
+     * имеют одинаковую вариацию и, следовательно, совместимы.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator): string;
 }
 
 /**
+ * EN:
  * Concrete Products are created by corresponding Concrete Factories.
+ *
+ * RU:
+ * Конкретные Продукты создаются соответствующими Конкретными Фабриками.
  */
 class ConcreteProductB1 implements AbstractProductB
 {
@@ -144,9 +176,14 @@ class ConcreteProductB1 implements AbstractProductB
     }
 
     /**
+     * EN:
      * The variant, Product B1, is only able to work correctly with the variant,
      * Product A1. Nevertheless, it accepts any instance of AbstractProductA as
      * an argument.
+     *
+     * RU:
+     * Вариант, Продукт B1, может корректно работать только с вариантом, Продуктом A1.
+     * Тем не менее, он принимает любой экземпляр AbstractProductA в качестве аргумента.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator): string
     {
@@ -164,9 +201,14 @@ class ConcreteProductB2 implements AbstractProductB
     }
 
     /**
+     * EN:
      * The variant, Product B2, is only able to work correctly with the variant,
      * Product A2. Nevertheless, it accepts any instance of AbstractProductA as
      * an argument.
+     *
+     * RU:
+     * Вариант, Продукт B2, может корректно работать только с вариантом, Продуктом A2.
+     * Тем не менее, он принимает любой экземпляр AbstractProductA в качестве аргумента.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator): string
     {
@@ -177,9 +219,16 @@ class ConcreteProductB2 implements AbstractProductB
 }
 
 /**
+ * EN:
  * The client code works with factories and products only through abstract
  * types: AbstractFactory and AbstractProduct. This lets you pass any factory or
  * product subclass to the client code without breaking it.
+ *
+ * RU:
+ * Клиентский код работает с фабриками и продуктами только через абстрактные
+ * типы: AbstractFactory и AbstractProduct. Это позволяет передавать любой 
+ * подкласс фабрики или продукта клиентскому коду, не нарушая его.
+ *
  */
 function clientCode(AbstractFactory $factory)
 {
@@ -191,7 +240,11 @@ function clientCode(AbstractFactory $factory)
 }
 
 /**
+ * EN:
  * The client code can work with any concrete factory class.
+ *
+ * RU:
+ * Клиентский код может работать с любым конкретным классом фабрики.
  */
 print("Client: Testing client code with the first factory type...\n");
 clientCode(new ConcreteFactory1());
