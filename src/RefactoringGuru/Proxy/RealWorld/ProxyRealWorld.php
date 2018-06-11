@@ -18,7 +18,7 @@ namespace RefactoringGuru\Proxy\RealWorld;
  * The Subject interface describes the interface of a real object.
  *
  * The truth is that many real apps may not have this interface clearly defined.
- * If you're in that boat, your first bet would be to extend the Proxy from one
+ * If you're in that boat, your best bet would be to extend the Proxy from one
  * of your existing application classes. If that's awkward, then extracting a
  * proper interface should be your first step.
  */
@@ -83,7 +83,7 @@ class CachingDownloader implements Downloader
 
 /**
  * The client code may issue several similar download requests. In this case,
- * caching proxy saves time and traffic by serving results from cache.
+ * the caching proxy saves time and traffic by serving results from cache.
  *
  * The client is unaware that it works with a proxy because it works with
  * downloaders via the abstract interface.
