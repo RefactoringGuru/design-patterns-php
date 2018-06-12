@@ -4,7 +4,7 @@ HTML view of a simple content page:
 <div class='text'>Welcome to our website!</div>
 </body></html>
 
-JSON view of a simple content page, rendered with a same client code:
+JSON view of a simple content page, rendered with the same client code:
 {
 "title": "Home",
 "text": "Welcome to our website!"

@@ -194,7 +194,7 @@ class Queue
 
     public function __construct()
     {
-        $this->db = new \SQLite3('commands.sqlite',
+        $this->db = new \SQLite3(__DIR__ . '/commands.sqlite',
             SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
 
         $this->db->query('CREATE TABLE IF NOT EXISTS "commands" (
