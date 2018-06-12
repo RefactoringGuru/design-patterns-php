@@ -183,7 +183,7 @@ class ConcreteProductB1 implements AbstractProductB
      * an argument.
      *
      * RU:
-     * Вариант, Продукт B1, может корректно работать только с вариантом, Продуктом A1.
+     * Продукт B1 может корректно работать только с Продуктом A1.
      * Тем не менее, он принимает любой экземпляр Абстрактного Продукта А в качестве аргумента.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator): string
@@ -208,7 +208,7 @@ class ConcreteProductB2 implements AbstractProductB
      * an argument.
      *
      * RU:
-     * Вариант, Продукт B2, может корректно работать только с вариантом, Продуктом A2.
+     * Продукт B2 может корректно работать только с Продуктом A2.
      * Тем не менее, он принимает любой экземпляр Абстрактного Продукта А в качестве аргумента.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator): string
