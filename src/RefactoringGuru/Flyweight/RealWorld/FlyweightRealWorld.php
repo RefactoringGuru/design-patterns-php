@@ -132,7 +132,7 @@ class Cat
 
     /**
      * Since the Context objects don't own all of their state, sometimes you'll
-     * need to provide some convenient helper method (for comparing their data 
+     * need to provide some convenient helper method (for comparing their data
      * with other objects, for example).
      *
      * @param $query

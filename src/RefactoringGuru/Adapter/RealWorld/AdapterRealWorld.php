@@ -11,9 +11,9 @@ namespace RefactoringGuru\Adapter\RealWorld;
  *
  * Example: The Adapter pattern allows you to use 3rd-party or legacy classes
  * even if they are incompatible with the bulk of your code. For example,
- * instead of rewriting the notification interface of your app to support each 
- * 3rd-party service such as Slack, Facebook, SMS or (you-name-it), you can 
- * create a set of special wrappers that adapt calls from your app to an 
+ * instead of rewriting the notification interface of your app to support each
+ * 3rd-party service such as Slack, Facebook, SMS or (you-name-it), you can
+ * create a set of special wrappers that adapt calls from your app to an
  * interface and format required by each 3rd-party class.
  */
 
@@ -30,8 +30,8 @@ interface Notification
  * Here's an example of the existing class that follows the Target interface.
  *
  * The truth is that many real apps may not have this interface clearly defined.
- * If you're in that boat, your best bet would be to extend the Adapter from
- * one of your application's existing classes. If that's awkward (for instance,
+ * If you're in that boat, your best bet would be to extend the Adapter from one
+ * of your application's existing classes. If that's awkward (for instance,
  * SlackNotification doesn't feel like a subclass of EmailNotification), then
  * extracting an interface should be your first step.
  */

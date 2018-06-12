@@ -185,8 +185,8 @@ function templateRenderer(TemplateFactory $factory)
 }
 
 /**
- * Now, in other parts of the app, the client code can accept factory objects
- * of any type.
+ * Now, in other parts of the app, the client code can accept factory objects of
+ * any type.
  */
 print("Testing rendering with the Twig factory:\n");
 templateRenderer(new TwigTemplateFactory());

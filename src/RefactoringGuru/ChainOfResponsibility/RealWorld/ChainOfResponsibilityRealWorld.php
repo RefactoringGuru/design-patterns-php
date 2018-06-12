@@ -10,8 +10,8 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  * and then pass the request through the chain until some receiver handles it.
  *
  * Example: The most widely known use of the Chain of Responsibility (CoR)
- * pattern in the PHP world is found in HTTP request middleware. These are 
- * implemented by most popular PHP frameworks and even got standardized as part 
+ * pattern in the PHP world is found in HTTP request middleware. These are
+ * implemented by most popular PHP frameworks and even got standardized as part
  * of PSR-15.
  *
  * It works like this: an HTTP request must pass through a stack of middleware

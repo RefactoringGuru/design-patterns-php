@@ -10,7 +10,7 @@ namespace RefactoringGuru\Command\RealWorld;
  * undoable operations.
  *
  * Example: In this example, the Command pattern is used to queue web scraping
- * calls to the IMDB website and execute them one by one. The queue itself is 
+ * calls to the IMDB website and execute them one by one. The queue itself is
  * kept in a database which helps to preserve commands between script launches.
  */
 

@@ -13,8 +13,8 @@ namespace RefactoringGuru\Facade\RealWorld;
  * subsystem. The Facade isolates complexity within a single class and allows
  * other application code to use the straightforward interface.
  *
- * In this example, the Facade hides the complexity of the YouTube API and 
- * FFmpeg library from the client code. Instead of working with dozens of 
+ * In this example, the Facade hides the complexity of the YouTube API and
+ * FFmpeg library from the client code. Instead of working with dozens of
  * classes, the client uses a simple method on the Facade.
  */
 

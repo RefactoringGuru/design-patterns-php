@@ -9,12 +9,12 @@ namespace RefactoringGuru\Prototype\RealWorld;
  * their internal structure.
  *
  * Example: The Prototype pattern provides a convenient way to replicate
- * existing objects instead of reconstructing them and copying over all of
- * their fields directly. The direct approach not only couples you to the
- * classes of the objects being cloned, but also doesn't allow you to copy the
- * contents of the private fields. The Prototype pattern lets you perform the
- * cloning within the context of the cloned class, where the access to the
- * class' private fields is not restricted.
+ * existing objects instead of reconstructing them and copying over all of their
+ * fields directly. The direct approach not only couples you to the classes of
+ * the objects being cloned, but also doesn't allow you to copy the contents of
+ * the private fields. The Prototype pattern lets you perform the cloning within
+ * the context of the cloned class, where the access to the class' private
+ * fields is not restricted.
  *
  * This example shows you how to clone a complex Page object using the Prototype
  * pattern. The Page class has lots of private fields, which will be carried
