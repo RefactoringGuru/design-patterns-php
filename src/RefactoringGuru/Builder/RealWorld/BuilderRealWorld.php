@@ -8,11 +8,11 @@ namespace RefactoringGuru\Builder\RealWorld;
  * Intent: Separate the construction of a complex object from its representation
  * so that the same construction process can create different representations.
  *
- * Example: One of the best applications of the Builder pattern is a SQL query
+ * Example: One of the best applications of the Builder pattern is an SQL query
  * builder. The Builder interface defines the common steps required to build a
  * generic SQL query. On the other hand, Concrete Builders, corresponding to
  * different SQL dialects, implement these steps by returning parts of SQL
- * queries that can be executed in particular database engine.
+ * queries that can be executed in a particular database engine.
  */
 
 /**
@@ -36,7 +36,7 @@ interface SQLQueryBuilder
 
 /**
  * Each Concrete Builder corresponds to a specific SQL dialect and may implement
- * the builder steps a little bit different from the others.
+ * the builder steps a little bit differently from the others.
  *
  * This Concrete Builder can build SQL queries compatible with MySQL.
  */
@@ -159,7 +159,7 @@ function clientCode(SQLQueryBuilder $queryBuilder)
 
 
 /**
- * The application selects a proper query builder type depending on a current
+ * The application selects the proper query builder type depending on a current
  * configuration or the environment settings.
  */
 // if ($_ENV['database_type'] == 'postgres') {

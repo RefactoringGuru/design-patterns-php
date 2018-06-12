@@ -10,19 +10,19 @@ namespace RefactoringGuru\Composite\RealWorld;
  * of objects uniformly.
  *
  * Example: The Composite pattern can streamline the work with any tree-like
- * recursive structures. The HTML DOM tree is an example of such structure. For
- * instance, while the various input elements can act as leaves, the complex
+ * recursive structures. The HTML DOM tree is an example of such a structure. 
+ * For instance, while the various input elements can act as leaves, the complex
  * elements like forms and fieldsets play the role of composites.
  *
- * Having that in mind, you can use the Composite pattern to apply various
+ * Bearing that in mind, you can use the Composite pattern to apply various
  * behaviors to the whole HTML tree in the same way as to its inner elements
- * without coupling your code to concrete classes of DOM tree. The example of
- * such behaviors might be rendering the DOM elements, exporting it into various
- * formats, validating its parts, etc.
+ * without coupling your code to concrete classes of the DOM tree. Examples
+ * of such behaviors might be rendering the DOM elements, exporting it into 
+ * various formats, validating its parts, etc.
  *
  * With the Composite pattern, you don't need to check whether it's the simple
  * or complex type of element before executing the behavior. Depending on the
- * element's type, it's either get executed right away or passed all the way
+ * element's type, it either gets executed right away or passed all the way
  * down to all element's children.
  */
 
@@ -30,7 +30,7 @@ namespace RefactoringGuru\Composite\RealWorld;
  * The base Component class declares an interface for all concrete components,
  * both simple and complex.
  *
- * In our example, we're be focusing on the rendering behavior of DOM elements.
+ * In our example, we'll be focusing on the rendering behavior of DOM elements.
  */
 abstract class FormElement
 {
@@ -84,7 +84,7 @@ class Input extends FormElement
 
     /**
      * Since Leaf components don't have any children that may handle the bulk of
-     * the work for them, usually its Leaves who do the most of the heavy-
+     * the work for them, usually it is the Leaves who do the most of the heavy-
      * lifting within the Composite pattern.
      */
     public function render(): string
@@ -181,7 +181,7 @@ class Fieldset extends FieldComposite
 }
 
 /**
- * So as the form element.
+ * And so is the form element.
  */
 class Form extends FieldComposite
 {
@@ -239,7 +239,7 @@ function loadProductData(FormElement $form)
 
 /**
  * The client code can work with form elements using the abstract interface.
- * This way it doesn't matter whether the client works with a simple component
+ * This way, it doesn't matter whether the client works with a simple component
  * or a complex composite tree.
  */
 function renderProduct(FormElement $form)

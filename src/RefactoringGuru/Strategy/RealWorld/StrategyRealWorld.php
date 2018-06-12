@@ -23,7 +23,7 @@ namespace RefactoringGuru\Strategy\RealWorld;
  * EN: This is the router and controller of our application. Upon receiving a
  * request, this class decides what behavior should be executed. When the app
  * receives a payment request, the OrderController class also decides which
- * payment method should it use to process the request. Thus, the class acts as
+ * payment method it should use to process the request. Thus, the class acts as
  * the Context and the Client at the same time.
  *
  * RU: Это роутер и контроллер нашего приложения. При получении запроса, он
@@ -154,7 +154,7 @@ class Order
     private static $orders = [];
 
     /**
-     * ...and access them from here.
+     * ... and access them from here.
      *
      * @param int $orderId
      * @return mixed
@@ -225,7 +225,7 @@ class PaymentFactory
  *
  * Note that in most examples you can find on the Web, strategies tend to do
  * some tiny thing within one method. However, in reality, your strategies can
- * be much more robust, have several methods, etc.
+ * be much more robust (by having several methods, for example).
  */
 interface PaymentMethod
 {

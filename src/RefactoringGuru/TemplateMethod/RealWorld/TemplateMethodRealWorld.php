@@ -40,7 +40,7 @@ abstract class SocialNetwork
         // Authenticate before posting. Every network uses a different
         // authentication method.
         if ($this->logIn($this->username, $this->password)) {
-            // Send the post data. All networks have different API.
+            // Send the post data. All networks have different APIs.
             $result = $this->sendData($message);
             // ...
             $this->logOut();
@@ -63,7 +63,7 @@ abstract class SocialNetwork
 }
 
 /**
- * This Concrete Class implements Facebook API (all right, it pretends to).
+ * This Concrete Class implements the Facebook API (all right, it pretends to).
  */
 class Facebook extends SocialNetwork
 {
@@ -94,7 +94,7 @@ class Facebook extends SocialNetwork
 }
 
 /**
- * This Concrete Class implements Twitter API.
+ * This Concrete Class implements the Twitter API.
  */
 class Twitter extends SocialNetwork
 {

@@ -16,7 +16,7 @@ namespace RefactoringGuru\Bridge\RealWorld;
  *
  * Example: In this example, the Page hierarchy acts as the Abstraction, and the
  * Renderer hierarchy acts as the Implementation. Objects of the Page class can
- * assemble web-pages of a particular kind using basic elements provided by a
+ * assemble web pages of a particular kind using basic elements provided by a
  * Renderer object attached to that page. Since both of the class hierarchies
  * are separate, you can add a new Renderer class without changing any of the
  * Page classes and vice versa.
@@ -52,7 +52,7 @@ abstract class Page
 
     /**
      * The "view" behavior stays abstract since it can only be provided by
-     * Concrete Abstractions classes.
+     * Concrete Abstraction classes.
      */
     abstract public function view();
 }
@@ -110,7 +110,7 @@ class ProductPage extends Page
 }
 
 /**
- * A helper class for the ProductPage.
+ * A helper class for the ProductPage class.
  */
 class Product
 {
@@ -163,7 +163,7 @@ interface Renderer
 }
 
 /**
- * This Concrete Implementation renders stuff as HTML.
+ * This Concrete Implementation renders a web page as HTML.
  */
 class HTMLRenderer implements Renderer
 {
@@ -204,7 +204,7 @@ class HTMLRenderer implements Renderer
 }
 
 /**
- * This Concrete Implementation renders stuff as JSON strings.
+ * This Concrete Implementation renders a web page as JSON strings.
  */
 class JsonRenderer implements Renderer
 {
@@ -245,7 +245,7 @@ class JsonRenderer implements Renderer
 }
 
 /**
- * The client code is usually dealing only with the Abstraction objects.
+ * The client code usually deals only with the Abstraction objects.
  */
 function clientCode(Page $page)
 {
@@ -269,10 +269,10 @@ clientCode($page);
 print("\n\n");
 
 /**
- * The Abstraction can change the linked Implementation in runtime if needed.
+ * The Abstraction can change the linked Implementation at runtime if needed.
  */
 $page->changeRenderer($JSONRenderer);
-print("JSON view of a simple content page, rendered with a same client code:\n");
+print("JSON view of a simple content page, rendered with the same client code:\n");
 clientCode($page);
 print("\n\n");
 

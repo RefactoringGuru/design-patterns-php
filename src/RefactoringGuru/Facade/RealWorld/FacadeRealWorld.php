@@ -9,13 +9,13 @@ namespace RefactoringGuru\Facade\RealWorld;
  * Facade defines a higher-level interface that makes the subsystem easier to
  * use.
  *
- * Example: Thinks of the Facade as a simplicity adapter for some complex
+ * Example: Think of the Facade as a simplicity adapter for some complex
  * subsystem. The Facade isolates complexity within a single class and allows
- * other application's code to use the straightforward interface.
+ * other application code to use the straightforward interface.
  *
- * In this example, the Facade hides the complexity of YouTube API and FFmpeg
- * library from the client code. Instead of working with dozens of classes, the
- * client uses a simple method on the Facade.
+ * In this example, the Facade hides the complexity of the YouTube API and 
+ * FFmpeg library from the client code. Instead of working with dozens of 
+ * classes, the client uses a simple method on the Facade.
  */
 
 /**

@@ -10,13 +10,13 @@ namespace RefactoringGuru\Flyweight\RealWorld;
  * keeping the entire state in each object.
  *
  * Example: Before we begin, please note that real applications for the
- * Flyweight pattern in PHP are pretty rare. This comes from a single-thread
+ * Flyweight pattern in PHP are pretty rare. This stems from the single-thread
  * nature of PHP, where you're not supposed to be storing ALL of your
  * application's objects in memory at the same time, in the same thread. While
  * the idea for this example is only half-serious, and the whole RAM problem
  * might be solved by structuring the app differently, it still demonstrates the
- * concept of the pattern quite close to the real world. All right, I've said
- * it. Now, let's begin.
+ * concept of the pattern as it works in the real world. All right, I've given
+ * you the disclaimer. Now, let's begin.
  *
  * In this example, the Flyweight pattern is used to minimize the RAM usage of
  * objects in an animal database of a cat-only veterinary clinic. Each record in
@@ -33,7 +33,7 @@ namespace RefactoringGuru\Flyweight\RealWorld;
  */
 
 /**
- * Flyweight objects represent the data, shared by multiple Cat objects. This is
+ * Flyweight objects represent the data shared by multiple Cat objects. This is
  * the combination of breed, color, texture, etc.
  */
 class CatVariation
@@ -73,12 +73,12 @@ class CatVariation
      *
      * Keep in mind that in the real world, the Flyweight pattern can either be
      * implemented from the start or forced onto an existing application
-     * whenever the developers realize they've hit by a RAM problem.
+     * whenever the developers realize they've hit upon a RAM problem.
      *
      * In the latter case, you end up with such classes as we have here. We kind
      * of "refactored" an ideal app where all the data was initially inside the
      * Cat class. If we had implemented the Flyweight from the start, our class
-     * names might be different and less confusing, for example, Cat and
+     * names might be different and less confusing. For example, Cat and
      * CatContext.
      *
      * However, the actual reason why the primary behavior should live in the
@@ -100,7 +100,7 @@ class CatVariation
 }
 
 /**
- * The context stores the data, unique for each cat.
+ * The context stores the data unique for each cat.
  *
  * A designated class for storing context is optional and not always viable. The
  * context may be stored inside a massive data structure within the Client code
@@ -132,8 +132,8 @@ class Cat
 
     /**
      * Since the Context objects don't own all of their state, sometimes you'll
-     * need to provide some convenience method, for example for comparing their
-     * data with other objects.
+     * need to provide some convenient helper method (for comparing their data 
+     * with other objects, for example).
      *
      * @param $query
      * @return bool
@@ -244,7 +244,7 @@ print("Client: Let's see what we have in \"cats.csv\".\n");
 
 // To see the real effect of the pattern, you should have a large database with
 // several millions of records. Feel free to experiment with code to see the
-// real extent of the pattern.a
+// real extent of the pattern.
 $handle = fopen(__DIR__."/cats.csv", "r");
 $row = 0;
 $columns = [];

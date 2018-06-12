@@ -20,9 +20,9 @@ namespace RefactoringGuru\Mediator\RealWorld;
  * and notification logic. While a classic Mediator often depends on concrete
  * component classes, this one is only tied to their abstract interfaces.
  *
- * We were able to achieve this level of indirection thanks to the way the
+ * We are able to achieve this level of indirection thanks to the way the
  * connections between components are established. The components themselves may
- * subscribe to specific events that they are interested in via Mediator's
+ * subscribe to specific events that they are interested in via the Mediator's
  * subscription interface.
  *
  * Note, we can't use the PHP's built-in Subject/Observer interfaces here
@@ -129,7 +129,7 @@ class UserRepository implements Observer
     }
 
     /**
-     * Components can decide whether they like to process an event using its
+     * Components can decide whether they'd like to process an event using its
      * name, emitter or any contextual data passed along with the event.
      */
     public function update(string $event, object $emitter, $data = null)

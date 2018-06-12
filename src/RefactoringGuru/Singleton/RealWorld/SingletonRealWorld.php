@@ -10,7 +10,7 @@ namespace RefactoringGuru\Singleton\RealWorld;
  *
  * Example: The Singleton pattern is notorious for limiting code reuse and
  * complicating unit testing. However, it is still very useful in some cases. In
- * particular, it's handy when you need control some shared resources. For
+ * particular, it's handy when you need to control some shared resources. For
  * example, a global logging object that has to control the access to a log
  * file. Another good example: a shared runtime configuration storage.
  */
@@ -54,7 +54,7 @@ class Singleton
         if (!isset(self::$instances[$subclass])) {
             // Note that here we use the "static" keyword instead of the actual
             // class name. In this context, the "static" keyword means "the name
-            // of the current class." That detail is important because when the
+            // of the current class". That detail is important because when the
             // method is called on the subclass, we want an instance of that
             // subclass to be created here.
             self::$instances[$subclass] = new static;
@@ -64,7 +64,7 @@ class Singleton
 }
 
 /**
- * The logging class is most known and appreciated use of the Singleton pattern.
+ * The logging class is the most known and praised use of the Singleton pattern.
  * In most cases, you need a single logging object that writes to a single log
  * file (control over shared resource). You also need a convenient way to access
  * that instance from any context of your app (global access point).
@@ -80,7 +80,7 @@ class Logger extends Singleton
      * Since the Singleton's constructor is called only once, just a single file
      * resource is opened at all times.
      *
-     * Note, for the sake of simplicity we open the console stream instead of
+     * Note, for the sake of simplicity, we open the console stream instead of
      * the actual file here.
      */
     protected function __construct()
@@ -148,7 +148,7 @@ $login = "test_login";
 $password = "test_password";
 $config1->setValue("login", $login);
 $config1->setValue("password", $password);
-// ...and restores it.
+// ... and restores it.
 $config2 = Config::getInstance();
 if ($login == $config2->getValue("login") &&
     $password == $config2->getValue("password")
