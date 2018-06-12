@@ -4,4 +4,4 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-src/RefactoringGuru/Command/RealLife/commands.sqlite
+src/RefactoringGuru/Command/RealWorld/commands.sqlite
