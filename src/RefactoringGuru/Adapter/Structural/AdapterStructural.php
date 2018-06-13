@@ -55,7 +55,7 @@ class Adaptee
  * interface.
  *
  * RU:
- *
+ * Адаптер делает интерфейс Адаптируемого класса совместимым с интерфейсом Цели.
  */
 class Adapter extends Target
 {
@@ -73,7 +73,11 @@ class Adapter extends Target
 }
 
 /**
+ * EN:
  * The client code supports all classes that follow the Target interface.
+ *
+ * RU:
+ * Клиентский код поддерживает все классы, использующие интерфейс Цели.
  */
 function clientCode(Target $target)
 {
