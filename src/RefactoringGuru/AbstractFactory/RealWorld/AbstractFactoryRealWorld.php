@@ -194,3 +194,5 @@ print("\n\n");
 
 print("Testing rendering with the Blade factory:\n");
 templateRenderer(new BladeFactory());
+
+
