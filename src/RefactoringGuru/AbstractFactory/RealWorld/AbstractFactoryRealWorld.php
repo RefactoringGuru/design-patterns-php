@@ -49,6 +49,7 @@ namespace RefactoringGuru\AbstractFactory\RealWorld;
  * будет сделать — это подать в приложение объект фабрики другого типа и ничего
  * при этом не сломается.
  */
+
 /**
  * EN:
  * The Abstract Factory interface declares creation methods for each distinct
