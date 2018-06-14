@@ -3,15 +3,24 @@
 namespace RefactoringGuru\Adapter\Structural;
 
 /**
- * Adapter Design Pattern
+ * EN: Adapter Design Pattern
  *
  * Intent: Convert the interface of a class into the interface clients expect.
  * Adapter lets classes work together where they otherwise couldn't, due to
  * incompatible interfaces.
+ *
+ * RU: Паттерн Адаптер
+ *
+ * Назначение: Преобразует интерфейс класса в интерфейс, ожидаемый клиентами.
+ * Адаптер позволяет классам с несовместимыми интерфейсами работать вместе.
  */
 
 /**
+ * EN:
  * The Target defines the domain-specific interface used by the client code.
+ *
+ * RU:
+ * Цель определяет специальный интерфейс, используемый клиентским кодом.
  */
 class Target
 {
@@ -22,9 +31,15 @@ class Target
 }
 
 /**
+ * EN:
  * The Adaptee contains some useful behavior, but its interface is incompatible
  * with the existing client code. The Adaptee needs some adaptation before the
  * client code can use it.
+ * 
+ * RU:
+ * Адаптируемый класс содержит некоторое полезное поведение, но его интерфейс несовместим 
+ * с существующим клиентским кодом. Адаптируемый класс нуждается в некоторой доработке, 
+ * прежде чем клиентский код сможет его использовать.
  */
 class Adaptee
 {
@@ -35,8 +50,12 @@ class Adaptee
 }
 
 /**
+ * EN:
  * The Adapter makes the Adaptee's interface compatible with the Target's
  * interface.
+ *
+ * RU:
+ * Адаптер делает интерфейс Адаптируемого класса совместимым с интерфейсом Цели.
  */
 class Adapter extends Target
 {
@@ -54,7 +73,11 @@ class Adapter extends Target
 }
 
 /**
+ * EN:
  * The client code supports all classes that follow the Target interface.
+ *
+ * RU:
+ * Клиентский код поддерживает все классы, использующие интерфейс Цели.
  */
 function clientCode(Target $target)
 {
