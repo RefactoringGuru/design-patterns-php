@@ -56,7 +56,7 @@ namespace RefactoringGuru\AbstractFactory\RealWorld;
  * product type.
  *
  * RU:
- * Интерфейс Абстрактной фабрики объявляет методы создания 
+ * Интерфейс Абстрактной фабрики объявляет создающие методы
  * для каждого определенного типа продукта.
  */
 interface TemplateFactory
