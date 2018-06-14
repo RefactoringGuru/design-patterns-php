@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Bridge\Structural;
 
 /**
- * Bridge Design Pattern
+ * EN: Bridge Design Pattern
  *
  * Intent: Decouple an abstraction from its implementation so that the two can
  * vary independently.
@@ -13,12 +13,22 @@ namespace RefactoringGuru\Bridge\Structural;
  *          Aa      Ab        ===>        /     \     / \
  *         / \     /  \                 Aa(N) Ab(N)  1   2
  *         Aa1 Aa2  Ab1 Ab2
+ *
+ * RU: Паттерн Мост
+ *
+ * Назначение: Разделяет абстракцию и реализацию, что позволяет изменять их 
+ * независимо друг от друга.
  */
 
 /**
+ * EN:
  * The Abstraction defines the interface for the "control" part of the two class
  * hierarchies. It maintains a reference to an object of the Implementation
  * hierarchy and delegates all of the real work to this object.
+ *
+ * RU:
+ * Абстракция определяет интерфейс для «управляющей» части двух иерархий классов.
+ * Она содержит ссылку на объект иерархии Реализации и делегирует всю настоящую работу этому объекту.
  */
 class Abstraction
 {
@@ -40,7 +50,11 @@ class Abstraction
 }
 
 /**
+ * EN:
  * You can extend the Abstraction without changing the Implementation classes.
+ *
+ * RU:
+ * Можно расширить Абстракцию без изменения классов Реализации.
  */
 class ExtendedAbstraction extends Abstraction
 {
