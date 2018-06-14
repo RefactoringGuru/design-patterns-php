@@ -21,16 +21,20 @@ namespace RefactoringGuru\Adapter\RealWorld;
  * Назначение: Преобразует интерфейс класса в интерфейс, ожидаемый клиентами.
  * Адаптер позволяет классам с несовместимыми интерфейсами работать вместе.
  *
- * Пример: Паттерн Адаптер позволяет вам использовать сторонние или устаревшие классы,
- * даже если они несовместимы с с основной частью вашего кода. Например,
+ * Пример: Паттерн Адаптер позволяет использовать сторонние или устаревшие классы,
+ * даже если они несовместимы с основной частью вашего кода. Например,
  * вместо перезаписи интерфейса уведомлений вашего приложения для поддержки каждой сторонней службы,
- * такой как Slack, Facebook, SMS и тому подобное, вы можете создать набор специальных оберток, 
- * которые адаптируют вызовы из вашего приложения к интерфейсу и формату, требуемому для каждого стороннего класса. 
+ * вроде Slack, Facebook, SMS или подобной, можно создать набор специальных оберток, 
+ * которые адаптируют вызовы из вашего приложения к интерфейсу и формату, требуемыми каждым сторонним классом. 
  */
 
 /**
+ * EN:
  * The Target interface represents the interface that your application's classes
  * already follow.
+ *
+ * RU:
+ * Целевой интерфейс предоставляет интерфейс, которому следуют классы вашего приложения.
  */
 interface Notification
 {
@@ -38,6 +42,7 @@ interface Notification
 }
 
 /**
+ * EN:
  * Here's an example of the existing class that follows the Target interface.
  *
  * The truth is that many real apps may not have this interface clearly defined.
@@ -45,6 +50,14 @@ interface Notification
  * of your application's existing classes. If that's awkward (for instance,
  * SlackNotification doesn't feel like a subclass of EmailNotification), then
  * extracting an interface should be your first step.
+ *
+ * RU:
+ * Вот пример существующего класса, который следует за целевым интерфейсом.
+ *
+ * Дело в том, что многие реальные приложения могут не иметь четко определенного интерфейса.
+ * В этом случае лучше всего было бы расширить Адаптер за счет одного из существующих классов
+ * вашего приложения.
+ *
  */
 class EmailNotification implements Notification
 {
