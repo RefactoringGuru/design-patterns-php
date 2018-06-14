@@ -21,11 +21,11 @@ namespace RefactoringGuru\Adapter\RealWorld;
  * Назначение: Преобразует интерфейс класса в интерфейс, ожидаемый клиентами.
  * Адаптер позволяет классам с несовместимыми интерфейсами работать вместе.
  *
- * Пример: Паттерн Адаптер позволяет использовать сторонние или устаревшие классы,
- * даже если они несовместимы с основной частью вашего кода. Например,
- * вместо перезаписи интерфейса уведомлений вашего приложения для поддержки каждой сторонней службы,
- * вроде Slack, Facebook, SMS или подобной, можно создать набор специальных оберток, 
- * которые адаптируют вызовы из вашего приложения к интерфейсу и формату, требуемыми каждым сторонним классом. 
+ * Пример: Паттерн Адаптер позволяет использовать сторонние или устаревшие классы, 
+ * даже если они несовместимы с основной частью кода. Например, чтобы поддержать сторонние службы, 
+ * такие как Slack, Facebook, SMS и т.д., вместо перезаписи интерфейса уведомлений приложения,  
+ * создается набор специальных оберток, которые адаптируют вызовы из приложения к интерфейсу и формату, 
+ * которые требуют сторонние классы. 
  */
 
 /**
@@ -54,10 +54,10 @@ interface Notification
  * RU:
  * Вот пример существующего класса, который следует за целевым интерфейсом.
  *
- * Дело в том, что многие реальные приложения могут не иметь четко определенного интерфейса.
- * В этом случае лучше всего было бы расширить Адаптер за счет одного из существующих классов
- * вашего приложения.
- *
+ * Дело в том, что у большинства приложений нет четко определенного интерфейса.
+ * В этом случае лучше было бы расширить Адаптер за счет существующего класса приложения. 
+ * Если это неудобно (например, SlackNotification не похож на подкласс EmailNotification), 
+ * тогда первым шагом должно быть извлечение интерфейса.
  */
 class EmailNotification implements Notification
 {
@@ -76,9 +76,15 @@ class EmailNotification implements Notification
 }
 
 /**
+ * EN:
  * The Adaptee is some useful class, incompatible with the Target interface. You
  * can't just go in and change the code of the class to follow the Target
  * interface, since the code might be provided by a 3rd-party library.
+ * 
+ * RU:
+ * Адаптируемый класс – некий полезный класс, несовместимый с целевым интерфейсом. 
+ * Нельзя просто войти и изменить код класса так, чтобы следовать целевому интерфейсу, 
+ * так как код может предоставляться сторонней библиотекой.
  */
 class SlackApi
 {
@@ -105,9 +111,14 @@ class SlackApi
 }
 
 /**
+ * EN:
  * The Adapter is a class that links the Target interface and the Adaptee class.
  * In this case, it allows the application to send notifications using Slack
  * API.
+ *
+ * RU:
+ * Адаптер – класс, который связывает Целевой интерфейс и Адаптируемый класс.
+ * Это позволяет приложению использовать Slack API для отправки уведомлений.
  */
 class SlackNotification implements Notification
 {
@@ -121,8 +132,13 @@ class SlackNotification implements Notification
     }
 
     /**
+     * EN:
      * An Adapter is not only capable of adapting interfaces, but it can also
      * convert incoming data to the format required by the Adaptee.
+     *
+     * RU:
+     * Адаптер способен адаптировать интерфейсы и преобразовывать входные данные в формат, 
+     * необходимый Адаптируемому классу.
      */
     public function send(string $title, string $message)
     {
@@ -133,7 +149,11 @@ class SlackNotification implements Notification
 }
 
 /**
+ * EN:
  * The client code can work with any class that follows the Target interface.
+ *
+ * RU:
+ * Клиентский код работает с классами, которые следует Целевому интерфейсу.
  */
 function clientCode(Notification $notification)
 {
