@@ -20,7 +20,7 @@ namespace RefactoringGuru\Adapter\Structural;
  * The Target defines the domain-specific interface used by the client code.
  *
  * RU:
- * Цель определяет специальный интерфейс, используемый клиентским кодом.
+ * Целевой класс объявляет интерфейс, с которым может работать клиентский код.
  */
 class Target
 {
@@ -55,7 +55,7 @@ class Adaptee
  * interface.
  *
  * RU:
- * Адаптер делает интерфейс Адаптируемого класса совместимым с интерфейсом Цели.
+ * Адаптер делает интерфейс Адаптируемого класса совместимым с целевым интерфейсом.
  */
 class Adapter extends Target
 {
@@ -77,7 +77,7 @@ class Adapter extends Target
  * The client code supports all classes that follow the Target interface.
  *
  * RU:
- * Клиентский код поддерживает все классы, использующие интерфейс Цели.
+ * Клиентский код поддерживает все классы, использующие целевой интерфейс.
  */
 function clientCode(Target $target)
 {
