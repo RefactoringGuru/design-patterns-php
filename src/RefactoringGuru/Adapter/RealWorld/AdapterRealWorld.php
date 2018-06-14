@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Adapter\RealWorld;
 
 /**
- * Adapter Design Pattern
+ * EN: Adapter Design Pattern
  *
  * Intent: Convert the interface of a class into the interface clients expect.
  * Adapter lets classes work together where they otherwise couldn't, due to
@@ -15,6 +15,17 @@ namespace RefactoringGuru\Adapter\RealWorld;
  * 3rd-party service such as Slack, Facebook, SMS or (you-name-it), you can
  * create a set of special wrappers that adapt calls from your app to an
  * interface and format required by each 3rd-party class.
+ *
+ * RU: Паттерн Адаптер
+ *
+ * Назначение: Преобразует интерфейс класса в интерфейс, ожидаемый клиентами.
+ * Адаптер позволяет классам с несовместимыми интерфейсами работать вместе.
+ *
+ * Пример: Паттерн Адаптер позволяет вам использовать сторонние или устаревшие классы,
+ * даже если они несовместимы с с основной частью вашего кода. Например,
+ * вместо перезаписи интерфейса уведомлений вашего приложения для поддержки каждой сторонней службы,
+ * такой как Slack, Facebook, SMS и тому подобное, вы можете создать набор специальных оберток, 
+ * которые адаптируют вызовы из вашего приложения к интерфейсу и формату, требуемому для каждого стороннего класса. 
  */
 
 /**
