@@ -163,7 +163,9 @@ class Product1
  * optional, since the client can control builders directly.
  *
  * RU:
- *
+ * Директор отвечает только за выполнение шагов построения в определенной последовательности.
+ * Это полезно при производстве продуктов согласно с определенным порядком или конфигурацией.
+ * Строго говоря, класс Директор необязателен, так как клиент может напрямую управлять строителями.
  */
 class Director
 {
@@ -173,9 +175,14 @@ class Director
     private $builder;
 
     /**
+     * EN:
      * The Director works with any builder instance that the client code passes
      * to it. This way, the client code may alter the final type of the newly
      * assembled product.
+     *
+     * RU:
+     * Директор работает с любым экземпляром строителя, который передает ему клиентский код.
+     * Таким образом, клиентский код может изменить конечный тип вновь собранного продукта.
      */
     public function setBuilder(Builder $builder)
     {
@@ -183,8 +190,12 @@ class Director
     }
 
     /**
+     * EN:
      * The Director can construct several product variations using the same
      * building steps.
+     *
+     * RU:
+     * Директор может создавать несколько вариаций продукта, используя те же шаги построения.
      */
     public function buildMinimalViableProduct()
     {
@@ -200,9 +211,14 @@ class Director
 }
 
 /**
+ * EN:
  * The client code creates a builder object, passes it to the director and then
  * initiates the construction process. The end result is retrieved from the
  * builder object.
+ *
+ * RU:
+ * Клиентский код создает объект строитель, передает его директору, а затем инициирует 
+ * процесс построения. Конечный результат извлекается из объекта строителя.
  */
 function clientCode(Director $director)
 {
@@ -217,7 +233,13 @@ function clientCode(Director $director)
     $director->buildFullFeaturedProduct();
     $builder->getProduct()->listParts();
 
-    // Remember, the Builder pattern can be used without a Director class.
+ /**
+ * EN:
+ * Remember, the Builder pattern can be used without a Director class.
+ *
+ * RU:
+ * Помните, что шаблон Строитель можно использовать без класса Директор.
+ */
     print("Custom product:\n");
     $builder->producePartA();
     $builder->producePartC();
