@@ -50,7 +50,7 @@ abstract class Page
      * objects.
      * 
      * RU:
-     * Абстракция обычно инициализируется одним из объектов Реализации.
+     * Обычно Абстракция инициализируется одним из объектов Реализации.
      */
     public function __construct(Renderer $renderer)
     {
@@ -58,8 +58,12 @@ abstract class Page
     }
 
     /**
+     * EN:
      * The Bridge pattern allows replacing the attached Implementation object
      * dynamically.
+     *
+     * RU:
+     * Паттерн Мост позволяет динамически заменять присоединенный объект Реализации.
      */
     public function changeRenderer(Renderer $renderer)
     {
@@ -67,14 +71,23 @@ abstract class Page
     }
 
     /**
+     * EN:
      * The "view" behavior stays abstract since it can only be provided by
      * Concrete Abstraction classes.
+     *
+     * RU:
+     * Поведение «вида» остается абстрактным, так как оно предоставляется
+     * только классами Конкретной Абстракции.
      */
     abstract public function view();
 }
 
 /**
+ * EN:
  * This Concrete Abstraction represents a simple page.
+ *
+ * RU:
+ * Эта Конкретная Абстракция создает простую страницу.
  */
 class SimplePage extends Page
 {
@@ -100,7 +113,11 @@ class SimplePage extends Page
 }
 
 /**
+ * EN:
  * This Concrete Abstraction represents a more complex page.
+ *
+ * RU:
+ * Эта Конкретная Абстракция создает более сложную страницу.
  */
 class ProductPage extends Page
 {
@@ -126,7 +143,11 @@ class ProductPage extends Page
 }
 
 /**
+ * EN:
  * A helper class for the ProductPage class.
+ *
+ * RU:
+ * Вспомогательный класс для класса ProductPage.
  */
 class Product
 {
@@ -154,12 +175,18 @@ class Product
 
 
 /**
+ * EN:
  * The Implementation declares a set of "real", "under-the-hood", "platform"
  * methods.
  *
  * In this case, the Implementation lists rendering methods that can be used to
  * compose any web page. Different Abstractions may use different methods of the
  * Implementation.
+ *
+ * RU:
+ * Реализация объявляет набор «реальных», «под капотом», «платформенных» методов.
+ *
+ *
  */
 interface Renderer
 {
