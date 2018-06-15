@@ -3,15 +3,23 @@
 namespace RefactoringGuru\Builder\Structural;
 
 /**
- * Builder Design Pattern
+ * EN: Builder Design Pattern
  *
  * Intent: Separate the construction of a complex object from its representation
  * so that the same construction process can create different representations.
+ *
+ * RU: Паттерн Строитель
+ * Назначение: Отделяет построение сложного объекта от его представления так, 
+ * что один и тот же процесс строительства создаёт разные представления объекта.
  */
 
 /**
+ * EN:
  * The Builder interface specifies methods for creating the different parts of
  * the Product objects.
+ *
+ * RU:
+ * Интерфейс Строителя объявляет создающие методы для различных частей объектов Продуктов.
  */
 interface Builder
 {
@@ -23,17 +31,28 @@ interface Builder
 }
 
 /**
+ * EN:
  * The Concrete Builder classes follow the Builder interface and provide
  * specific implementations of the building steps. Your program may have several
  * variations of Builders, implemented differently.
+ *
+ * RU:
+ * Классы Конкретного Строителя следуют интерфейсу Строителя и предоставляют 
+ * конкретные реализации шагов построения. Ваша программа может иметь несколько вариантов Строителей,
+ * реализованных по-разному.
  */
 class ConcreteBuilder1 implements Builder
 {
     private $product;
 
     /**
+     * EN:
      * A fresh builder instance should contain a blank product object, which is
      * used in further assembly.
+     *
+     * RU:
+     * Новый экземпляр строителя должен содержать пустой объект продукта, 
+     * который используется в дальнейшей сборке.
      */
     public function __construct()
     {
@@ -46,7 +65,11 @@ class ConcreteBuilder1 implements Builder
     }
 
     /**
+     * EN:
      * All production steps work with the same product instance.
+     *
+     * RU:
+     * Все этапы производства работают с одним и тем же экземпляром продукта.
      */
     public function producePartA()
     {
@@ -64,6 +87,7 @@ class ConcreteBuilder1 implements Builder
     }
 
     /**
+     * EN:
      * Concrete Builders are supposed to provide their own methods for
      * retrieving results. That's because various types of builders may create
      * entirely different products that don't follow the same interface.
@@ -78,6 +102,9 @@ class ConcreteBuilder1 implements Builder
      * `getProduct` method body. However, this behavior is not mandatory, and
      * you can make your builders wait for an explicit reset call from the
      * client code before disposing of the previous result.
+     *
+     * RU:
+     *
      */
     public function getProduct(): Product1
     {
