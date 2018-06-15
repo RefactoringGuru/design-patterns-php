@@ -117,7 +117,7 @@ class ConcreteBuilder1 implements Builder
      * должен быть готов к началу производства другого продукта. Поэтому обычной практикой
      * является вызов метода сброса в конце тела метода getProduct.
      * Однако такое поведение не является обязательным, вы можете заставить своих строителей
-     * ждать явного запроса сброса из кода клиента, прежде чем избавиться от предыдущего результата.
+     * ждать явного запроса на сброс из кода клиента, прежде чем избавиться от предыдущего результата.
      */
     public function getProduct(): Product1
     {
@@ -129,12 +129,21 @@ class ConcreteBuilder1 implements Builder
 }
 
 /**
+ * EN:
  * It makes sense to use the Builder pattern only when your products are quite
  * complex and require extensive configuration.
  *
  * Unlike in other creational patterns, different concrete builders can produce
  * unrelated products. In other words, results of various builders may not
  * always follow the same interface.
+ *
+ * RU:
+ * Имеет смысл использовать шаблон Строитель только тогда, когда ваши продукты достаточно сложны
+ * и требуют обширной конфигурации.
+ *
+ * В отличие от других порождающих паттернов, различные конкретные строители могут
+ * производить несвязанные продукты. Другими словами, результаты различных строителей 
+ * могут не всегда  следовать одному и тому же интерфейсу.
  */
 class Product1
 {
@@ -147,10 +156,14 @@ class Product1
 }
 
 /**
+ * EN:
  * The Director is only responsible for executing the building steps in a
  * particular sequence. It is helpful when producing products according to a
  * specific order or configuration. Strictly speaking, the Director class is
  * optional, since the client can control builders directly.
+ *
+ * RU:
+ *
  */
 class Director
 {
