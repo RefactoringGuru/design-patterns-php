@@ -8,16 +8,17 @@ namespace RefactoringGuru\Bridge\Structural;
  * Intent: Decouple an abstraction from its implementation so that the two can
  * vary independently.
  *
+ * RU: Паттерн Мост
+ *
+ * Назначение: Разделяет абстракцию и реализацию, что позволяет изменять их 
+ * независимо друг от друга.
+ *
  *               A
  *            /     \                        A         N
  *          Aa      Ab        ===>        /     \     / \
  *         / \     /  \                 Aa(N) Ab(N)  1   2
  *         Aa1 Aa2  Ab1 Ab2
  *
- * RU: Паттерн Мост
- *
- * Назначение: Разделяет абстракцию и реализацию, что позволяет изменять их 
- * независимо друг от друга.
  */
 
 /**
