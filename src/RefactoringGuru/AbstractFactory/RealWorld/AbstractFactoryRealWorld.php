@@ -57,7 +57,7 @@ namespace RefactoringGuru\AbstractFactory\RealWorld;
  *
  * RU:
  * Интерфейс Абстрактной фабрики объявляет создающие методы
- * для каждого определенного типа продукта.
+ * для каждого определённого типа продукта.
  */
 interface TemplateFactory
 {
@@ -74,7 +74,7 @@ interface TemplateFactory
  * This Concrete Factory creates Twig templates.
  *
  * RU:
- * Каждая Конкретная Фабрика соответствует определенному варианту 
+ * Каждая Конкретная Фабрика соответствует определённому варианту 
  * (или семейству) продуктов.
  *
  * Эта Конкретная Фабрика создает шаблоны Twig.
@@ -121,7 +121,7 @@ class BladeFactory implements TemplateFactory
  * title templates.
  *
  * RU:
- * Каждый определенный тип продукта должен иметь отдельный интерфейс.
+ * Каждый отдельный тип продукта должен иметь отдельный интерфейс.
  * Все варианты продукта должны соответствовать одному интерфейсу.
  *
  * Например, этот интерфейс Абстрактного Продукта описывает поведение 
@@ -179,7 +179,7 @@ interface PageTemplate
  * The Twig variant of the whole page templates.
  *
  * RU:
- * Вариант шаблонов страниц Twig .
+ * Вариант шаблонов страниц Twig.
  */
 class TwigPageTemplate implements PageTemplate
 {
@@ -200,7 +200,7 @@ EOF;
  * The Blade variant of the whole page templates.
  *
  * RU:
- * Вариант шаблонов страниц Blade .
+ * Вариант шаблонов страниц Blade.
  */
 class BladePageTemplate implements PageTemplate
 {
@@ -239,7 +239,7 @@ function templateRenderer(TemplateFactory $factory)
  * any type.
  *
  * RU:
- * Теперь, в других частях приложения, клиентский код может принимать 
+ * Теперь в других частях приложения клиентский код может принимать 
  * фабричные объекты любого типа.
  */
 print("Testing rendering with the Twig factory:\n");
