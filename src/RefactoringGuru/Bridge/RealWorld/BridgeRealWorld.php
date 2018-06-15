@@ -3,10 +3,15 @@
 namespace RefactoringGuru\Bridge\RealWorld;
 
 /**
- * Bridge Design Pattern
+ * EN: Bridge Design Pattern
  *
  * Intent: Decouple an abstraction from its implementation so that the two can
  * vary independently.
+ *
+ * RU: Паттерн Мост
+ *
+ * Назначение: Разделяет абстракцию и реализацию, что позволяет изменять их 
+ * независимо друг от друга.
  *
  *               A
  *            /     \                        A         N
@@ -14,16 +19,23 @@ namespace RefactoringGuru\Bridge\RealWorld;
  *         / \     /  \                 Aa(N) Ab(N)  1   2
  *        Aa1 Aa2  Ab1 Ab2
  *
- * Example: In this example, the Page hierarchy acts as the Abstraction, and the
+ * EN: Example: In this example, the Page hierarchy acts as the Abstraction, and the
  * Renderer hierarchy acts as the Implementation. Objects of the Page class can
  * assemble web pages of a particular kind using basic elements provided by a
  * Renderer object attached to that page. Since both of the class hierarchies
  * are separate, you can add a new Renderer class without changing any of the
  * Page classes and vice versa.
+ *
+ * RU: Пример: В этом примере иерархия Страницы выступает как Абстракция, а иерархия Рендера как Реализация.
+ * Объекты класса Страница собирают веб-страницы определенного типа, используя базовые элементы, 
+ * которые предоставляются объектом Рендер, прикрепленным к этой странице.
+ * Обе иерархии классов разделены, поэтому можно добавить новый класс Рендер без изменения классов страниц и наоборот.
  */
 
 /**
- * The Abstraction.
+ * EN: The Abstraction.
+ *
+ * RU: Абстракция.
  */
 abstract class Page
 {
@@ -33,8 +45,12 @@ abstract class Page
     protected $renderer;
 
     /**
+     * EN:
      * The Abstraction is usually initialized with one of the Implementation
      * objects.
+     * 
+     * RU:
+     * Абстракция обычно инициализируется одним из объектов Реализации.
      */
     public function __construct(Renderer $renderer)
     {
