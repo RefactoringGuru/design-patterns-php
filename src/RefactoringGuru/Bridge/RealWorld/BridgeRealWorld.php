@@ -27,8 +27,8 @@ namespace RefactoringGuru\Bridge\RealWorld;
  * Page classes and vice versa.
  *
  * RU: Пример: В этом примере иерархия Страницы выступает как Абстракция, а иерархия Рендера как Реализация.
- * Объекты класса Страница собирают веб-страницы определенного типа, используя базовые элементы, 
- * которые предоставляются объектом Рендер, прикрепленным к этой странице.
+ * Объекты класса Страница монтируют веб-страницы определённого типа, используя базовые элементы, 
+ * которые предоставляются объектом Рендер, прикреплённым к этой странице.
  * Обе иерархии классов разделены, поэтому можно добавить новый класс Рендер без изменения классов страниц и наоборот.
  */
 
@@ -63,7 +63,7 @@ abstract class Page
      * dynamically.
      *
      * RU:
-     * Паттерн Мост позволяет динамически заменять присоединенный объект Реализации.
+     * Паттерн Мост позволяет динамически заменять присоединённый объект Реализации.
      */
     public function changeRenderer(Renderer $renderer)
     {
@@ -76,7 +76,7 @@ abstract class Page
      * Concrete Abstraction classes.
      *
      * RU:
-     * Поведение «вида» остается абстрактным, так как оно предоставляется
+     * Поведение «вида» остаётся абстрактным, так как оно предоставляется
      * только классами Конкретной Абстракции.
      */
     abstract public function view();
@@ -87,7 +87,7 @@ abstract class Page
  * This Concrete Abstraction represents a simple page.
  *
  * RU:
- * Эта Конкретная Абстракция создает простую страницу.
+ * Эта Конкретная Абстракция создаёт простую страницу.
  */
 class SimplePage extends Page
 {
@@ -117,7 +117,7 @@ class SimplePage extends Page
  * This Concrete Abstraction represents a more complex page.
  *
  * RU:
- * Эта Конкретная Абстракция создает более сложную страницу.
+ * Эта Конкретная Абстракция создаёт более сложную страницу.
  */
 class ProductPage extends Page
 {
@@ -186,7 +186,8 @@ class Product
  * RU:
  * Реализация объявляет набор «реальных», «под капотом», «платформенных» методов.
  *
- *
+ * В этом случае Реализация перечисляет методы рендеринга, которые используются для создания веб-страниц.
+ * Разные Абстракции могут использовать разные методы Реализации.
  */
 interface Renderer
 {
@@ -206,7 +207,11 @@ interface Renderer
 }
 
 /**
+ * EN:
  * This Concrete Implementation renders a web page as HTML.
+ *
+ * RU:
+ * Эта Конкретная Реализация отображает веб-страницу в виде HTML.
  */
 class HTMLRenderer implements Renderer
 {
@@ -247,7 +252,11 @@ class HTMLRenderer implements Renderer
 }
 
 /**
+ * EN:
  * This Concrete Implementation renders a web page as JSON strings.
+ *
+ * RU:
+ * Эта Конкретная Реализация отображает веб-страницу в виде строк JSON.
  */
 class JsonRenderer implements Renderer
 {
@@ -288,7 +297,11 @@ class JsonRenderer implements Renderer
 }
 
 /**
+ * EN:
  * The client code usually deals only with the Abstraction objects.
+ *
+ * RU:
+ * Клиентский код имеет дело только с объектами Абстракции.
  */
 function clientCode(Page $page)
 {
@@ -300,8 +313,13 @@ function clientCode(Page $page)
 }
 
 /**
+ * EN:
  * The client code can be executed with any pre-configured combination of the
  * Abstraction+Implementation.
+ *
+ * RU:
+ * Клиентский код может выполняться с любой предварительно сконфигурированной
+ * комбинацией Абстракция+Реализация.
  */
 $HTMLRenderer = new HTMLRenderer();
 $JSONRenderer = new JsonRenderer();
@@ -312,7 +330,11 @@ clientCode($page);
 print("\n\n");
 
 /**
+ * EN:
  * The Abstraction can change the linked Implementation at runtime if needed.
+ *
+ * RU:
+ * При необходимости Абстракция может заменить связанную Реализацию во время выполнения.
  */
 $page->changeRenderer($JSONRenderer);
 print("JSON view of a simple content page, rendered with the same client code:\n");
