@@ -3,15 +3,24 @@
 namespace RefactoringGuru\Command\Structural;
 
 /**
- * Command Design Pattern
+ * EN: Command Design Pattern
  *
  * Intent: Encapsulate a request as an object, thereby letting you parameterize
  * clients with different requests (e.g. queue or log requests) and support
  * undoable operations.
+ *
+ * RU: Паттерн Команда
+ * Назначение: Инкапсулирует запрос как объект, тем самым позволяя вам параметризовать
+ * клиентов с различными запросами (например, запросами очереди или логирования) и  
+ * поддерживать отмену операций.
  */
 
 /**
+ * EN:
  * The Command interface declares a method for executing a command.
+ *
+ * RU:
+ * Интерфейс Команды объявляет метод для выполнения команды.
  */
 interface Command
 {
