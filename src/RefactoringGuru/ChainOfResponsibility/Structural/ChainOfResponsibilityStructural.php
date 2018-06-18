@@ -18,8 +18,13 @@ namespace RefactoringGuru\ChainOfResponsibility\Structural;
  */
 
 /**
+ * EN:
  * The Handler interface declares a method for building the chain of handlers.
  * It also declares a method for executing a request.
+ *
+ * RU:
+ * Интерфейс Обработчика объявляет метод построения цепочки обработчиков.
+ * Он также объявляет метод для выполнения запроса.
  */
 interface Handler
 {
