@@ -3,11 +3,18 @@
 namespace RefactoringGuru\ChainOfResponsibility\Structural;
 
 /**
- * Chain of Responsibility Design Pattern
+ * EN: Chain of Responsibility Design Pattern
  *
  * Intent: Avoid coupling a sender of a request to its receiver by giving more
  * than one object a chance to handle the request. Chain the receiving objects
  * and then pass the request through the chain until some receiver handles it.
+ *
+ * RU: Паттерн Цепочка обязанностей
+ *
+ * Назначение: Позволяет избежать привязки отправителя запроса к его получателю,
+ * предоставляя возможность обработать запрос нескольким объектам. 
+ * Связывает в цепочку объекты-получатели, а затем передаёт запрос по цепочке,
+ * пока некий получатель не обработает его.
  */
 
 /**
