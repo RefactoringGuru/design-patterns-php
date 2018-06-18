@@ -118,8 +118,13 @@ class DogHandler extends AbstractHandler
 }
 
 /**
+ * EN:
  * The client code is usually suited to work with a single handler. In most
  * cases, it is not even aware that the handler is part of a chain.
+ *
+ * RU:
+ * Обычно клиентский код может работать с одним обработчиком.
+ * В большинстве случаев даже не известно, что обработчик является частью цепочки.
  */
 function clientCode(Handler $handler)
 {
@@ -135,7 +140,11 @@ function clientCode(Handler $handler)
 }
 
 /**
+ * EN:
  * The other part of the client code constructs the actual chain.
+ *
+ * RU:
+ * Другая часть клиентского кода создает фактическую цепочку.
  */
 $monkey = new MonkeyHandler();
 $squirrel = new SquirrelHandler();
@@ -144,8 +153,13 @@ $dog = new DogHandler();
 $monkey->setNext($squirrel)->setNext($dog);
 
 /**
+ * EN:
  * The client should be able to send a request to any handler, not just the
  * first one in the chain.
+ *
+ * RU:
+ * Клиент должен иметь возможность отправлять запрос любому обработчику,
+ * а не только первому в цепочке.
  */
 print("Chain: Monkey > Squirrel > Dog\n\n");
 clientCode($monkey);
