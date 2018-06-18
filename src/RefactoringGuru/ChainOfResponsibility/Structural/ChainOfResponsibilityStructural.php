@@ -34,7 +34,11 @@ interface Handler
 }
 
 /**
+ * EN:
  * The default chaining behavior can be implemented inside a base handler class.
+ *
+ * RU:
+ * Поведение цепочки по умолчанию может быть реализовано внутри базового класса обработчика.
  */
 abstract class AbstractHandler implements Handler
 {
@@ -50,9 +54,13 @@ abstract class AbstractHandler implements Handler
     public function setNext(Handler $handler)
     {
         $this->nextHandler = $handler;
-
+        // EN:
         // Returning a handler from here will let us link handlers in a
         // convenient way like this:
+        // $monkey->setNext($squirrel)->setNext($dog);
+        // 
+        // RU:
+        // Возврат обработчика отсюда позволит связать обработчики простым способом, вот так:
         // $monkey->setNext($squirrel)->setNext($dog);
         return $handler;
     }
@@ -66,8 +74,12 @@ abstract class AbstractHandler implements Handler
 }
 
 /**
+ * EN:
  * All Concrete Handlers either handle a request or pass it to the next handler
  * in the chain.
+ *
+ * RU:
+ * Все Конкретные Обработчики либо обрабатывают запрос, либо передают его следующему обработчику в цепочке.
  */
 class MonkeyHandler extends AbstractHandler
 {
