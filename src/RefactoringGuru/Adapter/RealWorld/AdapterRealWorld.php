@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Adapter\RealWorld;
 
 /**
- * Adapter Design Pattern
+ * EN: Adapter Design Pattern
  *
  * Intent: Convert the interface of a class into the interface clients expect.
  * Adapter lets classes work together where they otherwise couldn't, due to
@@ -15,11 +15,26 @@ namespace RefactoringGuru\Adapter\RealWorld;
  * 3rd-party service such as Slack, Facebook, SMS or (you-name-it), you can
  * create a set of special wrappers that adapt calls from your app to an
  * interface and format required by each 3rd-party class.
+ *
+ * RU: Паттерн Адаптер
+ *
+ * Назначение: Преобразует интерфейс класса в интерфейс, ожидаемый клиентами.
+ * Адаптер позволяет классам с несовместимыми интерфейсами работать вместе.
+ *
+ * Пример: Паттерн Адаптер позволяет использовать сторонние или устаревшие классы, 
+ * даже если они несовместимы с основной частью кода. Например, вместо того, чтобы 
+ * переписывать интерфейс уведомлений вашего приложения для поддержки каждого стороннего сервиса
+ * вроде Slack, Facebook, SMS и прочих, вы создаёте под эти сервисы набор специальных обёрток, 
+ * которые приводят вызовы из приложения к требуемым сторонними классами интерфейсу и формату. 
  */
 
 /**
+ * EN:
  * The Target interface represents the interface that your application's classes
  * already follow.
+ *
+ * RU:
+ * Целевой интерфейс предоставляет интерфейс, которому следуют классы вашего приложения.
  */
 interface Notification
 {
@@ -27,6 +42,7 @@ interface Notification
 }
 
 /**
+ * EN:
  * Here's an example of the existing class that follows the Target interface.
  *
  * The truth is that many real apps may not have this interface clearly defined.
@@ -34,6 +50,14 @@ interface Notification
  * of your application's existing classes. If that's awkward (for instance,
  * SlackNotification doesn't feel like a subclass of EmailNotification), then
  * extracting an interface should be your first step.
+ *
+ * RU:
+ * Вот пример существующего класса, который следует за целевым интерфейсом.
+ *
+ * Дело в том, что у большинства приложений нет чётко определённого интерфейса.
+ * В этом случае лучше было бы расширить Адаптер за счёт существующего класса приложения. 
+ * Если это неудобно (например, SlackNotification не похож на подкласс EmailNotification), 
+ * тогда первым шагом должно быть извлечение интерфейса.
  */
 class EmailNotification implements Notification
 {
@@ -52,9 +76,15 @@ class EmailNotification implements Notification
 }
 
 /**
+ * EN:
  * The Adaptee is some useful class, incompatible with the Target interface. You
  * can't just go in and change the code of the class to follow the Target
  * interface, since the code might be provided by a 3rd-party library.
+ * 
+ * RU:
+ * Адаптируемый класс – некий полезный класс, несовместимый с целевым интерфейсом. 
+ * Нельзя просто войти и изменить код класса так, чтобы следовать целевому интерфейсу, 
+ * так как код может предоставляться сторонней библиотекой.
  */
 class SlackApi
 {
@@ -81,9 +111,14 @@ class SlackApi
 }
 
 /**
+ * EN:
  * The Adapter is a class that links the Target interface and the Adaptee class.
  * In this case, it allows the application to send notifications using Slack
  * API.
+ *
+ * RU:
+ * Адаптер – класс, который связывает Целевой интерфейс и Адаптируемый класс.
+ * Это позволяет приложению использовать Slack API для отправки уведомлений.
  */
 class SlackNotification implements Notification
 {
@@ -97,8 +132,13 @@ class SlackNotification implements Notification
     }
 
     /**
+     * EN:
      * An Adapter is not only capable of adapting interfaces, but it can also
      * convert incoming data to the format required by the Adaptee.
+     *
+     * RU:
+     * Адаптер способен адаптировать интерфейсы и преобразовывать входные данные в формат, 
+     * необходимый Адаптируемому классу.
      */
     public function send(string $title, string $message)
     {
@@ -109,7 +149,11 @@ class SlackNotification implements Notification
 }
 
 /**
+ * EN:
  * The client code can work with any class that follows the Target interface.
+ *
+ * RU:
+ * Клиентский код работает с классами, которые следуют Целевому интерфейсу.
  */
 function clientCode(Notification $notification)
 {
