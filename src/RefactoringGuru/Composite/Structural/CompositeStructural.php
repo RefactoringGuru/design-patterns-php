@@ -84,8 +84,13 @@ abstract class Component
     public function remove(Component $component) { }
 
     /**
+     * EN:
      * You can provide a method that lets the client code figure out whether a
      * component can bear children.
+     *
+     * RU:
+     * Вы можете предоставить метод, который позволит клиентскому коду понять,
+     * есть ли у компонента потомки.
      */
     public function isComposite(): bool
     {
