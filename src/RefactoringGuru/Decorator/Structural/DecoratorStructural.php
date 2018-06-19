@@ -3,16 +3,26 @@
 namespace RefactoringGuru\Decorator\Structural;
 
 /**
- * Decorator Design Pattern
+ * EN: Decorator Design Pattern
  *
  * Intent: Attach additional responsibilities to an object dynamically.
  * Decorators provide a flexible alternative to subclassing for extending
  * functionality.
+ *
+ * RU: Паттерн Декоратор
+ *
+ * Назначение: Динамически подключает к объекту дополнительную функциональность.
+ * Декораторы предоставляют гибкую альтернативу практике создания подклассов 
+ * для расширения функциональности.
  */
 
 /**
+ * EN:
  * The base Component interface defines operations that can be altered by
  * decorators.
+ *
+ * RU: 
+ * Интерфейс базового Компонента определяет операции, которые могут быть изменены декораторами.
  */
 interface Component
 {
