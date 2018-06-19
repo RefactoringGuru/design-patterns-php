@@ -142,8 +142,9 @@ class Composite extends Component
      * EN:
      * A composite object can add or remove other components (both simple or
      * complex) to or from its child list.
+     *
      * RU:
-     * Объект контейнера может добавлять в свой дочерний список или удалять из него другие компоненты,
+     * Объект контейнера может как добавлять компоненты в свой список дочерних компонентов, так и удалять их,
      * как простые, так и сложные.
      */
     public function add(Component $component)
@@ -166,10 +167,17 @@ class Composite extends Component
     }
 
     /**
+     * EN:
      * The Composite executes the primary component's logic in a particular way.
      * It traverses recursively through all its children, collecting and summing
      * their results. Since the composite's children pass these calls to their
      * children and so forth, the whole object tree is traversed as a result.
+     *
+     * RU:
+     * Контейнер выполняет логику основного компонента определённым образом.
+     * Он проходит рекурсивно через всех своих детей, собирая и суммируя их результаты.
+     * Поскольку потомки контейнера передают эти вызовы своим потомкам и так далее, 
+     * в результате обходится всё дерево объектов.
      */
     public function operation()
     {
@@ -183,7 +191,11 @@ class Composite extends Component
 }
 
 /**
+ * EN:
  * The client code works with all of the components via the base interface.
+ *
+ * RU:
+ * Клиентский код работает со всеми компонентами через базовый интерфейс.
  */
 function clientCode(Component $component)
 {
@@ -195,7 +207,11 @@ function clientCode(Component $component)
 }
 
 /**
+ * EN:
  * This way the client code can support the simple leaf components...
+ *
+ * RU:
+ * Таким образом, клиентский код может поддерживать простые компоненты-листья...
  */
 $simple = new Leaf();
 print("Client: I get a simple component:\n");
@@ -203,7 +219,11 @@ clientCode($simple);
 print("\n\n");
 
 /**
+ * EN:
  * ... as well as the complex composites.
+ *
+ * RU:
+ * ... а также сложные контейнеры.
  */
 $tree = new Composite();
 $branch1 = new Composite();
@@ -218,9 +238,15 @@ clientCode($tree);
 print("\n\n");
 
 /**
+ * EN:
  * Thanks to the fact that the child-management operations are declared in the
  * base Component class, the client code can work with any component, simple or
  * complex, without depending on their concrete classes.
+ *
+ * RU:
+ * Благодаря тому, что операции управления потомками объявлены в базовом классе Компонента,
+ * клиентский код может работать с любым компонентом, простым или сложным, вне завимости
+ * от его конкретного класса.
  */
 function clientCode2(Component $component1, Component $component2)
 {
