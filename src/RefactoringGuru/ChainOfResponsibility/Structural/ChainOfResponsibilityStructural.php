@@ -123,8 +123,8 @@ class DogHandler extends AbstractHandler
  * cases, it is not even aware that the handler is part of a chain.
  *
  * RU:
- * Обычно клиентский код может работать с одним обработчиком.
- * В большинстве случаев даже не известно, что обработчик является частью цепочки.
+ * Обычно клиентский код приспособлен для работы с единственным обработчиком.
+ * В большинстве случаев клиенту даже неизвестно, что этот обработчик является частью цепочки.
  */
 function clientCode(Handler $handler)
 {
@@ -144,7 +144,7 @@ function clientCode(Handler $handler)
  * The other part of the client code constructs the actual chain.
  *
  * RU:
- * Другая часть клиентского кода создает фактическую цепочку.
+ * Другая часть клиентского кода создает саму цепочку.
  */
 $monkey = new MonkeyHandler();
 $squirrel = new SquirrelHandler();
