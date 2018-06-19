@@ -152,7 +152,7 @@ function clientCode(Component $component)
  * This way the client code can support both simple components...
  *
  * RU:
- * Таким образом, клиентский код может поддерживать как простые компоненты ...
+ * Таким образом, клиентский код может поддерживать как простые компоненты...
  */
 $simple = new ConcreteComponent();
 print("Client: I get a simple component:\n");
@@ -161,13 +161,13 @@ print("\n\n");
 
 /**
  * EN:
- * ... as well as decorated ones.
+ * ...as well as decorated ones.
  *
  * Note how decorators can wrap not only simple components but the other
  * decorators as well.
  *
  * RU:
- * ... так и декорированные.
+ * ...так и декорированные.
  *
  * Обратите внимание, что декораторы могут обёртывать не только простые компоненты,
  * но и другие декораторы.
