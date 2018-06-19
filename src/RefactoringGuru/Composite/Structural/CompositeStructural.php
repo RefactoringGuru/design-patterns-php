@@ -99,11 +99,18 @@ abstract class Component
 }
 
 /**
+ * EN:
  * The Leaf class represents the end objects of a composition. A leaf can't have
  * any children.
  *
  * Usually, it's the Leaf objects that do the actual work, whereas Composite
  * objects only delegate to their sub-components.
+ *
+ * RU:
+ * Класс Лист представляет собой конечные объекты структуры. Лист не может иметь потомков.
+ *
+ * Объекты Листьев выполняют фактическую работу, тогда как объекты Контейнера
+ * лишь делегируют своим подкомпонентам.
  */
 class Leaf extends Component
 {
@@ -114,9 +121,13 @@ class Leaf extends Component
 }
 
 /**
+ * EN:
  * The Composite class represents the complex components that may have children.
  * Usually, the Composite objects delegate the actual work to their children and
  * then "sum-up" the result.
+ *
+ * RU:
+ * Класс Контейнер предоставляет сложные компоненты, которые могут иметь потомков.
  */
 class Composite extends Component
 {
