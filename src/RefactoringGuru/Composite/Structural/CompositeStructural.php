@@ -3,16 +3,27 @@
 namespace RefactoringGuru\Composite\Structural;
 
 /**
- * Composite Design Pattern
+ * EN: Composite Design Pattern
  *
  * Intent: Compose objects into tree structures to represent part-whole
  * hierarchies. Composite lets clients treat individual objects and compositions
  * of objects uniformly.
+ *
+ * RU: Паттерн Компоновщик
+ *
+ * Назначение: Объединяет объекты в древовидные структуры для представления
+ * иерархий часть-целое. Компоновщик позволяет клиентам обрабатывать отдельные объекты
+ * и композиции объектов одинаковым образом.
  */
 
 /**
+ * EN:
  * The base Component class declares common operations for both simple and
  * complex objects of a composition.
+ *
+ * RU:
+ * Базовый класс Компонент объявляет общие операции как для простых,
+ * так и для сложных объектов композиции.
  */
 abstract class Component
 {
@@ -22,9 +33,14 @@ abstract class Component
     protected $parent;
 
     /**
+     * EN:
      * The base Component may implement some default behavior or leave it to
      * concrete classes (by declaring the method containing the behavior as
      * "abstract").
+     *
+     * RU:
+     * Базовый компонент может реализовать некоторое поведение по умолчанию
+     * или оставить его конкретным классам (объявив метод, содержащий поведение как «абстракцию»).
      */
     public abstract function operation();
 
