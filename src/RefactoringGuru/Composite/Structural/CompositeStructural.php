@@ -139,8 +139,12 @@ class Composite extends Component
     protected $children = [];
 
     /**
+     * EN:
      * A composite object can add or remove other components (both simple or
      * complex) to or from its child list.
+     * RU:
+     * Объект контейнера может добавлять в свой дочерний список или удалять из него другие компоненты,
+     * как простые, так и сложные.
      */
     public function add(Component $component)
     {
