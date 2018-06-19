@@ -20,7 +20,7 @@ namespace RefactoringGuru\Command\Structural;
  * The Command interface declares a method for executing a command.
  *
  * RU:
- * Интерфейс Команды объявляет метод для выполнения команды.
+ * Интерфейс Команды объявляет метод для выполнения команд.
  */
 interface Command
 {
@@ -32,7 +32,7 @@ interface Command
  * Some commands can implement simple operations on their own.
  *
  * RU:
- * Некоторые команды выполняют простые операции самостоятельно.
+ * Некоторые команды способны выполнять простые операции самостоятельно.
  */
 class SimpleCommand implements Command
 {
@@ -55,8 +55,8 @@ class SimpleCommand implements Command
  * called "receivers."
  *
  * RU:
- * Некоторые команды делегируют более сложные операции другим объектам, 
- * которых называют «получателями».
+ * Но есть и команды, которые делегируют более сложные операции другим объектам,
+ * называемым «получателями».
  */
 class ComplexCommand implements Command
 {
@@ -97,7 +97,7 @@ class ComplexCommand implements Command
      * Commands can delegate to any methods of a receiver.
      *
      * RU:
-     * Команды могут делегировать любым методам получателя.
+     * Команды могут делегировать выполнение любым методам получателя.
      */
     public function execute()
     {
@@ -137,7 +137,7 @@ class Receiver
  * the command.
  *
  * RU:
- * Инициатор связан с одной или несколькими командами. Он отправляет запрос команде.
+ * Отпрвитель связан с одной или несколькими командами. Он отправляет запрос команде.
  */
 class Invoker
 {
@@ -175,8 +175,8 @@ class Invoker
      * command.
      *
      * RU:
-     * Инициатор не зависит от конкретных команд и классов получателей.
-     * Инициатор передаёт запрос получателю косвенно, выполняя команду.
+     * Отправитель не зависит от классов конкретных команд и получателей.
+     * Отправитель передаёт запрос получателю косвенно, выполняя команду.
      */
     public function doSomethingImportant()
     {
@@ -199,7 +199,7 @@ class Invoker
  * The client code can parametrize an invoker with any commands.
  *
  * RU:
- * Клиентский код может параметризовать инициатора любыми командами.
+ * Клиентский код может параметризовать отправителя любыми командами.
  */
 $invoker = new Invoker();
 $invoker->setOnStart(new SimpleCommand("Say Hi!"));
