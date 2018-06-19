@@ -45,9 +45,15 @@ abstract class Component
     public abstract function operation();
 
     /**
+     * EN:
      * Optionally, the base Component can declare an interface for setting and
      * accessing a parent of the component in a tree structure. It can also
      * provide some default implementation for these methods.
+     *
+     * RU:
+     * При необходимости базовый Компонент объявляет интерфейс для установления родителя компонента     
+     * и доступа к нему в древовидной структуре. Он также может обеспечить 
+     * некоторую реализацию по умолчанию для этих методов.
      */
     public function setParent(Component $parent)
     {
@@ -60,11 +66,16 @@ abstract class Component
     }
 
     /**
+     * EN:
      * In some cases, it would be beneficial to define the child-management
      * operations right in the base Component class. This way, you won't need to
      * expose any concrete component classes to the client code, even during the
      * object tree assembly. The downside is that these methods will be empty
      * for the leaf-level components.
+     *
+     * RU:
+     * В некоторых случаях было бы полезно (целесообразно) определить права управления потомками
+     * в базовом классе Component.
      */
     public function add(Component $component) { }
 
