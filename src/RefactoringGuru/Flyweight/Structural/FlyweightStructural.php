@@ -12,15 +12,22 @@ namespace RefactoringGuru\Flyweight\Structural;
  * RU: Паттерн Легковес
  *
  * Назначение: Применяет совместное использование для размещения большего количества объектов
- * в доступном объеме ОЗУ, выделяя для использования общие компоненты состояний группы объектов
+ * в доступном объеме ОЗУ, выделяя для этого общие элементы состояний группы объектов
  * вместо того, чтобы держать состояние объекта целиком в каждом объекте. 
  */
 
 /**
+ * EN:
  * The Flyweight stores a common portion of the state (also called intrinsic
  * state) that belongs to multiple real business entities. The Flyweight accepts
  * the rest of the state (extrinsic state, unique for each entity) via its
  * method parameters.
+ *
+ * RU:
+ * Легковес хранит общую часть состояния (также называемую внутренним состоянием),
+ * которая принадлежит нескольким реальным бизнес-объектам. Легковес принимает 
+ * оставшуюся часть состояния (внешнее состояние, уникальное для каждого объекта) 
+ * через его параметры метода.
  */
 class Flyweight
 {
