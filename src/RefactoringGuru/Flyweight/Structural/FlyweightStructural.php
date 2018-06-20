@@ -3,11 +3,17 @@
 namespace RefactoringGuru\Flyweight\Structural;
 
 /**
- * Flyweight Design Pattern
- *
+ * EN: Flyweight Design Pattern
+ * 
  * Intent: Use sharing to fit more objects into the available amount of RAM by
  * sharing common parts of the object state among multiple objects, instead of
  * keeping the entire state in each object.
+ *
+ * RU: Паттерн Легковес
+ *
+ * Назначение: Использует разделение для размещения большего количества объектов
+ * в доступном объеме ОЗУ, разделяя общие части состояния объекта между несколькими объектами,
+ * вместо сохранения состояния целиком в каждом объекте.
  */
 
 /**
