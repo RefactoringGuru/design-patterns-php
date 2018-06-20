@@ -3,19 +3,31 @@
 namespace RefactoringGuru\Iterator\Structural;
 
 /**
- * Iterator Design Pattern
+ * EN: Iterator Design Pattern
  *
- * Intent: Provide a way to access the elements of an aggregate object without
+ * Intent: Provide a way a way to access the elements of an aggregate object without
  * exposing its underlying representation.
+ *
+ * RU: Паттерн Итератор
+ *
+ * Назначение: Предоставляет возможность обращаться к элементам составного объекта,
+ * не раскрывая его внутреннего представления.
  */
 
 use Iterator;
 
 /**
+ * EN:
  * PHP has a built-in Iterator interface that provides a very convenient
  * integration with foreach loops.
+ * 
+ * RU:
+ * PHP имеет встроенный интерфейс Итератора, который предоставляет 
+ * очень удобную интеграцию с циклами foreach.
+ * 
+ * EN: Here's what the interface looks like:
  *
- * Here's what the interface looks like:
+ * RU: Вот как выглядит интерфейс:
  *
  * @link http://php.net/manual/en/class.iterator.php
  *
@@ -36,7 +48,9 @@ use Iterator;
  *         public function rewind();
  *     }
  *
- * There's also a built-in interface for collections:
+ * EN: There's also a built-in interface for collections:
+ *
+ * RU: Также есть встроенный интерфейс для коллекций:
  *
  * @link http://php.net/manual/en/class.iteratoraggregate.php
  *
@@ -46,8 +60,13 @@ use Iterator;
  */
 
 /**
+ * EN: 
  * Concrete Iterators implement various traversal algorithms. These classes
  * store the current traversal position at all times.
+ *
+ * RU:
+ * Конкретные Итераторы реализуют различные алгоритмы обхода.
+ * Эти классы постоянно хранят текущее положение обхода.
  */
 class AlphabeticalOrderIterator implements \Iterator
 {
