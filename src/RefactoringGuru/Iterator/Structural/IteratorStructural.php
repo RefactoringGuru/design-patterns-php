@@ -131,8 +131,13 @@ class AlphabeticalOrderIterator implements \Iterator
 }
 
 /**
+ * EN:
  * Concrete Collections provide one or several methods for retrieving fresh
  * iterator instances, compatible with the collection class.
+ *
+ * RU:
+ * Конкретные Коллекции предоставляют один или несколько методов для получения
+ * новых экземпляров итератора, совместимых с классом коллекции.
  */
 class WordsCollection implements \IteratorAggregate
 {
@@ -160,9 +165,14 @@ class WordsCollection implements \IteratorAggregate
 }
 
 /**
+ * EN:
  * The client code may or may not know about the Concrete Iterator or Collection
  * classes, depending on the level of indirection you want to keep in your
  * program.
+ *
+ * RU:
+ * Клиентский код может знать или не знать о Конкретном Итераторе или классах Коллекций,
+ * в зависимости от уровня косвенности, который вы хотите сохранить в своей программе.
  */
 $collection = new WordsCollection();
 $collection->addItem("First");
