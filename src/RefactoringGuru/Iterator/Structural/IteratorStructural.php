@@ -76,14 +76,24 @@ class AlphabeticalOrderIterator implements \Iterator
     private $collection;
 
     /**
+     * EN: 
      * @var int Stores the current traversal position. An iterator may have a
      * lot of other fields for storing iteration state, especially when it is
      * supposed to work with a particular kind of collection.
+     *
+     * RU:
+     * @var int Хранит текущее положение обхода. У итератора может быть множество
+     * других полей для хранения состояния итерации, особенно когда он должен работать
+     * с определённым типом коллекции.
      */
     private $position = 0;
 
     /**
+     * EN:
      * @var bool This variable indicates the traversal direction.
+     *
+     * RU:
+     * @var bool Эта переменная указывает направление обхода.
      */
     private $reverse = false;
 
