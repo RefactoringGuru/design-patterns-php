@@ -83,7 +83,9 @@ class Facade
  * a part of the Subsystem.
  *
  * RU:
- * 
+ * Подсистема может принимать запросы либо от фасада, либо от клиента напрямую.
+ * В любом случае, для Подсистемы Фасад – это еще один клиент, 
+ * и он не является частью Подсистемы.
  */
 class Subsystem1
 {
@@ -101,7 +103,11 @@ class Subsystem1
 }
 
 /**
+ * EN:
  * Some facades can work with multiple subsystems at the same time.
+ *
+ * RU:
+ * Некоторые фасады могут работать с разными подсистемами одновременно.
  */
 class Subsystem2
 {
@@ -119,10 +125,17 @@ class Subsystem2
 }
 
 /**
+ * EN:
  * The client code works with complex subsystems through a simple interface
  * provided by the Facade. When a facade manages the lifecycle of the subsystem,
  * the client might not even know about the existence of the subsystem. This
  * approach lets you keep the complexity under control.
+ *
+ * RU:
+ * Клиентский код работает со сложными подсистемами через простой интерфейс,
+ * предоставляемый Фасадом. Когда фасад управляет жизненным циклом подсистемы,
+ * клиент может даже не знать о существовании подсистемы.
+ * Такой подход позволяет держать сложность под контролем.
  */
 function clientCode(Facade $facade)
 {
@@ -134,9 +147,15 @@ function clientCode(Facade $facade)
 }
 
 /**
+ * EN:
  * The client code may have some of the subsystem's objects already created. In
  * this case, it might be worthwhile to initialize the Facade with these objects
  * instead of letting the Facade create new instances.
+ *
+ * RU:
+ * В клиентском коде могут быть уже созданы некоторые объекты подсистемы.
+ * В этом случае может оказаться целесообразным инициализировать Фасад с этими объектами
+ * вместо того, чтобы позволить Фасаду создавать новые экземпляры.
  */
 $subsystem1 = new Subsystem1();
 $subsystem2 = new Subsystem2();
