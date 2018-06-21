@@ -23,7 +23,9 @@ namespace RefactoringGuru\Mediator\Structural;
  * pass the execution to other components.
  *
  * RU:
- * Интерфейс Посредника предоставляет метод 
+ * Интерфейс Посредника предоставляет метод, используемый компонентами для уведомления
+ * посредника о различных событиях. Посредник может реагировать на эти события 
+ * и передавать исполнение другим компонентам.
  */
 interface Mediator
 {
@@ -31,8 +33,13 @@ interface Mediator
 }
 
 /**
+ * EN:
  * Concrete Mediators implement cooperative behavior by coordinating several
  * components.
+ *
+ * RU:
+ * Конкретные Посредники реализуют совместное поведение, координируя
+ * отдельные компоненты.
  */
 class ConcreteMediator implements Mediator
 {
@@ -64,8 +71,13 @@ class ConcreteMediator implements Mediator
 }
 
 /**
+ * EN:
  * The Base Component provides the basic functionality of storing a mediator's
  * instance inside component objects.
+ *
+ * RU:
+ * Базовый Компонент обеспечивает базовую функциональность хранения экземпляра
+ * посредника внутри объектов компонентов.
  */
 class BaseComponent
 {
@@ -83,8 +95,13 @@ class BaseComponent
 }
 
 /**
+ * EN:
  * Concrete Components implement various functionality. They don't depend on
  * other components. They also don't depend on any concrete mediator classes.
+ *
+ * RU:
+ * Конкретные Компоненты реализуют различную функциональность. Они не зависят от
+ * других компонентов. Они также не зависят от каких-либо конкретных классов посредников.
  */
 class Component1 extends BaseComponent
 {
@@ -117,7 +134,9 @@ class Component2 extends BaseComponent
 }
 
 /**
- * The client code.
+ * EN: The client code.
+ *
+ * RU: Клиентский код.
  */
 $c1 = new Component1();
 $c2 = new Component2();
