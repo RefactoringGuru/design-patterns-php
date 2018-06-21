@@ -32,19 +32,24 @@ use Iterator;
  * @link http://php.net/manual/en/class.iterator.php
  *
  *     interface Iterator extends Traversable {
- *         // Return the current element
+ *         // Return the current element.
+ *         // Возврат текущего элемента.
  *         public function current();
  *
- *         // Move forward to next element
+ *         // Move forward to next element.
+ *         // Переход к следующему элементу.
  *         public function next();
  *
- *         // Return the key of the current element
+ *         // Return the key of the current element.
+ *         // Возврат ключа текущего элемента.
  *         public function key();
  *
- *         // Checks if current position is valid
+ *         // Checks if current position is valid.
+ *         // Проверяет корректность текущей позиции.
  *         public function valid();
  *
- *         // Rewind the Iterator to the first element
+ *         // Rewind the Iterator to the first element.
+ *         // Перемотка Итератора к первому элементу.
  *         public function rewind();
  *     }
  *
