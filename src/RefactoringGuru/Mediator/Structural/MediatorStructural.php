@@ -3,11 +3,14 @@
 namespace RefactoringGuru\Mediator\Structural;
 
 /**
- * Mediator Design Pattern
+ * EN: Mediator Design Pattern
  *
  * Intent: Define an object that encapsulates how a set of objects interact.
  * Mediator promotes loose coupling by keeping objects from referring to each
  * other explicitly, and it lets you vary their interaction independently.
+ *
+ * RU: Паттерн Посредник
+ * Назначение: Определяет объект, который инкапсулирует как взаимодействие набора объектов.
  */
 
 /**
