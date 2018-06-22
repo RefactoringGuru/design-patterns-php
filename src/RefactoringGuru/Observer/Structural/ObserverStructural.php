@@ -27,25 +27,38 @@ namespace RefactoringGuru\Observer\Structural;
  */
 
 /**
+ * EN:
  * PHP has a couple of built-in interfaces related to the Observer pattern.
  *
  * Here's what the Subject interface looks like:
+ *
+ * RU:
+ * PHP имеет несколько встроенных интерфейсов, связанных с паттерном Наблюдатель.
+ *
+ * Вот как выглядит интерфейс Издателя:
  *
  * @link http://php.net/manual/en/class.splsubject.php
  *
  *     interface SplSubject
  *     {
  *         // Attach an observer to the subject.
+ *         // Присоединяет наблюдателя к издателю.
  *         public function attach(SplObserver $observer);
  *
  *         // Detach an observer from the subject.
+ *         // Отсоединяет наблюдателя от издателя.
  *         public function detach(SplObserver $observer);
  *
  *         // Notify all observers about an event.
+ *         // Уведомляет всех наблюдателей о событии.
  *         public function notify();
  *     }
  *
+ * EN:
  * There's also a built-in interface for Observers:
+ *
+ * RU:
+ * Также имеется встроенный интерфейс для Наблюдателей:
  *
  * @link http://php.net/manual/en/class.splobserver.php
  *
@@ -56,8 +69,12 @@ namespace RefactoringGuru\Observer\Structural;
  */
 
 /**
+ * EN:
  * The Subject owns some important state and notifies observers when the state
  * changes.
+ *
+ * RU:
+ * Издатель владеет некоторым важным состоянием и оповещает наблюдателей о его изменении.
  */
 class Subject implements \SplSubject
 {
