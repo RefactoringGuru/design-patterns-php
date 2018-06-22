@@ -10,8 +10,8 @@ namespace RefactoringGuru\Memento\Structural;
  *
  * RU: Паттерн Снимок
  *
- * Назначение: Фиксирует и восстанавливает внутреннее состояние объекта, так что
- * объект может быть восстановлен в это состояние позже, без нарушения инкапсуляции. 
+ * Назначение: Фиксирует и восстанавливает внутреннее состояние объекта таким образом, чтобы 
+ * в дальнейшем объект можно было восстановить в этом состоянии без нарушения инкапсуляции. 
  */
 
 /**
@@ -50,8 +50,8 @@ class Originator
      *
      * RU:
      * Бизнес-логика Создателя может повлиять на его внутреннее состояние.
-     * Поэтому клиент должен выполнить резервное копирование состояния перед запуском 
-     * методов бизнес-логики с помощью метода save.
+     * Поэтому клиент должен выполнить резервное копирование состояния с помощью метода save
+     * перед запуском методов бизнес-логики.
      */
     public function doSomething()
     {
@@ -121,8 +121,12 @@ interface Memento
 }
 
 /**
+ * EN:
  * The Concrete Memento contains the infrastructure for storing the Originator's
  * state.
+ *
+ * RU:
+ * Конкретный снимок содержит инфраструктуру для хранения состояния Создателя.
  */
 class ConcreteMemento implements Memento
 {
@@ -137,7 +141,11 @@ class ConcreteMemento implements Memento
     }
 
     /**
+     * EN:
      * The Originator uses this method when restoring its state.
+     *
+     * RU:
+     * Создатель использует этот метод, когда восстанавливает своё состояние.
      */
     public function getState()
     {
@@ -145,7 +153,11 @@ class ConcreteMemento implements Memento
     }
 
     /**
+     * EN:
      * The rest of the methods are used by the Caretaker to display metadata.
+     *
+     * RU:
+     * Остальные методы используются Опекуном для отображения метаданных.
      */
     public function getName()
     {
@@ -159,9 +171,15 @@ class ConcreteMemento implements Memento
 }
 
 /**
+ * EN:
  * The Caretaker doesn't depend on the Concrete Memento class. Therefore, it
  * doesn't have access to the originator's state, stored inside the memento. It
  * works with all mementos via the base Memento interface.
+ *
+ * RU: 
+ * Опекун не зависит от класса Конкретного Снимка. Таким образом, он не имеет доступа
+ * к состоянию создателя, хранящемуся внутри снимка. Он работает со всеми снимками
+ * через базовый интерфейс Снимка.
  */
 class Caretaker
 {
@@ -211,7 +229,9 @@ class Caretaker
 }
 
 /**
- * Client code.
+ * EN: Client code.
+ * 
+ * RU: Клиентский код.
  */
 $originator = new Originator("Super-duper-super-puper-super.");
 $caretaker = new Caretaker($originator);
