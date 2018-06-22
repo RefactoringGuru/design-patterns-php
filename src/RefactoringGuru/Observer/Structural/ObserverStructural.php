@@ -79,19 +79,33 @@ namespace RefactoringGuru\Observer\Structural;
 class Subject implements \SplSubject
 {
     /**
+     * EN:
      * @var int For the sake of simplicity, the Subject's state, essential to
      * all subscribers, is stored in this variable.
+     *
+     * RU:
+     *  @var int Для удобства в этой переменной хранится состояние Издателя,
+     * необходимое всем подписчикам.
      */
     public $state;
 
     /**
+     * EN:
      * @var array List of subscribers. In real life, the list of subscribers can
      * be stored more comprehensively (categorized by event type, etc.).
+     *
+     * RU:
+     * @var array Список подписчиков. В реальной жизни список подписчиков может храниться
+     * в более подробном виде (классифицируется по типу события и т.д.)
      */
     private $observers = [];
 
     /**
+     * EN:
      * The subscription management methods.
+     *
+     * RU:
+     * Методы управления подпиской.
      */
     public function attach(\SplObserver $observer)
     {
@@ -110,7 +124,11 @@ class Subject implements \SplSubject
     }
 
     /**
+     * EN:
      * Trigger an update in each subscriber.
+     *
+     * RU:
+     * Запуск обновления в каждом подписчике.
      */
     public function notify()
     {
@@ -121,10 +139,17 @@ class Subject implements \SplSubject
     }
 
     /**
+     * EN:
      * Usually, the subscription logic is only a fraction of what a Subject can
      * really do. Subjects commonly hold some important business logic, that
      * triggers a notification method whenever something important is about to
      * happen (or after it).
+     *
+     * RU:
+     * Обычно логика подписки – только часть того, что  делает Издатель.
+     * Издатели часто содержат некоторую важную бизнес-логику, которая запускает
+     * метод уведомления всякий раз, когда должно произойти что-то важное
+     * (или после этого).
      */
     public function someBusinessLogic()
     {
@@ -137,8 +162,13 @@ class Subject implements \SplSubject
 }
 
 /**
+ * EN:
  * Concrete Observers react to the updates issued by the Subject they had been
  * attached to.
+ *
+ * RU:
+ * Конкретные Наблюдатели реагируют на обновления, выпущенные Издателем, 
+ * к которому они были прикреплены.
  */
 class ConcreteObserverA implements \SplObserver
 {
@@ -169,7 +199,9 @@ class ConcreteObserverB implements \SplObserver
 }
 
 /**
- * The client code.
+ * EN: The client code.
+ *
+ * RU: Клиентский код.
  */
 
 $subject = new Subject();
