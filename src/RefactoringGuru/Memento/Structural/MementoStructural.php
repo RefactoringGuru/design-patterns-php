@@ -21,13 +21,18 @@ namespace RefactoringGuru\Memento\Structural;
  * restoring the state from it.
  *
  * RU:
- *
+ * Создатель удерживает некоторое важное состояние, которое может со временем меняться.
+ * Он также объявляет метод сохранения состояния внутри снимка и метод восстановления состояния из него.
  */
 class Originator
 {
     /**
+     * EN:
      * @var mixed For the sake of simplicity, the originator's state is stored
      * inside a single variable.
+     *
+     * RU:
+     * @var mixed Для удобства состояние создателя хранится внутри одной переменной.
      */
     private $state;
 
@@ -38,9 +43,15 @@ class Originator
     }
 
     /**
+     * EN:
      * The Originator's business logic may affect its internal state. Therefore,
      * the client should backup the state before launching methods of the
      * business logic via the save() method.
+     *
+     * RU:
+     * Бизнес-логика Создателя может повлиять на его внутреннее состояние.
+     * Поэтому клиент должен выполнить резервное копирование состояния перед запуском 
+     * методов бизнес-логики с помощью метода save.
      */
     public function doSomething()
     {
