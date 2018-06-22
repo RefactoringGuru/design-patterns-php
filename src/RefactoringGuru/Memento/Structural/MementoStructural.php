@@ -3,16 +3,25 @@
 namespace RefactoringGuru\Memento\Structural;
 
 /**
- * Memento Design Pattern
+ * EN: Memento Design Pattern
  *
  * Intent: Capture and externalize an object's internal state so that the object
  * can be restored to this state later, without violating encapsulation.
+ *
+ * RU: Паттерн Снимок
+ *
+ * Назначение: Фиксирует и восстанавливает внутреннее состояние объекта, так что
+ * объект может быть восстановлен в это состояние позже, без нарушения инкапсуляции. 
  */
 
 /**
+ * EN:
  * The Originator holds some important state that may change over time. It also
  * defines a method for saving the state inside a memento and another method for
  * restoring the state from it.
+ *
+ * RU:
+ *
  */
 class Originator
 {
