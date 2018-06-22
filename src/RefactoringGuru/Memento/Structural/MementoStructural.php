@@ -21,7 +21,7 @@ namespace RefactoringGuru\Memento\Structural;
  * restoring the state from it.
  *
  * RU:
- * Создатель удерживает некоторое важное состояние, которое может со временем меняться.
+ * Создатель содержит некоторое важное состояние, которое может со временем меняться.
  * Он также объявляет метод сохранения состояния внутри снимка и метод восстановления состояния из него.
  */
 class Originator
@@ -70,7 +70,11 @@ class Originator
     }
 
     /**
+     * EN:
      * Saves the current state inside a memento.
+     *
+     * RU:
+     * Сохранияет текущее состояние внутри снимка.
      *
      * @return Memento
      */
@@ -80,7 +84,11 @@ class Originator
     }
 
     /**
+     * EN:
      * Restores the Originator's state from a memento object.
+     *
+     * RU:
+     * Восстанавливает состояние Создателя из объекта снимка.
      *
      * @param Memento $memento
      * @throws \Exception
@@ -97,8 +105,13 @@ class Originator
 }
 
 /**
+ * EN:
  * The Memento interface provides a way to retrieve the memento's metadata, such
  * as creation date or name. However, it doesn't expose the Originator's state.
+ * 
+ * RU:
+ * Интерфейс Снимка предоставляет способ извлечения метаданных снимка, 
+ * таких как дата создания или название. Однако он не раскрывает состояние Создателя.
  */
 interface Memento
 {
