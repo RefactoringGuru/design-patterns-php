@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Observer\Structural;
 
 /**
- * Observer Design Pattern
+ * EN: Observer Design Pattern
  *
  * Intent: Define a one-to-many dependency between objects so that when one
  * object changes state, all of its dependents are notified and updated
@@ -13,6 +13,11 @@ namespace RefactoringGuru\Observer\Structural;
  * with this pattern. Just remember that the Subject is also called the
  * Publisher and the Observer is often called the Subscriber and vice versa.
  * Also the verbs "observe", "listen" or "track" usually mean the same thing.
+ *
+ * RU: Паттерн Наблюдатель
+ * 
+ * Назначение:
+ *
  */
 
 /**
