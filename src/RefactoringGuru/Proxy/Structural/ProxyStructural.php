@@ -3,16 +3,25 @@
 namespace RefactoringGuru\Proxy\Structural;
 
 /**
- * Proxy Design Pattern
+ * EN: Proxy Design Pattern
  *
  * Intent: Provide a surrogate or placeholder for another object to control
  * access to the original object or to add other responsibilities.
+ *
+ * RU: Паттерн Заместитель
+ *
+ * Назначение: Предоставляет заменитель или местозаполнитель для другого объекта,
+ * чтобы контролировать доступ к исходному объекту или добавлять другие обязанности.
  */
 
 /**
+ * EN:
  * The Subject interface declares common operations for both RealSubject and the
  * Proxy. As long as the client works with RealSubject using this interface,
  * you'll be able to pass it a proxy instead of a real subject.
+ *
+ * RU:
+ *
  */
 interface Subject
 {
