@@ -21,7 +21,9 @@ namespace RefactoringGuru\Proxy\Structural;
  * you'll be able to pass it a proxy instead of a real subject.
  *
  * RU:
- *
+ * Интерфейс Subject объявляет общие операции для обоих RealSubject и Заместителя.
+ * Пока клиент работает с RealSubject с помощью этого интерфейса, 
+ * вы сможете передать ему заменитель вместо реального объекта.
  */
 interface Subject
 {
@@ -29,10 +31,17 @@ interface Subject
 }
 
 /**
+ * EN:
  * The RealSubject contains some core business logic. Usually, RealSubjects are
  * capable of doing some useful work which may also be very slow or sensitive -
  * e.g. correcting input data. A Proxy can solve these issues without any
  * changes to the RealSubject's code.
+ *
+ * RU:
+ * RealSubject содержит некоторую базовую бизнес-логику. Как правило, RealSubjects 
+ * способны выполнять некоторую полезную работу, которая к тому же может быть очень медленной
+ * или чувствительной – например, коррекция входных данных. Заместитель может решить эти проблемы
+ * без каких-либо изменений в коде RealSubject.
  */
 class RealSubject implements Subject
 {
@@ -43,7 +52,11 @@ class RealSubject implements Subject
 }
 
 /**
+ * EN:
  * The Proxy has an interface identical to the RealSubject.
+ *
+ * RU:
+ * Заместитель имеет интерфейс, идентичный RealSubject.
  */
 class Proxy implements Subject
 {
@@ -53,8 +66,13 @@ class Proxy implements Subject
     private $realSubject;
 
     /**
+     * EN:
      * The Proxy maintains a reference to an object of the RealSubject class. It
      * can be either lazy-loaded or passed to the Proxy by the client.
+     *
+     * RU:
+     * Заместитель хранит ссылку на объект класса RealSubject. Он может быть либо лениво загружен,
+     * либо передан клиентом Заместителю.
      */
     public function __construct(RealSubject $realSubject)
     {
