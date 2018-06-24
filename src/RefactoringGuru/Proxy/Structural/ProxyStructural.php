@@ -11,7 +11,7 @@ namespace RefactoringGuru\Proxy\Structural;
  * RU: Паттерн Заместитель
  *
  * Назначение: Предоставляет заменитель или местозаполнитель для другого объекта,
- * чтобы контролировать доступ к оригинальному объекту или добавлять функциональность.
+ * чтобы контролировать доступ к оригинальному объекту или добавлять другие обязанности.
  */
 
 /**
@@ -23,7 +23,7 @@ namespace RefactoringGuru\Proxy\Structural;
  * RU:
  * Интерфейс Сервиса объявляет общие операции как для РеальногоОбъекта, так и для Заместителя.
  * Пока клиент работает с РеальнымОбъектом, используя этот интерфейс, 
- * вы сможете передать ему заменитель вместо реального объекта.
+ * вы сможете передать ему заместителя вместо реального объекта.
  */
 interface Subject
 {
@@ -80,10 +80,17 @@ class Proxy implements Subject
     }
 
     /**
+     * EN:
      * The most common applications of the Proxy pattern are lazy loading,
      * caching, controlling the access, logging, etc. A Proxy can perform one of
      * these things and then, depending on the result, pass the execution to the
-     * same method in a linked RealSubject object.
+     * РеальногоОбъекта method in a linked RealSubject object.
+     *
+     * RU:
+     * Наиболее распространенными областями применения паттерна Заместитель
+     * являются ленивая загрузка, кэширование, контроль доступа, ведение журнала и т.д.
+     * Заместитель может выполнить одну из этих задач, а затем, в зависимости от результата,
+     * передать выполнение одноимённому методу в связанном объекте класса РеальныйОбъект.
      */
     public function request()
     {
@@ -95,7 +102,8 @@ class Proxy implements Subject
 
     private function checkAccess()
     {
-        // Some real checks should go here.
+        // EN: Some real checks should go here.
+        // RU: Некоторые реальные проверки должны проходить здесь.
         print("Proxy: Checking access prior to firing a real request.\n");
 
         return true;
@@ -108,11 +116,17 @@ class Proxy implements Subject
 }
 
 /**
+ * EN:
  * The client code is supposed to work with all objects (both subjects and
  * proxies) via the Subject interface in order to support both real subjects and
  * proxies. In real life, however, clients mostly work with their real subjects
  * directly. In this case, to implement the pattern more easily, you can extend
  * your proxy from the real subject's class.
+ *
+ * RU:
+ * Клиентский код должен работать со всеми объектами (как с реальными, так и заместителями)
+ * через интерфейс Сервиса, чтобы поддерживать как реальные объекты, так и заместителей.
+ * В реальной жизни, однако, клиенты в основном работают с реальными субъектами напрямую.
  */
 function clientCode(Subject $subject)
 {
