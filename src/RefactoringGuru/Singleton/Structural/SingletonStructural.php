@@ -9,6 +9,7 @@ namespace RefactoringGuru\Singleton\Structural;
  * of access to it.
  *
  * RU: Паттерн Одиночка
+ *
  * Назначение: Гарантирует существование единственного экземпляра класса и предоставляет
  * глобальную точку доступа к нему.
  */
@@ -59,10 +60,17 @@ class Singleton
     }
 
     /**
+     * EN:
      * The static method that controls the access to the singleton instance.
      *
      * This implementation let you subclass the Singleton class while keeping
      * just one instance of each subclass around.
+     *
+     * RU:
+     * Статический метод, управляющий доступом к экземпляру одиночки.
+     *
+     * Эта реализация позволяет вам разделить на подклассы класс Одиночки,
+     * сохраняя повсюду только один экземпляр каждого подкласса.
      */
     public static function getInstance(): Singleton
     {
@@ -75,8 +83,13 @@ class Singleton
     }
 
     /**
+     * EN:
      * Finally, any singleton should define some business logic, which can be
      * executed on its instance.
+     *
+     * RU:
+     * Наконец, любой одиночка должен предоставить некоторую бизнес-логику,
+     * которая может быть выполнена на его экземпляре.
      */
     public function someBusinessLogic()
     {
@@ -85,7 +98,9 @@ class Singleton
 }
 
 /**
- * The client code.
+ * EN: The client code.
+ *
+ * RU: Клиентский код.
  */
 function clientCode()
 {
