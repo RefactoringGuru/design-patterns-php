@@ -74,8 +74,8 @@ class Context
      * implementing multiple versions of the algorithm on its own.
      *
      * RU:
-     * Вместо того, чтобы реализовывать самостоятельно множественные версии алгоритма,
-     * Контекст делегирует эту работу объекту Стратегии.
+     * Вместо того, чтобы самостоятельно реализовывать множественные версии алгоритма,
+     * Контекст делегирует некоторую работу объекту Стратегии.
      */
     public function doSomeBusinessLogic()
     {
@@ -110,8 +110,13 @@ interface Strategy
 }
 
 /**
+ * EN:
  * Concrete Strategies implement the algorithm while following the base Strategy
  * interface. The interface makes them interchangeable in the Context.
+ *
+ * RU:
+ * Конкретные Стратегии реализуют алгоритм, следуя базовому интерфейсу Стратегии.
+ * Интерфейс делает их взаимозаменяемыми в Контексте.
  */
 class ConcreteStrategyA implements Strategy
 {
@@ -134,9 +139,14 @@ class ConcreteStrategyB implements Strategy
 }
 
 /**
+ * EN:
  * The client code picks a concrete strategy and passes it to the context. The
  * client should be aware of the differences between strategies in order to make
  * the right choice.
+ *
+ * RU:
+ * Клиентский код выбирает конкретную стратегию и передает ее в контекст.
+ * Клиент должен знать о различиях между стратегиями, чтобы сделать правильный выбор.
  */
 $context = new Context();
 
