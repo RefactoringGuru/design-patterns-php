@@ -28,7 +28,7 @@ namespace RefactoringGuru\TemplateMethod\Structural;
  * Абстрактный Класс определяет шаблонный метод, содержащий скелет некоторого алгоритма,
  * состоящего из вызовов (обычно) абстрактных примитивных операций.
  *
- * Конкретные подклассы должны реализовать эти операции, но оставить сам метод шаблона
+ * Конкретные подклассы должны реализовать эти операции, но оставить сам шаблонный метод
  * без изменений.
  */
 abstract class AbstractClass
@@ -52,7 +52,11 @@ abstract class AbstractClass
     }
 
     /**
+     * EN:
      * These operations already have implementations.
+     *
+     * RU:
+     * Эти операции уже имеют реализации.
      */
     protected function baseOperation1()
     {
@@ -70,7 +74,11 @@ abstract class AbstractClass
     }
 
     /**
+     * EN:
      * These operations have to be implemented in subclasses.
+     *
+     * RU:
+     * Эти операции должны быть реализованы в подклассах.
      */
     protected abstract function requiredOperations1();
 
