@@ -3,16 +3,26 @@
 namespace RefactoringGuru\State\Structural;
 
 /**
- * State Design Pattern
+ * EN: State Design Pattern
  *
  * Intent: Allow an object to alter its behavior when its internal state
  * changes. The object will appear to change its class.
+ *
+ * * RU: Паттерн Состояние
+ *
+ * Назначение: Позволяет объекту менять поведение при изменении его
+ * внутреннего состояния. Кажется, что объект меняет свой класс.
  */
 
 /**
+ * EN: 
  * The Context defines the interface of interest to clients. It also maintains a
  * reference to an instance of a State subclass, which represents the current
  * state of the Context.
+ *
+ * RU:
+ * Контекст устанавливает интерфейс, интересующий клиентов. Он также хранит ссылку
+ * на экземпляр подкласса Состояния, который представляет текущее состояние Контекста. 
  */
 class Context
 {
