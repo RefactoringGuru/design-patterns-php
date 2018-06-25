@@ -74,7 +74,8 @@ class Context
      * implementing multiple versions of the algorithm on its own.
      *
      * RU:
-     *
+     * Вместо того, чтобы реализовывать самостоятельно множественные версии алгоритма,
+     * Контекст делегирует эту работу объекту Стратегии.
      */
     public function doSomeBusinessLogic()
     {
@@ -89,11 +90,19 @@ class Context
 }
 
 /**
+ * EN:
  * The Strategy interface declares operations common to all supported versions
  * of some algorithm.
  *
  * The Context uses this interface to call the algorithm defined by Concrete
  * Strategies.
+ *
+ * RU:
+ * Интерфейс Стратегии объявляет операции, общие для всех поддерживаемых версий
+ * некоторого алгоритма.
+ *
+ * Контекст использует этот интерфейс для вызова алгоритма, определённого Конкретными
+ * Стратегиями.
  */
 interface Strategy
 {
