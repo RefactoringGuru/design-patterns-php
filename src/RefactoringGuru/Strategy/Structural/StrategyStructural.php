@@ -3,15 +3,25 @@
 namespace RefactoringGuru\Strategy\Structural;
 
 /**
- * Strategy Design Pattern
+ * EN: Strategy Design Pattern
  *
  * Intent: Define a family of algorithms, encapsulate each one, and make them
  * interchangeable. Strategy lets the algorithm vary independently from clients
  * that use it.
+ *
+ * RU: Паттерн Стратегия
+ *
+ * Назначение: Определяет семейство алгоритмов, инкапсулирует каждый из них
+ * и делает взаимозаменяемыми. Стратегия позволяет изменять алгоритм независимо 
+ * от клиентов, которые его используют.
  */
 
 /**
+ * EN:
  * The Context defines the interface of interest to clients.
+ *
+ * RU: 
+ * Контекст определяет интерфейс, представляющий интерес для клиентов.
  */
 class Context
 {
