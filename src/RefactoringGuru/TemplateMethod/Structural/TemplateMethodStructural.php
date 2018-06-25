@@ -12,20 +12,33 @@ namespace RefactoringGuru\TemplateMethod\Structural;
  * RU: Паттерн Шаблонный метод
  * 
  * Назначение: Определяет общую схему алгоритма в действии, перекладывая некоторые шаги
- * на подклассы. 
+ * на подклассы. Шаблонный метод позволяет подклассам переопределять отдельные шаги алгоритма
+ * без изменения структуры алгоритма.
  */
 
 /**
+ * EN:
  * The Abstract Class defines a template method that contains a skeleton of some
  * algorithm, composed of calls to (usually) abstract primitive operations.
  *
  * Concrete subclasses should implement these operations, but leave the template
  * method itself intact.
+ *
+ * RU:
+ * Абстрактный Класс определяет шаблонный метод, содержащий скелет некоторого алгоритма,
+ * состоящего из вызовов (обычно) абстрактных примитивных операций.
+ *
+ * Конкретные подклассы должны реализовать эти операции, но оставить сам метод шаблона
+ * без изменений.
  */
 abstract class AbstractClass
 {
     /**
+     * EN:
      * The template method defines the skeleton of an algorithm.
+     *
+     * RU:
+     * Шаблонный метод определяет скелет алгоритма.
      */
     final public function templateMethod()
     {
