@@ -3,11 +3,16 @@
 namespace RefactoringGuru\TemplateMethod\Structural;
 
 /**
- * Template Method Design Pattern
+ * EN: Template Method Design Pattern
  *
  * Intent: Define the skeleton of an algorithm in operation, deferring some
  * steps to subclasses. Template Method lets subclasses redefine specific steps
  * of an algorithm without changing the algorithm's structure.
+ * 
+ * RU: Паттерн Шаблонный метод
+ * 
+ * Назначение: Определяет общую схему алгоритма в действии, перекладывая некоторые шаги
+ * на подклассы. 
  */
 
 /**
