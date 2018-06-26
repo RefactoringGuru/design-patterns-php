@@ -3,8 +3,8 @@
 namespace RefactoringGuru\Visitor\RealWorld;
 
 /**
- * Visitor Design Pattern
- *
+ * EN: Visitor Design Pattern
+ * 
  * Intent: Represent an operation to be performed over elements of an object
  * structure. The Visitor pattern lets you define a new operation without
  * changing the classes of the elements on which it operates.
@@ -16,13 +16,34 @@ namespace RefactoringGuru\Visitor\RealWorld;
  *
  * Once the Visitor infrastructure is added to the app, you can easily add other
  * similar behaviors to the app, without changing the existing classes.
+ *
+ * RU: Паттерн Посетитель
+ *
+ * Назначение: Изображает операцию, выполняемую над элементами структуры объекта.
+ * Паттерн Посетитель позволяет определить новую операцию без изменения классов элементов,
+ * с которыми она работает.
+ *
+ * Пример: В этом примере шаблон Посетитель помогает внедрить функцию отчётности
+ * в существующую иерархию классов:
+ *
+ * Компания > Отдел > Сотрудник
+ *
+ * После добавления инфраструктуры Посетителя вы можете легко добавлять 
+ * в приложение другие подобные поведения без изменения существующих классов.
  */
 
 /**
+ * EN:
  * The Component interface declares a method of accepting visitor objects.
  *
  * In this method, a Concrete Component must call a specific Visitor's method
  * that has the same parameter type as that component.
+ *
+ * RU:
+ * Интерфейс Компонента объявляет метод принятия объектов-посетителей.
+ *
+ * В этом методе Конкретный Компонент вызывает конкретный метод Посетителя,
+ * с тем же типом параметра, что и у компонента.
  */
 interface Entity
 {
@@ -30,7 +51,11 @@ interface Entity
 }
 
 /**
+ * EN:
  * The Company Concrete Component.
+ *
+ * RU:
+ * Конкретный Компонент Компании.
  */
 class Company implements Entity
 {
@@ -61,14 +86,21 @@ class Company implements Entity
 
     public function accept(Visitor $visitor)
     {
-        // See, the Company component must call the visitCompany method. The
+        // EN: See, the Company component must call the visitCompany method. The
         // same principle applies to all components.
+        //
+        // RU: Смотрите, Компонент Компании должен вызвать метод visitCompany.
+        // Тот же принцип применяется ко всем компонентам.
         return $visitor->visitCompany($this);
     }
 }
 
 /**
+ * EN:
  * The Department Concrete Component.
+ *
+ * RU:
+ * Конкретный Компонент Отдела.
  */
 class Department implements Entity
 {
@@ -114,7 +146,11 @@ class Department implements Entity
 }
 
 /**
+ * EN:
  * The Employee Concrete Component.
+ *
+ * RU:
+ * Конкретный Компонент Сотрудника.
  */
 class Employee implements Entity
 {
@@ -155,8 +191,13 @@ class Employee implements Entity
 }
 
 /**
+ * EN:
  * The Visitor interface declares a set of visiting methods for each of the
  * Concrete Component classes.
+ *
+ * RU:
+ * Интерфейс Посетителя объявляет набор методов посещения для каждого класса 
+ * Конкретного Компонента.
  */
 interface Visitor
 {
@@ -168,8 +209,13 @@ interface Visitor
 }
 
 /**
+ * EN:
  * The Concrete Visitor must provide implementations for every single class of
  * the Concrete Components.
+ *
+ * RU:
+ * Конкретный Посетитель должен предоставить реализации для каждого из
+ * классов Конкретных Компонентов.
  */
 class SalaryReport implements Visitor
 {
@@ -213,7 +259,11 @@ class SalaryReport implements Visitor
 }
 
 /**
+ * EN:
  * The client code.
+ *
+ * RU:
+ * Клиентский код.
  */
 
 $mobileDev = new Department("Mobile Development", [
