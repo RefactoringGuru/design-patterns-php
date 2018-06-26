@@ -3,19 +3,25 @@
 namespace RefactoringGuru\Visitor\Structural;
 
 /**
- * Visitor Design Pattern
+ * EN: Visitor Design Pattern
  *
  * Intent: Represent an operation to be performed over elements of an object
  * structure. The Visitor pattern lets you define a new operation without
  * changing the classes of the elements on which it operates.
+ *
+ * RU: Паттерн Посетитель
+ *
+ * Назначение: Изображает операцию, выполняемую над элементами структуры объекта.
+ * Паттерн Посетитель позволяет определить новую операцию без изменения классов элементов,
+ * с которыми она работает.
  */
 
 /**
  * EN: The Component interface declares an `accept` method that should take the
  * base visitor interface as an argument.
  *
- * RU: Интерфейс компонентов должен объявлять метод, принимающий базовый
- * интерфейс посетителей в качестве аргумента.
+ * RU: Интерфейс Компонента объявляет метод принятия, который должен иметь
+ * базовый интерфейс посетителя в качестве аргумента.
  */
 interface Component
 {
@@ -26,8 +32,8 @@ interface Component
  * EN: Each Concrete Component must implement the `accept` method in such a way
  * that it calls the visitor's method corresponding to the component's class.
  *
- * RU: Каждый конкретный компонент должен реализовать метод `accept` таким
- * образом, чтобы вызвать метод посетителя, соотвествующий текущему классу.
+ * RU: Каждый Конкретный Компонент должен реализовать метод принятия таким
+ * образом, чтобы вызвать метод посетителя, соотвествующий текущему классу компонента.
  */
 class ConcreteComponentA implements Component
 {
@@ -36,9 +42,9 @@ class ConcreteComponentA implements Component
      * current class name. This way we let the visitor know the class of the
      * component it works with.
      *
-     * RU: Обратите внимание, что мы вызываем `visitConcreteComponentA`, что
-     * совпадает с названием  текущего класса. Этим мы дадим посетителю знать с
-     * каким классом компонентов он сейчас работает.
+     * RU: Обратите внимание, что мы вызываем visitConcreteComponentA, что
+     * соответствует названию текущего класса. Таким образом мы даём посетителю узнать с
+     * каким классом компонента он работает.
      */
     function accept(Visitor $visitor)
     {
@@ -51,8 +57,8 @@ class ConcreteComponentA implements Component
      * methods since it's aware of the component's concrete class.
      *
      * RU: Конкретные Компоненты могут иметь особые методы, не объявленные в их
-     * базовом классе или интерфейсе. Несмотря на это, посетитель всё-равно
-     * сможет их использовать, так как знает конкретный класс компонента.
+     * базовом классе или интерфейсе. Посетитель всё же может использовать эти методы,
+     * поскольку он знает о конкретном классе компонента.
      */
     function exclusiveMethodOfConcreteComponentA()
     {
