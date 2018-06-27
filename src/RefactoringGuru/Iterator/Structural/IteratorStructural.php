@@ -5,12 +5,12 @@ namespace RefactoringGuru\Iterator\Structural;
 /**
  * EN: Iterator Design Pattern
  *
- * Intent: Provide a way a way to access the elements of an aggregate object without
+ * Intent: Provide a way to traverse the elements of an aggregate object without
  * exposing its underlying representation.
  *
  * RU: Паттерн Итератор
  *
- * Назначение: Предоставляет возможность обращаться к элементам составного объекта,
+ * Назначение: Предоставляет возможность обходить элементы составного объекта,
  * не раскрывая его внутреннего представления.
  */
 
@@ -21,13 +21,13 @@ use Iterator;
  * PHP has a built-in Iterator interface that provides a very convenient
  * integration with foreach loops.
  * 
+ * Here's what the interface looks like:
+ *
  * RU:
  * PHP имеет встроенный интерфейс Итератора, который предоставляет 
  * очень удобную интеграцию с циклами foreach.
- * 
- * EN: Here's what the interface looks like:
  *
- * RU: Вот как выглядит интерфейс:
+ * Вот как выглядит интерфейс:
  *
  * @link http://php.net/manual/en/class.iterator.php
  *
