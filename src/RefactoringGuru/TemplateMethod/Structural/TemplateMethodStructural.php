@@ -5,13 +5,13 @@ namespace RefactoringGuru\TemplateMethod\Structural;
 /**
  * EN: Template Method Design Pattern
  *
- * Intent: Define the skeleton of an algorithm in operation, deferring some
- * steps to subclasses. Template Method lets subclasses redefine specific steps
+ * Intent: Define the skeleton of an algorithm, deferring implementation of some steps
+ * to subclasses. Template Method lets subclasses redefine specific steps
  * of an algorithm without changing the algorithm's structure.
  * 
  * RU: Паттерн Шаблонный метод
  * 
- * Назначение: Определяет общую схему алгоритма в действии, перекладывая некоторые шаги
+ * Назначение: Определяет общую схему алгоритма, перекладывая реализацию некоторых шагов 
  * на подклассы. Шаблонный метод позволяет подклассам переопределять отдельные шаги алгоритма
  * без изменения структуры алгоритма.
  */
@@ -108,7 +108,7 @@ abstract class AbstractClass
  * They can also override some operations with a default implementation.
  * 
  * RU:
- * Конкретные классы должны реализовывать все абстрактные операции базового класса.
+ * Конкретные классы должны реализовать все абстрактные операции базового класса.
  * Они также могут переопределить некоторые операции с реализацией по умолчанию.
  */
 class ConcreteClass1 extends AbstractClass
@@ -158,7 +158,7 @@ class ConcreteClass2 extends AbstractClass
  * RU:
  * Клиентский код вызывает шаблонный метод для выполнения алгоритма.
  * Клиентский код не должен знать конкретный класс объекта, с которым работает,
- * при условии,что он работает с объектами через интерфейс их базового класса.
+ * при условии, что он работает с объектами через интерфейс их базового класса.
  */
 function clientCode(AbstractClass $class)
 {
