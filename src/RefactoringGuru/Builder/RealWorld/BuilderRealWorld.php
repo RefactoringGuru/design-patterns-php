@@ -156,7 +156,7 @@ class MysqlQueryBuilder implements SQLQueryBuilder
  *
  * RU:
  * Этот Конкретный Строитель совместим с PostgreSQL. Хотя Postgres очень похож на Mysql,
- * в нем все же есть ряд отличий. Чтобы повторно использовать общий код, мы расширяем его
+ * в нем всё же есть ряд отличий. Чтобы повторно использовать общий код, мы расширяем его
  * от строителя MySQL, переопределяя некоторые шаги построения.
  */
 class PostgresQueryBuilder extends MysqlQueryBuilder
@@ -227,9 +227,13 @@ function clientCode(SQLQueryBuilder $queryBuilder)
 
 
 /**
- * 
+ * EN:
  * The application selects the proper query builder type depending on a current
  * configuration or the environment settings.
+ *
+ * RU:
+ * Приложение выбирает подходящий тип строителя запроса в зависимости от текущей 
+ * конфигурации или настроек среды.
  */
 // if ($_ENV['database_type'] == 'postgres') {
 //     $builder = new PostgresQueryBuilder(); } else {
