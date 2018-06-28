@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Builder\RealWorld;
 
 /**
- * Builder Design Pattern
+ * EN: Builder Design Pattern
  *
  * Intent: Separate the construction of a complex object from its representation
  * so that the same construction process can create different representations.
@@ -13,13 +13,31 @@ namespace RefactoringGuru\Builder\RealWorld;
  * generic SQL query. On the other hand, Concrete Builders, corresponding to
  * different SQL dialects, implement these steps by returning parts of SQL
  * queries that can be executed in a particular database engine.
+ *
+ * RU: Паттерн Строитель
+ *
+ * Назначение: Отделяет построение сложного объекта от его представления так, 
+ * что один и тот же процесс построения может создавать разные представления объекта.
+ *
+ * Пример: Одним из лучших приложений паттерна Строителя является построитель
+ * запросов SQL. Интерфейс Строителя определяет общие шаги, необходимые для построения
+ * основного SQL-запроса. В тоже время Конкретные Строители, соответствующие
+ * различным диалектам SQL, реализуют эти шаги, возвращая части SQL-запросов, 
+ * которые могут быть выполнены в данном движке базы данных.
  */
 
 /**
+ * EN:
  * The Builder interface declares a set of methods to assemble an SQL query.
  *
  * All of the construction steps are returning the current builder object to
- * allow chaining: $builder->select(...)->where(...)
+ * allow chaining: $builder->select(...)->where(...).
+ *
+ * RU:
+ * Интерфейс Строителя объявляет набор методов для сборки SQL-запроса.
+ *
+ * Все шаги построения возвращают текущий объект строителя, чтобы обеспечить 
+ * цепочку: $builder->select(...)->where(...).
  */
 interface SQLQueryBuilder
 {
@@ -30,6 +48,7 @@ interface SQLQueryBuilder
     public function limit(int $start, int $offset): SQLQueryBuilder;
 
     // +100 other SQL syntax methods...
+    // +100 других методов синтаксиса SQL...
 
     public function getSQL(): string;
 }
