@@ -157,12 +157,16 @@ class MysqlQueryBuilder implements SQLQueryBuilder
  * RU:
  * Этот Конкретный Строитель совместим с PostgreSQL. Хотя Postgres очень похож на Mysql,
  * в нем все же есть ряд отличий. Чтобы повторно использовать общий код, мы расширяем его
- * от MySQL builder, переопределяя некоторые шаги построения.
+ * от строителя MySQL, переопределяя некоторые шаги построения.
  */
 class PostgresQueryBuilder extends MysqlQueryBuilder
 {
     /**
-     * Among other things, PostgresSQL has slightly different LIMIT syntax.
+     * EN:
+     * Among other things, PostgreSQL has slightly different LIMIT syntax.
+     *
+     * RU:
+     * Помимо прочего, PostgreSQL имеет несколько иной синтаксис LIMIT.
      */
     public function limit(int $start, int $offset): SQLQueryBuilder
     {
@@ -173,11 +177,16 @@ class PostgresQueryBuilder extends MysqlQueryBuilder
         return $this;
     }
 
+    // EN:
     // + tons of other overrides...
+    //
+    // RU:
+    // + тонны других переопределений...
 }
 
 
 /**
+ * EN:
  * Note that the client code uses the builder object directly. A designated
  * Director class is not necessary in this case, because the client code needs
  * different queries almost every time, so the sequence of the construction
@@ -188,6 +197,14 @@ class PostgresQueryBuilder extends MysqlQueryBuilder
  * Later, if we implement a new Builder class, we will be able to pass its
  * instance to the existing client code without breaking it thanks to the
  * SQLQueryBuilder interface.
+ *
+ * RU:
+ * Обратите внимание, что клиентский код использует объект строителя напрямую.
+ * Назначенный класс Директора в этом случае не нужен, поскольку клиентский код 
+ * практически всегда нуждается в различных запросах, поэтому последовательность 
+ * шагов построения не может быть с легкостью повторно использована.
+ *
+ *
  */
 function clientCode(SQLQueryBuilder $queryBuilder)
 {
@@ -207,6 +224,7 @@ function clientCode(SQLQueryBuilder $queryBuilder)
 
 
 /**
+ * 
  * The application selects the proper query builder type depending on a current
  * configuration or the environment settings.
  */
