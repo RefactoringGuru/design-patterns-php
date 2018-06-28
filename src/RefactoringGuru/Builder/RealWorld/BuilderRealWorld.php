@@ -155,7 +155,9 @@ class MysqlQueryBuilder implements SQLQueryBuilder
  * steps.
  *
  * RU:
- *
+ * Этот Конкретный Строитель совместим с PostgreSQL. Хотя Postgres очень похож на Mysql,
+ * в нем все же есть ряд отличий. Чтобы повторно использовать общий код, мы расширяем его
+ * от MySQL builder, переопределяя некоторые шаги построения.
  */
 class PostgresQueryBuilder extends MysqlQueryBuilder
 {
