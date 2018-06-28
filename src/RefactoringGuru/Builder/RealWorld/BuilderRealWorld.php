@@ -47,17 +47,24 @@ interface SQLQueryBuilder
 
     public function limit(int $start, int $offset): SQLQueryBuilder;
 
-    // +100 other SQL syntax methods...
-    // +100 других методов синтаксиса SQL...
+    // EN: +100 other SQL syntax methods...
+    //
+    // RU: +100 других методов синтаксиса SQL...
 
     public function getSQL(): string;
 }
 
 /**
+ * EN:
  * Each Concrete Builder corresponds to a specific SQL dialect and may implement
  * the builder steps a little bit differently from the others.
  *
  * This Concrete Builder can build SQL queries compatible with MySQL.
+ *
+ * RU: Каждый Конкретный Строитель соответствует определенному диалекту SQL
+ * и может реализовать шаги построения немного иначе, чем другие.
+ *
+ * Этот Конкретный Строитель может создавать SQL-запросы, совместимые с MySQL.
  */
 class MysqlQueryBuilder implements SQLQueryBuilder
 {
@@ -69,7 +76,11 @@ class MysqlQueryBuilder implements SQLQueryBuilder
     }
 
     /**
+     * EN:
      * Build a base SELECT query.
+     *
+     * RU:
+     * Построение базового запроса SELECT.
      */
     public function select(string $table, array $fields): SQLQueryBuilder
     {
@@ -81,7 +92,11 @@ class MysqlQueryBuilder implements SQLQueryBuilder
     }
 
     /**
+     * EN:
      * Add a WHERE condition.
+     *
+     * RU:
+     * Добавление условия WHERE.
      */
     public function where(string $field, string $value, string $operator = '='): SQLQueryBuilder
     {
@@ -94,7 +109,11 @@ class MysqlQueryBuilder implements SQLQueryBuilder
     }
 
     /**
+     * EN:
      * Add a LIMIT constraint.
+     *
+     * RU:
+     * Добавление ограничения LIMIT.
      */
     public function limit(int $start, int $offset): SQLQueryBuilder
     {
@@ -107,7 +126,11 @@ class MysqlQueryBuilder implements SQLQueryBuilder
     }
 
     /**
+     * EN:
      * Get the final query string.
+     *
+     * RU:
+     * Получение окончательной строки запроса.
      */
     public function getSQL(): string
     {
@@ -125,10 +148,14 @@ class MysqlQueryBuilder implements SQLQueryBuilder
 }
 
 /**
+ * EN:
  * This Concrete Builder is compatible with PostgreSQL. While Postgres is very
  * similar to Mysql, it still has several differences. To reuse the common code,
  * we extend it from the MySQL builder, while overriding some of the building
  * steps.
+ *
+ * RU:
+ *
  */
 class PostgresQueryBuilder extends MysqlQueryBuilder
 {
