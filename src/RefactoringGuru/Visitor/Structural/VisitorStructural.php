@@ -3,19 +3,24 @@
 namespace RefactoringGuru\Visitor\Structural;
 
 /**
- * Visitor Design Pattern
+ * EN: Visitor Design Pattern
  *
  * Intent: Represent an operation to be performed over elements of an object
  * structure. The Visitor pattern lets you define a new operation without
  * changing the classes of the elements on which it operates.
+ *
+ * RU: Паттерн Посетитель
+ *
+ * Назначение: Позволяет добавлять в программу новые операции, не изменяя классы объектов,
+ * над которыми эти операции могут выполняться.
  */
 
 /**
  * EN: The Component interface declares an `accept` method that should take the
  * base visitor interface as an argument.
  *
- * RU: Интерфейс компонентов должен объявлять метод, принимающий базовый
- * интерфейс посетителей в качестве аргумента.
+ * RU: Интерфейс Компонента объявляет метод принятия, который в качестве аргумента
+ * может получать любой объект, реализующий интерфейс посетителя.
  */
 interface Component
 {
@@ -26,8 +31,8 @@ interface Component
  * EN: Each Concrete Component must implement the `accept` method in such a way
  * that it calls the visitor's method corresponding to the component's class.
  *
- * RU: Каждый конкретный компонент должен реализовать метод `accept` таким
- * образом, чтобы вызвать метод посетителя, соотвествующий текущему классу.
+ * RU: Каждый Конкретный Компонент должен реализовать метод принятия таким
+ * образом, чтобы он вызывал метод посетителя, соотвествующий классу компонента.
  */
 class ConcreteComponentA implements Component
 {
@@ -36,9 +41,9 @@ class ConcreteComponentA implements Component
      * current class name. This way we let the visitor know the class of the
      * component it works with.
      *
-     * RU: Обратите внимание, что мы вызываем `visitConcreteComponentA`, что
-     * совпадает с названием  текущего класса. Этим мы дадим посетителю знать с
-     * каким классом компонентов он сейчас работает.
+     * RU: Обратите внимание, мы вызываем visitConcreteComponentA, что
+     * соответствует названию текущего класса. Таким образом мы позволяем посетителю узнать, с
+     * каким классом компонента он работает.
      */
     function accept(Visitor $visitor)
     {
@@ -51,8 +56,8 @@ class ConcreteComponentA implements Component
      * methods since it's aware of the component's concrete class.
      *
      * RU: Конкретные Компоненты могут иметь особые методы, не объявленные в их
-     * базовом классе или интерфейсе. Несмотря на это, посетитель всё-равно
-     * сможет их использовать, так как знает конкретный класс компонента.
+     * базовом классе или интерфейсе. Посетитель всё же может использовать эти методы,
+     * поскольку он знает о конкретном классе компонента.
      */
     function exclusiveMethodOfConcreteComponentA()
     {
@@ -65,7 +70,7 @@ class ConcreteComponentB implements Component
     /**
      * EN: Same here: visitConcreteComponentB => ConcreteComponentB
      *
-     * RU: То же самое: visitConcreteComponentB => ConcreteComponentB
+     * RU: То же самое здесь: visitConcreteComponentB => ConcreteComponentB
      */
     function accept(Visitor $visitor)
     {
@@ -83,9 +88,9 @@ class ConcreteComponentB implements Component
  * to component classes. The signature of a visiting method allows the visitor
  * to identify the exact class of the component that it's dealing with.
  *
- * RU: Интерфейс Посетителя объявляет набор методов посещения для каждого класса
- * компонента. Сигнатуры этих методов позволяют посетителю определить конкретный
- * класс компонента, с которым он работает.
+ * RU: Интерфейс Посетителя объявляет набор методов посещения, соответствующих 
+ * классам компонентов. Сигнатура метода посещения позволяет посетителю определить
+ * конкретный класс компонента, с которым он имеет дело.
  */
 interface Visitor
 {
@@ -103,14 +108,13 @@ interface Visitor
  * might be helpful to store some intermediate state of the algorithm while
  * executing visitor's methods over various objects of the structure.
  *
- * RU: Конкретные посетители реализуют несколько версий какого-то одного
- * алгоритма, способные работать со всеми классами конкретных компонентов.
+ * RU: Конкретные Посетители реализуют несколько версий одного и того же
+ * алгоритма, которые могут работать со всеми классами конкретных компонентов.
  *
- * Главная польза паттерна проявляется тогда, когда вы используете посетитель не
- * с отдельным объектами компонентов, а с целыми структурами разнорозных
- * компонентов, вроде дерева Компоновщика. В этом случае, посетитель может быть
- * реализован так, чтобы накоплять состояние при последовательном запуске своих
- * методов.
+ * Максимальную выгоду от паттерна Посетитель вы почувствуете, используя его
+ * со сложной структурой объектов, такой как дерево Компоновщика. В этом случае 
+ * было бы полезно хранить некоторое промежуточное состояние алгоритма
+ * при выполнении методов посетителя над различными объектами структуры.
  */
 class ConcreteVisitor1 implements Visitor
 {
@@ -143,10 +147,9 @@ class ConcreteVisitor2 implements Visitor
  * without figuring out their concrete classes. The accept operation directs a
  * call to the appropriate operation in the visitor object.
  *
- * RU: Клиентский код может запускать операции посетителя над любым набором
- * компонентов, не привязываясь к их конкретным классам. Метод `accept`
- * позаботится о том, чтобы вызвать метод посетителя, соответствующий данному
- * классу компонента.
+ * RU: Клиентский код может выполнять операции посетителя над любым набором элементов,
+ * не выясняя их конкретных классов. Операция принятия направляет вызов к соответствующей
+ * операции в объекте посетителя.
  */
 function clientCode(array $components, Visitor $visitor)
 {

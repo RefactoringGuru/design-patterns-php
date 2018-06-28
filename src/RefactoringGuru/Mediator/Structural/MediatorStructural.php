@@ -3,17 +3,29 @@
 namespace RefactoringGuru\Mediator\Structural;
 
 /**
- * Mediator Design Pattern
+ * EN: Mediator Design Pattern
  *
  * Intent: Define an object that encapsulates how a set of objects interact.
  * Mediator promotes loose coupling by keeping objects from referring to each
  * other explicitly, and it lets you vary their interaction independently.
+ *
+ * RU: Паттерн Посредник
+ *
+ * Назначение: Определяет объект, который инкапсулирует взаимодействие набора объектов.
+ * Посредник способствует свободной связи, удерживая объекты от обращения друг к другу
+ * напрямую, и это позволяет вам менять их взаимодействие независимо. 
  */
 
 /**
+ * EN:
  * The Mediator interface declares a method used by components to notify the
  * mediator about various events. The Mediator may react to these events and
  * pass the execution to other components.
+ *
+ * RU:
+ * Интерфейс Посредника предоставляет метод, используемый компонентами для уведомления
+ * посредника о различных событиях. Посредник может реагировать на эти события 
+ * и передавать исполнение другим компонентам.
  */
 interface Mediator
 {
@@ -21,8 +33,13 @@ interface Mediator
 }
 
 /**
+ * EN:
  * Concrete Mediators implement cooperative behavior by coordinating several
  * components.
+ *
+ * RU:
+ * Конкретные Посредники реализуют совместное поведение, координируя
+ * отдельные компоненты.
  */
 class ConcreteMediator implements Mediator
 {
@@ -54,8 +71,13 @@ class ConcreteMediator implements Mediator
 }
 
 /**
+ * EN:
  * The Base Component provides the basic functionality of storing a mediator's
  * instance inside component objects.
+ *
+ * RU:
+ * Базовый Компонент обеспечивает базовую функциональность хранения экземпляра
+ * посредника внутри объектов компонентов.
  */
 class BaseComponent
 {
@@ -73,8 +95,13 @@ class BaseComponent
 }
 
 /**
+ * EN:
  * Concrete Components implement various functionality. They don't depend on
  * other components. They also don't depend on any concrete mediator classes.
+ *
+ * RU:
+ * Конкретные Компоненты реализуют различную функциональность. Они не зависят от
+ * других компонентов. Они также не зависят от каких-либо конкретных классов посредников.
  */
 class Component1 extends BaseComponent
 {
@@ -107,7 +134,9 @@ class Component2 extends BaseComponent
 }
 
 /**
- * The client code.
+ * EN: The client code.
+ *
+ * RU: Клиентский код.
  */
 $c1 = new Component1();
 $c2 = new Component2();
