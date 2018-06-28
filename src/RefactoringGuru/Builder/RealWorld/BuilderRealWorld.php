@@ -19,7 +19,7 @@ namespace RefactoringGuru\Builder\RealWorld;
  * Назначение: Отделяет построение сложного объекта от его представления так, 
  * что один и тот же процесс построения может создавать разные представления объекта.
  *
- * Пример: Одним из лучших приложений паттерна Строителя является конструктор
+ * Пример: Одним из лучших применений паттерна Строителя является конструктор
  * запросов SQL. Интерфейс Строителя определяет общие шаги, необходимые для построения
  * основного SQL-запроса. В тоже время Конкретные Строители, соответствующие
  * различным диалектам SQL, реализуют эти шаги, возвращая части SQL-запросов, 
@@ -31,13 +31,13 @@ namespace RefactoringGuru\Builder\RealWorld;
  * The Builder interface declares a set of methods to assemble an SQL query.
  *
  * All of the construction steps are returning the current builder object to
- * allow chaining: $builder->select(...)->where(...).
+ * allow chaining: $builder->select(...)->where(...)
  *
  * RU:
  * Интерфейс Строителя объявляет набор методов для сборки SQL-запроса.
  *
  * Все шаги построения возвращают текущий объект строителя, чтобы обеспечить 
- * цепочку: $builder->select(...)->where(...).
+ * цепочку: $builder->select(...)->where(...)
  */
 interface SQLQueryBuilder
 {
