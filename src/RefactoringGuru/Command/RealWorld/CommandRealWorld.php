@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Command\RealWorld;
 
 /**
- * Command Design Pattern
+ * EN: Command Design Pattern
  *
  * Intent: Encapsulate a request as an object, thereby letting you parameterize
  * clients with different requests (e.g. queue or log requests) and support
@@ -12,6 +12,16 @@ namespace RefactoringGuru\Command\RealWorld;
  * Example: In this example, the Command pattern is used to queue web scraping
  * calls to the IMDB website and execute them one by one. The queue itself is
  * kept in a database which helps to preserve commands between script launches.
+ *
+ * RU: Паттерн Команда
+ *
+ * Назначение: Инкапсулирует запрос как объект, позволяя тем самым параметризовать
+ * клиентов с различными запросами (например, запросами очереди или логирования) и  
+ * поддерживать отмену операций.
+ *
+ * Пример: В этом примере паттерн Команда применяется для очереди вызовов веб-скрейпинга
+ * на веб-сайт IMDB и выполнения их один за другим. Сама очередь хранится в базе данных,
+ * которая помогает сохранять команды между запусками сценариев.
  */
 
 /**
