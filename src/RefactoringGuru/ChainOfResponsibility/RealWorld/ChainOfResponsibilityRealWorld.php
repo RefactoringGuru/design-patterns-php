@@ -41,18 +41,19 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  * Это работает следующим образом: HTTP-запрос должен пройти через стек объектов 
  * middleware, прежде чем приложение его обработает. Каждое middleware может либо 
  * отклонить дальнейшую обработку запроса, либо передать его следующему middleware.
- * Как только запрос успешно пройдет все middleware, основной обработчик приложения
+ * Как только запрос успешно пройдёт все middleware, основной обработчик приложения
  * сможет окончательно обработать его.
  *
  * Можно отметить, что такой подход – своего рода инверсия первоначального
- * замысла паттерна. Действительно, в стандартной реализации запрос передается 
+ * замысла паттерна. Действительно, в стандартной реализации запрос передаётся 
  * по цепочке только в том случае, если текущий обработчик НЕ МОЖЕТ его обработать,
- * тогда как middleware передает запрос дальше по цепочке, когда считает, что 
+ * тогда как middleware передаёт запрос дальше по цепочке, когда считает, что 
  * приложение МОЖЕТ обработать запрос. Тем не менее, поскольку middleware соединены
  * цепочкой, вся концепция по-прежнему считается примером паттерна CoR.
  */
 
 /**
+ * EN:
  * The classic CoR pattern declares a single role for objects that make up a
  * chain, which is a Handler. In our example, let's differentiate between
  * middleware and a final application's handler, which is executed when a
@@ -60,6 +61,15 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  *
  * The base Middleware class declares an interface for linking middleware
  * objects into a chain.
+ *
+ * RU:
+ * Классический паттерн CoR объявляет для объектов, составляющих цепочку, 
+ * единственную роль – Обработчик. В нашем примере давайте проводить различие 
+ * между middleware и конечным обработчиком приложения, который выполняется,
+ * когда запрос проходит через все объекты middleware.
+ *
+ * Базовый класс Middleware объявляет интерфейс для связывания объектов middleware
+ * в цепочку.
  */
 abstract class Middleware
 {
