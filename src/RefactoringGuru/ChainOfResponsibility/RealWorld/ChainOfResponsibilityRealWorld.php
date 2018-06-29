@@ -254,7 +254,7 @@ class Server
      * The client can configure the server with a chained middleware list.
      *
      * RU:
-     * Клиент может настроить сервер с помощью списка соединеных в цепочку middleware.
+     * Клиент может настроить сервер с помощью списка соединенных в цепочку middleware.
      */
     public function setMiddleware(Middleware $middleware)
     {
