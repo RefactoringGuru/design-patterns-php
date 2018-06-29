@@ -42,7 +42,7 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  * middleware, прежде чем приложение его обработает. Каждое middleware может либо 
  * отклонить дальнейшую обработку запроса, либо передать его следующему middleware.
  * Как только запрос успешно пройдёт все middleware, основной обработчик приложения
- * сможет окончательно обработать его.
+ * сможет окончательно его обработать.
  *
  * Можно отметить, что такой подход – своего рода инверсия первоначального
  * замысла паттерна. Действительно, в стандартной реализации запрос передаётся 
@@ -114,7 +114,11 @@ abstract class Middleware
 }
 
 /**
+ * EN:
  * This Concrete Middleware checks whether a user with given credentials exists.
+ *
+ * RU:
+ * Это Конкретное Middleware проверяет, существует ли пользователь с указанными учётными данными.
  */
 class UserExistsMiddleware extends Middleware
 {
@@ -144,8 +148,13 @@ class UserExistsMiddleware extends Middleware
 }
 
 /**
+ * EN:
  * This Concrete Middleware checks whether a user associated with the request
  * has sufficient permissions.
+ *
+ * RU:
+ * Это Конкретное Middleware проверяет, имеет ли пользователь, 
+ * связанный с запросом, достаточные разрешения.
  */
 class RoleCheckMiddleware extends Middleware
 {
@@ -163,8 +172,13 @@ class RoleCheckMiddleware extends Middleware
 }
 
 /**
+ * EN:
  * This Concrete Middleware checks whether there are too many failed login
  * requests.
+ *
+ * RU:
+ * Это Конкретное Middleware проверяет наличие слишком большого количества
+ * неудачных запросов авторизации.
  */
 class ThrottlingMiddleware extends Middleware
 {
@@ -181,12 +195,21 @@ class ThrottlingMiddleware extends Middleware
     }
 
     /**
+     * EN:
      * Please, note that the parent::check call can be inserted both at the
      * beginning of this method and at the end.
      *
      * This gives much more flexibility than a simple loop over all middleware
      * objects. For instance, a middleware can change the order of checks by
      * running its check after all the others.
+     *
+     * RU:
+     * Обратите внимание, что вызов parent::check можно вставить как в начале
+     * этого метода, так и в конце.
+     *
+     * Это даёт значительно большую свободу действий, чем простой цикл по всем объектам
+     * middleware. Например, middleware может изменить порядок проверок, 
+     * запустив свою проверку после всех остальных.
      */
     public function check(string $email, string $password): bool
     {
@@ -207,9 +230,15 @@ class ThrottlingMiddleware extends Middleware
 }
 
 /**
+ * EN:
  * This is an application's class that acts as a real handler. The Server class
  * uses the CoR pattern to execute a set of various authentication middleware
  * before launching some business logic associated with a request.
+ *
+ * RU:
+ * Это класс приложения, который действует как реальный обработчик. Класс Сервер
+ * использует паттерн CoR для выполнения набора различных промежуточных программ
+ * аутентификации перед запуском некоторой бизнес-логики, связанной с запросом.
  */
 class Server
 {
@@ -221,7 +250,11 @@ class Server
     private $middleware;
 
     /**
+     * EN:
      * The client can configure the server with a chained middleware list.
+     *
+     * RU:
+     * Клиент может настроить сервер с помощью списка соединеных в цепочку middleware.
      */
     public function setMiddleware(Middleware $middleware)
     {
@@ -229,15 +262,21 @@ class Server
     }
 
     /**
+     * EN:
      * The server gets the email and password from the client and sends the
      * authorization request to the middleware.
+     *
+     * RU:
+     * Сервер получает email и пароль от клиента и отправляет запрос авторизации в middleware.
      */
     public function logIn(string $email, string $password)
     {
         if ($this->middleware->check($email, $password)) {
             print("Server: Authorization has been successful!\n");
 
-            // Do something useful for authorized users.
+            // EN: Do something useful for authorized users.
+            //
+            // RU: Сделайте что-нибудь полезное для авторизованных пользователей.
 
             return true;
         }
@@ -262,20 +301,31 @@ class Server
 }
 
 /**
+ * EN:
  * The client code.
+ *
+ * RU:
+ * Клиентский код.
  */
 $server = new Server();
 $server->register("admin@example.com", "admin_pass");
 $server->register("user@example.com", "user_pass");
 
+// EN: 
 // All middleware are chained. The client can build various configurations of
 // chains depending on its needs.
+//
+// RU: 
+// Все middleware соединены в цепочки. Клиент может построить различные конфигурации
+// цепочек в зависимости от своих потребностей.
 $middleware = new ThrottlingMiddleware(2);
 $middleware
     ->linkWith(new UserExistsMiddleware($server))
     ->linkWith(new RoleCheckMiddleware());
 
-// The server gets a chain from the client code.
+// EN: The server gets a chain from the client code.
+//
+// RU: Сервер получает цепочку из клиентского кода.
 $server->setMiddleware($middleware);
 
 // ...
