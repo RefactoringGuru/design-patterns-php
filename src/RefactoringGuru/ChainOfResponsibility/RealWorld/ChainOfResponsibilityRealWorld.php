@@ -79,7 +79,11 @@ abstract class Middleware
     private $next;
 
     /**
+     * EN:
      * This method can be used to build a chain of middleware objects.
+     *
+     * RU:
+     * Этот метод можно использовать для построения цепочки объектов middleware. 
      */
     public function linkWith(Middleware $next): Middleware
     {
@@ -89,9 +93,15 @@ abstract class Middleware
     }
 
     /**
+     * EN:
      * Subclasses must override this method to provide their own checks. A
      * subclass can fall back to the parent implementation if it can't process a
      * request.
+     *
+     * RU:
+     * Подклассы должны переопределить этот метод, чтобы предоставить свои 
+     * собственные проверки. Если подкласс не может обработать запрос, 
+     * он может вернуться к родительской реализации.
      */
     public function check(string $email, string $password): bool
     {
