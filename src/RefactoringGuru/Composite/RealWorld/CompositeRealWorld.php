@@ -256,15 +256,19 @@ class Fieldset extends FieldComposite
         // EN: Note how the combined rendering result of children is incorporated
         // into the fieldset tag.
         //
-        // RU: 
-        //
+        // RU: Обратите внимание, как комбинированный результат рендеринга потомков
+        // включается в тег fieldset.
         $output = parent::render();
         return "<fieldset><legend>{$this->title}</legend>\n$output</fieldset>\n";
     }
 }
 
 /**
+ * EN:
  * And so is the form element.
+ *
+ * RU:
+ * Так же как и элемент формы.
  */
 class Form extends FieldComposite
 {
@@ -284,8 +288,12 @@ class Form extends FieldComposite
 }
 
 /**
+ * EN:
  * The client code gets a convenient interface for building complex tree
  * structures.
+ *
+ * RU:
+ * Клиентский код получает удобный интерфейс для построения сложных древовидных структур.
  */
 function getProductForm(): FormElement
 {
@@ -302,9 +310,15 @@ function getProductForm(): FormElement
 }
 
 /**
+ * EN:
  * The form structure can be filled with data from various sources. The Client
  * doesn't have to traverse through all form fields to assign data to various
  * fields since the form itself can handle that.
+ *
+ * RU:
+ * Структура формы может быть заполнена данными из разных источников. Клиент не должен
+ * проходить через все поля формы, чтобы назначить данные различным полям,
+ * так как форма сама может справиться с этим. 
  */
 function loadProductData(FormElement $form)
 {
@@ -321,9 +335,15 @@ function loadProductData(FormElement $form)
 }
 
 /**
+ * EN:
  * The client code can work with form elements using the abstract interface.
  * This way, it doesn't matter whether the client works with a simple component
  * or a complex composite tree.
+ *
+ * RU:
+ * Клиентский код может работать с элементами формы, используя абстрактный интерфейс.
+ * Таким образом, не имеет значения, работает ли клиент с простым компонентом
+ * или сложным составным деревом.
  */
 function renderProduct(FormElement $form)
 {
