@@ -34,7 +34,7 @@ namespace RefactoringGuru\Composite\RealWorld;
  * Пример: Паттерн Компоновщик может оптимизировать работу с любыми древовидными 
  * рекурсивными структурами. Примером такой структуры является дерево HTML DOM.
  * Например, в то время как различные входные элементы могут служить листьями,
- * сложные элементы, такие как формы и наборы полей, играют роль компоновщиков.
+ * сложные элементы, такие как формы и наборы полей, играют роль контейнеров.
  *
  * Имея это в виду, Вы можете использовать паттерн Компоновщик для применения различных
  * типов поведения ко всему дереву HTML точно таже, как и к его внутренним элементам,
@@ -111,7 +111,7 @@ abstract class FormElement
  * This is a Leaf component. Like all the Leaves, it can't have any children.
  *
  * RU:
- * Это компонент Листа. Как и все Листья, он не может иметь никаких потомков.
+ * Это компонент Листа. Как и все Листья, он не может иметь вложенных компонентов.
  */
 class Input extends FormElement
 {
@@ -124,9 +124,15 @@ class Input extends FormElement
     }
 
     /**
+     * EN:
      * Since Leaf components don't have any children that may handle the bulk of
      * the work for them, usually it is the Leaves who do the most of the heavy-
      * lifting within the Composite pattern.
+     *
+     * RU:
+     * Поскольку у компонентов Листьев нет вложенных компонентов, которые могут
+     * выполнять для них основную часть работы, обычно Листья делают большую часть 
+     * тяжелой работы внутри паттерна Компоновщика.
      */
     public function render(): string
     {
@@ -136,8 +142,13 @@ class Input extends FormElement
 }
 
 /**
+ * EN:
  * The base Composite class implements the infrastructure for managing child
  * objects, reused by all Concrete Composites.
+ *
+ * RU:
+ * Базовый класс Контейнер реализует инфраструктуру для управления дочерними объектами,
+ * повторно используемую всеми Конкретными Контейнерами.
  */
 abstract class FieldComposite extends FormElement
 {
@@ -147,7 +158,11 @@ abstract class FieldComposite extends FormElement
     protected $fields = [];
 
     /**
+     * EN:
      * The methods for adding/removing sub-objects.
+     *
+     * RU:
+     * Методы добавления/удаления подобъектов.
      */
     public function add(FormElement $field)
     {
@@ -163,10 +178,19 @@ abstract class FieldComposite extends FormElement
     }
 
     /**
+     * EN:
      * Whereas a Leaf's method just does the job, the Composite's method almost
      * always has to take its sub-objects into account.
      *
      * In this case, the composite can accept structured data.
+     *
+     * @param array $data
+     *
+     * RU:
+     * В то время как метод Листа просто выполняет эту работу, метод Контейнера
+     * почти всегда должен учитывать его подобъекты.
+     *
+     * В этом случае контейнер может принимать структурированные данные.
      *
      * @param array $data
      */
@@ -180,8 +204,13 @@ abstract class FieldComposite extends FormElement
     }
 
     /**
+     * EN:
      * The same logic applies to the getter. It returns the structured data of
      * the composite itself, plus all the children data.
+     *
+     * RU:
+     * Та же логика применима и к получателю. Он возвращает структурированные данные
+     * самого контейнера, а также все дочерние данные.
      */
     public function getData()
     {
@@ -193,9 +222,15 @@ abstract class FieldComposite extends FormElement
     }
 
     /**
+     * EN:
      * The base implementation of the composite's rendering simply combines
      * results of all children. Concrete Composites will be able to reuse this
      * implementation in their real rendering implementations.
+     *
+     * RU:
+     * Базовая реализация рендеринга контейнера просто объединяет результаты всех
+     * дочерних элементов. Конкретные Контейнеры смогут повторно использовать
+     * эту реализацию в своих реальных реализациях рендеринга.
      */
     public function render(): string
     {
@@ -208,14 +243,21 @@ abstract class FieldComposite extends FormElement
 }
 
 /**
+ * EN:
  * The fieldset element is a Concrete Composite.
+ *
+ * RU:
+ * Элемент fieldset представляет собой Конкретный Контейнер.
  */
 class Fieldset extends FieldComposite
 {
     public function render(): string
     {
-        // Note how the combined rendering result of children is incorporated
+        // EN: Note how the combined rendering result of children is incorporated
         // into the fieldset tag.
+        //
+        // RU: 
+        //
         $output = parent::render();
         return "<fieldset><legend>{$this->title}</legend>\n$output</fieldset>\n";
     }
