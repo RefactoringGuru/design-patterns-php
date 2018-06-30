@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Composite\RealWorld;
 
 /**
- * Composite Design Pattern
+ * EN: Composite Design Pattern
  *
  * Intent: Compose objects into tree structures to represent part-whole
  * hierarchies. Composite lets clients treat individual objects and compositions
@@ -24,6 +24,23 @@ namespace RefactoringGuru\Composite\RealWorld;
  * or complex type of element before executing the behavior. Depending on the
  * element's type, it either gets executed right away or passed all the way down
  * to all element's children.
+ *
+ * RU: Паттерн Компоновщик
+ *
+ * Назначение: Объединяет объекты в древовидные структуры для представления
+ * иерархий часть-целое. Компоновщик позволяет клиентам обрабатывать отдельные объекты
+ * и группы объектов одинаковым образом.
+ *
+ * Пример: Паттерн Компоновщик может оптимизировать работу с любыми древовидными 
+ * рекурсивными структурами. Примером такой структуры является дерево HTML DOM.
+ * Например, в то время как различные входные элементы могут служить листьями,
+ * сложные элементы, такие как формы и наборы полей, играют роль компоновщиков.
+ *
+ * Имея это в виду, Вы можете использовать паттерн Компоновщик для применения различных
+ * типов поведения ко всему дереву HTML точно таже, как и к его внутренним элементам,
+ * не связывая ваш код с конкретными классами дерева DOM. Примерами такого поведения 
+ * может быть рендеринг элементов DOM, их экспорт в различные форматы, проверка достоверности
+ * их частей и т.д.
  */
 
 /**
