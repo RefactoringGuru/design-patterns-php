@@ -20,7 +20,7 @@ namespace RefactoringGuru\Command\RealWorld;
  * поддерживать отмену операций.
  *
  * Пример: В этом примере паттерн Команда применяется для очереди вызовов веб-скрейпинга
- * на веб-сайт IMDB и выполнения их один за другим. Сама очередь хранится в базе данных,
+ * на веб-сайте IMDB и выполнения их один за другим. Сама очередь хранится в базе данных,
  * которая помогает сохранять команды между запусками сценариев.
  */
 
@@ -101,6 +101,9 @@ abstract class WebScrapingCommand implements Command
      * Поскольку исполняющие методы для всех команд веб-скрейпинга очень похожи,
      * мы можем предоставить реализацию по умолчанию и позволить подклассам
      * переопределить их при необходимости.
+     *
+     * Шш! Наблюдательный читатель может обнаружить здесь другой поведенческий 
+     * паттерн в действии. 
      */
     public function execute()
     {
@@ -201,7 +204,9 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
             Queue::get()->add(new IMDBMovieScrapingCommand($url));
         }
 
-        // Parse the next page URL.
+        // EN: Parse the next page URL.
+        //
+        // RU: Обработка URL следующей страницы.
         if (preg_match("|Next &#187;</a>|", $html)) {
             Queue::get()->add(new IMDBGenrePageScrapingCommand($this->url, $this->page + 1));
         }
@@ -247,7 +252,14 @@ class IMDBMovieScrapingCommand extends WebScrapingCommand
  * solution available for use in real apps.
  *
  * RU:
- * 
+ * Класс Очередь действует как Отправитель. Он складывает в стек объекты команд
+ * и выполняет их поочерёдно. Если выполнение скрипта внезапно завершается,
+ * очередь и все её команды могут быть легко восстановлены, и вам не нужно будет
+ * повторять все выполненные команды.
+ *
+ * Обратите внимание, что это очень примитивная реализация очереди команд, 
+ * которая хранит команды в локальной базе данных SQLite. Существуют десятки 
+ * надёжных решений очереди, доступных для использования в реальных приложениях.
  */
 class Queue
 {
@@ -309,7 +321,11 @@ class Queue
     }
 
     /**
+     * EN:
      * For our convenience, the Queue object is a Singleton.
+     *
+     * RU:
+     * Для удобства объектом Очереди является Одиночка.
      */
     public static function get(): Queue
     {
@@ -323,7 +339,11 @@ class Queue
 }
 
 /**
+ * EN:
  * The client code.
+ *
+ * RU:
+ * Клиентский код.
  */
 
 $queue = Queue::get();
