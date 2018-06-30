@@ -95,14 +95,23 @@ abstract class FormElement
     }
 
     /**
+     * EN:
      * Each concrete DOM element must provide its rendering implementation, but
      * we can safely assume that all of them are returning strings.
+     *
+     * RU:
+     * Каждый конкретный элемент DOM должен предоставить свою реализацию рендеринга,
+     * но мы можем с уверенностью предположить, что все они возвращают строки.
      */
     public abstract function render(): string;
 }
 
 /**
+ * EN:
  * This is a Leaf component. Like all the Leaves, it can't have any children.
+ *
+ * RU:
+ * Это компонент Листа. Как и все Листья, он не может иметь никаких потомков.
  */
 class Input extends FormElement
 {
