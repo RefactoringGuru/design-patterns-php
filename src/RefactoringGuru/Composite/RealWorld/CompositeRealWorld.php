@@ -41,10 +41,13 @@ namespace RefactoringGuru\Composite\RealWorld;
  * не связывая ваш код с конкретными классами дерева DOM. Примерами такого поведения 
  * может быть рендеринг элементов DOM, их экспорт в различные форматы, проверка достоверности
  * их частей и т.д.
+ *
+ * С паттерном Компоновщика вам не нужно проверять, является ли тип элемента простым или сложным, 
+ * перед реализацией поведения. В зависимости от типа элемента, он либо сразу же выполняется,
+ * либо полностью передаётся всем дочерним элементам.
  */
 
-/**
- * The base Component class declares an interface for all concrete components,
+/* The base Component class declares an interface for all concrete components,
  * both simple and complex.
  *
  * In our example, we'll be focusing on the rendering behavior of DOM elements.
