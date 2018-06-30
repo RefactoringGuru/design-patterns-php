@@ -209,12 +209,21 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
 }
 
 /**
+ * EN:
  * The Concrete Command for scraping the movie details.
+ *
+ * RU:
+ * Конкретная Команда для извлечения подробных сведений о фильме.
  */
 class IMDBMovieScrapingCommand extends WebScrapingCommand
 {
     /**
+     * EN:
      * Get the movie info from a page like this:
+     * https://www.imdb.com/title/tt4154756/
+     *
+     * RU:
+     * Получить информацию о фильме с подобной страницы:
      * https://www.imdb.com/title/tt4154756/
      */
     public function parse($html)
@@ -227,6 +236,7 @@ class IMDBMovieScrapingCommand extends WebScrapingCommand
 }
 
 /**
+ * EN:
  * The Queue class acts as an Invoker. It stacks the command objects and
  * executes them one by one. If the script execution is suddenly terminated, the
  * queue and all its commands can easily be restored, and you won't need to
@@ -235,6 +245,9 @@ class IMDBMovieScrapingCommand extends WebScrapingCommand
  * Note that this is a very primitive implementation of the command queue, which
  * stores commands in a local SQLite database. There are dozens of robust queue
  * solution available for use in real apps.
+ *
+ * RU:
+ * 
  */
 class Queue
 {
