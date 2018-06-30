@@ -47,15 +47,27 @@ namespace RefactoringGuru\Composite\RealWorld;
  * либо полностью передаётся всем дочерним элементам.
  */
 
-/* The base Component class declares an interface for all concrete components,
+/**
+ * EN:
+ * The base Component class declares an interface for all concrete components,
  * both simple and complex.
  *
  * In our example, we'll be focusing on the rendering behavior of DOM elements.
+ *
+ * RU:
+ * Базовый класс Компонент объявляет интерфейс для всех конкретных компонентов,
+ * как простых, так и сложных.
+ *
+ * В нашем примере мы сосредоточимся на поведении элементов DOM при рендеринге.
  */
 abstract class FormElement
 {
     /**
+     * EN:
      * We can anticipate that all DOM elements require these 3 fields.
+     *
+     * RU:
+     * Можно предположить, что все элементы DOM потребуют эти 3 поля.
      */
     protected $name;
     protected $title;
