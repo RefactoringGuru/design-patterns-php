@@ -25,8 +25,13 @@ namespace RefactoringGuru\Command\RealWorld;
  */
 
 /**
+ * EN:
  * The Command interface declares the execution method as well as several
  * methods to get a command's metadata.
+ *
+ * RU:
+ * Интерфейс Команды объявляет метод выполнения, а также несколько методов
+ * получения метаданных команды.
  */
 interface Command
 {
@@ -38,8 +43,13 @@ interface Command
 }
 
 /**
+ * EN:
  * The base web scraping Command defines the basic downloading infrastructure,
  * common to all concrete web scraping commands.
+ *
+ * RU:
+ * Базовая Команда веб-скрейпинга устанавливает базовую инфраструктуру загрузки,
+ * общую для всех конкретных команд веб-скрейпинга.
  */
 abstract class WebScrapingCommand implements Command
 {
@@ -48,7 +58,11 @@ abstract class WebScrapingCommand implements Command
     public $status = 0;
 
     /**
+     * EN:
      * @var string URL for scraping.
+     *
+     * RU:
+     * @var string URL для скрейпинга.
      */
     public $url;
 
@@ -75,12 +89,18 @@ abstract class WebScrapingCommand implements Command
     }
 
     /**
+     * EN:
      * Since the execution methods for all web scraping commands are very
      * similar, we can provide a default implementation and let subclasses
      * override them if needed.
      *
      * Psst! An observant reader may spot another behavioral pattern in action
      * here.
+     *
+     * RU:
+     * Поскольку исполняющие методы для всех команд веб-скрейпинга очень похожи,
+     * мы можем предоставить реализацию по умолчанию и позволить подклассам
+     * переопределить их при необходимости.
      */
     public function execute()
     {
@@ -107,7 +127,11 @@ abstract class WebScrapingCommand implements Command
 }
 
 /**
+ * EN:
  * The Concrete Command for scraping the list of movie genres.
+ *
+ * RU:
+ * Конкретная Команда для извлечения списка жанров фильма.
  */
 class IMDBGenresScrapingCommand extends WebScrapingCommand
 {
@@ -117,7 +141,12 @@ class IMDBGenresScrapingCommand extends WebScrapingCommand
     }
 
     /**
+     * EN:
      * Extract all genres and their search URLs from the page:
+     * https://www.imdb.com/feature/genre/
+     *
+     * RU:
+     * Извлечение всех жанров и их поисковых URL со страницы:
      * https://www.imdb.com/feature/genre/
      */
     public function parse($html)
@@ -132,7 +161,11 @@ class IMDBGenresScrapingCommand extends WebScrapingCommand
 }
 
 /**
+ * EN:
  * The Concrete Command for scraping the list of movies in a specific genre.
+ *
+ * RU:
+ * Конкретная Команда для извлечения списка фильмов определённого жанра.
  */
 class IMDBGenrePageScrapingCommand extends WebScrapingCommand
 {
@@ -150,7 +183,12 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
     }
 
     /**
+     * EN:
      * Extract all movies from a page like this:
+     * https://www.imdb.com/search/title?genres=sci-fi&explore=title_type,genres
+     *
+     * RU:
+     * Извлечение всех фильмов со страницы вроде этой:
      * https://www.imdb.com/search/title?genres=sci-fi&explore=title_type,genres
      */
     public function parse($html)
