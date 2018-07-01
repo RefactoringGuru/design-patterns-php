@@ -244,8 +244,10 @@ function displayCommentAsAWebsite(InputFormat $format, string $text)
  * risking getting tons of spammy links but may also be exposed to XSS attacks.
  *
  * RU:
- *
- *
+ * Входные модули форматирования очень удобны при работе с пользовательским контентом.
+ * Отображение такого контента «как есть» может быть очень опасным, особенно когда его
+ * могут создавать анонимные пользователи (т.е. комментарии). Ваш сайт не только рискует
+ * получить массу спам-ссылок, но также может быть подвергнут атакам XSS.
  */
 $dangerousComment = <<<HERE
 Hello! Nice blog post!
@@ -256,7 +258,11 @@ Please visit my <a href='http://www.iwillhackyou.com'>homepage</a>.
 HERE;
 
 /**
+ * EN:
  * Naive comment rendering (unsafe).
+ *
+ * RU:
+ * Наивное отображение комментариев (небезопасное).
  */
 $naiveInput = new TextInput();
 print("Website renders comments without filtering (unsafe):\n");
@@ -264,7 +270,11 @@ displayCommentAsAWebsite($naiveInput, $dangerousComment);
 print("\n\n\n");
 
 /**
+ * EN:
  * Filtered comment rendering (safe).
+ *
+ * RU:
+ * Отфильтрованное отображение комментариев (безопасное).
  */
 $filteredInput = new PlainTextFilter($naiveInput);
 print("Website renders comments after stripping all tags (safe):\n");
@@ -273,8 +283,13 @@ print("\n\n\n");
 
 
 /**
+ * EN:
  * Decorator allows stacking multiple input formats to get fine-grained control
  * over the rendered content.
+ *
+ * RU:
+ * Декоратор позволяет складывать несколько входных форматов, чтобы получить 
+ * точный контроль над отображаемым содержимым.
  */
 $dangerousForumPost = <<<HERE
 # Welcome
@@ -287,7 +302,11 @@ This is my first post on this **gorgeous** forum.
 HERE;
 
 /**
+ * EN:
  * Naive post rendering (unsafe, no formatting).
+ *
+ * RU:
+ * Наивное отображение сообщений (небезопасное, без форматирования).
  */
 $naiveInput = new TextInput();
 print("Website renders a forum post without filtering and formatting (unsafe, ugly):\n");
@@ -295,7 +314,11 @@ displayCommentAsAWebsite($naiveInput, $dangerousForumPost);
 print("\n\n\n");
 
 /**
+ * EN:
  * Markdown formatter + filtering dangerous tags (safe, pretty).
+ *
+ * RU:
+ * Форматтер Markdown + фильтрация опасных тегов (безопасно, красиво).
  */
 $text = new TextInput();
 $markdown = new MarkdownFormat($text);
