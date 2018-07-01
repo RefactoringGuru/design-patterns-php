@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Decorator\RealWorld;
 
 /**
- * Decorator Design Pattern
+ * EN: Decorator Design Pattern
  *
  * Intent: Attach additional responsibilities to an object dynamically.
  * Decorators provide a flexible alternative to subclassing for extending
@@ -20,6 +20,24 @@ namespace RefactoringGuru\Decorator\RealWorld;
  * HTML filtering takes place. All these filtering rules can be represented as
  * separate decorator classes, which can be stacked differently, depending on
  * the nature of the content you have.
+ *
+ * RU: Паттерн Декоратор
+ *
+ * Назначение: Динамически подключает к объекту дополнительную функциональность.
+ * Декораторы предоставляют гибкую альтернативу практике создания подклассов 
+ * для расширения функциональности.
+ *
+ * Пример: В этом примере паттерн Декоратора помогает создать сложные правила
+ * фильтрации текста для очистки контента перед его отображением на веб-странице.
+ * Разные типы контента, такие как комментарии, сообщения на форуме или личные сообщения,
+ * требуют разных наборов фильтров.
+ *
+ * Например, вы хотели бы удалить все HTML из комментариев и в тоже время сохранить
+ * некоторые основные теги HTML в сообщениях на форуме. Кроме того, вы можете разрешить
+ * сообщение в формате Markdown, которое должно быть обработано прежде, чем произойдёт
+ * какая-либо фильтрация HTML. Все эти правила фильтрации могут быть представлены в виде
+ * отдельных классов декораторов, которые могут быть сложены по-разному, в зависимости от
+ * характера содержимого.
  */
 
 /**
