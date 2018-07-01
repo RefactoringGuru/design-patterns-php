@@ -179,23 +179,31 @@ class MarkdownFormat extends TextFormat
     {
         $text = parent::formatText($text);
 
-        // Format block elements.
+        // EN: Format block elements.
+        //
+        // RU: Форматирование элементов блока.
         $chunks = preg_split('|\n\n|', $text);
         foreach ($chunks as &$chunk) {
-            // Format headers.
+            // EN: Format headers.
+            //
+            // RU: Форматирование заголовков.
             if (preg_match('|^#+|', $chunk)) {
                 $chunk = preg_replace_callback('|^(#+)(.*?)$|', function ($matches) {
                     $h = strlen($matches[1]);
                     return "<h$h>" . trim($matches[2]) . "</h$h>";
                 }, $chunk);
-            } // Format paragraphs.
+            } // EN: Format paragraphs.
+              //
+              // RU: Форматирование параграфов.
             else {
                 $chunk = "<p>$chunk</p>";
             }
         }
         $text = implode("\n\n", $chunks);
 
-        // Format inline elements.
+        // EN: Format inline elements.
+        //
+        // RU: Форматирование встроенных элементов.
         $text = preg_replace("|__(.*?)__|", '<strong>$1</strong>', $text);
         $text = preg_replace("|\*\*(.*?)\*\*|", '<strong>$1</strong>', $text);
         $text = preg_replace("|_(.*?)_|", '<em>$1</em>', $text);
@@ -207,10 +215,17 @@ class MarkdownFormat extends TextFormat
 
 
 /**
+ * EN:
  * The client code might be a part of a real website, which renders user-
  * generated content. Since it works with formatters through the Component
  * interface, it doesn't care whether it gets a simple component object or a
  * decorated one.
+ * 
+ * RU:
+ * Клиентский код может быть частью реального веб-сайта, который воспроизводит
+ * созданное пользователями информационное наполнение. Поскольку он работает с
+ * модулями форматирования через интерфейс компонента, ему всё равно, получает ли
+ * он простой объект компонента или обёрнутый.
  */
 function displayCommentAsAWebsite(InputFormat $format, string $text)
 {
@@ -222,10 +237,15 @@ function displayCommentAsAWebsite(InputFormat $format, string $text)
 }
 
 /**
+ * EN:
  * Input formatters are very handy when dealing with user-generated content.
  * Displaying such content "as is" could be very dangerous, especially when
  * anonymous users can generate it (i.e. comments). Your website is not only
  * risking getting tons of spammy links but may also be exposed to XSS attacks.
+ *
+ * RU:
+ *
+ *
  */
 $dangerousComment = <<<HERE
 Hello! Nice blog post!
