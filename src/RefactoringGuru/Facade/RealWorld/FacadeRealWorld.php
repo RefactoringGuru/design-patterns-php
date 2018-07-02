@@ -111,7 +111,8 @@ class YouTube
 
     function saveAs($path) { /* ... */ }
 
-    // ... more methods and classes ...
+    // EN: ...more methods and classes...
+    // RU: ...дополнительные методы и классы...
 }
 
 /**
@@ -127,7 +128,8 @@ class FFMpeg
 
     public function open(string $video) { /* ... */ }
 
-    // ... more methods and classes ...
+    // EN: ...more methods and classes...
+    // RU: ...дополнительные методы и классы...
 }
 
 class FFMpegVideo
@@ -142,14 +144,21 @@ class FFMpegVideo
 
     public function save(string $path) { /* ... */ }
 
-    // ... more methods and classes ...
+    // EN: ...more methods and classes...
+    // RU: ...дополнительные методы и классы...
 }
 
 
 /**
+ * EN:
  * The client code does not depend on any subsystem's classes. Any changes
  * inside the subsystem's code won't affect the client code. You will only need
  * to update the Facade.
+ *
+ * RU:
+ * Клиентский код не зависит от классов подсистем. Любые изменения внутри
+ * кода подсистем не будут влиять на клиентский код. Вам нужно будет только 
+ * обновить Фасад.
  */
 function clientCode(YouTubeDownloader $facade)
 {
