@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Facade\RealWorld;
 
 /**
- * Facade Design Pattern
+ * EN: Facade Design Pattern
  *
  * Intent: Provide a unified interface to a set of interfaces in a subsystem.
  * Facade defines a higher-level interface that makes the subsystem easier to
@@ -12,10 +12,17 @@ namespace RefactoringGuru\Facade\RealWorld;
  * Example: Think of the Facade as a simplicity adapter for some complex
  * subsystem. The Facade isolates complexity within a single class and allows
  * other application code to use the straightforward interface.
- *
+ *о
  * In this example, the Facade hides the complexity of the YouTube API and
  * FFmpeg library from the client code. Instead of working with dozens of
  * classes, the client uses a simple method on the Facade.
+ *
+ * RU: Паттерн Фасад
+ * Назначение: Предоставляет единый интерфейс к ряду интерфейсов в подсистеме. 
+ * Фасад определяет интерфейс более высокого уровня, который упрощает использование
+ * подсистемы.
+ *
+ * Пример: Думайте о Фасаде как о простейшем адаптере для некотрой сложной подсистемы.
  */
 
 /**
