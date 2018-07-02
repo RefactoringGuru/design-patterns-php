@@ -24,7 +24,7 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
  * Пример: В этом примере паттерн Фабричного Метода предоставляет интерфейс
  * для создания соединителей социальных сетей, которые могут использоваться
  * для входа в сеть, создания сообщений и, возможно, выполнения других
- * действий, — и все это без привязки клиентского кода к определенным классам
+ * действий, – и всё это без привязки клиентского кода к определённым классам
  * конкретной социальной сети.
  */
 
@@ -76,9 +76,13 @@ abstract class SocialNetworkPoster
      */
     public function post($content)
     {
-        // Call the factory method to create a Product object...
+        // EN: Call the factory method to create a Product object...
+        //
+        // RU: Вызовите фабричный метод для создания объекта Продукта...
         $network = $this->getSocialNetwork();
         // ...then use it as you will.
+        //
+        // ...а затем используйте его по своему усмотрению.
         $network->logIn();
         $network->createPost($content);
         $network->logout();
@@ -243,8 +247,8 @@ function clientCode(SocialNetworkPoster $creator)
  * the client code.
  *
  * RU:
- * На этапе инициализации приложение может выбрать, с какой социальной сетью
- * оно хочет работать, создать объект соответствующего подкласса и передать его
+ * На этапе инициализации приложение может выбрать, с какой социальной сетью оно
+ * хочет работать, создать объект соответствующего подкласса и передать его
  * клиентскому коду.
  */
 print("Testing ConcreteCreator1:\n");
