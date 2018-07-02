@@ -12,23 +12,35 @@ namespace RefactoringGuru\Facade\RealWorld;
  * Example: Think of the Facade as a simplicity adapter for some complex
  * subsystem. The Facade isolates complexity within a single class and allows
  * other application code to use the straightforward interface.
- *о
+ *
  * In this example, the Facade hides the complexity of the YouTube API and
  * FFmpeg library from the client code. Instead of working with dozens of
  * classes, the client uses a simple method on the Facade.
  *
  * RU: Паттерн Фасад
  * Назначение: Предоставляет единый интерфейс к ряду интерфейсов в подсистеме. 
- * Фасад определяет интерфейс более высокого уровня, который упрощает использование
- * подсистемы.
+ * Фасад определяет интерфейс более высокого уровня, который упрощает
+ * использование подсистемы.
  *
- * Пример: Думайте о Фасаде как о простейшем адаптере для некотрой сложной подсистемы.
+ * Пример: Подумайте о Фасаде как о простейшем адаптере для некотрой сложной
+ * подсистемы. Фасад изолирует сложность в рамках одного класса и позволяет
+ * остальному коду приложения использовать простой интерфейс.
+ *
+ * В этом примере Фасад скрывает сложность API YouTube и библиотеки FFmpeg
+ * от клиентского кода. Вместо того, чтобы работать с десятками классов,
+ * клиент использует простой метод для Фасада.
  */
 
 /**
+ * EN:
  * The Facade provides a single method for downloading videos from YouTube. This
  * method hides all the complexity of the PHP network layer, YouTube API and the
  * video conversion library (FFmpeg).
+ * 
+ * RU:
+ * Фасад предоставляет единый метод загрузки видео с YouTube. Этот метод скрывает
+ * всю сложность сетевого уровня PHP, API YouTube и библиотеки преобразования
+ * видео (FFmpeg).
  */
 class YouTubeDownloader
 {
@@ -36,8 +48,12 @@ class YouTubeDownloader
     protected $ffmpeg;
 
     /**
+     * EN:
      * It is handy when the Facade can manage the lifecycle of the subsystem it
      * uses.
+     * 
+     * RU:
+     * Это удобно, когда Фасад может управлять жизненным циклом используемой подсистемы.
      */
     public function __construct(string $youtubeApiKey)
     {
@@ -46,9 +62,14 @@ class YouTubeDownloader
     }
 
     /**
+     * EN:
      * The Facade provides a simple method for downloading video and encoding it
      * to a target format (for the sake of simplicity, the real-world code is
      * commented).
+     *
+     * RU:
+     * Фасад предоставляет простой метод загрузки видео и кодирования его в целевой
+     * формат (для облегчения понимания реальный код комментируется).
      */
     public function downloadVideo(string $url)
     {
@@ -78,7 +99,11 @@ class YouTubeDownloader
 }
 
 /**
+ * EN:
  * The YouTube API subsystem.
+ *
+ * RU:
+ * Подсистема API YouTube.
  */
 class YouTube
 {
@@ -90,7 +115,11 @@ class YouTube
 }
 
 /**
+ * EN:
  * The FFmpeg subsystem (a complex video/audio conversion library).
+ *
+ * RU:
+ * Подсистема FFmpeg (комплексная библиотека преобразования видео/аудио).
  */
 class FFMpeg
 {
