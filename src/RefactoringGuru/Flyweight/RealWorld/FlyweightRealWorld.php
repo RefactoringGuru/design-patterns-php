@@ -60,13 +60,22 @@ namespace RefactoringGuru\Flyweight\RealWorld;
  */
 
 /**
+ * EN:
  * Flyweight objects represent the data shared by multiple Cat objects. This is
  * the combination of breed, color, texture, etc.
+ *
+ * RU:
+ * Объекты Легковеса представляют данные, разделяемые несколькими объектами Кошек. 
+ * Это сочетание породы, цвета, текстуры и т.д.
  */
 class CatVariation
 {
     /**
+     * EN:
      * The so-called "intrinsic" state.
+     *
+     * RU:
+     * Так называемое «внутреннее» состояние.
      */
     public $breed;
 
@@ -91,6 +100,7 @@ class CatVariation
     }
 
     /**
+     * EN:
      * Display the cat information. The method accepts the extrinsic state as
      * arguments. The rest of the state is stored inside Flyweight's fields.
      *
@@ -113,6 +123,9 @@ class CatVariation
      * all. The context data might be stored in an array or some other more
      * efficient data structure. You won't have another place to put your
      * methods in, except the Flyweight class.
+     *
+     * RU:
+     *
      */
     public function renderProfile($name, $age, $owner)
     {
