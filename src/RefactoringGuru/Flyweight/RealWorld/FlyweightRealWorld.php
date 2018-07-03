@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Flyweight\RealWorld;
 
 /**
- * Flyweight Design Pattern
+ * EN: Flyweight Design Pattern
  *
  * Intent: Use sharing to fit more objects into the available amount of RAM by
  * sharing common parts of the object state among multiple objects, instead of
@@ -30,6 +30,20 @@ namespace RefactoringGuru\Flyweight\RealWorld;
  * multiple cats. This shareable data resides inside the CatVariation class. All
  * cats that have similar features are linked to the same CatVariation class,
  * instead of storing the duplicate data in each of their objects.
+ *
+ * RU: Паттерн Легковес
+ *
+ * Назначение: Позволяет вместить бóльшее количество объектов в отведённую
+ * оперативную память. Легковес экономит память, разделяя общее состояние объектов
+ * между ними, вместо хранения одинаковых данных в каждом объекте.
+ *
+ * Пример. Прежде чем мы начнём, обратите внимание, что реальные приложения для паттерна
+ * Легковес на PHP довольно редки. Это связано с однопоточным характером PHP, где вы
+ * не должны хранить ВСЕ объекты вашего приложения в памяти одновременно в одном потоке.
+ * Хотя замысел этого примера только наполовину серьёзен, и вся проблема с ОЗУ может
+ * быть решена путём различного структурирования приложения, он всё же наглядно показывает
+ * концепцию паттерна, как он работает в реальном мире. Итак, я вас предупредил. Теперь
+ * давайте начнём.
  */
 
 /**
