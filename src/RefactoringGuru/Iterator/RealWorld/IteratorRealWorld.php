@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Iterator\RealWorld;
 
 /**
- * Iterator Design Pattern
+ * EN: Iterator Design Pattern
  *
  * Intent: Provide a way to access the elements of an aggregate object without
  * exposing its underlying representation.
@@ -13,6 +13,17 @@ namespace RefactoringGuru\Iterator\RealWorld;
  * iterators for traversing almost every imaginable data structure.
  *
  * This example of the Iterator pattern provides easy access to CSV files.
+ *
+ * RU: Паттерн Итератор
+ *
+ * Назначение: Предоставляет способ доступа к элементам составного объекта,
+ * не раскрывая его внутреннего представления.
+ *
+ * Пример: Так как PHP уже имеет встроенный интерфейс Итератора, который предоставляет
+ * удобную интеграцию с циклами foreach, очень легко создать собственные итераторы
+ * для обхода практически любой мыслимой структуры данных.
+ *
+ * Этот пример паттерна Итератора предоставляет легкий доступ к CSV-файлам.
  */
 
 /**
