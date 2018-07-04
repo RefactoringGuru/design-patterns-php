@@ -274,7 +274,8 @@ class UserRepository implements Observer
  * Let's keep the User class trivial since it's not the focus of our example.
  *
  * RU:
- * 
+ * Давайте сохраним класс Пользователя тривиальным, так как он не является
+ * главной темой нашего примера.
  */
 class User
 {
@@ -286,7 +287,11 @@ class User
     }
 
     /**
+     * EN:
      * All objects can trigger events.
+     *
+     * RU:
+     * Все объекты могут вызывать события.
      */
     public function delete()
     {
@@ -296,7 +301,11 @@ class User
 }
 
 /**
+ * EN:
  * This Concrete Component logs any events it's subscribed to.
+ *
+ * RU:
+ * Этот Конкретный Компонент регистрирует все события, на которые он подписан.
  */
 class Logger implements Observer
 {
@@ -320,8 +329,14 @@ class Logger implements Observer
 }
 
 /**
+ * EN:
  * This Concrete Component sends initial instructions to new users. The client
  * is responsible for attaching this component to a proper user creation event.
+ *
+ * RU:
+ * Этот Конкретный Компонент отправляет начальные инструкции новым пользователям.
+ * Клиент несёт ответственность за присоединение этого компонента к соответствующему
+ * событию создания пользователя.
  */
 class OnboardingNotification implements Observer
 {
@@ -343,7 +358,11 @@ class OnboardingNotification implements Observer
 }
 
 /**
+ * EN:
  * The client code.
+ *
+ * RU:
+ * Клиентский код.
  */
 
 $repository = new UserRepository();
