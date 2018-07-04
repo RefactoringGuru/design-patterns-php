@@ -26,6 +26,7 @@ namespace RefactoringGuru\Mediator\RealWorld;
  */
 
 /**
+ * EN:
  * The Event Dispatcher class acts as a Mediator and contains the subscription
  * and notification logic. While a classic Mediator often depends on concrete
  * component classes, this one is only tied to their abstract interfaces.
@@ -37,6 +38,19 @@ namespace RefactoringGuru\Mediator\RealWorld;
  *
  * Note, we can't use the PHP's built-in Subject/Observer interfaces here
  * because we'll be stretching them too far from what they were designed for.
+ *
+ * RU:
+ * Класс Диспетчера Событий выполняет функции Посредника и содержит логику подписки
+ * и уведомлений. Хотя классический Посредник часто зависит от конкретных классов
+ * компонентов, этот привязан только к их абстрактным интерфейсам.
+ *
+ * Мы можем достичь этого уровня косвенности благодаря способу, которым установлены
+ * связи между компонентами. Компоненты сами могут подписаться на интересующие их
+ * конкретные события через интерфейс подписки Посредника.
+ *
+ * Обратите внимание, что мы не можем использовать здесь встроенные в PHP интерфейсы 
+ * Subject/Observer, потому что мы будем растягивать их слишком далеко от того, 
+ * для чего они были разработаны.
  */
 class EventDispatcher
 {
