@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Mediator\RealWorld;
 
 /**
- * Mediator Design Pattern
+ * EN: Mediator Design Pattern
  *
  * Intent: Define an object that encapsulates how a set of objects interact.
  * Mediator promotes loose coupling by keeping objects from referring to each
@@ -13,6 +13,16 @@ namespace RefactoringGuru\Mediator\RealWorld;
  * Observer pattern by providing a centralized event dispatcher. It allows any
  * object to track & trigger events in other objects without depending on their
  * classes.
+ *
+ * RU: Паттерн Посредник
+ *
+ * Назначение: Определяет объект, который инкапсулирует взаимодействие набора объектов.
+ * Посредник способствует свободной связи, удерживая объекты от обращения друг к другу
+ * напрямую, и это позволяет вам менять их взаимодействие независимо. 
+ *
+ * Пример: В этом примере паттерн Посредника расширяет представление о паттерне Наблюдателя,
+ * предоставляя централизованный диспетчер событий. Это позволяет любому объекту отслеживать
+ * и запускать события в других объектах, не зависимо от их классов.
  */
 
 /**
