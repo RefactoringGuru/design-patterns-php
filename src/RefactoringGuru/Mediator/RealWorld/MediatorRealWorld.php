@@ -61,8 +61,11 @@ class EventDispatcher
 
     public function __construct()
     {
-        // The special event group for observers that want to listen to all
+        // EN: The special event group for observers that want to listen to all
         // events.
+        //
+        // RU: Специальная группа событий для наблюдателей, которые хотят слышать
+        // все события.
         $this->observers["*"] = [];
     }
 
@@ -108,7 +111,12 @@ class EventDispatcher
 }
 
 /**
+ * EN:
  * A simple helper function to provide global access to the event dispatcher.
+ *
+ * RU:
+ * Простая вспомогательная функция для предоставления глобального доступа
+ * к диспетчеру событий.
  */
 function events(): EventDispatcher
 {
@@ -121,8 +129,13 @@ function events(): EventDispatcher
 }
 
 /**
+ * EN:
  * The Observer interface defines how components receive the event
  * notifications.
+ *
+ * RU:
+ * Интерфейс Наблюдателя определяет, как компоненты получают уведомления
+ * о событиях.
  */
 interface Observer
 {
@@ -130,12 +143,16 @@ interface Observer
 }
 
 /**
+ * EN:
  * Unlike our Observer pattern example, this example makes the UserRepository
  * act as a regular component that doesn't have any special event-related
  * methods. Like any other component, this class relies on the EventDispatcher
  * to broadcast its events and listen for the other ones.
  *
  * @see \RefactoringGuru\Observer\RealWorld\UserRepository
+ *
+ * RU:
+ *
  */
 class UserRepository implements Observer
 {
