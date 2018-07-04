@@ -287,8 +287,12 @@ class CatDataBase
     private $variations = [];
 
     /**
+     * EN:
      * When adding a cat to the database, we look for an existing cat variation
      * first.
+     *
+     * RU:
+     * При добавлении кошки в базу данных мы сначала ищем существующую вариацию кошки.
      */
     public function addCat($name, $age, $owner, $breed, $image, $color, $texture, $fur, $size)
     {
@@ -299,8 +303,13 @@ class CatDataBase
     }
 
     /**
+     * EN:
      * Return an existing variation (Flyweight) by given data or create a new
      * one if it doesn't exist yet.
+     *
+     * RU:
+     * Верните существующий вариант (Легковеса) по указанным данным или создайте новый,
+     * если он ещё не существует.
      */
     public function getVariation($breed, $image, $color, $texture, $fur, $size): CatVariation
     {
@@ -315,7 +324,11 @@ class CatDataBase
     }
 
     /**
+     * EN:
      * This function helps to generate unique array keys.
+     *
+     * RU:
+     * Эта функция помогает генерировать уникальные ключи массива.
      */
     private function getKey($data): string
     {
@@ -323,7 +336,11 @@ class CatDataBase
     }
 
     /**
+     * EN:
      * Look for a cat in the database using the given query parameters.
+     *
+     * RU:
+     * Ищите кошку в базе данных, используя заданные параметры запроса.
      */
     public function findCat($query)
     {
@@ -337,15 +354,25 @@ class CatDataBase
 }
 
 /**
+ * EN:
  * The client code.
+ *
+ * RU:
+ * Клиентский код.
  */
 $db = new CatDataBase();
 
 print("Client: Let's see what we have in \"cats.csv\".\n");
 
+// EN:
 // To see the real effect of the pattern, you should have a large database with
 // several millions of records. Feel free to experiment with code to see the
 // real extent of the pattern.
+//
+// RU:
+// Чтобы увидеть реальный эффект паттерна, вы должны иметь большую базу данных
+// с несколькими миллионами записей. Не стесняйтесь экспериментировать с кодом,
+// чтобы увидеть реальные масштабы паттерна.
 $handle = fopen(__DIR__."/cats.csv", "r");
 $row = 0;
 $columns = [];
