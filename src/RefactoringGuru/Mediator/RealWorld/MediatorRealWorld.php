@@ -152,17 +152,31 @@ interface Observer
  * @see \RefactoringGuru\Observer\RealWorld\UserRepository
  *
  * RU:
+ * В отличие от нашего примера паттерна Наблюдателя, этот пример заставляет
+ * ПользовательскийРепозиторий действовать как обычный компонент, который не имеет
+ * никаких специальных методов, связанных с событиями. Как и любой другой компонент,
+ * этот класс использует ДиспетчерСобытий для трансляции своих событий и прослушивания
+ * других.
  *
+ * @see \RefactoringGuru\Observer\RealWorld\UserRepository
  */
 class UserRepository implements Observer
 {
     /**
+     * EN:
      * @var array List of application's users.
+     *
+     * RU:
+     * @var array Список пользователей приложения.
      */
     private $users = [];
 
     /**
+     * EN:
      * Components can subscribe to events by themselves or by client code.
+     *
+     * RU:
+     * Компоненты могут подписаться на события самостоятельно или через клиентский код.
      */
     public function __construct()
     {
@@ -170,8 +184,13 @@ class UserRepository implements Observer
     }
 
     /**
+     * EN:
      * Components can decide whether they'd like to process an event using its
      * name, emitter or any contextual data passed along with the event.
+     *
+     * RU:
+     * Компоненты могут принять решение, будут ли они обрабатывать событие, используя его
+     * название, источник или какие-то контекстные данные, переданные вместе с событием.
      */
     public function update(string $event, object $emitter, $data = null)
     {
@@ -185,7 +204,9 @@ class UserRepository implements Observer
         }
     }
 
-    // These methods represent the business logic of the class.
+    // EN: These methods represent the business logic of the class.
+    //
+    // RU: Эти методы представляют бизнес-логику класса.
 
     public function initialize($filename)
     {
@@ -249,7 +270,11 @@ class UserRepository implements Observer
 }
 
 /**
+ * EN:
  * Let's keep the User class trivial since it's not the focus of our example.
+ *
+ * RU:
+ * 
  */
 class User
 {
