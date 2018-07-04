@@ -167,12 +167,21 @@ class CatVariation
  * context may be stored inside a massive data structure within the Client code
  * and passed to the flyweight methods when needed.
  *
+ * RU:
+ * Контекст хранит данные уникальные для каждой кошки.
  *
+ * Назначенный класс для хранения контекста является необязательным и не всегда
+ * целесообразным. Контекст может храниться внутри громоздкой структуры данных
+ * в коде Клиента и при необходимости передаваться в методы легковеса.
  */
 class Cat
 {
     /**
+     * EN:
      * The so-called "extrinsic" state.
+     *
+     * RU:
+     * Так называемое «внешнее» состояние.
      */
     public $name;
 
@@ -194,9 +203,18 @@ class Cat
     }
 
     /**
+     * EN:
      * Since the Context objects don't own all of their state, sometimes you'll
      * need to provide some convenient helper method (for comparing their data
      * with other objects, for example).
+     *
+     * @param $query
+     * @return bool
+     *
+     * RU:
+     * Поскольку объекты Контекста не владеют всем своим состоянием, иногда вам нужно 
+     * предоставить некоторый удобный вспомогательный метод (например, для сравнения 
+     * их данных с другими объектами).
      *
      * @param $query
      * @return bool
@@ -221,10 +239,17 @@ class Cat
     }
 
     /**
+     * EN:
      * The Context might also define several shortcut methods, that delegate
      * execution to the Flyweight object. These methods might be remnants of
      * real methods, extracted to the Flyweight class during a massive
      * refactoring to the Flyweight pattern.
+     *
+     * RU:
+     * Кроме того, Контекст может определять несколько методов быстрого доступа, 
+     * которые делегируют выполнение объекту Легковеса. Эти методы могут быть 
+     * остатками реальных методов, извлеченных в класс Легковеса во время массивного
+     * рефакторинга в паттерн Легковеса.
      */
     public function render()
     {
