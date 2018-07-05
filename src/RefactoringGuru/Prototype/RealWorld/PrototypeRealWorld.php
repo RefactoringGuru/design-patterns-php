@@ -38,7 +38,9 @@ namespace RefactoringGuru\Prototype\RealWorld;
  */
 
 /**
- * Prototype.
+ * EN: Prototype.
+ *
+ * RU: Прототип.
  */
 class Page
 {
