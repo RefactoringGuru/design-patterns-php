@@ -60,7 +60,9 @@ class Page
      */
     private $date;
 
-    // +100 private fields.
+    // EN: +100 private fields.
+    //
+    // RU: +100 закрытых полей.
 
     public function __construct($title, $body, $author)
     {
@@ -77,6 +79,7 @@ class Page
     }
 
     /**
+     * EN:
      * You can control what data you want to carry over to the cloned object.
      *
      * For instance, when a page is cloned:
@@ -86,6 +89,16 @@ class Page
      * of the author's pages.
      * - We don't carry over the comments from the old page.
      * - We also attach a new date object to the page.
+     *
+     * RU:
+     * Вы можете контролировать, какие данные вы хотите перенести в клонированный объект.
+     *
+     * Например, при клонировании страницы:
+     * - Она получает новый заголовок «Копия ...».
+     * - Автор страницы остаётся прежним. Поэтому мы оставляем ссылку на существующий объект
+     * при добавлении клонированной страницы в список страниц автора.
+     * - Мы не переносим комментарии со старой страницы.
+     * - Мы также прикрепляем к странице новый объект даты.
      */
     public function __clone()
     {
@@ -117,7 +130,11 @@ class Author
 }
 
 /**
+ * EN:
  * The client code.
+ *
+ * RU:
+ * Клиентский код.
  */
 function clientCode()
 {
