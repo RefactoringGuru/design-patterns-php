@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Prototype\RealWorld;
 
 /**
- * Prototype Design Pattern
+ * EN: Prototype Design Pattern
  *
  * Intent: Produce new objects by copying existing ones without compromising
  * their internal structure.
@@ -19,6 +19,22 @@ namespace RefactoringGuru\Prototype\RealWorld;
  * This example shows you how to clone a complex Page object using the Prototype
  * pattern. The Page class has lots of private fields, which will be carried
  * over to the cloned object thanks to the Prototype pattern.
+ *
+ * RU: Паттерн Прототип
+ *
+ * Назначение: Создаёт новые объекты, копируя существующие без нарушения их 
+ * внутренней структуры.
+ *
+ * Пример: Паттерн Прототип предоставляет удобный способ репликации существующих
+ * объектов вместо их восстановления и копирования всех их полей напрямую.
+ * Прямой доступ не только связывает вас с классами клонируемых объектов,
+ * но и не позволяет копировать содержимое закрытых полей. Паттерн Прототип
+ * позволяет выполнять клонирование в контексте клонированного класса, где доступ
+ * к закрытым полям класса не ограничен.
+ *
+ * В этом примере показано, как клонировать сложный объект Страницы, используя
+ * паттерн Прототип. Класс Страница имеет множество закрытых полей, которые будут
+ * перенесены в клонированный объект благодаря паттерну Прототипа.
  */
 
 /**
