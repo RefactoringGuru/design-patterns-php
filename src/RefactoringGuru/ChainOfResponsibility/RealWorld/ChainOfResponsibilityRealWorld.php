@@ -251,7 +251,7 @@ class Server
 
     /**
      * EN:
-     * The client can configure the server with a chained middleware list.
+     * The client can configure the server with a chain of middleware objects.
      *
      * RU:
      * Клиент может настроить сервер с помощью цепочки объектов middleware.
