@@ -25,12 +25,20 @@ namespace RefactoringGuru\Proxy\RealWorld;
  */
 
 /**
+ * EN:
  * The Subject interface describes the interface of a real object.
  *
  * The truth is that many real apps may not have this interface clearly defined.
  * If you're in that boat, your best bet would be to extend the Proxy from one
  * of your existing application classes. If that's awkward, then extracting a
  * proper interface should be your first step.
+ *
+ * RU:
+ * Интерфейс Субъекта описывает интерфейс реального объекта.
+ *
+ * Дело в том, что у большинства приложений нет чётко определённого интерфейса.
+ * В этом случае лучше было бы расширить Заместителя за счёт существующего класса приложения. 
+ * Если это неудобно, тогда первым шагом должно быть извлечение правильного интерфейса. 
  */
 interface Downloader
 {
@@ -38,9 +46,15 @@ interface Downloader
 }
 
 /**
+ * EN:
  * The Real Subject does the real job, albeit not in the most efficient way.
  * When a client tries to download the same file for the second time, our
  * downloader does just that, instead of fetching the result from cache.
+ *
+ * RU:
+ * Реальный Субъект делает реальную работу, хотя и не самым эффективным способом.
+ * Когда клиент пытается загрузить тот же самый файл во второй раз, наш загрузчик
+ * именно это и делает, вместо того, чтобы извлечь результат из кеша.
  */
 class SimpleDownloader implements Downloader
 {
