@@ -68,12 +68,19 @@ class SimpleDownloader implements Downloader
 }
 
 /**
+ * EN:
  * The Proxy class is our attempt to make the download more efficient. It wraps
  * the real downloader object and delegates it the first download calls. The
  * result is then cached, making subsequent calls return an existing file
  * instead of downloading it again.
  *
  * Note that the Proxy MUST implement the same interface as the Real Subject.
+ *
+ * RU:
+ * Класс Заместителя – это наша попытка сделать загрузку более эффективной.
+ * Он обёртывает реальный объект загрузчика и делегирует ему первые запросы
+ * на скачивание. Затем результат кэшируется, что позволяет последующим вызовам
+ * возвращать уже имеющийся файл вместо его повторной загрузки.
  */
 class CachingDownloader implements Downloader
 {
@@ -106,11 +113,20 @@ class CachingDownloader implements Downloader
 }
 
 /**
+ * EN:
  * The client code may issue several similar download requests. In this case,
  * the caching proxy saves time and traffic by serving results from cache.
  *
  * The client is unaware that it works with a proxy because it works with
  * downloaders via the abstract interface.
+ *
+ * RU:
+ * Клиентский код может выдать несколько похожих запросов на загрузку.
+ * В этом случае кэширующий заместитель экономит время и трафик, подавая
+ * результаты из кэша.
+ *
+ * Клиент не знает, что он работает с заместителем, потому что он работает
+ * с загрузчиками через абстрактный интерфейс.
  */
 function clientCode(Downloader $subject)
 {
@@ -118,7 +134,9 @@ function clientCode(Downloader $subject)
 
     $result = $subject->download("http://example.com/");
 
-    // Duplicate download requests could be cached for a speed gain.
+    // EN: Duplicate download requests could be cached for a speed gain.
+    //
+    // RU: Повторяющиеся запросы на загрузку могут кэшироваться для увеличения скорости.
 
     $result = $subject->download("http://example.com/");
 
