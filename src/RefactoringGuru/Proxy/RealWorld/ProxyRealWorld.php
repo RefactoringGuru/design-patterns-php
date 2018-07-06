@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Proxy\RealWorld;
 
 /**
- * Proxy Design Pattern
+ * EN: Proxy Design Pattern
  *
  * Intent: Provide a surrogate or placeholder for another object to control
  * access to the original object or to add other responsibilities.
@@ -12,6 +12,13 @@ namespace RefactoringGuru\Proxy\RealWorld;
  * access control, delayed initialization, etc. This example demonstrates how
  * the Proxy pattern can improve the performance of a downloader object by
  * caching its results.
+ *
+ * RU: Паттерн Заместитель
+ *
+ * Назначение: Предоставляет заменитель или местозаполнитель для другого объекта,
+ * чтобы контролировать доступ к оригинальному объекту или добавлять другие обязанности.
+ *
+ * Пример: 
  */
 
 /**
