@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Strategy\RealWorld;
 
 /**
- * Strategy Design Pattern
+ * EN: Strategy Design Pattern
  *
  * Intent: Define a family of algorithms, encapsulate each one, and make them
  * interchangeable. Strategy lets the algorithm vary independently from clients
@@ -17,6 +17,21 @@ namespace RefactoringGuru\Strategy\RealWorld;
  * after the payment processing company redirects the user back to our website,
  * the payment method validates the return parameters and helps to decide
  * whether the order was completed.
+ *
+ * RU: Паттерн Стратегия
+ *
+ * Назначение: Определяет семейство алгоритмов, инкапсулирует каждый из них
+ * и делает взаимозаменяемыми. Стратегия позволяет изменять алгоритм независимо 
+ * от клиентов, которые его используют.
+ *
+ * Пример: В этом примере паттерн Стратегия используется для представления
+ * способов оплаты в приложении электронной коммерции.
+ *
+ * Каждый способ оплаты может отображать форму оплаты для сбора надлежащих
+ * платёжных реквизитов пользователя и отправки его в компанию по обработке
+ * платежей. Затем, после того, как компания по обработке платежей перенаправляет
+ * пользователя обратно на наш сайт, метод оплаты проверяет возвращаемые параметры
+ * и помогает решить, был ли заказ завершён.
  */
 
 /**
