@@ -41,16 +41,24 @@ namespace RefactoringGuru\Strategy\RealWorld;
  * payment method it should use to process the request. Thus, the class acts as
  * the Context and the Client at the same time.
  *
- * RU: Это роутер и контроллер нашего приложения. При получении запроса, он
- * передаст выполнение одному из своих методов. В случае, если приходит запрос
- * на оплату, OrderController дополнительно выберет соотвествующий класс
- * платёжного метода и использует его для оплаты. Таким образом, этот класс
- * одновременно отыгрывает и роль Контекста и роль Клиента.
+ * RU: Это роутер и контроллер нашего приложения. Получив запрос, этот класс решает,
+ * какое поведение должно выполняться. Когда приложение получает требование об оплате,
+ * класс OrderController также решает, какой способ оплаты следует использовать
+ * для обработки запроса. Таким образом, этот класс действует как Контекст
+ * и в то же время как Клиент.
  */
 class OrderController
 {
     /**
+     * EN:
      * Handle POST requests.
+     *
+     * @param $url
+     * @param $data
+     * @throws \Exception
+     *
+     * RU:
+     * Обрабатываем запросы POST.
      *
      * @param $url
      * @param $data
@@ -72,7 +80,14 @@ class OrderController
     }
 
     /**
+     * EN:
      * Handle GET requests.
+     *
+     * @param $url
+     * @throws \Exception
+     *
+     * RU:
+     * Обрабатываем запросы GET.
      *
      * @param $url
      * @throws \Exception
