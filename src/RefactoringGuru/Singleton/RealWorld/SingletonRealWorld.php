@@ -181,9 +181,15 @@ class Logger extends Singleton
 }
 
 /**
+ * EN:
  * Applying the Singleton pattern to the configuration storage is also a common
  * practice. Often you need to access application configurations from a lot of
  * different places of the program. Singleton gives you that comfort.
+ *
+ * RU:
+ * Применение паттерна Одиночка в хранилище настроек – тоже обычная практика.
+ * Часто требуется получить доступ к настройкам приложений из самых разных мест
+ * программы. Одиночка предоставляет это удобство.
  */
 class Config extends Singleton
 {
@@ -201,11 +207,17 @@ class Config extends Singleton
 }
 
 /**
+ * EN:
  * The client code.
+ *
+ * RU:
+ * Клиентский код.
  */
 Logger::log("Started!");
 
-// Compare values of Logger singleton.
+// EN: Compare values of Logger singleton.
+//
+// RU: Сравниваем значения одиночки-Логгера.
 $l1 = Logger::getInstance();
 $l2 = Logger::getInstance();
 if ($l1 === $l2) {
@@ -214,13 +226,17 @@ if ($l1 === $l2) {
     Logger::log("Loggers are different.");
 }
 
-// Check how Config singleton saves data...
+// EN: Check how Config singleton saves data...
+//
+// RU: Проверяем, как одиночка-Конфигурация сохраняет данные...
 $config1 = Config::getInstance();
 $login = "test_login";
 $password = "test_password";
 $config1->setValue("login", $login);
 $config1->setValue("password", $password);
-// ... and restores it.
+// EN: ...and restores it.
+//
+// RU: ...и восстанавливает их.
 $config2 = Config::getInstance();
 if ($login == $config2->getValue("login") &&
     $password == $config2->getValue("password")
