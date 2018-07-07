@@ -3,7 +3,7 @@
 namespace RefactoringGuru\Singleton\RealWorld;
 
 /**
- * Singleton Design Pattern
+ * EN: Singleton Design Pattern
  *
  * Intent: Ensure that a class has a single instance, and provide a global point
  * of access to it.
@@ -13,6 +13,16 @@ namespace RefactoringGuru\Singleton\RealWorld;
  * particular, it's handy when you need to control some shared resources. For
  * example, a global logging object that has to control the access to a log
  * file. Another good example: a shared runtime configuration storage.
+ *
+ * RU: Паттерн Одиночка
+ *
+ * Назначение: Гарантирует существование единственного экземпляра класса
+ * и предоставляет глобальную точку доступа к нему.
+ *
+ * Пример: Паттерн Одиночка печально известен тем, что ограничивает повторное
+ * использование кода и усложняет модульное тестирование. Несмотря на это,
+ * он всё же очень полезен в некоторых случаях. В частности, он удобен, когда
+ * необходимо контролировать некоторые общие ресурсы. 
  */
 
 /**
