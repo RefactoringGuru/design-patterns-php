@@ -44,7 +44,7 @@ namespace RefactoringGuru\Strategy\RealWorld;
  * RU: Это роутер и контроллер нашего приложения. Получив запрос, этот класс решает,
  * какое поведение должно выполняться. Когда приложение получает требование об оплате,
  * класс OrderController также решает, какой способ оплаты следует использовать
- * для обработки запроса. Таким образом, этот класс действует как Контекст
+ * для его обработки. Таким образом, этот класс действует как Контекст
  * и в то же время как Клиент.
  */
 class OrderController
@@ -153,7 +153,11 @@ class OrderController
      */
     public function getPayment(PaymentMethod $method, Order $order, array $data)
     {
+        // EN:
         // The actual work is delegated to the payment method object.
+        //
+        // RU:
+        // Фактическая работа делегируется объекту метода оплаты.
         $form = $method->getPaymentForm($order);
         print("Controller: here's the payment form:\n");
         print($form."\n");
@@ -165,7 +169,11 @@ class OrderController
     public function getPaymentReturn(PaymentMethod $method, Order $order, array $data)
     {
         try {
+            // EN:
             // Another type of work delegated to the payment method.
+            //
+            // RU:
+            // Другой тип работы, делегированный методу оплаты.
             if ($method->validateReturn($order, $data)) {
                 print("Controller: Thanks for your order!\n");
                 $order->complete();
@@ -177,19 +185,34 @@ class OrderController
 }
 
 /**
+ * EN:
  * A simplified representation of the Order class.
+ *
+ * RU:
+ * Упрощенное представление класса Заказ.
  */
 class Order
 {
     /**
-     * For the sake of simplicity, we'll store all created orders here.
+     * EN:
+     * For the sake of simplicity, we'll store all created orders here...
      *
      * @var array
+     *
+     * RU:
+     * Для простоты, мы будем хранить все созданные заказы здесь...
      */
     private static $orders = [];
 
     /**
-     * ... and access them from here.
+     * EN:
+     * ...and access them from here.
+     *
+     * @param int $orderId
+     * @return mixed
+     *
+     * RU:
+     * ...и получать к ним доступ отсюда.
      *
      * @param int $orderId
      * @return mixed
@@ -204,8 +227,15 @@ class Order
     }
 
     /**
+     * EN:
      * The Order constructor assigns the values of the order's fields. To keep
      * things simple, there is no validation whatsoever.
+     *
+     * @param array $attributes
+     *
+     * RU:
+     * Конструктор Заказа присваивает значения полям заказа.
+     * Чтобы всё было просто, нет никакой проверки.
      *
      * @param array $attributes
      */
@@ -220,7 +250,11 @@ class Order
     }
 
     /**
+     * EN:
      * The method to call when an order gets paid.
+     *
+     * RU:
+     * Метод вызова при оплате заказа.
      */
     public function complete()
     {
@@ -230,12 +264,24 @@ class Order
 }
 
 /**
+ * EN:
  * This class helps to produce a proper strategy object for handling a payment.
+ *
+ * RU:
+ * Этот класс помогает создать правильный объект стратегии для обработки платежа.
  */
 class PaymentFactory
 {
     /**
+     * EN:
      * Get a payment method by its ID.
+     *
+     * @param $id
+     * @return PaymentMethod
+     * @throws \Exception
+     *
+     * RU:
+     * Получаем способ оплаты по его ID.
      *
      * @param $id
      * @return PaymentMethod
@@ -255,17 +301,25 @@ class PaymentFactory
 }
 
 /**
+ * EN:
  * The Strategy interface describes how a client can use various Concrete
  * Strategies.
  *
  * Note that in most examples you can find on the Web, strategies tend to do
  * some tiny thing within one method. However, in reality, your strategies can
  * be much more robust (by having several methods, for example).
+ *
+ * RU:
+ * Интерфейс Стратегии описывает, как клиент может использовать различные
+ * Конкретные Стратегии.
+ *
+ * Обратите внимание, что в большинстве примеров, которые вы можете найти
+ * в интернете, стратегии, как правило, делают какую-то крошечную вещь внутри одного метода.
  */
 interface PaymentMethod
 {
     public function getPaymentForm(Order $order): string;
-
+    
     public function validateReturn(Order $order, $data): bool;
 }
 
