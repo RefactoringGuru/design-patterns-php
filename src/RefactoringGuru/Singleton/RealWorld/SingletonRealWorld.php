@@ -28,27 +28,48 @@ namespace RefactoringGuru\Singleton\RealWorld;
  */
 
 /**
+ * EN:
  * If you need to support several types of Singletons in your app, you can
  * define the basic features of the Singleton in a base class, while moving the
  * actual business logic (like logging) to subclasses.
+ *
+ * RU:
+ * Если вам необходимо поддерживать в приложении несколько типов Одиночек,
+ * вы можете определить основные функции Одиночки в базовом классе, тогда как
+ * фактическую бизнес-логику (например, ведение журнала) перенести в подклассы.
  */
 class Singleton
 {
     /**
+     * EN:
      * The actual singleton's instance almost always resides inside a static
      * field. In this case, the static field is an array, where each subclass of
      * the Singleton stores its own instance.
+     *
+     * RU:
+     * Реальный экземпляр одиночки почти всегда находится внутри статического поля.
+     * В этом случае статическое поле является массивом, где каждый подкласс Одиночки
+     * хранит свой собственный экземпляр.
      */
     private static $instances = array();
 
     /**
+     * EN:
      * Singleton's constructor should not be public. However, it can't be
      * private either if we want to allow subclassing.
+     *
+     * RU:
+     * Конструктор Одиночки не должен быть публичным. Однако он не может быть приватным,
+     * если мы хотим разрешить создание подклассов.
      */
     protected function __construct() { }
 
     /**
+     * EN:
      * Cloning and unserialization are not permitted for singletons.
+     *
+     * RU:
+     * Клонирование и десериализация не разрешены для одиночек.
      */
     protected function __clone() { }
 
@@ -58,17 +79,30 @@ class Singleton
     }
 
     /**
+     * EN:
      * The method you use to get the Singleton's instance.
+     *
+     * RU:
+     * Метод, используемый для получения экземпляра Одиночки.
      */
     public static function getInstance()
     {
         $subclass = get_called_class();
         if (!isset(self::$instances[$subclass])) {
+            // EN:
             // Note that here we use the "static" keyword instead of the actual
             // class name. In this context, the "static" keyword means "the name
             // of the current class". That detail is important because when the
             // method is called on the subclass, we want an instance of that
             // subclass to be created here.
+            //
+            // RU:
+            // Обратите внимание, что здесь мы используем ключевое слово "static" 
+            // вместо фактического имени класса. В этом контексте ключевое слово
+            // "static" означает «имя текущего класса». Эта особенность важна,
+            // потому что, когда метод вызывается в подклассе, мы хотим, чтобы
+            // экземпляр этого подкласса был создан здесь.
+           
             self::$instances[$subclass] = new static;
         }
         return self::$instances[$subclass];
@@ -76,24 +110,41 @@ class Singleton
 }
 
 /**
+ * EN:
  * The logging class is the most known and praised use of the Singleton pattern.
  * In most cases, you need a single logging object that writes to a single log
  * file (control over shared resource). You also need a convenient way to access
  * that instance from any context of your app (global access point).
+ *
+ * RU:
+ * Класс ведения журнала является наиболее известным и похвальным использованием 
+ * паттерна Одиночка.
  */
 class Logger extends Singleton
 {
     /**
+     * EN:
      * A file pointer resource of the log file.
+     *
+     * RU:
+     * Ресурс указателя файла файла журнала.
      */
     private $fileHandle;
 
     /**
+     * EN:
      * Since the Singleton's constructor is called only once, just a single file
      * resource is opened at all times.
      *
      * Note, for the sake of simplicity, we open the console stream instead of
      * the actual file here.
+     *
+     * RU:
+     * Поскольку конструктор Одиночки вызывается только один раз, постоянно
+     * открыт всего лишь один файловый ресурс.
+     *
+     * Обратите внимание, что для простоты мы открываем здесь консольный поток
+     * вместо фактического файла.
      */
     protected function __construct()
     {
@@ -101,7 +152,11 @@ class Logger extends Singleton
     }
 
     /**
+     * EN:
      * Write a log entry to the opened file resource.
+     *
+     * RU:
+     * Пишем запись в журнале в открытый файловый ресурс.
      */
     public function writeLog(string $message)
     {
@@ -110,8 +165,13 @@ class Logger extends Singleton
     }
 
     /**
+     * EN:
      * Just a handy shortcut to reduce the amount of code needed to log messages
      * from the client code.
+     *
+     * RU:
+     * Просто удобный ярлык для уменьшения объёма кода, необходимого для регистрации
+     * сообщений из клиентского кода.
      */
     public static function log(string $message)
     {
