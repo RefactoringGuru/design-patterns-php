@@ -108,8 +108,13 @@ class OrderController
 
             $order = Order::get($matches[1]);
 
+            // EN:
             // The payment method (strategy) is selected according to the value
             // passed along with the request.
+            //
+            // RU:
+            // Способ оплаты (стратегия) выбирается в соответствии со значением,
+            // переданным в запросе.
             $paymentMethod = PaymentFactory::getPaymentMethod($matches[2]);
 
             if (! isset($matches[3])) {
