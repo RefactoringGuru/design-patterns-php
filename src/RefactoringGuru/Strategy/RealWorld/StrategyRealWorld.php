@@ -330,8 +330,8 @@ interface PaymentMethod
  * credit card payments.
  *
  * RU:
- * Эта Конкретная Стратегия предоставляет форму оплаты и проверяет возвраты
- * для платежей кредитными картам.
+ * Эта Конкретная Стратегия предоставляет форму оплаты и проверяет результаты
+ * платежей кредитными картам.
  */
 class CreditCardPayment implements PaymentMethod
 {
@@ -381,8 +381,13 @@ FORM;
 }
 
 /**
+ * EN:
  * This Concrete Strategy provides a payment form and validates returns for
  * PayPal payments.
+ *
+  * RU:
+ * Эта Конкретная Стратегия предоставляет форму оплаты и проверяет результаты
+ * платежей PayPal.
  */
 class PayPalPayment implements PaymentMethod
 {
@@ -414,7 +419,11 @@ FORM;
 }
 
 /**
+ * EN:
  * The client code.
+ *
+ * RU:
+ * Клиентский код.
  */
 
 $controller = new OrderController();
