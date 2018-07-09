@@ -3,7 +3,7 @@
 namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
 
 /**
- * Chain of Responsibility Design Pattern
+ * EN: Chain of Responsibility Design Pattern
  *
  * Intent: Avoid coupling a sender of a request to its receiver by giving more
  * than one object a chance to handle the request. Chain the receiving objects
@@ -26,9 +26,34 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  * middleware passes the request further down the chain when it thinks that the
  * app CAN handle the request. Nevertheless, since middleware are chained, the
  * whole concept is still considered an example of the CoR pattern.
+ *
+ * RU: Паттерн Цепочка обязанностей
+ *
+ * Назначение: Позволяет избежать привязки отправителя запроса к его получателю,
+ * предоставляя возможность обработать запрос нескольким объектам. 
+ * Связывает в цепочку объекты-получатели, а затем передаёт запрос по цепочке,
+ * пока некий получатель не обработает его.
+ *
+ * Пример: Пожалуй, самым известным применением паттерна Цепочка обязанностей (CoR)
+ * в мире PHP являются промежуточные обработчики HTTP-запросов, называемые middleware.
+ * Они стали настолько популярными, что были реализованы в самом языке как часть PSR-15.
+ *
+ * Всё это работает следующим образом: HTTP-запрос должен пройти через стек объектов 
+ * middleware, прежде чем приложение его обработает. Каждое middleware может либо 
+ * отклонить дальнейшую обработку запроса, либо передать его следующему middleware.
+ * Как только запрос успешно пройдёт все middleware, основной обработчик приложения
+ * сможет окончательно его обработать.
+ *
+ * Можно отметить, что такой подход – своего рода инверсия первоначального
+ * замысла паттерна. Действительно, в стандартной реализации запрос передаётся 
+ * по цепочке только в том случае, если текущий обработчик НЕ МОЖЕТ его обработать,
+ * тогда как middleware передаёт запрос дальше по цепочке, когда считает, что 
+ * приложение МОЖЕТ обработать запрос. Тем не менее, поскольку middleware соединены
+ * цепочкой, вся концепция по-прежнему считается примером паттерна CoR.
  */
 
 /**
+ * EN:
  * The classic CoR pattern declares a single role for objects that make up a
  * chain, which is a Handler. In our example, let's differentiate between
  * middleware and a final application's handler, which is executed when a
@@ -36,6 +61,15 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  *
  * The base Middleware class declares an interface for linking middleware
  * objects into a chain.
+ *
+ * RU:
+ * Классический паттерн CoR объявляет для объектов, составляющих цепочку, 
+ * единственную роль – Обработчик. В нашем примере давайте проводить различие 
+ * между middleware и конечным обработчиком приложения, который выполняется,
+ * когда запрос проходит через все объекты middleware.
+ *
+ * Базовый класс Middleware объявляет интерфейс для связывания объектов middleware
+ * в цепочку.
  */
 abstract class Middleware
 {
@@ -45,7 +79,11 @@ abstract class Middleware
     private $next;
 
     /**
+     * EN:
      * This method can be used to build a chain of middleware objects.
+     *
+     * RU:
+     * Этот метод можно использовать для построения цепочки объектов middleware. 
      */
     public function linkWith(Middleware $next): Middleware
     {
@@ -55,9 +93,15 @@ abstract class Middleware
     }
 
     /**
+     * EN:
      * Subclasses must override this method to provide their own checks. A
      * subclass can fall back to the parent implementation if it can't process a
      * request.
+     *
+     * RU:
+     * Подклассы должны переопределить этот метод, чтобы предоставить свои 
+     * собственные проверки. Подкласс может обратиться к родительской реализации
+     * проверки, если сам не в состоянии обработать запрос.
      */
     public function check(string $email, string $password): bool
     {
@@ -70,7 +114,11 @@ abstract class Middleware
 }
 
 /**
+ * EN:
  * This Concrete Middleware checks whether a user with given credentials exists.
+ *
+ * RU:
+ * Это Конкретное Middleware проверяет, существует ли пользователь с указанными учётными данными.
  */
 class UserExistsMiddleware extends Middleware
 {
@@ -100,8 +148,13 @@ class UserExistsMiddleware extends Middleware
 }
 
 /**
+ * EN:
  * This Concrete Middleware checks whether a user associated with the request
  * has sufficient permissions.
+ *
+ * RU:
+ * Это Конкретное Middleware проверяет, имеет ли пользователь, 
+ * связанный с запросом, достаточные права доступа.
  */
 class RoleCheckMiddleware extends Middleware
 {
@@ -119,8 +172,13 @@ class RoleCheckMiddleware extends Middleware
 }
 
 /**
+ * EN:
  * This Concrete Middleware checks whether there are too many failed login
  * requests.
+ *
+ * RU:
+ * Это Конкретное Middleware проверяет, не было ли превышено максимальное
+ * число неудачных запросов авторизации.
  */
 class ThrottlingMiddleware extends Middleware
 {
@@ -137,12 +195,21 @@ class ThrottlingMiddleware extends Middleware
     }
 
     /**
+     * EN:
      * Please, note that the parent::check call can be inserted both at the
      * beginning of this method and at the end.
      *
      * This gives much more flexibility than a simple loop over all middleware
      * objects. For instance, a middleware can change the order of checks by
      * running its check after all the others.
+     *
+     * RU:
+     * Обратите внимание, что вызов parent::check можно вставить как в начале
+     * этого метода, так и в конце.
+     *
+     * Это даёт значительно большую свободу действий, чем простой цикл по всем объектам
+     * middleware. Например, middleware может изменить порядок проверок, 
+     * запустив свою проверку после всех остальных.
      */
     public function check(string $email, string $password): bool
     {
@@ -163,9 +230,15 @@ class ThrottlingMiddleware extends Middleware
 }
 
 /**
+ * EN:
  * This is an application's class that acts as a real handler. The Server class
  * uses the CoR pattern to execute a set of various authentication middleware
  * before launching some business logic associated with a request.
+ *
+ * RU:
+ * Это класс приложения, который осуществляет реальную обработку запроса. Класс Сервер
+ * использует паттерн CoR для выполнения набора различных промежуточных проверок
+ * перед запуском некоторой бизнес-логики, связанной с запросом.
  */
 class Server
 {
@@ -177,7 +250,11 @@ class Server
     private $middleware;
 
     /**
-     * The client can configure the server with a chained middleware list.
+     * EN:
+     * The client can configure the server with a chain of middleware objects.
+     *
+     * RU:
+     * Клиент может настроить сервер с помощью цепочки объектов middleware.
      */
     public function setMiddleware(Middleware $middleware)
     {
@@ -185,15 +262,21 @@ class Server
     }
 
     /**
+     * EN:
      * The server gets the email and password from the client and sends the
      * authorization request to the middleware.
+     *
+     * RU:
+     * Сервер получает email и пароль от клиента и отправляет запрос авторизации в middleware.
      */
     public function logIn(string $email, string $password)
     {
         if ($this->middleware->check($email, $password)) {
             print("Server: Authorization has been successful!\n");
 
-            // Do something useful for authorized users.
+            // EN: Do something useful for authorized users.
+            //
+            // RU: Выполняем что-нибудь полезное для авторизованных пользователей.
 
             return true;
         }
@@ -218,20 +301,31 @@ class Server
 }
 
 /**
+ * EN:
  * The client code.
+ *
+ * RU:
+ * Клиентский код.
  */
 $server = new Server();
 $server->register("admin@example.com", "admin_pass");
 $server->register("user@example.com", "user_pass");
 
+// EN: 
 // All middleware are chained. The client can build various configurations of
 // chains depending on its needs.
+//
+// RU: 
+// Все middleware соединены в цепочки. Клиент может построить различные конфигурации
+// цепочек в зависимости от своих потребностей.
 $middleware = new ThrottlingMiddleware(2);
 $middleware
     ->linkWith(new UserExistsMiddleware($server))
     ->linkWith(new RoleCheckMiddleware());
 
-// The server gets a chain from the client code.
+// EN: The server gets a chain from the client code.
+//
+// RU: Сервер получает цепочку из клиентского кода.
 $server->setMiddleware($middleware);
 
 // ...
