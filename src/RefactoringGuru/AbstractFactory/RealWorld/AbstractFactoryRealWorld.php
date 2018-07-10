@@ -39,11 +39,11 @@ namespace RefactoringGuru\AbstractFactory\RealWorld;
  * рендеринга страниц, его классы должны работать с шаблонами только через
  * интерфейсы, не привязываясь к конкретным классам. Чтобы этого достичь,
  * объекты приложения не должны создавать шаблоны напрямую, а поручать создание
- * специальным объектам-фабрикам, с которыми тоже надо работать через абстрактный
- * интерфейс.
+ * специальным объектам-фабрикам, с которыми тоже надо работать через
+ * абстрактный интерфейс.
  *
- * Благодаря этому, вы можете подать в приложение фабрику, соответствующую одному
- * из движков рендеринга, зная, что с этого момента, все шаблоны будут
+ * Благодаря этому, вы можете подать в приложение фабрику, соответствующую
+ * одному из движков рендеринга, зная, что с этого момента, все шаблоны будут
  * порождаться именно этой фабрикой, и будут соответствовать движку рендеринга
  * этой фабрики. Если вы захотите сменить движок рендеринга, то всё что нужно
  * будет сделать — это подать в приложение объект фабрики другого типа и ничего
@@ -51,13 +51,11 @@ namespace RefactoringGuru\AbstractFactory\RealWorld;
  */
 
 /**
- * EN:
- * The Abstract Factory interface declares creation methods for each distinct
- * product type.
+ * EN: The Abstract Factory interface declares creation methods for each
+ * distinct product type.
  *
- * RU:
- * Интерфейс Абстрактной фабрики объявляет создающие методы
- * для каждого определённого типа продукта.
+ * RU: Интерфейс Абстрактной фабрики объявляет создающие методы для каждого
+ * определённого типа продукта.
  */
 interface TemplateFactory
 {
@@ -67,15 +65,13 @@ interface TemplateFactory
 }
 
 /**
- * EN: 
- * Each Concrete Factory corresponds to a specific variant (or family) of
+ * EN: Each Concrete Factory corresponds to a specific variant (or family) of
  * products.
  *
  * This Concrete Factory creates Twig templates.
  *
- * RU:
- * Каждая Конкретная Фабрика соответствует определённому варианту 
- * (или семейству) продуктов.
+ * RU: Каждая Конкретная Фабрика соответствует определённому варианту  (или
+ * семейству) продуктов.
  *
  * Эта Конкретная Фабрика создает шаблоны Twig.
  */
@@ -93,11 +89,9 @@ class TwigTemplateFactory implements TemplateFactory
 }
 
 /**
- * EN:
- * And this Concrete Factory creates Blade templates.
+ * EN: And this Concrete Factory creates Blade templates.
  *
- * RU:
- * А эта Конкретная Фабрика создает шаблоны Blade.
+ * RU: А эта Конкретная Фабрика создает шаблоны Blade.
  */
 class BladeFactory implements TemplateFactory
 {
@@ -113,19 +107,17 @@ class BladeFactory implements TemplateFactory
 }
 
 /**
- * EN:
- * Each distinct product type should have a separate interface. All variants of
- * the product must follow the same interface.
+ * EN: Each distinct product type should have a separate interface. All variants
+ * of the product must follow the same interface.
  *
  * For instance, this Abstract Product interface describes the behavior of page
  * title templates.
  *
- * RU:
- * Каждый отдельный тип продукта должен иметь отдельный интерфейс.
- * Все варианты продукта должны соответствовать одному интерфейсу.
+ * RU: Каждый отдельный тип продукта должен иметь отдельный интерфейс. Все
+ * варианты продукта должны соответствовать одному интерфейсу.
  *
- * Например, этот интерфейс Абстрактного Продукта описывает поведение 
- * шаблонов заголовков страниц.
+ * Например, этот интерфейс Абстрактного Продукта описывает поведение  шаблонов
+ * заголовков страниц.
  */
 interface TitleTemplate
 {
@@ -133,11 +125,9 @@ interface TitleTemplate
 }
 
 /**
- * EN:
- * This Concrete Product provides Twig page title templates.
+ * EN: This Concrete Product provides Twig page title templates.
  *
- * RU:
- * Этот Конкретный Продукт предоставляет шаблоны заголовков страниц Twig.
+ * RU: Этот Конкретный Продукт предоставляет шаблоны заголовков страниц Twig.
  */
 class TwigTitleTemplate implements TitleTemplate
 {
@@ -148,11 +138,9 @@ class TwigTitleTemplate implements TitleTemplate
 }
 
 /**
- * EN:
- * And this Concrete Product provides Blade page title templates.
+ * EN: And this Concrete Product provides Blade page title templates.
  *
- * RU:
- * А этот Конкретный Продукт предоставляет шаблоны заголовков страниц Blade.
+ * RU: А этот Конкретный Продукт предоставляет шаблоны заголовков страниц Blade.
  */
 class BladeTitleTemplate implements TitleTemplate
 {
@@ -163,11 +151,11 @@ class BladeTitleTemplate implements TitleTemplate
 }
 
 /**
- * EN:
- * This is another Abstract Product type, which describes whole page templates.
+ * EN: This is another Abstract Product type, which describes whole page
+ * templates.
  *
- * RU:
- * Это еще один тип Абстрактного Продукта, который описывает шаблоны целых страниц.
+ * RU: Это еще один тип Абстрактного Продукта, который описывает шаблоны целых
+ * страниц.
  */
 interface PageTemplate
 {
@@ -175,11 +163,9 @@ interface PageTemplate
 }
 
 /**
- * EN:
- * The Twig variant of the whole page templates.
+ * EN: The Twig variant of the whole page templates.
  *
- * RU:
- * Вариант шаблонов страниц Twig.
+ * RU: Вариант шаблонов страниц Twig.
  */
 class TwigPageTemplate implements PageTemplate
 {
@@ -196,11 +182,9 @@ EOF;
 }
 
 /**
- * EN:
- * The Blade variant of the whole page templates.
+ * EN: The Blade variant of the whole page templates.
  *
- * RU:
- * Вариант шаблонов страниц Blade.
+ * RU: Вариант шаблонов страниц Blade.
  */
 class BladePageTemplate implements PageTemplate
 {
@@ -217,13 +201,12 @@ EOF;
 }
 
 /**
- * EN:
- * The client code. Note that it accepts the Abstract Factory class as the
+ * EN: The client code. Note that it accepts the Abstract Factory class as the
  * parameter, which allows the client to work with any concrete factory type.
  *
- * RU:
- * Клиентский код. Обратите внимание, что он принимает класс Абстрактной Фабрики
- * в качестве параметра, что позволяет клиенту работать с любым типом конкретной фабрики.
+ * RU: Клиентский код. Обратите внимание, что он принимает класс Абстрактной
+ * Фабрики в качестве параметра, что позволяет клиенту работать с любым типом
+ * конкретной фабрики.
  */
 function templateRenderer(TemplateFactory $factory)
 {
@@ -234,12 +217,10 @@ function templateRenderer(TemplateFactory $factory)
 }
 
 /**
- * EN:
- * Now, in other parts of the app, the client code can accept factory objects of
- * any type.
+ * EN: Now, in other parts of the app, the client code can accept factory
+ * objects of any type.
  *
- * RU:
- * Теперь в других частях приложения клиентский код может принимать 
+ * RU: Теперь в других частях приложения клиентский код может принимать
  * фабричные объекты любого типа.
  */
 print("Testing rendering with the Twig factory:\n");

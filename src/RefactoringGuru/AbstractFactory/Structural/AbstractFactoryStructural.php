@@ -196,10 +196,9 @@ class ConcreteProductB2 implements AbstractProductB
  * types: AbstractFactory and AbstractProduct. This lets you pass any factory or
  * product subclass to the client code without breaking it.
  *
- * RU: Клиентский код работает с фабриками и продуктами только через
- * абстрактные типы: Абстрактная Фабрика и Абстрактный Продукт. Это позволяет
- * передавать любой подкласс фабрики или продукта клиентскому коду, не нарушая
- * его.
+ * RU: Клиентский код работает с фабриками и продуктами только через абстрактные
+ * типы: Абстрактная Фабрика и Абстрактный Продукт. Это позволяет передавать
+ * любой подкласс фабрики или продукта клиентскому коду, не нарушая его.
  */
 function clientCode(AbstractFactory $factory)
 {

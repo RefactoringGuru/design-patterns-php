@@ -10,28 +10,25 @@ namespace RefactoringGuru\State\Structural;
  *
  * RU: Паттерн Состояние
  *
- * Назначение: Позволяет объекту менять поведение при изменении его
- * внутреннего состояния. Со стороны может казаться, что объект меняет свой класс.
+ * Назначение: Позволяет объекту менять поведение при изменении его внутреннего
+ * состояния. Со стороны может казаться, что объект меняет свой класс.
  */
 
 /**
- * EN: 
- * The Context defines the interface of interest to clients. It also maintains a
- * reference to an instance of a State subclass, which represents the current
- * state of the Context.
+ * EN: The Context defines the interface of interest to clients. It also
+ * maintains a reference to an instance of a State subclass, which represents
+ * the current state of the Context.
  *
- * RU:
- * Контекст определяет интерфейс, представляющий интерес для клиентов. Он также хранит ссылку
- * на экземпляр подкласса Состояния, который отображает текущее состояние Контекста. 
+ * RU: Контекст определяет интерфейс, представляющий интерес для клиентов. Он
+ * также хранит ссылку на экземпляр подкласса Состояния, который отображает
+ * текущее состояние Контекста.
  */
 class Context
 {
     /**
-     * EN:
-     * @var State A reference to the current state of the Context.
+     * EN: @var State A reference to the current state of the Context.
      *
-     * RU:
-     *  @var State Ссылка на текущее состояние Контекста.
+     * RU: @var State Ссылка на текущее состояние Контекста.
      */
     private $state;
 
@@ -44,11 +41,9 @@ class Context
     }
 
     /**
-     * EN:
-     * The Context allows changing the State object at runtime.
+     * EN: The Context allows changing the State object at runtime.
      *
-     * RU:
-     * Контекст позволяет изменять объект Состояния во время выполнения.
+     * RU: Контекст позволяет изменять объект Состояния во время выполнения.
      *
      * @param State $state
      */
@@ -60,11 +55,11 @@ class Context
     }
 
     /**
-     * EN:
-     * The Context delegates part of its behavior to the current State object.
+     * EN: The Context delegates part of its behavior to the current State
+     * object.
      *
-     * RU:
-     * Контекст делегирует часть своего поведения текущему объекту Состояния.
+     * RU: Контекст делегирует часть своего поведения текущему объекту
+     * Состояния.
      */
     public function request1()
     {
@@ -78,17 +73,15 @@ class Context
 }
 
 /**
- * EN:
- * The base State class declares methods that all Concrete State should
+ * EN: The base State class declares methods that all Concrete State should
  * implement and also provides a backreference to the Context object, associated
  * with the State. This backreference can be used by States to transition the
  * Context to another State.
  *
- * RU:
- * Базовый класс Состояния объявляет методы, которые должны реализовать
- * все Конкретные Состояния, а также предоставляет обратную ссылку на объект Контекст,
- * связанный с Состоянием. Эта обратная ссылка может использоваться Состояниями
- * для передачи Контекста другому Состоянию.
+ * RU: Базовый класс Состояния объявляет методы, которые должны реализовать все
+ * Конкретные Состояния, а также предоставляет обратную ссылку на объект
+ * Контекст, связанный с Состоянием. Эта обратная ссылка может использоваться
+ * Состояниями для передачи Контекста другому Состоянию.
  */
 abstract class State
 {
@@ -108,12 +101,11 @@ abstract class State
 }
 
 /**
- * EN:
- * Concrete States implement various behaviors, associated with a state of the
- * Context.
+ * EN: Concrete States implement various behaviors, associated with a state of
+ * the Context.
  *
- * RU:
- * Конкретные Состояния реализуют различные модели поведения, связанные с состоянием Контекста.
+ * RU: Конкретные Состояния реализуют различные модели поведения, связанные с
+ * состоянием Контекста.
  */
 class ConcreteStateA extends State
 {

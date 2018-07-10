@@ -15,23 +15,22 @@ namespace RefactoringGuru\Command\RealWorld;
  *
  * RU: Паттерн Команда
  *
- * Назначение: Превращает запросы в объекты, позволяя передавать их как аргументы
- * при вызове методов, ставить запросы в очередь, логировать их, а также
- * поддерживать отмену операций.
+ * Назначение: Превращает запросы в объекты, позволяя передавать их как
+ * аргументы при вызове методов, ставить запросы в очередь, логировать их, а
+ * также поддерживать отмену операций.
  *
- * Пример: В этом примере паттерн Команда применяется для построения очереди из вызовов
- * скрейпинга (скачивания) отдельных страниц сайта IMDB и выполнения их один за другим.
- * Сама очередь хранится в базе данных, которая помогает не терять команды между запусками скрипта.
+ * Пример: В этом примере паттерн Команда применяется для построения очереди из
+ * вызовов скрейпинга (скачивания) отдельных страниц сайта IMDB и выполнения их
+ * один за другим. Сама очередь хранится в базе данных, которая помогает не
+ * терять команды между запусками скрипта.
  */
 
 /**
- * EN:
- * The Command interface declares the main execution method as well as several helper
- * methods for retrieving a command's metadata.
+ * EN: The Command interface declares the main execution method as well as
+ * several helper methods for retrieving a command's metadata.
  *
- * RU:
- * Интерфейс Команды объявляет основной метод выполнения, а также несколько вспомогательных
- * методов для получения метаданных команды.
+ * RU: Интерфейс Команды объявляет основной метод выполнения, а также несколько
+ * вспомогательных методов для получения метаданных команды.
  */
 interface Command
 {
@@ -43,12 +42,10 @@ interface Command
 }
 
 /**
- * EN:
- * The base web scraping Command defines the basic downloading infrastructure,
- * common to all concrete web scraping commands.
+ * EN: The base web scraping Command defines the basic downloading
+ * infrastructure, common to all concrete web scraping commands.
  *
- * RU:
- * Базовая Команда скрейпинга устанавливает базовую инфраструктуру загрузки,
+ * RU: Базовая Команда скрейпинга устанавливает базовую инфраструктуру загрузки,
  * общую для всех конкретных команд скрейпинга.
  */
 abstract class WebScrapingCommand implements Command
@@ -58,11 +55,9 @@ abstract class WebScrapingCommand implements Command
     public $status = 0;
 
     /**
-     * EN:
-     * @var string URL for scraping.
+     * EN: @var string URL for scraping.
      *
-     * RU:
-     * @var string URL для скрейпинга.
+     * RU: @var string URL для скрейпинга.
      */
     public $url;
 
@@ -89,21 +84,19 @@ abstract class WebScrapingCommand implements Command
     }
 
     /**
-     * EN:
-     * Since the execution methods for all web scraping commands are very
+     * EN: Since the execution methods for all web scraping commands are very
      * similar, we can provide a default implementation and let subclasses
      * override them if needed.
      *
      * Psst! An observant reader may spot another behavioral pattern in action
      * here.
      *
-     * RU:
-     * Поскольку методы выполнения для всех команд скрейпинга очень похожи,
+     * RU: Поскольку методы выполнения для всех команд скрейпинга очень похожи,
      * мы можем предоставить реализацию по умолчанию, позволив подклассам
      * переопределить её при необходимости.
      *
-     * Шш! Наблюдательный читатель может обнаружить здесь другой поведенческий 
-     * паттерн в действии. 
+     * Шш! Наблюдательный читатель может обнаружить здесь другой поведенческий
+     * паттерн в действии.
      */
     public function execute()
     {
@@ -130,11 +123,9 @@ abstract class WebScrapingCommand implements Command
 }
 
 /**
- * EN:
- * The Concrete Command for scraping the list of movie genres.
+ * EN: The Concrete Command for scraping the list of movie genres.
  *
- * RU:
- * Конкретная Команда для извлечения списка жанров фильма.
+ * RU: Конкретная Команда для извлечения списка жанров фильма.
  */
 class IMDBGenresScrapingCommand extends WebScrapingCommand
 {
@@ -144,12 +135,10 @@ class IMDBGenresScrapingCommand extends WebScrapingCommand
     }
 
     /**
-     * EN:
-     * Extract all genres and their search URLs from the page:
+     * EN: Extract all genres and their search URLs from the page:
      * https://www.imdb.com/feature/genre/
      *
-     * RU:
-     * Извлечение всех жанров и их поисковых URL со страницы:
+     * RU: Извлечение всех жанров и их поисковых URL со страницы:
      * https://www.imdb.com/feature/genre/
      */
     public function parse($html)
@@ -164,11 +153,9 @@ class IMDBGenresScrapingCommand extends WebScrapingCommand
 }
 
 /**
- * EN:
- * The Concrete Command for scraping the list of movies in a specific genre.
+ * EN: The Concrete Command for scraping the list of movies in a specific genre.
  *
- * RU:
- * Конкретная Команда для извлечения списка фильмов определённого жанра.
+ * RU: Конкретная Команда для извлечения списка фильмов определённого жанра.
  */
 class IMDBGenrePageScrapingCommand extends WebScrapingCommand
 {
@@ -186,12 +173,10 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
     }
 
     /**
-     * EN:
-     * Extract all movies from a page like this:
+     * EN: Extract all movies from a page like this:
      * https://www.imdb.com/search/title?genres=sci-fi&explore=title_type,genres
      *
-     * RU:
-     * Извлечение всех фильмов со страницы вроде этой:
+     * RU: Извлечение всех фильмов со страницы вроде этой:
      * https://www.imdb.com/search/title?genres=sci-fi&explore=title_type,genres
      */
     public function parse($html)
@@ -214,21 +199,17 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
 }
 
 /**
- * EN:
- * The Concrete Command for scraping the movie details.
+ * EN: The Concrete Command for scraping the movie details.
  *
- * RU:
- * Конкретная Команда для извлечения подробных сведений о фильме.
+ * RU: Конкретная Команда для извлечения подробных сведений о фильме.
  */
 class IMDBMovieScrapingCommand extends WebScrapingCommand
 {
     /**
-     * EN:
-     * Get the movie info from a page like this:
+     * EN: Get the movie info from a page like this:
      * https://www.imdb.com/title/tt4154756/
      *
-     * RU:
-     * Получить информацию о фильме с подобной страницы:
+     * RU: Получить информацию о фильме с подобной страницы:
      * https://www.imdb.com/title/tt4154756/
      */
     public function parse($html)
@@ -241,8 +222,7 @@ class IMDBMovieScrapingCommand extends WebScrapingCommand
 }
 
 /**
- * EN:
- * The Queue class acts as an Invoker. It stacks the command objects and
+ * EN: The Queue class acts as an Invoker. It stacks the command objects and
  * executes them one by one. If the script execution is suddenly terminated, the
  * queue and all its commands can easily be restored, and you won't need to
  * repeat all of the executed commands.
@@ -251,15 +231,15 @@ class IMDBMovieScrapingCommand extends WebScrapingCommand
  * stores commands in a local SQLite database. There are dozens of robust queue
  * solution available for use in real apps.
  *
- * RU:
- * Класс Очередь действует как Отправитель. Он складывает объекты команд в стек
- * и выполняет их поочерёдно. Если выполнение скрипта внезапно завершится,
+ * RU: Класс Очередь действует как Отправитель. Он складывает объекты команд в
+ * стек и выполняет их поочерёдно. Если выполнение скрипта внезапно завершится,
  * очередь и все её команды можно будет легко восстановить, и вам не придётся
  * повторять все выполненные команды.
  *
- * Обратите внимание, что это очень примитивная реализация очереди команд, 
- * которая хранит команды в локальной базе данных SQLite. Существуют десятки 
- * надёжных реализаций очереди, доступных для использования в реальных приложениях.
+ * Обратите внимание, что это очень примитивная реализация очереди команд,
+ * которая хранит команды в локальной базе данных SQLite. Существуют десятки
+ * надёжных реализаций очереди, доступных для использования в реальных
+ * приложениях.
  */
 class Queue
 {
@@ -321,11 +301,9 @@ class Queue
     }
 
     /**
-     * EN:
-     * For our convenience, the Queue object is a Singleton.
+     * EN: For our convenience, the Queue object is a Singleton.
      *
-     * RU:
-     * Для удобства объект Очереди является Одиночкой.
+     * RU: Для удобства объект Очереди является Одиночкой.
      */
     public static function get(): Queue
     {
@@ -339,11 +317,9 @@ class Queue
 }
 
 /**
- * EN:
- * The client code.
+ * EN: The client code.
  *
- * RU:
- * Клиентский код.
+ * RU: Клиентский код.
  */
 
 $queue = Queue::get();

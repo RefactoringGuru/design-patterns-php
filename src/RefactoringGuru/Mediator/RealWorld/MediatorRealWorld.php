@@ -16,20 +16,22 @@ namespace RefactoringGuru\Mediator\RealWorld;
  *
  * RU: Паттерн Посредник
  *
- * Назначение: Определяет объект, который инкапсулирует взаимодействие набора объектов.
- * Посредник способствует слабой связанности, удерживая объекты от обращения друг к другу
- * напрямую, и это позволяет вам менять их взаимодействие независимо. 
+ * Назначение: Определяет объект, который инкапсулирует взаимодействие набора
+ * объектов. Посредник способствует слабой связанности, удерживая объекты от
+ * обращения друг к другу напрямую, и это позволяет вам менять их взаимодействие
+ * независимо.
  *
- * Пример: В этом примере паттерн Посредник расширяет базовую идею паттерна Наблюдатель,
- * предоставляя централизованный диспетчер событий. Он позволяет любому объекту отслеживать
- * и запускать события в других объектах, независимо от их классов.
+ * Пример: В этом примере паттерн Посредник расширяет базовую идею паттерна
+ * Наблюдатель, предоставляя централизованный диспетчер событий. Он позволяет
+ * любому объекту отслеживать и запускать события в других объектах, независимо
+ * от их классов.
  */
 
 /**
- * EN:
- * The Event Dispatcher class acts as a Mediator and contains the subscription
- * and notification logic. While a classic Mediator often depends on concrete
- * component classes, this one is only tied to their abstract interfaces.
+ * EN: The Event Dispatcher class acts as a Mediator and contains the
+ * subscription and notification logic. While a classic Mediator often depends
+ * on concrete component classes, this one is only tied to their abstract
+ * interfaces.
  *
  * We are able to achieve this level of indirection thanks to the way the
  * connections between components are established. The components themselves may
@@ -39,18 +41,18 @@ namespace RefactoringGuru\Mediator\RealWorld;
  * Note, we can't use the PHP's built-in Subject/Observer interfaces here
  * because we'll be stretching them too far from what they were designed for.
  *
- * RU:
- * Класс Диспетчера Событий выполняет функции Посредника и содержит логику подписки
- * и уведомлений. Хотя классический Посредник часто зависит от конкретных классов
- * компонентов, этот привязан только к их абстрактным интерфейсам.
+ * RU: Класс Диспетчера Событий выполняет функции Посредника и содержит логику
+ * подписки и уведомлений. Хотя классический Посредник часто зависит от
+ * конкретных классов компонентов, этот привязан только к их абстрактным
+ * интерфейсам.
  *
  * Достичь слабой связанности между компонентами можно благодаря особому способу
- * установления связей между ними. Компоненты сами могут подписаться на интересующие
- * их конкретные события через интерфейс подписки Посредника.
+ * установления связей между ними. Компоненты сами могут подписаться на
+ * интересующие их конкретные события через интерфейс подписки Посредника.
  *
- * Обратите внимание, что мы не можем использовать здесь встроенные в PHP интерфейсы 
- * Subject/Observer, так как они не дадут нам реализовать расширенные методы подписки
- * и оповещений.
+ * Обратите внимание, что мы не можем использовать здесь встроенные в PHP
+ * интерфейсы  Subject/Observer, так как они не дадут нам реализовать
+ * расширенные методы подписки и оповещений.
  */
 class EventDispatcher
 {
@@ -64,8 +66,8 @@ class EventDispatcher
         // EN: The special event group for observers that want to listen to all
         // events.
         //
-        // RU: Специальная группа событий для наблюдателей, которые хотят слушать
-        // все события.
+        // RU: Специальная группа событий для наблюдателей, которые хотят
+        // слушать все события.
         $this->observers["*"] = [];
     }
 
@@ -111,12 +113,11 @@ class EventDispatcher
 }
 
 /**
- * EN:
- * A simple helper function to provide global access to the event dispatcher.
+ * EN: A simple helper function to provide global access to the event
+ * dispatcher.
  *
- * RU:
- * Простая вспомогательная функция для предоставления глобального доступа
- * к диспетчеру событий.
+ * RU: Простая вспомогательная функция для предоставления глобального доступа к
+ * диспетчеру событий.
  */
 function events(): EventDispatcher
 {
@@ -129,13 +130,11 @@ function events(): EventDispatcher
 }
 
 /**
- * EN:
- * The Observer interface defines how components receive the event
+ * EN: The Observer interface defines how components receive the event
  * notifications.
  *
- * RU:
- * Интерфейс Наблюдателя определяет, как компоненты получают уведомления
- * о событиях.
+ * RU: Интерфейс Наблюдателя определяет, как компоненты получают уведомления о
+ * событиях.
  */
 interface Observer
 {
@@ -143,40 +142,35 @@ interface Observer
 }
 
 /**
- * EN:
- * Unlike our Observer pattern example, this example makes the UserRepository
- * act as a regular component that doesn't have any special event-related
- * methods. Like any other component, this class relies on the EventDispatcher
- * to broadcast its events and listen for the other ones.
+ * EN: Unlike our Observer pattern example, this example makes the
+ * UserRepository act as a regular component that doesn't have any special
+ * event-related methods. Like any other component, this class relies on the
+ * EventDispatcher to broadcast its events and listen for the other ones.
  *
  * @see \RefactoringGuru\Observer\RealWorld\UserRepository
  *
- * RU:
- * В отличие от нашего примера паттерна Наблюдатель, этот пример заставляет
- * ПользовательскийРепозиторий действовать как обычный компонент, который не имеет
- * никаких специальных методов, связанных с событиями. Как и любой другой компонент,
- * этот класс использует ДиспетчерСобытий для трансляции своих событий и прослушивания
- * других.
+ * RU: В отличие от нашего примера паттерна Наблюдатель, этот пример заставляет
+ * ПользовательскийРепозиторий действовать как обычный компонент, который не
+ * имеет никаких специальных методов, связанных с событиями. Как и любой другой
+ * компонент, этот класс использует ДиспетчерСобытий для трансляции своих
+ * событий и прослушивания других.
  *
  * @see \RefactoringGuru\Observer\RealWorld\UserRepository
  */
 class UserRepository implements Observer
 {
     /**
-     * EN:
-     * @var array List of application's users.
+     * EN: @var array List of application's users.
      *
-     * RU:
-     * @var array Список пользователей приложения.
+     * RU: @var array Список пользователей приложения.
      */
     private $users = [];
 
     /**
-     * EN:
-     * Components can subscribe to events by themselves or by client code.
+     * EN: Components can subscribe to events by themselves or by client code.
      *
-     * RU:
-     * Компоненты могут подписаться на события самостоятельно или через клиентский код.
+     * RU: Компоненты могут подписаться на события самостоятельно или через
+     * клиентский код.
      */
     public function __construct()
     {
@@ -184,13 +178,12 @@ class UserRepository implements Observer
     }
 
     /**
-     * EN:
-     * Components can decide whether they'd like to process an event using its
-     * name, emitter or any contextual data passed along with the event.
+     * EN: Components can decide whether they'd like to process an event using
+     * its name, emitter or any contextual data passed along with the event.
      *
-     * RU:
-     * Компоненты могут принять решение, будут ли они обрабатывать событие, используя его
-     * название, источник или какие-то контекстные данные, переданные вместе с событием.
+     * RU: Компоненты могут принять решение, будут ли они обрабатывать событие,
+     * используя его название, источник или какие-то контекстные данные,
+     * переданные вместе с событием.
      */
     public function update(string $event, object $emitter, $data = null)
     {
@@ -270,11 +263,10 @@ class UserRepository implements Observer
 }
 
 /**
- * EN:
- * Let's keep the User class trivial since it's not the focus of our example.
+ * EN: Let's keep the User class trivial since it's not the focus of our
+ * example.
  *
- * RU:
- * Давайте сохраним класс Пользователя тривиальным, так как он не является
+ * RU: Давайте сохраним класс Пользователя тривиальным, так как он не является
  * главной темой нашего примера.
  */
 class User
@@ -287,11 +279,9 @@ class User
     }
 
     /**
-     * EN:
-     * All objects can trigger events.
+     * EN: All objects can trigger events.
      *
-     * RU:
-     * Все объекты могут вызывать события.
+     * RU: Все объекты могут вызывать события.
      */
     public function delete()
     {
@@ -301,11 +291,10 @@ class User
 }
 
 /**
- * EN:
- * This Concrete Component logs any events it's subscribed to.
+ * EN: This Concrete Component logs any events it's subscribed to.
  *
- * RU:
- * Этот Конкретный Компонент регистрирует все события, на которые он подписан.
+ * RU: Этот Конкретный Компонент регистрирует все события, на которые он
+ * подписан.
  */
 class Logger implements Observer
 {
@@ -329,14 +318,13 @@ class Logger implements Observer
 }
 
 /**
- * EN:
- * This Concrete Component sends initial instructions to new users. The client
- * is responsible for attaching this component to a proper user creation event.
+ * EN: This Concrete Component sends initial instructions to new users. The
+ * client is responsible for attaching this component to a proper user creation
+ * event.
  *
- * RU:
- * Этот Конкретный Компонент отправляет начальные инструкции новым пользователям.
- * Клиент несёт ответственность за присоединение этого компонента к соответствующему
- * событию создания пользователя.
+ * RU: Этот Конкретный Компонент отправляет начальные инструкции новым
+ * пользователям. Клиент несёт ответственность за присоединение этого компонента
+ * к соответствующему событию создания пользователя.
  */
 class OnboardingNotification implements Observer
 {
@@ -358,11 +346,9 @@ class OnboardingNotification implements Observer
 }
 
 /**
- * EN:
- * The client code.
+ * EN: The client code.
  *
- * RU:
- * Клиентский код.
+ * RU: Клиентский код.
  */
 
 $repository = new UserRepository();

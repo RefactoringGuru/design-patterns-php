@@ -11,21 +11,20 @@ namespace RefactoringGuru\Mediator\Structural;
  *
  * RU: Паттерн Посредник
  *
- * Назначение: Определяет объект, который инкапсулирует взаимодействие набора объектов.
- * Посредник способствует слабой связанности, удерживая объекты от обращения друг к другу
- * напрямую, и это позволяет вам менять их взаимодействие независимо. 
+ * Назначение: Определяет объект, который инкапсулирует взаимодействие набора
+ * объектов. Посредник способствует слабой связанности, удерживая объекты от
+ * обращения друг к другу напрямую, и это позволяет вам менять их взаимодействие
+ * независимо.
  */
 
 /**
- * EN:
- * The Mediator interface declares a method used by components to notify the
+ * EN: The Mediator interface declares a method used by components to notify the
  * mediator about various events. The Mediator may react to these events and
  * pass the execution to other components.
  *
- * RU:
- * Интерфейс Посредника предоставляет метод, используемый компонентами для уведомления
- * посредника о различных событиях. Посредник может реагировать на эти события 
- * и передавать исполнение другим компонентам.
+ * RU: Интерфейс Посредника предоставляет метод, используемый компонентами для
+ * уведомления посредника о различных событиях. Посредник может реагировать на
+ * эти события  и передавать исполнение другим компонентам.
  */
 interface Mediator
 {
@@ -33,12 +32,10 @@ interface Mediator
 }
 
 /**
- * EN:
- * Concrete Mediators implement cooperative behavior by coordinating several
+ * EN: Concrete Mediators implement cooperative behavior by coordinating several
  * components.
  *
- * RU:
- * Конкретные Посредники реализуют совместное поведение, координируя
+ * RU: Конкретные Посредники реализуют совместное поведение, координируя
  * отдельные компоненты.
  */
 class ConcreteMediator implements Mediator
@@ -71,13 +68,11 @@ class ConcreteMediator implements Mediator
 }
 
 /**
- * EN:
- * The Base Component provides the basic functionality of storing a mediator's
- * instance inside component objects.
+ * EN: The Base Component provides the basic functionality of storing a
+ * mediator's instance inside component objects.
  *
- * RU:
- * Базовый Компонент обеспечивает базовую функциональность хранения экземпляра
- * посредника внутри объектов компонентов.
+ * RU: Базовый Компонент обеспечивает базовую функциональность хранения
+ * экземпляра посредника внутри объектов компонентов.
  */
 class BaseComponent
 {
@@ -95,13 +90,12 @@ class BaseComponent
 }
 
 /**
- * EN:
- * Concrete Components implement various functionality. They don't depend on
+ * EN: Concrete Components implement various functionality. They don't depend on
  * other components. They also don't depend on any concrete mediator classes.
  *
- * RU:
- * Конкретные Компоненты реализуют различную функциональность. Они не зависят от
- * других компонентов. Они также не зависят от каких-либо конкретных классов посредников.
+ * RU: Конкретные Компоненты реализуют различную функциональность. Они не
+ * зависят от других компонентов. Они также не зависят от каких-либо конкретных
+ * классов посредников.
  */
 class Component1 extends BaseComponent
 {

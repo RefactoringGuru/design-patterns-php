@@ -15,30 +15,31 @@ namespace RefactoringGuru\Proxy\RealWorld;
  *
  * RU: Паттерн Заместитель
  *
- * Назначение: Предоставляет заменитель или местозаполнитель для другого объекта,
- * чтобы контролировать доступ к оригинальному объекту или добавлять другие обязанности.
+ * Назначение: Предоставляет заменитель или местозаполнитель для другого
+ * объекта, чтобы контролировать доступ к оригинальному объекту или добавлять
+ * другие обязанности.
  *
- * Пример: Существует бесчисленное множество направлений, где могут быть использованы
- * заместители: кэширование, логирование, контроль доступа, отложенная инициализация и т.д. 
- * В этом примере показано, как паттерн Заместитель может повысить производительность
- * объекта-загрузчика путём кэширования его результатов.
+ * Пример: Существует бесчисленное множество направлений, где могут быть
+ * использованы заместители: кэширование, логирование, контроль доступа,
+ * отложенная инициализация и т.д.  В этом примере показано, как паттерн
+ * Заместитель может повысить производительность объекта-загрузчика путём
+ * кэширования его результатов.
  */
 
 /**
- * EN:
- * The Subject interface describes the interface of a real object.
+ * EN: The Subject interface describes the interface of a real object.
  *
  * The truth is that many real apps may not have this interface clearly defined.
  * If you're in that boat, your best bet would be to extend the Proxy from one
  * of your existing application classes. If that's awkward, then extracting a
  * proper interface should be your first step.
  *
- * RU:
- * Интерфейс Субъекта описывает интерфейс реального объекта.
+ * RU: Интерфейс Субъекта описывает интерфейс реального объекта.
  *
  * Дело в том, что у большинства приложений нет чётко определённого интерфейса.
- * В этом случае лучше было бы расширить Заместителя за счёт существующего класса приложения. 
- * Если это неудобно, тогда первым шагом должно быть извлечение правильного интерфейса. 
+ * В этом случае лучше было бы расширить Заместителя за счёт существующего
+ * класса приложения.  Если это неудобно, тогда первым шагом должно быть
+ * извлечение правильного интерфейса.
  */
 interface Downloader
 {
@@ -46,15 +47,14 @@ interface Downloader
 }
 
 /**
- * EN:
- * The Real Subject does the real job, albeit not in the most efficient way.
+ * EN: The Real Subject does the real job, albeit not in the most efficient way.
  * When a client tries to download the same file for the second time, our
  * downloader does just that, instead of fetching the result from cache.
  *
- * RU:
- * Реальный Субъект делает реальную работу, хотя и не самым эффективным способом.
- * Когда клиент пытается загрузить тот же самый файл во второй раз, наш загрузчик
- * именно это и делает, вместо того, чтобы извлечь результат из кэша.
+ * RU: Реальный Субъект делает реальную работу, хотя и не самым эффективным
+ * способом. Когда клиент пытается загрузить тот же самый файл во второй раз,
+ * наш загрузчик именно это и делает, вместо того, чтобы извлечь результат из
+ * кэша.
  */
 class SimpleDownloader implements Downloader
 {
@@ -68,18 +68,16 @@ class SimpleDownloader implements Downloader
 }
 
 /**
- * EN:
- * The Proxy class is our attempt to make the download more efficient. It wraps
- * the real downloader object and delegates it the first download calls. The
- * result is then cached, making subsequent calls return an existing file
+ * EN: The Proxy class is our attempt to make the download more efficient. It
+ * wraps the real downloader object and delegates it the first download calls.
+ * The result is then cached, making subsequent calls return an existing file
  * instead of downloading it again.
  *
  * Note that the Proxy MUST implement the same interface as the Real Subject.
  *
- * RU:
- * Класс Заместителя – это попытка сделать загрузку более эффективной.
- * Он обёртывает реальный объект загрузчика и делегирует ему первые запросы
- * на скачивание. Затем результат кэшируется, что позволяет последующим вызовам
+ * RU: Класс Заместителя – это попытка сделать загрузку более эффективной. Он
+ * обёртывает реальный объект загрузчика и делегирует ему первые запросы на
+ * скачивание. Затем результат кэшируется, что позволяет последующим вызовам
  * возвращать уже имеющийся файл вместо его повторной загрузки.
  */
 class CachingDownloader implements Downloader
@@ -113,20 +111,18 @@ class CachingDownloader implements Downloader
 }
 
 /**
- * EN:
- * The client code may issue several similar download requests. In this case,
- * the caching proxy saves time and traffic by serving results from cache.
+ * EN: The client code may issue several similar download requests. In this
+ * case, the caching proxy saves time and traffic by serving results from cache.
  *
  * The client is unaware that it works with a proxy because it works with
  * downloaders via the abstract interface.
  *
- * RU:
- * Клиентский код может выдать несколько похожих запросов на загрузку.
- * В этом случае кэширующий заместитель экономит время и трафик, подавая
+ * RU: Клиентский код может выдать несколько похожих запросов на загрузку. В
+ * этом случае кэширующий заместитель экономит время и трафик, подавая
  * результаты из кэша.
  *
- * Клиент не знает, что он работает с заместителем, потому что он работает
- * с загрузчиками через абстрактный интерфейс.
+ * Клиент не знает, что он работает с заместителем, потому что он работает с
+ * загрузчиками через абстрактный интерфейс.
  */
 function clientCode(Downloader $subject)
 {
@@ -136,7 +132,8 @@ function clientCode(Downloader $subject)
 
     // EN: Duplicate download requests could be cached for a speed gain.
     //
-    // RU: Повторяющиеся запросы на загрузку могут кэшироваться для увеличения скорости.
+    // RU: Повторяющиеся запросы на загрузку могут кэшироваться для увеличения
+    // скорости.
 
     $result = $subject->download("http://example.com/");
 

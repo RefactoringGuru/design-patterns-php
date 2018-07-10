@@ -17,47 +17,43 @@ namespace RefactoringGuru\Observer\RealWorld;
  *
  * RU: Паттерн Наблюдатель
  *
- * Назначение: Устанавливает между объектами зависимость «один ко многим» таким образом, 
- * что когда изменяется состояние одного объекта, все зависимые от него объекты
- * оповещаются и обновляются автоматически.
+ * Назначение: Устанавливает между объектами зависимость «один ко многим» таким
+ * образом,  что когда изменяется состояние одного объекта, все зависимые от
+ * него объекты оповещаются и обновляются автоматически.
  *
- * Пример: В этом примере паттерн Наблюдатель позволяет различным объектам наблюдать
- * за событиями, происходящими в пользовательском репозитории приложения.
+ * Пример: В этом примере паттерн Наблюдатель позволяет различным объектам
+ * наблюдать за событиями, происходящими в пользовательском репозитории
+ * приложения.
  *
- * Репозиторий генерирует различные типы событий и позволяет наблюдателям прослушивать
- * их все, а так же лишь отдельные из них.
+ * Репозиторий генерирует различные типы событий и позволяет наблюдателям
+ * прослушивать их все, а так же лишь отдельные из них.
  */
 
 /**
- * EN:
- * The UserRepository represents a Subject. Various objects are interested in
- * tracking its internal state, whether it's adding a new user or removing one.
+ * EN: The UserRepository represents a Subject. Various objects are interested
+ * in tracking its internal state, whether it's adding a new user or removing
+ * one.
  *
- * RU:
- * Пользовательский репозиторий представляет собой Издателя. Различные объекты
- * заинтересованы в отслеживании его внутреннего состояния, будь то добавление
- * нового пользователя или его удаление.
+ * RU: Пользовательский репозиторий представляет собой Издателя. Различные
+ * объекты заинтересованы в отслеживании его внутреннего состояния, будь то
+ * добавление нового пользователя или его удаление.
  */
 class UserRepository implements \SplSubject
 {
     /**
-     * EN:
-     * @var array The list of users.
+     * EN: @var array The list of users.
      *
-     * RU:
-     * @var array Список пользователей.
+     * RU: @var array Список пользователей.
      */
     private $users = [];
 
-    // EN:
-    // Here goes the actual Observer management infrastructure. Note that it's
-    // not everything that our class is responsible for. Its primary business
-    // logic is listed below these methods.
+    // EN: Here goes the actual Observer management infrastructure. Note that
+    // it's not everything that our class is responsible for. Its primary
+    // business logic is listed below these methods.
     //
-    // RU:
-    // Здесь находится реальная инфраструктура управления Наблюдателя. Обратите внимание,
-    // что это не всё, за что отвечает наш класс. Его основная бизнес-логика приведена
-    // ниже этих методов.
+    // RU: Здесь находится реальная инфраструктура управления Наблюдателя.
+    // Обратите внимание, что это не всё, за что отвечает наш класс. Его
+    // основная бизнес-логика приведена ниже этих методов.
 
     /**
      * @var array
@@ -66,12 +62,11 @@ class UserRepository implements \SplSubject
 
     public function __construct()
     {
-        // EN:
-        // A special event group for observers that want to listen to all
+        // EN: A special event group for observers that want to listen to all
         // events.
         //
-        // RU:
-        // Специальная группа событий для наблюдателей, которые хотят слушать все события.
+        // RU: Специальная группа событий для наблюдателей, которые хотят
+        // слушать все события.
         $this->observers["*"] = [];
     }
 
@@ -175,11 +170,10 @@ class UserRepository implements \SplSubject
 }
 
 /**
- * EN:
- * Let's keep the User class trivial since it's not the focus of our example.
+ * EN: Let's keep the User class trivial since it's not the focus of our
+ * example.
  *
- * RU:
- * Давайте сохраним класс Пользователя тривиальным, так как он не является
+ * RU: Давайте сохраним класс Пользователя тривиальным, так как он не является
  * главной темой нашего примера.
  */
 class User
@@ -193,11 +187,10 @@ class User
 }
 
 /**
- * EN:
- * This Concrete Component logs any events it's subscribed to.
+ * EN: This Concrete Component logs any events it's subscribed to.
  *
- * RU:
- * Этот Конкретный Компонент регистрирует все события, на которые он подписан.
+ * RU: Этот Конкретный Компонент регистрирует все события, на которые он
+ * подписан.
  */
 class Logger implements \SplObserver
 {
@@ -221,14 +214,13 @@ class Logger implements \SplObserver
 }
 
 /**
- * EN:
- * This Concrete Component sends initial instructions to new users. The client
- * is responsible for attaching this component to a proper user creation event.
+ * EN: This Concrete Component sends initial instructions to new users. The
+ * client is responsible for attaching this component to a proper user creation
+ * event.
  *
- * RU:
- * Этот Конкретный Компонент отправляет начальные инструкции новым пользователям.
- * Клиент несёт ответственность за присоединение этого компонента к соответствующему
- * событию создания пользователя.
+ * RU: Этот Конкретный Компонент отправляет начальные инструкции новым
+ * пользователям. Клиент несёт ответственность за присоединение этого компонента
+ * к соответствующему событию создания пользователя.
  */
 class OnboardingNotification implements \SplObserver
 {
@@ -250,11 +242,9 @@ class OnboardingNotification implements \SplObserver
 }
 
 /**
- * EN:
- * The client code.
+ * EN: The client code.
  *
- * RU:
- * Клиентский код.
+ * RU: Клиентский код.
  */
 
 $repository = new UserRepository();

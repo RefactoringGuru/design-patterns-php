@@ -14,35 +14,33 @@ namespace RefactoringGuru\Visitor\RealWorld;
  *
  * Company > Department > Employee
  *
- * Once the Visitor is addred to the app, you can easily add other
- * similar behaviors to app, without changing the existing classes.
+ * Once the Visitor is addred to the app, you can easily add other similar
+ * behaviors to app, without changing the existing classes.
  *
  * RU: Паттерн Посетитель
  *
- * Назначение: Позволяет добавлять в программу новые операции, не изменяя классы объектов,
- * над которыми эти операции могут выполняться.
+ * Назначение: Позволяет добавлять в программу новые операции, не изменяя классы
+ * объектов, над которыми эти операции могут выполняться.
  *
- * Пример: В этом примере паттерн Посетитель помогает внедрить функцию отчётности
- * в существующую иерархию классов:
+ * Пример: В этом примере паттерн Посетитель помогает внедрить функцию
+ * отчётности в существующую иерархию классов:
  *
  * Компания > Отдел > Сотрудник
  *
- * После реализации Посетителя вы можете легко добавлять в приложение другие подобные
- * поведения без изменения существующих классов.
+ * После реализации Посетителя вы можете легко добавлять в приложение другие
+ * подобные поведения без изменения существующих классов.
  */
 
 /**
- * EN:
- * The Component interface declares a method of accepting visitor objects.
+ * EN: The Component interface declares a method of accepting visitor objects.
  *
  * In this method, a Concrete Component must call a specific Visitor's method
  * that has the same parameter type as that component.
  *
- * RU:
- * Интерфейс Компонента объявляет метод принятия объектов-посетителей.
+ * RU: Интерфейс Компонента объявляет метод принятия объектов-посетителей.
  *
- * В этом методе Конкретный Компонент вызывает конкретный метод Посетителя,
- * с тем же типом параметра, что и у компонента.
+ * В этом методе Конкретный Компонент вызывает конкретный метод Посетителя, с
+ * тем же типом параметра, что и у компонента.
  */
 interface Entity
 {
@@ -50,11 +48,9 @@ interface Entity
 }
 
 /**
- * EN:
- * The Company Concrete Component.
+ * EN: The Company Concrete Component.
  *
- * RU:
- * Конкретный Компонент Компании.
+ * RU: Конкретный Компонент Компании.
  */
 class Company implements Entity
 {
@@ -95,11 +91,9 @@ class Company implements Entity
 }
 
 /**
- * EN:
- * The Department Concrete Component.
+ * EN: The Department Concrete Component.
  *
- * RU:
- * Конкретный Компонент Отдела.
+ * RU: Конкретный Компонент Отдела.
  */
 class Department implements Entity
 {
@@ -145,11 +139,9 @@ class Department implements Entity
 }
 
 /**
- * EN:
- * The Employee Concrete Component.
+ * EN: The Employee Concrete Component.
  *
- * RU:
- * Конкретный Компонент Сотрудника.
+ * RU: Конкретный Компонент Сотрудника.
  */
 class Employee implements Entity
 {
@@ -190,12 +182,10 @@ class Employee implements Entity
 }
 
 /**
- * EN:
- * The Visitor interface declares a set of visiting methods for each of the
+ * EN: The Visitor interface declares a set of visiting methods for each of the
  * Concrete Component classes.
  *
- * RU:
- * Интерфейс Посетителя объявляет набор методов посещения для каждого класса 
+ * RU: Интерфейс Посетителя объявляет набор методов посещения для каждого класса
  * Конкретного Компонента.
  */
 interface Visitor
@@ -208,12 +198,10 @@ interface Visitor
 }
 
 /**
- * EN:
- * The Concrete Visitor must provide implementations for every single class of
- * the Concrete Components.
+ * EN: The Concrete Visitor must provide implementations for every single class
+ * of the Concrete Components.
  *
- * RU:
- * Конкретный Посетитель должен предоставить реализации для каждого из
+ * RU: Конкретный Посетитель должен предоставить реализации для каждого из
  * классов Конкретных Компонентов.
  */
 class SalaryReport implements Visitor
@@ -258,11 +246,9 @@ class SalaryReport implements Visitor
 }
 
 /**
- * EN:
- * The client code.
+ * EN: The client code.
  *
- * RU:
- * Клиентский код.
+ * RU: Клиентский код.
  */
 
 $mobileDev = new Department("Mobile Development", [

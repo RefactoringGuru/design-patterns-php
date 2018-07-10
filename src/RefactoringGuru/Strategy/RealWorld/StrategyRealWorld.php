@@ -20,9 +20,9 @@ namespace RefactoringGuru\Strategy\RealWorld;
  *
  * RU: Паттерн Стратегия
  *
- * Назначение: Определяет семейство алгоритмов, инкапсулирует каждый из них
- * и делает взаимозаменяемыми. Стратегия позволяет изменять алгоритм независимо 
- * от клиентов, которые его используют.
+ * Назначение: Определяет семейство алгоритмов, инкапсулирует каждый из них и
+ * делает взаимозаменяемыми. Стратегия позволяет изменять алгоритм независимо от
+ * клиентов, которые его используют.
  *
  * Пример: В этом примере паттерн Стратегия используется для представления
  * способов оплаты в приложении электронной коммерции.
@@ -30,8 +30,8 @@ namespace RefactoringGuru\Strategy\RealWorld;
  * Каждый способ оплаты может отображать форму оплаты для сбора надлежащих
  * платёжных реквизитов пользователя и отправки его в компанию по обработке
  * платежей. После того, как компания по обработке платежей перенаправляет
- * пользователя обратно на сайт, метод оплаты проверяет возвращаемые параметры
- * и помогает решить, был ли заказ завершён.
+ * пользователя обратно на сайт, метод оплаты проверяет возвращаемые параметры и
+ * помогает решить, был ли заказ завершён.
  */
 
 /**
@@ -41,24 +41,22 @@ namespace RefactoringGuru\Strategy\RealWorld;
  * payment method it should use to process the request. Thus, the class acts as
  * the Context and the Client at the same time.
  *
- * RU: Это роутер и контроллер нашего приложения. Получив запрос, этот класс решает,
- * какое поведение должно выполняться. Когда приложение получает требование об оплате,
- * класс OrderController также решает, какой способ оплаты следует использовать
- * для его обработки. Таким образом, этот класс действует как Контекст
- * и в то же время как Клиент.
+ * RU: Это роутер и контроллер нашего приложения. Получив запрос, этот класс
+ * решает, какое поведение должно выполняться. Когда приложение получает
+ * требование об оплате, класс OrderController также решает, какой способ оплаты
+ * следует использовать для его обработки. Таким образом, этот класс действует
+ * как Контекст и в то же время как Клиент.
  */
 class OrderController
 {
     /**
-     * EN:
-     * Handle POST requests.
+     * EN: Handle POST requests.
      *
      * @param $url
      * @param $data
      * @throws \Exception
      *
-     * RU:
-     * Обрабатываем запросы POST.
+     * RU: Обрабатываем запросы POST.
      *
      * @param $url
      * @param $data
@@ -80,14 +78,12 @@ class OrderController
     }
 
     /**
-     * EN:
-     * Handle GET requests.
+     * EN: Handle GET requests.
      *
      * @param $url
      * @throws \Exception
      *
-     * RU:
-     * Обрабатываем запросы GET.
+     * RU: Обрабатываем запросы GET.
      *
      * @param $url
      * @throws \Exception
@@ -108,13 +104,11 @@ class OrderController
 
             $order = Order::get($matches[1]);
 
-            // EN:
-            // The payment method (strategy) is selected according to the value
-            // passed along with the request.
+            // EN: The payment method (strategy) is selected according to the
+            // value passed along with the request.
             //
-            // RU:
-            // Способ оплаты (стратегия) выбирается в соответствии со значением,
-            // переданным в запросе.
+            // RU: Способ оплаты (стратегия) выбирается в соответствии со
+            // значением, переданным в запросе.
             $paymentMethod = PaymentFactory::getPaymentMethod($matches[2]);
 
             if (! isset($matches[3])) {
@@ -153,11 +147,9 @@ class OrderController
      */
     public function getPayment(PaymentMethod $method, Order $order, array $data)
     {
-        // EN:
-        // The actual work is delegated to the payment method object.
+        // EN: The actual work is delegated to the payment method object.
         //
-        // RU:
-        // Фактическая работа делегируется объекту метода оплаты.
+        // RU: Фактическая работа делегируется объекту метода оплаты.
         $form = $method->getPaymentForm($order);
         print("Controller: here's the payment form:\n");
         print($form."\n");
@@ -169,11 +161,9 @@ class OrderController
     public function getPaymentReturn(PaymentMethod $method, Order $order, array $data)
     {
         try {
-            // EN:
-            // Another type of work delegated to the payment method.
+            // EN: Another type of work delegated to the payment method.
             //
-            // RU:
-            // Другой тип работы, делегированный методу оплаты.
+            // RU: Другой тип работы, делегированный методу оплаты.
             if ($method->validateReturn($order, $data)) {
                 print("Controller: Thanks for your order!\n");
                 $order->complete();
@@ -185,34 +175,28 @@ class OrderController
 }
 
 /**
- * EN:
- * A simplified representation of the Order class.
+ * EN: A simplified representation of the Order class.
  *
- * RU:
- * Упрощенное представление класса Заказа.
+ * RU: Упрощенное представление класса Заказа.
  */
 class Order
 {
     /**
-     * EN:
-     * For the sake of simplicity, we'll store all created orders here...
+     * EN: For the sake of simplicity, we'll store all created orders here...
      *
      * @var array
      *
-     * RU:
-     * Для простоты, мы будем хранить все созданные заказы здесь...
+     * RU: Для простоты, мы будем хранить все созданные заказы здесь...
      */
     private static $orders = [];
 
     /**
-     * EN:
-     * ...and access them from here.
+     * EN: ...and access them from here.
      *
      * @param int $orderId
      * @return mixed
      *
-     * RU:
-     * ...и получать к ним доступ отсюда.
+     * RU: ...и получать к ним доступ отсюда.
      *
      * @param int $orderId
      * @return mixed
@@ -227,15 +211,13 @@ class Order
     }
 
     /**
-     * EN:
-     * The Order constructor assigns the values of the order's fields. To keep
-     * things simple, there is no validation whatsoever.
+     * EN: The Order constructor assigns the values of the order's fields. To
+     * keep things simple, there is no validation whatsoever.
      *
      * @param array $attributes
      *
-     * RU:
-     * Конструктор Заказа присваивает значения полям заказа.
-     * Чтобы всё было просто, нет никакой проверки.
+     * RU: Конструктор Заказа присваивает значения полям заказа. Чтобы всё было
+     * просто, нет никакой проверки.
      *
      * @param array $attributes
      */
@@ -250,11 +232,9 @@ class Order
     }
 
     /**
-     * EN:
-     * The method to call when an order gets paid.
+     * EN: The method to call when an order gets paid.
      *
-     * RU:
-     * Метод позвонить при оплате заказа.
+     * RU: Метод позвонить при оплате заказа.
      */
     public function complete()
     {
@@ -264,24 +244,22 @@ class Order
 }
 
 /**
- * EN:
- * This class helps to produce a proper strategy object for handling a payment.
+ * EN: This class helps to produce a proper strategy object for handling a
+ * payment.
  *
- * RU:
- * Этот класс помогает создать правильный объект стратегии для обработки платежа.
+ * RU: Этот класс помогает создать правильный объект стратегии для обработки
+ * платежа.
  */
 class PaymentFactory
 {
     /**
-     * EN:
-     * Get a payment method by its ID.
+     * EN: Get a payment method by its ID.
      *
      * @param $id
      * @return PaymentMethod
      * @throws \Exception
      *
-     * RU:
-     * Получаем способ оплаты по его ID.
+     * RU: Получаем способ оплаты по его ID.
      *
      * @param $id
      * @return PaymentMethod
@@ -301,21 +279,19 @@ class PaymentFactory
 }
 
 /**
- * EN:
- * The Strategy interface describes how a client can use various Concrete
+ * EN: The Strategy interface describes how a client can use various Concrete
  * Strategies.
  *
  * Note that in most examples you can find on the Web, strategies tend to do
  * some tiny thing within one method. However, in reality, your strategies can
  * be much more robust (by having several methods, for example).
  *
- * RU:
- * Интерфейс Стратегии описывает, как клиент может использовать различные
+ * RU: Интерфейс Стратегии описывает, как клиент может использовать различные
  * Конкретные Стратегии.
  *
- * Обратите внимание, что в большинстве примеров, которые можно найти
- * в интернете, стратегии чаще всего делают какую-нибудь мелочь в рамках
- * одного метода.
+ * Обратите внимание, что в большинстве примеров, которые можно найти в
+ * интернете, стратегии чаще всего делают какую-нибудь мелочь в рамках одного
+ * метода.
  */
 interface PaymentMethod
 {
@@ -325,13 +301,11 @@ interface PaymentMethod
 }
 
 /**
- * EN:
- * This Concrete Strategy provides a payment form and validates returns for
+ * EN: This Concrete Strategy provides a payment form and validates returns for
  * credit card payments.
  *
- * RU:
- * Эта Конкретная Стратегия предоставляет форму оплаты и проверяет результаты
- * платежей кредитными картам.
+ * RU: Эта Конкретная Стратегия предоставляет форму оплаты и проверяет
+ * результаты платежей кредитными картам.
  */
 class CreditCardPayment implements PaymentMethod
 {
@@ -381,13 +355,11 @@ FORM;
 }
 
 /**
- * EN:
- * This Concrete Strategy provides a payment form and validates returns for
+ * EN: This Concrete Strategy provides a payment form and validates returns for
  * PayPal payments.
  *
- * RU:
- * Эта Конкретная Стратегия предоставляет форму оплаты и проверяет результаты
- * платежей PayPal.
+ * RU: Эта Конкретная Стратегия предоставляет форму оплаты и проверяет
+ * результаты платежей PayPal.
  */
 class PayPalPayment implements PaymentMethod
 {
@@ -419,11 +391,9 @@ FORM;
 }
 
 /**
- * EN:
- * The client code.
+ * EN: The client code.
  *
- * RU:
- * Клиентский код.
+ * RU: Клиентский код.
  */
 
 $controller = new OrderController();

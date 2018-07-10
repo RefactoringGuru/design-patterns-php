@@ -21,17 +21,16 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
  * подклассам решать, какого класса создавать экземпляр. Фабричный Метод
  * позволяет классу делегировать создание экземпляра подклассам.
  *
- * Пример: В этом примере паттерн Фабричный Метод предоставляет интерфейс
- * для создания коннекторов к социальным сетям, которые могут быть использованы
- * для входа в сеть, создания сообщений и, возможно, выполнения других
- * действий, – и всё это без привязки клиентского кода к определённым классам
- * конкретной социальной сети.
+ * Пример: В этом примере паттерн Фабричный Метод предоставляет интерфейс для
+ * создания коннекторов к социальным сетям, которые могут быть использованы для
+ * входа в сеть, создания сообщений и, возможно, выполнения других действий, – и
+ * всё это без привязки клиентского кода к определённым классам конкретной
+ * социальной сети.
  */
 
 /**
- * EN:
- * The Creator declares a factory method that can be used as a substitution for
- * the direct constructor calls of products, for instance:
+ * EN: The Creator declares a factory method that can be used as a substitution
+ * for the direct constructor calls of products, for instance:
  *
  * - Before: $p = new FacebookConnector()
  * - After: $p = $this->getSocialNetwork()
@@ -39,40 +38,36 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
  * This allows changing the type of the product being created by
  * SocialNetworkPoster's subclasses.
  *
- * RU:
- * Создатель объявляет фабричный метод, который может быть использован вместо
- * прямых вызовов конструктора продуктов, например:
+ * RU: Создатель объявляет фабричный метод, который может быть использован
+ * вместо прямых вызовов конструктора продуктов, например:
  *
  * - До: $p = new FacebookConnector()
  * - После: $p = $this->getSocialNetwork()
  *
- * Это позволяет подклассам SocialNetworkPoster изменять тип создаваемого продукта.
+ * Это позволяет подклассам SocialNetworkPoster изменять тип создаваемого
+ * продукта.
  */
 abstract class SocialNetworkPoster
 {
     /**
-     * EN:
-     * The actual factory method. Note that it returns the abstract connector.
-     * This lets subclasses return any concrete connectors without breaking the
-     * superclass' contract.
+     * EN: The actual factory method. Note that it returns the abstract
+     * connector. This lets subclasses return any concrete connectors without
+     * breaking the superclass' contract.
      *
-     * RU:
-     * Фактический фабричный метод. Обратите внимание, что он возвращает абстрактный
-     * коннектор. Это позволяет подклассам возвращать любые конкретные коннекторы
-     * без нарушения контракта суперкласса.
-     *
+     * RU: Фактический фабричный метод. Обратите внимание, что он возвращает
+     * абстрактный коннектор. Это позволяет подклассам возвращать любые
+     * конкретные коннекторы без нарушения контракта суперкласса.
      */
     public abstract function getSocialNetwork(): SocialNetworkConnector;
 
     /**
-     * EN:
-     * When the factory method is used inside the Creator's business logic, the
-     * subclasses may alter the logic indirectly by returning different types of
-     * the connector from the factory method.
+     * EN: When the factory method is used inside the Creator's business logic,
+     * the subclasses may alter the logic indirectly by returning different
+     * types of the connector from the factory method.
      *
-     * RU:
-     * Когда фабричный метод используется внутри бизнес-логики Создателя, подклассы могут
-     * изменять логику косвенно, возвращая из фабричного метода различные типы коннекторов.
+     * RU: Когда фабричный метод используется внутри бизнес-логики Создателя,
+     * подклассы могут изменять логику косвенно, возвращая из фабричного метода
+     * различные типы коннекторов.
      */
     public function post($content)
     {
@@ -90,15 +85,13 @@ abstract class SocialNetworkPoster
 }
 
 /**
- * EN:
- * This Concrete Creator supports Facebook. Remember that this class also
- * inherits the 'post' method from the parent class. Concrete Creators are the classes
- * that the Client actually uses.
+ * EN: This Concrete Creator supports Facebook. Remember that this class also
+ * inherits the 'post' method from the parent class. Concrete Creators are the
+ * classes that the Client actually uses.
  *
- * RU:
- * Этот Конкретный Создатель поддерживает Facebook. Помните, что этот класс также
- * наследует метод post от родительского класса. Конкретные Создатели — это классы,
- * которые фактически использует Клиент.
+ * RU: Этот Конкретный Создатель поддерживает Facebook. Помните, что этот класс
+ * также наследует метод post от родительского класса. Конкретные Создатели —
+ * это классы, которые фактически использует Клиент.
  */
 class FacebookPoster extends SocialNetworkPoster
 {
@@ -117,11 +110,9 @@ class FacebookPoster extends SocialNetworkPoster
 }
 
 /**
- * EN:
- * This Concrete Creator supports LinkedIn.
+ * EN: This Concrete Creator supports LinkedIn.
  *
- * RU:
- * Этот Конкретный Создатель поддерживает LinkedIn.
+ * RU: Этот Конкретный Создатель поддерживает LinkedIn.
  */
 class LinkedInPoster extends SocialNetworkPoster
 {
@@ -140,11 +131,9 @@ class LinkedInPoster extends SocialNetworkPoster
 }
 
 /**
- * EN:
- * The Product interface declares behaviors of various types of products.
+ * EN: The Product interface declares behaviors of various types of products.
  *
- * RU:
- * Интерфейс Продукта объявляет поведения различных типов продуктов.
+ * RU: Интерфейс Продукта объявляет поведения различных типов продуктов.
  */
 interface SocialNetworkConnector
 {
@@ -156,11 +145,9 @@ interface SocialNetworkConnector
 }
 
 /**
- * EN:
- * This Concrete Product implements the Facebook API.
+ * EN: This Concrete Product implements the Facebook API.
  *
- * RU:
- * Этот Конкретный Продукт реализует API Facebook.
+ * RU: Этот Конкретный Продукт реализует API Facebook.
  */
 class FacebookConnector implements SocialNetworkConnector
 {
@@ -190,11 +177,9 @@ class FacebookConnector implements SocialNetworkConnector
 }
 
 /**
- * EN:
- * This Concrete Product implements the LinkedIn API.
+ * EN: This Concrete Product implements the LinkedIn API.
  *
- * RU:
- * А этот Конкретный Продукт реализует API LinkedIn.
+ * RU: А этот Конкретный Продукт реализует API LinkedIn.
  */
 class LinkedInConnector implements SocialNetworkConnector
 {
@@ -224,13 +209,11 @@ class LinkedInConnector implements SocialNetworkConnector
 }
 
 /**
- * EN:
- * The client code can work with any subclass of SocialNetworkPoster since it
- * doesn't depend on concrete classes.
+ * EN: The client code can work with any subclass of SocialNetworkPoster since
+ * it doesn't depend on concrete classes.
  *
- * RU:
- * Клиентский код может работать с любым подклассом SocialNetworkPoster, так как
- * он не зависит от конкретных классов.
+ * RU: Клиентский код может работать с любым подклассом SocialNetworkPoster, так
+ * как он не зависит от конкретных классов.
  */
 function clientCode(SocialNetworkPoster $creator)
 {
@@ -241,14 +224,12 @@ function clientCode(SocialNetworkPoster $creator)
 }
 
 /**
- * EN:
- * During the initialization phase, the app can decide which social network it
- * wants to work with, create an object of the proper subclass, and pass it to
- * the client code.
+ * EN: During the initialization phase, the app can decide which social network
+ * it wants to work with, create an object of the proper subclass, and pass it
+ * to the client code.
  *
- * RU:
- * На этапе инициализации приложение может выбрать, с какой социальной сетью оно
- * хочет работать, создать объект соответствующего подкласса и передать его
+ * RU: На этапе инициализации приложение может выбрать, с какой социальной сетью
+ * оно хочет работать, создать объект соответствующего подкласса и передать его
  * клиентскому коду.
  */
 print("Testing ConcreteCreator1:\n");

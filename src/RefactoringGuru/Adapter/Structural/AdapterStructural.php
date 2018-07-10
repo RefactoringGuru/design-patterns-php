@@ -16,11 +16,10 @@ namespace RefactoringGuru\Adapter\Structural;
  */
 
 /**
- * EN:
- * The Target defines the domain-specific interface used by the client code.
+ * EN: The Target defines the domain-specific interface used by the client code.
  *
- * RU:
- * Целевой класс объявляет интерфейс, с которым может работать клиентский код.
+ * RU: Целевой класс объявляет интерфейс, с которым может работать клиентский
+ * код.
  */
 class Target
 {
@@ -31,15 +30,14 @@ class Target
 }
 
 /**
- * EN:
- * The Adaptee contains some useful behavior, but its interface is incompatible
- * with the existing client code. The Adaptee needs some adaptation before the
- * client code can use it.
+ * EN: The Adaptee contains some useful behavior, but its interface is
+ * incompatible with the existing client code. The Adaptee needs some adaptation
+ * before the client code can use it.
  *
- * RU:
- * Адаптируемый класс содержит некоторое полезное поведение, но его интерфейс несовместим 
- * с существующим клиентским кодом. Адаптируемый класс нуждается в некоторой доработке, 
- * прежде чем клиентский код сможет его использовать.
+ * RU: Адаптируемый класс содержит некоторое полезное поведение, но его
+ * интерфейс несовместим  с существующим клиентским кодом. Адаптируемый класс
+ * нуждается в некоторой доработке,  прежде чем клиентский код сможет его
+ * использовать.
  */
 class Adaptee
 {
@@ -50,12 +48,11 @@ class Adaptee
 }
 
 /**
- * EN:
- * The Adapter makes the Adaptee's interface compatible with the Target's
+ * EN: The Adapter makes the Adaptee's interface compatible with the Target's
  * interface.
  *
- * RU:
- * Адаптер делает интерфейс Адаптируемого класса совместимым с целевым интерфейсом.
+ * RU: Адаптер делает интерфейс Адаптируемого класса совместимым с целевым
+ * интерфейсом.
  */
 class Adapter extends Target
 {
@@ -73,11 +70,9 @@ class Adapter extends Target
 }
 
 /**
- * EN:
- * The client code supports all classes that follow the Target interface.
+ * EN: The client code supports all classes that follow the Target interface.
  *
- * RU:
- * Клиентский код поддерживает все классы, использующие целевой интерфейс.
+ * RU: Клиентский код поддерживает все классы, использующие целевой интерфейс.
  */
 function clientCode(Target $target)
 {

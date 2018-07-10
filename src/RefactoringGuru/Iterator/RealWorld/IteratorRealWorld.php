@@ -16,24 +16,22 @@ namespace RefactoringGuru\Iterator\RealWorld;
  *
  * RU: Паттерн Итератор
  *
- * Назначение: Предоставляет способ доступа к элементам составного объекта,
- * не раскрывая его внутреннего представления.
+ * Назначение: Предоставляет способ доступа к элементам составного объекта, не
+ * раскрывая его внутреннего представления.
  *
- * Пример: Так как PHP уже имеет встроенный интерфейс Итератора, который предоставляет
- * удобную интеграцию с циклами foreach, очень легко создать собственные итераторы
- * для обхода практически любой мыслимой структуры данных.
+ * Пример: Так как PHP уже имеет встроенный интерфейс Итератора, который
+ * предоставляет удобную интеграцию с циклами foreach, очень легко создать
+ * собственные итераторы для обхода практически любой мыслимой структуры данных.
  *
  * Этот пример паттерна Итератор предоставляет лёгкий доступ к CSV-файлам.
  */
 
 /**
- * EN:
- * CSV File Iterator.
+ * EN: CSV File Iterator.
  *
  * @author Josh Lockhart
  *
- * RU:
- * Итератор CSV-файлов.
+ * RU: Итератор CSV-файлов.
  *
  * @author Josh Lockhart
  */
@@ -42,60 +40,51 @@ class CsvIterator implements \Iterator
     const ROW_SIZE = 4096;
 
     /**
-     * EN:
-     * The pointer to the CSV file.
+     * EN: The pointer to the CSV file.
      *
      * @var resource
      *
-     * RU:
-     * Указатель на CSV-файл.
+     * RU: Указатель на CSV-файл.
      *
      * @var resource
      */
     protected $filePointer = null;
 
     /**
-     * EN:
-     * The current element, which is returned on each iteration.
+     * EN: The current element, which is returned on each iteration.
      *
      * @var array
      *
-     * RU:
-     * Текущий элемент, который возвращается на каждой итерации.
+     * RU: Текущий элемент, который возвращается на каждой итерации.
      *
      * @var array
      */
     protected $currentElement = null;
 
     /**
-     * EN:
-     * The row counter.
+     * EN: The row counter.
      *
      * @var int
      *
-     * RU:
-     * Счётчик строк.
-     * 
+     * RU: Счётчик строк.
+     *
      * @var int
      */
     protected $rowCounter = null;
 
     /**
-     * EN:
-     * The delimiter for the CSV file.
+     * EN: The delimiter for the CSV file.
      *
      * @var string
      *
-     * RU:
-     * Разделитель для CSV-файла.
+     * RU: Разделитель для CSV-файла.
      *
      * @var string
      */
     protected $delimiter = null;
 
     /**
-     * EN:
-     * The constructor tries to open the CSV file. It throws an exception on
+     * EN: The constructor tries to open the CSV file. It throws an exception on
      * failure.
      *
      * @param string $file The CSV file.
@@ -103,8 +92,8 @@ class CsvIterator implements \Iterator
      *
      * @throws \Exception
      *
-     * RU:
-     * Конструктор пытается открыть CSV-файл. Он выдаёт исключение при ошибке.
+     * RU: Конструктор пытается открыть CSV-файл. Он выдаёт исключение при
+     * ошибке.
      *
      * @param string $file CSV-файл.
      * @param string $delimiter Разделитель.
@@ -122,11 +111,9 @@ class CsvIterator implements \Iterator
     }
 
     /**
-     * EN:
-     * This method resets the file pointer.
+     * EN: This method resets the file pointer.
      *
-     * RU:
-     * Этот метод сбрасывает указатель файла.
+     * RU: Этот метод сбрасывает указатель файла.
      */
     public function rewind()
     {
@@ -135,13 +122,11 @@ class CsvIterator implements \Iterator
     }
 
     /**
-     * EN:
-     * This method returns the current CSV row as a 2-dimensional array.
+     * EN: This method returns the current CSV row as a 2-dimensional array.
      *
      * @return array The current CSV row as a 2-dimensional array.
      *
-     * RU:
-     * Этот метод возвращает текущую CSV-строку в виде двумерного массива.
+     * RU: Этот метод возвращает текущую CSV-строку в виде двумерного массива.
      *
      * @return array Текущая CSV-строка в виде двумерного массива.
      */
@@ -154,13 +139,11 @@ class CsvIterator implements \Iterator
     }
 
     /**
-     * EN:
-     * This method returns the current row number.
+     * EN: This method returns the current row number.
      *
      * @return int The current row number.
      *
-     * RU:
-     * Этот метод возвращает номер текущей строки.
+     * RU: Этот метод возвращает номер текущей строки.
      *
      * @return int Номер текущей строки.
      */
@@ -170,13 +153,11 @@ class CsvIterator implements \Iterator
     }
 
     /**
-     * EN:
-     * This method checks if the end of file has been reached.
+     * EN: This method checks if the end of file has been reached.
      *
      * @return boolean Returns true on EOF reached, false otherwise.
      *
-     * RU:
-     * Этот метод проверяет, достигнут ли конец файла.
+     * RU: Этот метод проверяет, достигнут ли конец файла.
      *
      * @return boolean Возвращает true при достижении EOF, в ином случае false.
      */
@@ -190,13 +171,11 @@ class CsvIterator implements \Iterator
     }
 
     /**
-     * EN:
-     * This method checks if the next row is a valid row.
+     * EN: This method checks if the next row is a valid row.
      *
      * @return boolean If the next row is a valid row.
      *
-     * RU:
-     * Этот метод проверяет, является ли следующая строка допустимой.
+     * RU: Этот метод проверяет, является ли следующая строка допустимой.
      *
      * @return boolean Если следующая строка является допустимой.
      */
@@ -215,11 +194,9 @@ class CsvIterator implements \Iterator
 }
 
 /**
- * EN:
- * The client code.
+ * EN: The client code.
  *
- * RU:
- * Клиентский код.
+ * RU: Клиентский код.
  */
 $csv = new CsvIterator(__DIR__ . '/cats.csv');
 
