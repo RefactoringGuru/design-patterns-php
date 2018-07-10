@@ -3,14 +3,24 @@
 namespace RefactoringGuru\Bridge\RealWorld;
 
 /**
- * EN: Example: In this example, the Page hierarchy acts as the Abstraction, and
+ * EN: Bridge Design Pattern
+ *
+ * Intent: Decouple an abstraction from its implementation so that the two can
+ * vary independently.
+ *
+ * Example: In this example, the Page hierarchy acts as the Abstraction, and
  * the Renderer hierarchy acts as the Implementation. Objects of the Page class
  * can assemble web pages of a particular kind using basic elements provided by
  * a Renderer object attached to that page. Since both of the class hierarchies
  * are separate, you can add a new Renderer class without changing any of the
  * Page classes and vice versa.
  *
- * RU: Пример: В этом примере иерархия Страницы выступает как Абстракция, а
+ * RU: Паттерн Мост
+ *
+ * Назначение: Разделяет абстракцию и реализацию, что позволяет изменять их
+ * независимо друг от друга.
+ *
+ * Пример: В этом примере иерархия Страницы выступает как Абстракция, а
  * иерархия Рендера как Реализация. Объекты класса Страница монтируют
  * веб-страницы определённого типа, используя базовые элементы,  которые
  * предоставляются объектом Рендер, прикреплённым к этой странице. Обе иерархии

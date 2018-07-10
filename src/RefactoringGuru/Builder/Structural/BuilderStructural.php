@@ -8,7 +8,9 @@ namespace RefactoringGuru\Builder\Structural;
  * Intent: Separate the construction of a complex object from its representation
  * so that the same construction process can create different representations.
  *
- * RU: Паттерн Строитель Назначение: Отделяет построение сложного объекта от его
+ * RU: Паттерн Строитель
+ *
+ * Назначение: Отделяет построение сложного объекта от его
  * представления так,  что один и тот же процесс построения может создавать
  * разные представления объекта.
  */
