@@ -20,7 +20,7 @@ use Iterator;
  * EN:
  * PHP has a built-in Iterator interface that provides a very convenient
  * integration with foreach loops.
- * 
+ *
  * Here's what the interface looks like:
  *
  * RU:

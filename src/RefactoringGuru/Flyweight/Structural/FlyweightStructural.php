@@ -4,7 +4,7 @@ namespace RefactoringGuru\Flyweight\Structural;
 
 /**
  * EN: Flyweight Design Pattern
- * 
+ *
  * Intent: Use sharing to fit more objects into the available amount of RAM by
  * sharing common parts of the object state among multiple objects, instead of
  * keeping the entire state in each object.

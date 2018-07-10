@@ -90,7 +90,7 @@ interface Implementation
  * EN:
  * Each Concrete Implementation corresponds to a specific platform and
  * implements the Implementation interface using that platform's API.
- * 
+ *
  * RU:
  * Каждая Конкретная Реализация соответствует определённой платформе 
  * и реализует интерфейс Реализации с использованием API этой платформы.

@@ -80,7 +80,7 @@ class EmailNotification implements Notification
  * The Adaptee is some useful class, incompatible with the Target interface. You
  * can't just go in and change the code of the class to follow the Target
  * interface, since the code might be provided by a 3rd-party library.
- * 
+ *
  * RU:
  * Адаптируемый класс – некий полезный класс, несовместимый с целевым интерфейсом. 
  * Нельзя просто войти и изменить код класса так, чтобы следовать целевому интерфейсу, 

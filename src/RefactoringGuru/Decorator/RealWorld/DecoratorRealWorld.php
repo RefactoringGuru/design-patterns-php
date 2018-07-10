@@ -220,7 +220,7 @@ class MarkdownFormat extends TextFormat
  * generated content. Since it works with formatters through the Component
  * interface, it doesn't care whether it gets a simple component object or a
  * decorated one.
- * 
+ *
  * RU:
  * Клиентский код может быть частью реального веб-сайта, который отображает
  * создаваемый пользователями контент. Поскольку он работает с модулями форматирования

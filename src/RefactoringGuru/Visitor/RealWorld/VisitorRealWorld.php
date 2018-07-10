@@ -4,7 +4,7 @@ namespace RefactoringGuru\Visitor\RealWorld;
 
 /**
  * EN: Visitor Design Pattern
- * 
+ *
  * Intent: Represent an operation to be performed over elements of an object
  * structure. The Visitor pattern lets you define a new operation without
  * changing the classes of the elements on which it operates.

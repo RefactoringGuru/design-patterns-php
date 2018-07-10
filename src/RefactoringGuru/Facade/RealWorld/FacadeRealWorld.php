@@ -18,6 +18,7 @@ namespace RefactoringGuru\Facade\RealWorld;
  * classes, the client uses a simple method on the Facade.
  *
  * RU: Паттерн Фасад
+ *
  * Назначение: Предоставляет единый интерфейс к ряду интерфейсов в подсистеме. 
  * Фасад определяет интерфейс более высокого уровня, который упрощает
  * использование подсистемы.
@@ -36,7 +37,7 @@ namespace RefactoringGuru\Facade\RealWorld;
  * The Facade provides a single method for downloading videos from YouTube. This
  * method hides all the complexity of the PHP network layer, YouTube API and the
  * video conversion library (FFmpeg).
- * 
+ *
  * RU:
  * Фасад предоставляет единый метод загрузки видео с YouTube. Этот метод скрывает
  * всю сложность сетевого уровня PHP, API YouTube и библиотеки преобразования

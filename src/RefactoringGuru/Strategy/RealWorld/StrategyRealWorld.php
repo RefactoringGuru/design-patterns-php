@@ -385,7 +385,7 @@ FORM;
  * This Concrete Strategy provides a payment form and validates returns for
  * PayPal payments.
  *
-  * RU:
+ * RU:
  * Эта Конкретная Стратегия предоставляет форму оплаты и проверяет результаты
  * платежей PayPal.
  */

@@ -8,9 +8,9 @@ namespace RefactoringGuru\TemplateMethod\Structural;
  * Intent: Define the skeleton of an algorithm, deferring implementation of some steps
  * to subclasses. Template Method lets subclasses redefine specific steps
  * of an algorithm without changing the algorithm's structure.
- * 
+ *
  * RU: Паттерн Шаблонный метод
- * 
+ *
  * Назначение: Определяет общую схему алгоритма, перекладывая реализацию некоторых шагов 
  * на подклассы. Шаблонный метод позволяет подклассам переопределять отдельные шаги алгоритма
  * без изменения структуры алгоритма.
@@ -106,7 +106,7 @@ abstract class AbstractClass
  * EN:
  * Concrete classes have to implement all abstract operations of the base class.
  * They can also override some operations with a default implementation.
- * 
+ *
  * RU:
  * Конкретные классы должны реализовать все абстрактные операции базового класса.
  * Они также могут переопределить некоторые операции с реализацией по умолчанию.
