@@ -133,7 +133,7 @@ class ConcreteVisitor2 implements Visitor
 {
     public function visitConcreteComponentA(ConcreteComponentA $element)
     {
-        print($element->exclusiveMethodOfConcreteComponentA()." + ConcreteVisitor1\n");
+        print($element->exclusiveMethodOfConcreteComponentA()." + ConcreteVisitor2\n");
     }
 
     public function visitConcreteComponentB(ConcreteComponentB $element)
