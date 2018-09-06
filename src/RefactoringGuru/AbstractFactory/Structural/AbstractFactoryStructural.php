@@ -129,10 +129,14 @@ interface AbstractProductB
     public function usefulFunctionB(): string;
 
     /**
-     * EN: The Abstract Factory makes sure that all products it creates are of
+     * EN: ...but it also can collaborate with the ProductA.
+     *
+     * The Abstract Factory makes sure that all products it creates are of
      * the same variation and thus, compatible.
      *
-     * RU: Абстрактная Фабрика гарантирует, что все продукты, которые она
+     * RU: ...а также взаимодействовать с Продуктами Б той же вариации.
+     *
+     * Абстрактная Фабрика гарантирует, что все продукты, которые она
      * создает, имеют одинаковую вариацию и, следовательно, совместимы.
      */
     public function anotherUsefulFunctionB(AbstractProductA $collaborator): string;
