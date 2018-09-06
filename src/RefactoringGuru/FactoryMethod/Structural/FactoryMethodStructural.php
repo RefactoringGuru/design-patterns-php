@@ -53,9 +53,13 @@ abstract class Creator
      */
     public function someOperation(): string
     {
-        // Call the factory method to create a Product object.
+        // EN: Call the factory method to create a Product object.
+        //
+        // RU: Вызываем фабричный метод, чтобы получить объект-продукт.
         $product = $this->factoryMethod();
-        // Now, use the product.
+        // EN: Now, use the product.
+        //
+        // RU: Далее, работаем с этим продуктом.
         $result = "Creator: The same creator's code has just worked with ".
             $product->operation();
 
