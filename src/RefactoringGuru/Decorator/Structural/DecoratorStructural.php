@@ -143,7 +143,7 @@ function clientCode(Component $component)
  * компоненты...
  */
 $simple = new ConcreteComponent();
-print("Client: I get a simple component:\n");
+print("Client: I've got a simple component:\n");
 clientCode($simple);
 print("\n\n");
 
@@ -160,5 +160,5 @@ print("\n\n");
  */
 $decorator1 = new ConcreteDecoratorA($simple);
 $decorator2 = new ConcreteDecoratorB($decorator1);
-print("Client: Now I get a decorated component:\n");
+print("Client: Now I've got a decorated component:\n");
 clientCode($decorator2);

@@ -222,11 +222,9 @@ function clientCode(Director $director)
     $director->buildFullFeaturedProduct();
     $builder->getProduct()->listParts();
 
- /**
-  * EN: Remember, the Builder pattern can be used without a Director class.
-  *
-  * RU: Помните, что паттерн Строитель можно использовать без класса Директор.
-  */
+    // EN: Remember, the Builder pattern can be used without a Director class.
+    //
+    // RU: Помните, что паттерн Строитель можно использовать без класса Директор.
     print("Custom product:\n");
     $builder->producePartA();
     $builder->producePartC();

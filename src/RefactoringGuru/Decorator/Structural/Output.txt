@@ -1,5 +1,5 @@
-Client: I get a simple component:
+Client: I've got a simple component:
 RESULT: ConcreteComponent
 
-Client: Now I get a decorated component:
+Client: Now I've got a decorated component:
 RESULT: ConcreteDecoratorB(ConcreteDecoratorA(ConcreteComponent))

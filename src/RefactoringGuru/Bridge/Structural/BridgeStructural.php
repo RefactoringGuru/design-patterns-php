@@ -98,7 +98,7 @@ class ConcreteImplementationA implements Implementation
 {
     public function operationImplementation()
     {
-        return "ConcreteImplementationA: The result in platform A.\n";
+        return "ConcreteImplementationA: Here's the result on the platform A.\n";
     }
 }
 
@@ -106,7 +106,7 @@ class ConcreteImplementationB implements Implementation
 {
     public function operationImplementation()
     {
-        return "ConcreteImplementationB: The result in platform B.\n";
+        return "ConcreteImplementationB: Here's the result on the platform B.\n";
     }
 }
 
@@ -131,7 +131,7 @@ function clientCode(Abstraction $abstraction)
 }
 
 /**
- * EN: The client code should be able to run with any pre-configured
+ * EN: The client code should be able to work with any pre-configured
  * abstraction-implementation combination.
  *
  * RU: Клиентский код должен работать с любой предварительно сконфигурированной

@@ -31,17 +31,6 @@ abstract class Component
     protected $parent;
 
     /**
-     * EN: The base Component may implement some default behavior or leave it to
-     * concrete classes (by declaring the method containing the behavior as
-     * "abstract").
-     *
-     * RU: Базовый Компонент может сам реализовать некоторое поведение по
-     * умолчанию или поручить это конкретным классам, объявив метод, содержащий
-     * поведение абстрактным.
-     */
-    public abstract function operation();
-
-    /**
      * EN: Optionally, the base Component can declare an interface for setting
      * and accessing a parent of the component in a tree structure. It can also
      * provide some default implementation for these methods.
@@ -89,6 +78,17 @@ abstract class Component
     {
         return false;
     }
+
+    /**
+     * EN: The base Component may implement some default behavior or leave it to
+     * concrete classes (by declaring the method containing the behavior as
+     * "abstract").
+     *
+     * RU: Базовый Компонент может сам реализовать некоторое поведение по
+     * умолчанию или поручить это конкретным классам, объявив метод, содержащий
+     * поведение абстрактным.
+     */
+    public abstract function operation();
 }
 
 /**
@@ -197,7 +197,7 @@ function clientCode(Component $component)
  * компоненты-листья...
  */
 $simple = new Leaf();
-print("Client: I get a simple component:\n");
+print("Client: I've got a simple component:\n");
 clientCode($simple);
 print("\n\n");
 
@@ -214,7 +214,7 @@ $branch2 = new Composite();
 $branch2->add(new Leaf());
 $tree->add($branch1);
 $tree->add($branch2);
-print("Client: Now I get a composite tree:\n");
+print("Client: Now I've got a composite tree:\n");
 clientCode($tree);
 print("\n\n");
 
@@ -239,5 +239,5 @@ function clientCode2(Component $component1, Component $component2)
     // ...
 }
 
-print("Client: I can merge two components without checking their classes:\n");
+print("Client: I don't need to check the components classes even when managing the tree:\n");
 clientCode2($tree, $simple);

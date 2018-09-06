@@ -218,10 +218,10 @@ function clientCode(AbstractFactory $factory)
  *
  * RU: Клиентский код может работать с любым конкретным классом фабрики.
  */
-print("Client: Testing client code with the first factory type...\n");
+print("Client: Testing client code with the first factory type:\n");
 clientCode(new ConcreteFactory1());
 
 print("\n");
 
-print("Client: Testing the same client code with the second factory type...\n");
+print("Client: Testing the same client code with the second factory type:\n");
 clientCode(new ConcreteFactory2());
