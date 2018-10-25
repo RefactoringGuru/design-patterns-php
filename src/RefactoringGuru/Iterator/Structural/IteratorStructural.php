@@ -17,9 +17,59 @@ namespace RefactoringGuru\Iterator\Structural;
 use Iterator;
 
 /**
- * EN: There's also a built-in interface for collections:
+ * EN: PHP has a built-in Iterator interface that provides a very convenient
+ * integration with foreach loops. Here's how the interface looks like:
  *
- * RU: Также есть встроенный интерфейс для коллекций:
+ * @link http://php.net/manual/en/class.iterator.php
+ *
+ *     interface Iterator extends Traversable {
+ *         // Return the current element
+ *         public function current();
+ *
+ *         // Move forward to next element
+ *         public function next();
+ *
+ *         // Return the key of the current element
+ *         public function key();
+ *
+ *         // Checks if current position is valid
+ *         public function valid();
+ *
+ *         // Rewind the Iterator to the first element
+ *         public function rewind();
+ *     }
+ *
+ * There's also a built-in interface for collections:
+ *
+ * @link http://php.net/manual/en/class.iteratoraggregate.php
+ *
+ *     interface IteratorAggregate extends Traversable {
+ *         public getIterator(): Traversable;
+ *     }
+ *
+ * RU: PHP имеет встроенный интерфейс Итератора, который предоставляет очень
+ * удобную интеграцию с циклами foreach. Вот как выглядит интерфейс:
+ *
+ * @link http://php.net/manual/en/class.iterator.php
+ *
+ *     interface Iterator extends Traversable {
+ *         // Возврат текущего элемента.
+ *         public function current();
+ *
+ *         // Переход к следующему элементу.
+ *         public function next();
+ *
+ *         // Возврат ключа текущего элемента.
+ *         public function key();
+ *
+ *         // Проверяет корректность текущей позиции.
+ *         public function valid();
+ *
+ *         // Перемотка Итератора к первому элементу.
+ *         public function rewind();
+ *     }
+ *
+ * Также есть встроенный интерфейс для коллекций:
  *
  * @link http://php.net/manual/en/class.iteratoraggregate.php
  *
