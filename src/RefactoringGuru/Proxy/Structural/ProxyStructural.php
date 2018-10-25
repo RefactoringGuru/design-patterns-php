@@ -96,8 +96,9 @@ class Proxy implements Subject
 
     private function checkAccess()
     {
-        // EN: Some real checks should go here. RU: Некоторые реальные проверки
-        // должны проходить здесь.
+        // EN: Some real checks should go here.
+        //
+        // RU: Некоторые реальные проверки должны проходить здесь.
         print("Proxy: Checking access prior to firing a real request.\n");
 
         return true;
