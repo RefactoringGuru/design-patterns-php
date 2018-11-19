@@ -84,25 +84,25 @@ class TwigTemplateFactory implements TemplateFactory
 
     public function createPageTemplate(): PageTemplate
     {
-        return new TwigPageTemplate();
+        return new TwigPageTemplate($this->createTitleTemplate());
     }
 }
 
 /**
- * EN: And this Concrete Factory creates Blade templates.
+ * EN: And this Concrete Factory creates PHPTemplate templates.
  *
- * RU: А эта Конкретная Фабрика создает шаблоны Blade.
+ * RU: А эта Конкретная Фабрика создает шаблоны PHPTemplate.
  */
-class BladeFactory implements TemplateFactory
+class PHPTemplateFactory implements TemplateFactory
 {
     public function createTitleTemplate(): TitleTemplate
     {
-        return new BladeTitleTemplate();
+        return new PHPTemplateTitleTemplate();
     }
 
     public function createPageTemplate(): PageTemplate
     {
-        return new BladePageTemplate();
+        return new PHPTemplatePageTemplate($this->createTitleTemplate());
     }
 }
 
@@ -121,7 +121,7 @@ class BladeFactory implements TemplateFactory
  */
 interface TitleTemplate
 {
-    public function render(): string;
+    public function getTemplateString(): string;
 }
 
 /**
@@ -131,20 +131,20 @@ interface TitleTemplate
  */
 class TwigTitleTemplate implements TitleTemplate
 {
-    public function render(): string
+    public function getTemplateString(): string
     {
         return "<h1>{{ title }}</h1>";
     }
 }
 
 /**
- * EN: And this Concrete Product provides Blade page title templates.
+ * EN: And this Concrete Product provides PHPTemplate page title templates.
  *
- * RU: А этот Конкретный Продукт предоставляет шаблоны заголовков страниц Blade.
+ * RU: А этот Конкретный Продукт предоставляет шаблоны заголовков страниц PHPTemplate.
  */
-class BladeTitleTemplate implements TitleTemplate
+class PHPTemplateTitleTemplate implements TitleTemplate
 {
-    public function render(): string
+    public function getTemplateString(): string
     {
         return "<h1><?php print(\$title) ?></h1>";
     }
@@ -159,7 +159,26 @@ class BladeTitleTemplate implements TitleTemplate
  */
 interface PageTemplate
 {
-    public function render(TitleTemplate $titleTemplate): string;
+    public function getTemplateString(): string;
+}
+
+/**
+ * EN: The page template uses the title sub-template, so we have to provide the
+ * way to set it in the sub-template object. The abstract factory will link the
+ * page template with a title template of the same variant.
+ *
+ * RU: Шаблон страниц использует под-шаблон заголовков, поэтому мы должны
+ * предоставить способ установить объект для этого под-шаблона. Абстрактная
+ * фабрика позаботится о том, чтобы подать сюда под-шаблон подходящего типа.
+ */
+abstract class BasePageTemplate implements PageTemplate
+{
+    protected $titleTemplate;
+
+    public function __construct(TitleTemplate $titleTemplate)
+    {
+        $this->titleTemplate = $titleTemplate;
+    }
 }
 
 /**
@@ -167,14 +186,14 @@ interface PageTemplate
  *
  * RU: Вариант шаблонов страниц Twig.
  */
-class TwigPageTemplate implements PageTemplate
+class TwigPageTemplate extends BasePageTemplate
 {
-    public function render(TitleTemplate $titleTemplate): string
+    public function getTemplateString(): string
     {
-        $title = $titleTemplate->render();
+        $renderedTitle = $this->titleTemplate->getTemplateString();
         return <<<EOF
 <div class="page">
-  $title
+  $renderedTitle
   <article class="content">{{ content }}</article>
 </div>
 EOF;
@@ -182,18 +201,18 @@ EOF;
 }
 
 /**
- * EN: The Blade variant of the whole page templates.
+ * EN: The PHPTemplate variant of the whole page templates.
  *
- * RU: Вариант шаблонов страниц Blade.
+ * RU: Вариант шаблонов страниц PHPTemplate.
  */
-class BladePageTemplate implements PageTemplate
+class PHPTemplatePageTemplate extends BasePageTemplate
 {
-    public function render(TitleTemplate $titleTemplate): string
+    public function getTemplateString(): string
     {
-        $title = $titleTemplate->render();
+        $renderedTitle = $this->titleTemplate->getTemplateString();
         return <<<EOF
 <div class="page">
-  $title
+  $renderedTitle
   <article class="content"><?php print(\$content) ?></article>
 </div>
 EOF;
@@ -210,10 +229,18 @@ EOF;
  */
 function templateRenderer(TemplateFactory $factory)
 {
-    $titleTemplate = $factory->createTitleTemplate();
     $pageTemplate = $factory->createPageTemplate();
 
-    print($pageTemplate->render($titleTemplate));
+    print($pageTemplate->getTemplateString());
+
+    // EN: Here's how would you use the template further in real life:
+    //
+    // RU: Вот как вы бы использовали этот шаблон в дальнейшем:
+
+    // Twig::render($pageTemplate->getTemplateString(), [
+    //     'title' => $page->title,
+    //     'content' => $page->content,
+    // ]);
 }
 
 /**
@@ -227,5 +254,5 @@ print("Testing rendering with the Twig factory:\n");
 templateRenderer(new TwigTemplateFactory());
 print("\n\n");
 
-print("Testing rendering with the Blade factory:\n");
-templateRenderer(new BladeFactory());
+print("Testing rendering with the PHPTemplate factory:\n");
+templateRenderer(new PHPTemplateFactory());
