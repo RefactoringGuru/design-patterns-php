@@ -108,7 +108,7 @@ class DogHandler extends AbstractHandler
         if ($request == "MeatBall") {
             return "Dog: I'll eat the ".$request.".\n";
         } else {
-            parent::handle($request);
+            return parent::handle($request);
         }
     }
 }

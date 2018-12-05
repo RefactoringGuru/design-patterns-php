@@ -128,7 +128,7 @@ function clientCode(Subject $subject)
 {
     // ...
 
-    print($subject->request());
+    $subject->request();
 
     // ...
 }

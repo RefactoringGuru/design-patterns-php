@@ -106,8 +106,9 @@ class YouTube
 
     function saveAs($path) { /* ... */ }
 
-    // EN: ...more methods and classes... RU: ...дополнительные методы и
-    // классы...
+    // EN: ...more methods and classes...
+    //
+    // RU: ...дополнительные методы и классы...
 }
 
 /**
