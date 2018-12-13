@@ -42,7 +42,7 @@ class SimpleCommand implements Command
 
     public function execute()
     {
-        print("SimpleCommand: See, I can do simple things like printing (".$this->payload.")\n");
+        echo "SimpleCommand: See, I can do simple things like printing (".$this->payload.")\n";
     }
 }
 
@@ -91,7 +91,7 @@ class ComplexCommand implements Command
      */
     public function execute()
     {
-        print("ComplexCommand: Complex stuff should be done by a receiver object.\n");
+        echo "ComplexCommand: Complex stuff should be done by a receiver object.\n";
         $this->receiver->doSomething($this->a);
         $this->receiver->doSomethingElse($this->b);
     }
@@ -110,12 +110,12 @@ class Receiver
 {
     public function doSomething($a)
     {
-        print("Receiver: Working on (".$a.".)\n");
+        echo "Receiver: Working on (".$a.".)\n";
     }
 
     public function doSomethingElse($b)
     {
-        print("Receiver: Also working on (".$b.".)\n");
+        echo "Receiver: Also working on (".$b.".)\n";
     }
 }
 
@@ -165,14 +165,14 @@ class Invoker
      */
     public function doSomethingImportant()
     {
-        print("Invoker: Does anybody want something done before I begin?\n");
+        echo "Invoker: Does anybody want something done before I begin?\n";
         if ($this->onStart instanceof Command) {
             $this->onStart->execute();
         }
 
-        print("Invoker: ...doing something really important...\n");
+        echo "Invoker: ...doing something really important...\n";
 
-        print("Invoker: Does anybody want something done after I finish?\n");
+        echo "Invoker: Does anybody want something done after I finish?\n";
         if ($this->onFinish instanceof Command) {
             $this->onFinish->execute();
         }

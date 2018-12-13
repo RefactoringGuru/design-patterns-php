@@ -218,7 +218,7 @@ function displayCommentAsAWebsite(InputFormat $format, string $text)
 {
     // ..
 
-    print($format->formatText($text));
+    echo $format->formatText($text);
 
     // ..
 }
@@ -249,9 +249,9 @@ HERE;
  * RU: Наивное отображение комментариев (небезопасное).
  */
 $naiveInput = new TextInput();
-print("Website renders comments without filtering (unsafe):\n");
+echo "Website renders comments without filtering (unsafe):\n";
 displayCommentAsAWebsite($naiveInput, $dangerousComment);
-print("\n\n\n");
+echo "\n\n\n";
 
 /**
  * EN: Filtered comment rendering (safe).
@@ -259,9 +259,9 @@ print("\n\n\n");
  * RU: Отфильтрованное отображение комментариев (безопасное).
  */
 $filteredInput = new PlainTextFilter($naiveInput);
-print("Website renders comments after stripping all tags (safe):\n");
+echo "Website renders comments after stripping all tags (safe):\n";
 displayCommentAsAWebsite($filteredInput, $dangerousComment);
-print("\n\n\n");
+echo "\n\n\n";
 
 
 /**
@@ -287,9 +287,9 @@ HERE;
  * RU: Наивное отображение сообщений (небезопасное, без форматирования).
  */
 $naiveInput = new TextInput();
-print("Website renders a forum post without filtering and formatting (unsafe, ugly):\n");
+echo "Website renders a forum post without filtering and formatting (unsafe, ugly):\n";
 displayCommentAsAWebsite($naiveInput, $dangerousForumPost);
-print("\n\n\n");
+echo "\n\n\n";
 
 /**
  * EN: Markdown formatter + filtering dangerous tags (safe, pretty).
@@ -299,8 +299,8 @@ print("\n\n\n");
 $text = new TextInput();
 $markdown = new MarkdownFormat($text);
 $filteredInput = new DangerousHTMLTagsFilter($markdown);
-print("Website renders a forum post after translating markdown markup" .
-    "and filtering some dangerous HTML tags and attributes (safe, pretty):\n");
+echo "Website renders a forum post after translating markdown markup" .
+    "and filtering some dangerous HTML tags and attributes (safe, pretty):\n";
 displayCommentAsAWebsite($filteredInput, $dangerousForumPost);
-print("\n\n\n");
+echo "\n\n\n";
 

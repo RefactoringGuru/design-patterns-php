@@ -64,7 +64,7 @@ class OrderController
      */
     public function post($url, $data)
     {
-        print("Controller: POST request to $url with ".json_encode($data)."\n");
+        echo "Controller: POST request to $url with ".json_encode($data)."\n";
 
         $path = parse_url($url, PHP_URL_PATH);
 
@@ -73,7 +73,7 @@ class OrderController
             $this->postNewOrder($data);
 
         } else {
-            print("Controller: 404 page\n");
+            echo "Controller: 404 page\n";
         }
     }
 
@@ -90,7 +90,7 @@ class OrderController
      */
     public function get($url)
     {
-        print("Controller: GET request to $url\n");
+        echo "Controller: GET request to $url\n";
 
         $path = parse_url($url, PHP_URL_PATH);
         $query = parse_url($url, PHP_URL_QUERY);
@@ -118,7 +118,7 @@ class OrderController
             }
 
         } else {
-            print("Controller: 404 page\n");
+            echo "Controller: 404 page\n";
         }
     }
 
@@ -128,7 +128,7 @@ class OrderController
     public function postNewOrder(array $data)
     {
         $order = new Order($data);
-        print("Controller: Created the order #{$order->id}.\n");
+        echo "Controller: Created the order #{$order->id}.\n";
     }
 
     /**
@@ -136,9 +136,9 @@ class OrderController
      */
     public function getAllOrders()
     {
-        print("Controller: Here's all orders:\n");
+        echo "Controller: Here's all orders:\n";
         foreach (Order::get() as $order) {
-            print(json_encode($order, JSON_PRETTY_PRINT)."\n");
+            echo json_encode($order, JSON_PRETTY_PRINT)."\n";
         }
     }
 
@@ -151,8 +151,8 @@ class OrderController
         //
         // RU: Фактическая работа делегируется объекту метода оплаты.
         $form = $method->getPaymentForm($order);
-        print("Controller: here's the payment form:\n");
-        print($form."\n");
+        echo "Controller: here's the payment form:\n";
+        echo $form."\n";
     }
 
     /**
@@ -165,11 +165,11 @@ class OrderController
             //
             // RU: Другой тип работы, делегированный методу оплаты.
             if ($method->validateReturn($order, $data)) {
-                print("Controller: Thanks for your order!\n");
+                echo "Controller: Thanks for your order!\n";
                 $order->complete();
             }
         } catch (\Exception $e) {
-            print("Controller: got an exception (".$e->getMessage().")\n");
+            echo "Controller: got an exception (".$e->getMessage().")\n";
         }
     }
 }
@@ -239,7 +239,7 @@ class Order
     public function complete()
     {
         $this->status = "completed";
-        print("Order: #{$this->id} is now {$this->status}.");
+        echo "Order: #{$this->id} is now {$this->status}.";
     }
 }
 
@@ -332,7 +332,7 @@ FORM;
 
     public function validateReturn(Order $order, $data): bool
     {
-        print("CreditCardPayment: ...validating... ");
+        echo "CreditCardPayment: ...validating... ";
 
         if ($data['key'] != md5($order->id.static::$store_secret_key)) {
             throw new \Exception("Payment key is wrong.");
@@ -348,7 +348,7 @@ FORM;
             throw new \Exception("Payment amount is wrong.");
         }
 
-        print("Done!\n");
+        echo "Done!\n";
 
         return true;
     }
@@ -380,11 +380,11 @@ FORM;
 
     public function validateReturn(Order $order, $data): bool
     {
-        print("PayPalPayment: ...validating... ");
+        echo "PayPalPayment: ...validating... ";
 
         // ...
 
-        print("Done!\n");
+        echo "Done!\n";
 
         return true;
     }
@@ -398,7 +398,7 @@ FORM;
 
 $controller = new OrderController();
 
-print("Client: Let's create some orders\n");
+echo "Client: Let's create some orders\n";
 
 $controller->post("/orders", [
     "email" => "me@example.com",
@@ -412,18 +412,18 @@ $controller->post("/orders", [
     "total" => 19.95,
 ]);
 
-print("\nClient: List my orders, please\n");
+echo "\nClient: List my orders, please\n";
 
 $controller->get("/orders");
 
-print("\nClient: I'd like to pay for the second, show me the payment form\n");
+echo "\nClient: I'd like to pay for the second, show me the payment form\n";
 
 $controller->get("/order/1/payment/paypal");
 
-print("\nClient: ...pushes the Pay button...\n");
-print("\nClient: Oh, I'm redirected to the PayPal.\n");
-print("\nClient: ...pays on the PayPal...\n");
-print("\nClient: Alright, I'm back with you, guys.\n");
+echo "\nClient: ...pushes the Pay button...\n";
+echo "\nClient: Oh, I'm redirected to the PayPal.\n";
+echo "\nClient: ...pays on the PayPal...\n";
+echo "\nClient: Alright, I'm back with you, guys.\n";
 
 $controller->get("/order/1/payment/paypal/return".
     "?key=c55a3964833a4b0fa4469ea94a057152&success=true&total=19.95");

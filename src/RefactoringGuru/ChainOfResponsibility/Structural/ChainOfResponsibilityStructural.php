@@ -124,12 +124,12 @@ class DogHandler extends AbstractHandler
 function clientCode(Handler $handler)
 {
     foreach (["Nut", "Banana", "Cup of coffee"] as $food) {
-        print("Client: Who wants a ".$food."?\n");
+        echo "Client: Who wants a ".$food."?\n";
         $result = $handler->handle($food);
         if ($result) {
-            print("  ".$result);
+            echo "  ".$result;
         } else {
-            print("  ".$food." was left untouched.\n");
+            echo "  ".$food." was left untouched.\n";
         }
     }
 }
@@ -152,9 +152,9 @@ $monkey->setNext($squirrel)->setNext($dog);
  * RU: Клиент должен иметь возможность отправлять запрос любому обработчику, а
  * не только первому в цепочке.
  */
-print("Chain: Monkey > Squirrel > Dog\n\n");
+echo "Chain: Monkey > Squirrel > Dog\n\n";
 clientCode($monkey);
-print("\n");
+echo "\n";
 
-print("Subchain: Squirrel > Dog\n\n");
+echo "Subchain: Squirrel > Dog\n\n";
 clientCode($squirrel);

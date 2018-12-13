@@ -144,7 +144,7 @@ class Product1
 
     public function listParts()
     {
-        print("Product parts: ".implode(', ', $this->parts)."\n\n");
+        echo "Product parts: ".implode(', ', $this->parts)."\n\n";
     }
 }
 
@@ -214,18 +214,18 @@ function clientCode(Director $director)
     $builder = new ConcreteBuilder1();
     $director->setBuilder($builder);
 
-    print("Standard basic product:\n");
+    echo "Standard basic product:\n";
     $director->buildMinimalViableProduct();
     $builder->getProduct()->listParts();
 
-    print("Standard full featured product:\n");
+    echo "Standard full featured product:\n";
     $director->buildFullFeaturedProduct();
     $builder->getProduct()->listParts();
 
     // EN: Remember, the Builder pattern can be used without a Director class.
     //
     // RU: Помните, что паттерн Строитель можно использовать без класса Директор.
-    print("Custom product:\n");
+    echo "Custom product:\n";
     $builder->producePartA();
     $builder->producePartC();
     $builder->getProduct()->listParts();

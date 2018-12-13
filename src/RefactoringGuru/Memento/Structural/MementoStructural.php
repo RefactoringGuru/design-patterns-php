@@ -38,7 +38,7 @@ class Originator
     public function __construct($state)
     {
         $this->state = $state;
-        print("Originator: My initial state is: {$this->state}\n");
+        echo "Originator: My initial state is: {$this->state}\n";
     }
 
     /**
@@ -52,9 +52,9 @@ class Originator
      */
     public function doSomething()
     {
-        print("Originator: I'm doing something important.\n");
+        echo "Originator: I'm doing something important.\n";
         $this->state = $this->generateRandomString(30);
-        print("Originator: and my state has changed to: {$this->state}\n");
+        echo "Originator: and my state has changed to: {$this->state}\n";
     }
 
     private function generateRandomString($length = 10)
@@ -93,7 +93,7 @@ class Originator
         }
 
         $this->state = $memento->getState();
-        print("Originator: My state has changed to: {$this->state}\n");
+        echo "Originator: My state has changed to: {$this->state}\n";
     }
 }
 
@@ -187,7 +187,7 @@ class Caretaker
 
     public function backup()
     {
-        print("\nCaretaker: Saving Originator's state...\n");
+        echo "\nCaretaker: Saving Originator's state...\n";
         $this->mementos[] = $this->originator->save();
     }
 
@@ -198,7 +198,7 @@ class Caretaker
         }
         $memento = array_pop($this->mementos);
 
-        print("Caretaker: Restoring state to: ".$memento->getName()."\n");
+        echo "Caretaker: Restoring state to: ".$memento->getName()."\n";
         try {
             $this->originator->restore($memento);
         } catch (\Exception $e) {
@@ -208,9 +208,9 @@ class Caretaker
 
     public function showHistory()
     {
-        print("Caretaker: Here's the list of mementos:\n");
+        echo "Caretaker: Here's the list of mementos:\n";
         foreach ($this->mementos as $memento) {
-            print($memento->getName()."\n");
+            echo $memento->getName()."\n";
         }
     }
 }
@@ -232,11 +232,11 @@ $originator->doSomething();
 $caretaker->backup();
 $originator->doSomething();
 
-print("\n");
+echo "\n";
 $caretaker->showHistory();
 
-print("\nClient: Now, let's rollback!\n\n");
+echo "\nClient: Now, let's rollback!\n\n";
 $caretaker->undo();
 
-print("\nClient: Once more!\n\n");
+echo "\nClient: Once more!\n\n";
 $caretaker->undo();

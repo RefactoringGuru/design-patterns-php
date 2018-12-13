@@ -161,18 +161,18 @@ class FacebookConnector implements SocialNetworkConnector
 
     public function logIn()
     {
-        print("Send HTTP API request to log in user $this->login with " .
-            "password $this->password\n");
+        echo "Send HTTP API request to log in user $this->login with " .
+            "password $this->password\n";
     }
 
     public function logOut()
     {
-        print("Send HTTP API request to log out user $this->login\n");
+        echo "Send HTTP API request to log out user $this->login\n";
     }
 
     public function createPost($content)
     {
-        print("Send HTTP API requests to create a post in Facebook timeline.\n");
+        echo "Send HTTP API requests to create a post in Facebook timeline.\n";
     }
 }
 
@@ -193,18 +193,18 @@ class LinkedInConnector implements SocialNetworkConnector
 
     public function logIn()
     {
-        print("Send HTTP API request to log in user $this->email with " .
-            "password $this->password\n");
+        echo "Send HTTP API request to log in user $this->email with " .
+            "password $this->password\n";
     }
 
     public function logOut()
     {
-        print("Send HTTP API request to log out user $this->email\n");
+        echo "Send HTTP API request to log out user $this->email\n";
     }
 
     public function createPost($content)
     {
-        print("Send HTTP API requests to create a post in LinkedIn timeline.\n");
+        echo "Send HTTP API requests to create a post in LinkedIn timeline.\n";
     }
 }
 
@@ -232,9 +232,9 @@ function clientCode(SocialNetworkPoster $creator)
  * оно хочет работать, создать объект соответствующего подкласса и передать его
  * клиентскому коду.
  */
-print("Testing ConcreteCreator1:\n");
+echo "Testing ConcreteCreator1:\n";
 clientCode(new FacebookPoster("john_smith", "******"));
-print("\n\n");
+echo "\n\n";
 
-print("Testing ConcreteCreator2:\n");
+echo "Testing ConcreteCreator2:\n";
 clientCode(new LinkedInPoster("john_smith@example.com", "******"));

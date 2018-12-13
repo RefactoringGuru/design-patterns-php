@@ -72,9 +72,9 @@ class Context
     {
         // ...
 
-        print("Context: Sorting data using the strategy (not sure how it'll do it)\n");
+        echo "Context: Sorting data using the strategy (not sure how it'll do it)\n";
         $result = $this->strategy->doAlgorithm(["a", "b", "c", "d", "e"]);
-        print(implode(",", $result)."\n");
+        echo implode(",", $result)."\n";
 
         // ...
     }
@@ -136,11 +136,11 @@ class ConcreteStrategyB implements Strategy
  */
 $context = new Context();
 
-print("Client: Strategy is set to normal sorting.\n");
+echo "Client: Strategy is set to normal sorting.\n";
 $context->setStrategy(new ConcreteStrategyA());
 $context->doSomeBusinessLogic();
-print("\n");
+echo "\n";
 
-print("Client: Strategy is set to reverse sorting.\n");
+echo "Client: Strategy is set to reverse sorting.\n";
 $context->setStrategy(new ConcreteStrategyB());
 $context->doSomeBusinessLogic();

@@ -76,19 +76,19 @@ class Adapter extends Target
  */
 function clientCode(Target $target)
 {
-    print($target->request());
+    echo $target->request();
 }
 
-print("Client: I can work just fine with the Target objects:\n");
+echo "Client: I can work just fine with the Target objects:\n";
 $target = new Target();
 clientCode($target);
-print("\n\n");
+echo "\n\n";
 
 $adaptee = new Adaptee();
-print("Client: The Adaptee class has a weird interface. See, I don't understand it:\n");
-print("Adaptee: " . $adaptee->specificRequest());
-print("\n\n");
+echo "Client: The Adaptee class has a weird interface. See, I don't understand it:\n";
+echo "Adaptee: " . $adaptee->specificRequest();
+echo "\n\n";
 
-print("Client: But I can work with it via the Adapter:\n");
+echo "Client: But I can work with it via the Adapter:\n";
 $adapter = new Adapter($adaptee);
 clientCode($adapter);

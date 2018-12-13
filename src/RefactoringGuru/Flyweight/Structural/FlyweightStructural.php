@@ -40,7 +40,7 @@ class Flyweight
     {
         $s = json_encode($this->sharedState);
         $u = json_encode($uniqueState);
-        print("Flyweight: Displaying shared ($s) and unique ($u) state.\n");
+        echo "Flyweight: Displaying shared ($s) and unique ($u) state.\n";
     }
 }
 
@@ -99,10 +99,10 @@ class FlyweightFactory
         $key = $this->getKey($sharedState);
 
         if (! isset($this->flyweights[$key])) {
-            print("FlyweightFactory: Can't find a flyweight, creating new one.\n");
+            echo "FlyweightFactory: Can't find a flyweight, creating new one.\n";
             $this->flyweights[$key] = new Flyweight($sharedState);
         } else {
-            print("FlyweightFactory: Reusing existing flyweight.\n");
+            echo "FlyweightFactory: Reusing existing flyweight.\n";
         }
 
         return $this->flyweights[$key];
@@ -111,9 +111,9 @@ class FlyweightFactory
     public function listFlyweights()
     {
         $count = count($this->flyweights);
-        print("\nFlyweightFactory: I have $count flyweights:\n");
+        echo "\nFlyweightFactory: I have $count flyweights:\n";
         foreach ($this->flyweights as $key => $flyweight) {
-            print($key."\n");
+            echo $key."\n";
         }
     }
 }
@@ -141,7 +141,7 @@ function addCarToPoliceDatabase(
     FlyweightFactory $ff, $plates, $owner,
     $brand, $model, $color
 ) {
-    print("\nClient: Adding a car to database.\n");
+    echo "\nClient: Adding a car to database.\n";
     $flyweight = $ff->getFlyweight([$brand, $model, $color]);
 
     // EN: The client code either stores or calculates extrinsic state and

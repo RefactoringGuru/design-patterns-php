@@ -209,8 +209,8 @@ function clientCode(AbstractFactory $factory)
     $product_a = $factory->createProductA();
     $product_b = $factory->createProductB();
 
-    print($product_b->usefulFunctionB() . "\n");
-    print($product_b->anotherUsefulFunctionB($product_a) . "\n");
+    echo $product_b->usefulFunctionB() . "\n";
+    echo $product_b->anotherUsefulFunctionB($product_a) . "\n";
 }
 
 /**
@@ -218,10 +218,10 @@ function clientCode(AbstractFactory $factory)
  *
  * RU: Клиентский код может работать с любым конкретным классом фабрики.
  */
-print("Client: Testing client code with the first factory type:\n");
+echo "Client: Testing client code with the first factory type:\n";
 clientCode(new ConcreteFactory1());
 
-print("\n");
+echo "\n";
 
-print("Client: Testing the same client code with the second factory type:\n");
+echo "Client: Testing the same client code with the second factory type:\n";
 clientCode(new ConcreteFactory2());

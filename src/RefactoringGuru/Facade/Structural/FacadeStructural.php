@@ -131,7 +131,7 @@ function clientCode(Facade $facade)
 {
     // ...
 
-    print($facade->operation());
+    echo $facade->operation();
 
     // ...
 }

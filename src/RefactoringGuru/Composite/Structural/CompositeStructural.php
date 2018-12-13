@@ -185,7 +185,7 @@ function clientCode(Component $component)
 {
     // ...
 
-    print("RESULT: ".$component->operation());
+    echo "RESULT: ".$component->operation();
 
     // ...
 }
@@ -197,9 +197,9 @@ function clientCode(Component $component)
  * компоненты-листья...
  */
 $simple = new Leaf();
-print("Client: I've got a simple component:\n");
+echo "Client: I've got a simple component:\n";
 clientCode($simple);
-print("\n\n");
+echo "\n\n";
 
 /**
  * EN: ...as well as the complex composites.
@@ -214,9 +214,9 @@ $branch2 = new Composite();
 $branch2->add(new Leaf());
 $tree->add($branch1);
 $tree->add($branch2);
-print("Client: Now I've got a composite tree:\n");
+echo "Client: Now I've got a composite tree:\n";
 clientCode($tree);
-print("\n\n");
+echo "\n\n";
 
 /**
  * EN: Thanks to the fact that the child-management operations are declared in
@@ -234,10 +234,10 @@ function clientCode2(Component $component1, Component $component2)
     if ($component1->isComposite()) {
         $component1->add($component2);
     }
-    print("RESULT: ".$component1->operation());
+    echo "RESULT: ".$component1->operation();
 
     // ...
 }
 
-print("Client: I don't need to check the components classes even when managing the tree:\n");
+echo "Client: I don't need to check the components classes even when managing the tree:\n";
 clientCode2($tree, $simple);

@@ -105,7 +105,7 @@ class EventDispatcher
 
     public function trigger(string $event, object $emitter, $data = null)
     {
-        print("EventDispatcher: Broadcasting the '$event' event.\n");
+        echo "EventDispatcher: Broadcasting the '$event' event.\n";
         foreach ($this->getEventObservers($event) as $observer) {
             $observer->update($event, $emitter, $data);
         }
@@ -203,14 +203,14 @@ class UserRepository implements Observer
 
     public function initialize($filename)
     {
-        print("UserRepository: Loading user records from a file.\n");
+        echo "UserRepository: Loading user records from a file.\n";
         // ...
         events()->trigger("users:init", $this, $filename);
     }
 
     public function createUser(array $data, $silent = false)
     {
-        print("UserRepository: Creating a user.\n");
+        echo "UserRepository: Creating a user.\n";
 
         $user = new User();
         $user->update($data);
@@ -228,7 +228,7 @@ class UserRepository implements Observer
 
     public function updateUser(User $user, array $data, $silent = false)
     {
-        print("UserRepository: Updating a user.\n");
+        echo "UserRepository: Updating a user.\n";
 
         $id = $user->attributes["id"];
         if (! isset($this->users[$id])) {
@@ -247,7 +247,7 @@ class UserRepository implements Observer
 
     public function deleteUser(User $user, $silent = false)
     {
-        print("UserRepository: Deleting a user.\n");
+        echo "UserRepository: Deleting a user.\n";
 
         $id = $user->attributes["id"];
         if (! isset($this->users[$id])) {
@@ -285,7 +285,7 @@ class User
      */
     public function delete()
     {
-        print("User: I can now delete myself without worrying about the repository.\n");
+        echo "User: I can now delete myself without worrying about the repository.\n";
         events()->trigger("users:deleted", $this, $this);
     }
 }
@@ -313,7 +313,7 @@ class Logger implements Observer
         $entry = date("Y-m-d H:i:s").": '$event' with data '".json_encode($data)."'\n";
         file_put_contents($this->filename, $entry, FILE_APPEND);
 
-        print("Logger: I've written '$event' entry to the log.\n");
+        echo "Logger: I've written '$event' entry to the log.\n";
     }
 }
 
@@ -341,7 +341,7 @@ class OnboardingNotification implements Observer
         //     "Onboarding required",
         //     "We have a new user. Here's his info: " .json_encode($data));
 
-        print("OnboardingNotification: The notification has been emailed!\n");
+        echo "OnboardingNotification: The notification has been emailed!\n";
     }
 }
 

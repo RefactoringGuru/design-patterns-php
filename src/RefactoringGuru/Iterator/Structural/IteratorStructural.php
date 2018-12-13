@@ -189,13 +189,13 @@ $collection->addItem("First");
 $collection->addItem("Second");
 $collection->addItem("Third");
 
-print("Straight traversal:\n");
+echo "Straight traversal:\n";
 foreach ($collection->getIterator() as $item) {
-    print($item."\n");
+    echo $item."\n";
 }
 
-print("\n");
-print("Reverse traversal:\n");
+echo "\n";
+echo "Reverse traversal:\n";
 foreach ($collection->getReverseIterator() as $item) {
-    print($item."\n");
+    echo $item."\n";
 }

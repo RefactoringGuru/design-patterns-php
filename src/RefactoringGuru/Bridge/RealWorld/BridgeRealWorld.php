@@ -286,7 +286,7 @@ function clientCode(Page $page)
 {
     // ...
 
-    print($page->view());
+    echo $page->view();
 
     // ...
 }
@@ -302,9 +302,9 @@ $HTMLRenderer = new HTMLRenderer();
 $JSONRenderer = new JsonRenderer();
 
 $page = new SimplePage($HTMLRenderer, "Home", "Welcome to our website!");
-print("HTML view of a simple content page:\n");
+echo "HTML view of a simple content page:\n";
 clientCode($page);
-print("\n\n");
+echo "\n\n";
 
 /**
  * EN: The Abstraction can change the linked Implementation at runtime if
@@ -314,9 +314,9 @@ print("\n\n");
  * выполнения.
  */
 $page->changeRenderer($JSONRenderer);
-print("JSON view of a simple content page, rendered with the same client code:\n");
+echo "JSON view of a simple content page, rendered with the same client code:\n";
 clientCode($page);
-print("\n\n");
+echo "\n\n";
 
 
 $product = new Product("123", "Star Wars, episode1",
@@ -324,10 +324,10 @@ $product = new Product("123", "Star Wars, episode1",
     "/images/star-wars.jpeg", 39.95);
 
 $page = new ProductPage($HTMLRenderer, $product);
-print("HTML view of a product page, same client code:\n");
+echo "HTML view of a product page, same client code:\n";
 clientCode($page);
-print("\n\n");
+echo "\n\n";
 
 $page->changeRenderer($JSONRenderer);
-print("JSON view of a simple content page, with the same client code:\n");
+echo "JSON view of a simple content page, with the same client code:\n";
 clientCode($page);

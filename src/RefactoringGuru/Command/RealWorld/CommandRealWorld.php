@@ -108,7 +108,7 @@ abstract class WebScrapingCommand implements Command
     public function download()
     {
         $html = file_get_contents($this->getURL());
-        print("WebScrapingCommand: Downloaded {$this->url}\n");
+        echo "WebScrapingCommand: Downloaded {$this->url}\n";
 
         return $html;
     }
@@ -144,7 +144,7 @@ class IMDBGenresScrapingCommand extends WebScrapingCommand
     public function parse($html)
     {
         preg_match_all("|href=\"(https://www.imdb.com/search/title\?genres=.*?)\"|", $html, $matches);
-        print("IMDBGenresScrapingCommand: Discovered ".count($matches[1])." genres.\n");
+        echo "IMDBGenresScrapingCommand: Discovered ".count($matches[1])." genres.\n";
 
         foreach ($matches[1] as $genre) {
             Queue::get()->add(new IMDBGenrePageScrapingCommand($genre));
@@ -182,7 +182,7 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
     public function parse($html)
     {
         preg_match_all("|href=\"(/title/.*?/)\?ref_=adv_li_tt\"|", $html, $matches);
-        print("IMDBGenrePageScrapingCommand: Discovered ".count($matches[1])." movies.\n");
+        echo "IMDBGenrePageScrapingCommand: Discovered ".count($matches[1])." movies.\n";
 
         foreach ($matches[1] as $moviePath) {
             $url = "https://www.imdb.com".$moviePath;
@@ -217,7 +217,7 @@ class IMDBMovieScrapingCommand extends WebScrapingCommand
         if (preg_match("|<h1 itemprop=\"name\" class=\"\">(.*?)</h1>|", $html, $matches)) {
             $title = $matches[1];
         }
-        print("IMDBMovieScrapingCommand: Parsed movie $title.\n");
+        echo "IMDBMovieScrapingCommand: Parsed movie $title.\n";
     }
 }
 

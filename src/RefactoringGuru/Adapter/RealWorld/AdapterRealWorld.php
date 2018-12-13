@@ -71,7 +71,7 @@ class EmailNotification implements Notification
     public function send(string $title, string $message)
     {
         mail($this->adminEmail, $title, $message);
-        print("Sent email with title '$title' to '{$this->adminEmail}' that says '$message'.");
+        echo "Sent email with title '$title' to '{$this->adminEmail}' that says '$message'.";
     }
 }
 
@@ -99,13 +99,13 @@ class SlackApi
     public function logIn()
     {
         // Send authentication request to Slack web service.
-        print("Logged in to a slack account '{$this->login}'.\n");
+        echo "Logged in to a slack account '{$this->login}'.\n";
     }
 
     public function sendMessage($chatId, $message)
     {
         // Send message post request to Slack web service.
-        print("Posted following message into the '$chatId' chat: '$message'.\n");
+        echo "Posted following message into the '$chatId' chat: '$message'.\n";
     }
 }
 
@@ -154,20 +154,20 @@ function clientCode(Notification $notification)
 {
     // ...
 
-    print($notification->send("Website is down!",
+    echo $notification->send("Website is down!",
         "<strong style='color:red;font-size: 50px;'>Alert!</strong> " .
-        "Our website is not responding. Call admins and bring it up!"));
+        "Our website is not responding. Call admins and bring it up!");
 
     // ...
 }
 
-print("Client code is designed correctly and works with email notifications:\n");
+echo "Client code is designed correctly and works with email notifications:\n";
 $notification = new EmailNotification("developers@example.com");
 clientCode($notification);
-print("\n\n");
+echo "\n\n";
 
 
-print("The same client code can work with other classes via adapter:\n");
+echo "The same client code can work with other classes via adapter:\n";
 $slackApi = new SlackApi("example.com", "XXXXXXXX");
 $notification = new SlackNotification($slackApi, "Example.com Developers");
 clientCode($notification);

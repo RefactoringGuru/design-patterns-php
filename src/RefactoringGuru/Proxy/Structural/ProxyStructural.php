@@ -46,7 +46,7 @@ class RealSubject implements Subject
 {
     public function request()
     {
-        print("RealSubject: Handling request.\n");
+        echo "RealSubject: Handling request.\n";
     }
 }
 
@@ -99,14 +99,14 @@ class Proxy implements Subject
         // EN: Some real checks should go here.
         //
         // RU: Некоторые реальные проверки должны проходить здесь.
-        print("Proxy: Checking access prior to firing a real request.\n");
+        echo "Proxy: Checking access prior to firing a real request.\n";
 
         return true;
     }
 
     private function logAccess()
     {
-        print("Proxy: Logging the time of request.\n");
+        echo "Proxy: Logging the time of request.\n";
     }
 }
 
@@ -133,12 +133,12 @@ function clientCode(Subject $subject)
     // ...
 }
 
-print("Client: Executing the client code with a real subject:\n");
+echo "Client: Executing the client code with a real subject:\n";
 $realSubject = new RealSubject();
 clientCode($realSubject);
 
-print("\n");
+echo "\n";
 
-print("Client: Executing the same client code with a proxy:\n");
+echo "Client: Executing the same client code with a proxy:\n";
 $proxy = new Proxy($realSubject);
 clientCode($proxy);

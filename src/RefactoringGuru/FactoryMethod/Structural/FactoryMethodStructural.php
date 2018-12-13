@@ -148,8 +148,8 @@ class ConcreteProduct2 implements Product
 function clientCode(Creator $creator)
 {
     // ...
-    print("Client: I'm not aware of the creator's class, but it still works.\n"
-        .$creator->someOperation());
+    echo "Client: I'm not aware of the creator's class, but it still works.\n"
+        .$creator->someOperation();
     // ...
 }
 
@@ -160,9 +160,9 @@ function clientCode(Creator $creator)
  * RU: Приложение выбирает тип создателя в зависимости от конфигурации или
  * среды.
  */
-print("App: Launched with the ConcreteCreator1.\n");
+echo "App: Launched with the ConcreteCreator1.\n";
 clientCode(new ConcreteCreator1());
-print("\n\n");
+echo "\n\n";
 
-print("App: Launched with the ConcreteCreator2.\n");
+echo "App: Launched with the ConcreteCreator2.\n";
 clientCode(new ConcreteCreator2());

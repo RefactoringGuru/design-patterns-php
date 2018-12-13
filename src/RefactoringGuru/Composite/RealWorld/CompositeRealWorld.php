@@ -324,7 +324,7 @@ function renderProduct(FormElement $form)
 {
     // ..
 
-    print($form->render());
+    echo $form->render();
 
     // ..
 }
