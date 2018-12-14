@@ -23,7 +23,7 @@ namespace RefactoringGuru\Command\Structural;
  */
 interface Command
 {
-    public function execute();
+    public function execute(): void;
 }
 
 /**
@@ -35,12 +35,12 @@ class SimpleCommand implements Command
 {
     private $payload;
 
-    public function __construct($payload)
+    public function __construct(string $payload)
     {
         $this->payload = $payload;
     }
 
-    public function execute()
+    public function execute(): void
     {
         echo "SimpleCommand: See, I can do simple things like printing (".$this->payload.")\n";
     }
@@ -77,7 +77,7 @@ class ComplexCommand implements Command
      * объектов-получателей вместе с любыми данными о контексте через
      * конструктор.
      */
-    public function __construct(Receiver $receiver, $a, $b)
+    public function __construct(Receiver $receiver, string $a, string $b)
     {
         $this->receiver = $receiver;
         $this->a = $a;
@@ -89,7 +89,7 @@ class ComplexCommand implements Command
      *
      * RU: Команды могут делегировать выполнение любым методам получателя.
      */
-    public function execute()
+    public function execute(): void
     {
         echo "ComplexCommand: Complex stuff should be done by a receiver object.\n";
         $this->receiver->doSomething($this->a);
@@ -108,12 +108,12 @@ class ComplexCommand implements Command
  */
 class Receiver
 {
-    public function doSomething($a)
+    public function doSomething(string $a): void
     {
         echo "Receiver: Working on (".$a.".)\n";
     }
 
-    public function doSomethingElse($b)
+    public function doSomethingElse(string $b): void
     {
         echo "Receiver: Also working on (".$b.".)\n";
     }
@@ -145,12 +145,12 @@ class Invoker
      *
      * @param Command $command
      */
-    public function setOnStart(Command $command)
+    public function setOnStart(Command $command): void
     {
         $this->onStart = $command;
     }
 
-    public function setOnFinish(Command $command)
+    public function setOnFinish(Command $command): void
     {
         $this->onFinish = $command;
     }
@@ -163,7 +163,7 @@ class Invoker
      * RU: Отправитель не зависит от классов конкретных команд и получателей.
      * Отправитель передаёт запрос получателю косвенно, выполняя команду.
      */
-    public function doSomethingImportant()
+    public function doSomethingImportant(): void
     {
         echo "Invoker: Does anybody want something done before I begin?\n";
         if ($this->onStart instanceof Command) {

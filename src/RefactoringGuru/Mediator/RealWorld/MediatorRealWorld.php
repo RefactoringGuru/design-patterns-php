@@ -71,14 +71,14 @@ class EventDispatcher
         $this->observers["*"] = [];
     }
 
-    private function initEventGroup(string &$event = "*")
+    private function initEventGroup(string &$event = "*"): void
     {
         if (! isset($this->observers[$event])) {
             $this->observers[$event] = [];
         }
     }
 
-    private function getEventObservers(string $event = "*")
+    private function getEventObservers(string $event = "*"): array
     {
         $this->initEventGroup($event);
         $group = $this->observers[$event];
@@ -87,14 +87,14 @@ class EventDispatcher
         return array_merge($group, $all);
     }
 
-    public function attach(Observer $observer, string $event = "*")
+    public function attach(Observer $observer, string $event = "*"): void
     {
         $this->initEventGroup($event);
 
         $this->observers[$event][] = $observer;
     }
 
-    public function detach(Observer $observer, string $event = "*")
+    public function detach(Observer $observer, string $event = "*"): void
     {
         foreach ($this->getEventObservers($event) as $key => $s) {
             if ($s === $observer) {
@@ -103,7 +103,7 @@ class EventDispatcher
         }
     }
 
-    public function trigger(string $event, object $emitter, $data = null)
+    public function trigger(string $event, object $emitter, $data = null): void
     {
         echo "EventDispatcher: Broadcasting the '$event' event.\n";
         foreach ($this->getEventObservers($event) as $observer) {
@@ -185,7 +185,7 @@ class UserRepository implements Observer
      * используя его название, источник или какие-то контекстные данные,
      * переданные вместе с событием.
      */
-    public function update(string $event, object $emitter, $data = null)
+    public function update(string $event, object $emitter, $data = null): void
     {
         switch ($event) {
             case "users:deleted":
@@ -201,14 +201,14 @@ class UserRepository implements Observer
     //
     // RU: Эти методы представляют бизнес-логику класса.
 
-    public function initialize($filename)
+    public function initialize(string $filename): void
     {
         echo "UserRepository: Loading user records from a file.\n";
         // ...
         events()->trigger("users:init", $this, $filename);
     }
 
-    public function createUser(array $data, $silent = false)
+    public function createUser(array $data, bool $silent = false): User
     {
         echo "UserRepository: Creating a user.\n";
 
@@ -226,7 +226,7 @@ class UserRepository implements Observer
         return $user;
     }
 
-    public function updateUser(User $user, array $data, $silent = false)
+    public function updateUser(User $user, array $data, bool $silent = false): User
     {
         echo "UserRepository: Updating a user.\n";
 
@@ -245,7 +245,7 @@ class UserRepository implements Observer
         return $user;
     }
 
-    public function deleteUser(User $user, $silent = false)
+    public function deleteUser(User $user, bool $silent = false): void
     {
         echo "UserRepository: Deleting a user.\n";
 
@@ -273,7 +273,7 @@ class User
 {
     public $attributes = [];
 
-    public function update($data)
+    public function update($data): void
     {
         $this->attributes = array_merge($this->attributes, $data);
     }
@@ -283,7 +283,7 @@ class User
      *
      * RU: Все объекты могут вызывать события.
      */
-    public function delete()
+    public function delete(): void
     {
         echo "User: I can now delete myself without worrying about the repository.\n";
         events()->trigger("users:deleted", $this, $this);
@@ -330,12 +330,12 @@ class OnboardingNotification implements Observer
 {
     private $adminEmail;
 
-    public function __construct($adminEmail)
+    public function __construct(string $adminEmail)
     {
         $this->adminEmail = $adminEmail;
     }
 
-    public function update(string $event, object $emitter, $data = null)
+    public function update(string $event, object $emitter, $data = null): void
     {
         // mail($this->adminEmail,
         //     "Onboarding required",

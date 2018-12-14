@@ -24,11 +24,11 @@ namespace RefactoringGuru\Builder\Structural;
  */
 interface Builder
 {
-    public function producePartA();
+    public function producePartA(): void;
 
-    public function producePartB();
+    public function producePartB(): void;
 
-    public function producePartC();
+    public function producePartC(): void;
 }
 
 /**
@@ -56,7 +56,7 @@ class ConcreteBuilder1 implements Builder
         $this->reset();
     }
 
-    public function reset()
+    public function reset(): void
     {
         $this->product = new Product1();
     }
@@ -67,17 +67,17 @@ class ConcreteBuilder1 implements Builder
      * RU: Все этапы производства работают с одним и тем же экземпляром
      * продукта.
      */
-    public function producePartA()
+    public function producePartA(): void
     {
         $this->product->parts[] = "PartA1";
     }
 
-    public function producePartB()
+    public function producePartB(): void
     {
         $this->product->parts[] = "PartB1";
     }
 
-    public function producePartC()
+    public function producePartC(): void
     {
         $this->product->parts[] = "PartC1";
     }
@@ -142,7 +142,7 @@ class Product1
 {
     public $parts = [];
 
-    public function listParts()
+    public function listParts(): void
     {
         echo "Product parts: ".implode(', ', $this->parts)."\n\n";
     }
@@ -175,7 +175,7 @@ class Director
      * ему клиентским кодом. Таким образом, клиентский код может изменить
      * конечный тип вновь собираемого продукта.
      */
-    public function setBuilder(Builder $builder)
+    public function setBuilder(Builder $builder): void
     {
         $this->builder = $builder;
     }
@@ -187,12 +187,12 @@ class Director
      * RU: Директор может строить несколько вариаций продукта, используя
      * одинаковые шаги построения.
      */
-    public function buildMinimalViableProduct()
+    public function buildMinimalViableProduct(): void
     {
         $this->builder->producePartA();
     }
 
-    public function buildFullFeaturedProduct()
+    public function buildFullFeaturedProduct(): void
     {
         $this->builder->producePartA();
         $this->builder->producePartB();

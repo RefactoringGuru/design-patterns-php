@@ -23,7 +23,7 @@ namespace RefactoringGuru\Adapter\Structural;
  */
 class Target
 {
-    public function request()
+    public function request(): string
     {
         return "Target: The default target's behavior.";
     }
@@ -41,7 +41,7 @@ class Target
  */
 class Adaptee
 {
-    public function specificRequest()
+    public function specificRequest(): string
     {
         return ".eetpadA eht fo roivaheb laicepS";
     }
@@ -63,7 +63,7 @@ class Adapter extends Target
         $this->adaptee = $adaptee;
     }
 
-    public function request()
+    public function request(): string
     {
         return "Adapter: (TRANSLATED) ".strrev($this->adaptee->specificRequest());
     }

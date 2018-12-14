@@ -115,7 +115,7 @@ class CsvIterator implements \Iterator
      *
      * RU: Этот метод сбрасывает указатель файла.
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->rowCounter = 0;
         rewind($this->filePointer);
@@ -130,7 +130,7 @@ class CsvIterator implements \Iterator
      *
      * @return array Текущая CSV-строка в виде двумерного массива.
      */
-    public function current()
+    public function current(): array
     {
         $this->currentElement = fgetcsv($this->filePointer, self::ROW_SIZE, $this->delimiter);
         $this->rowCounter++;
@@ -147,7 +147,7 @@ class CsvIterator implements \Iterator
      *
      * @return int Номер текущей строки.
      */
-    public function key()
+    public function key(): int
     {
         return $this->rowCounter;
     }
@@ -155,13 +155,13 @@ class CsvIterator implements \Iterator
     /**
      * EN: This method checks if the end of file has been reached.
      *
-     * @return boolean Returns true on EOF reached, false otherwise.
+     * @return bool Returns true on EOF reached, false otherwise.
      *
      * RU: Этот метод проверяет, достигнут ли конец файла.
      *
-     * @return boolean Возвращает true при достижении EOF, в ином случае false.
+     * @return bool Возвращает true при достижении EOF, в ином случае false.
      */
-    public function next()
+    public function next(): bool
     {
         if (is_resource($this->filePointer)) {
             return ! feof($this->filePointer);
@@ -173,13 +173,13 @@ class CsvIterator implements \Iterator
     /**
      * EN: This method checks if the next row is a valid row.
      *
-     * @return boolean If the next row is a valid row.
+     * @return bool If the next row is a valid row.
      *
      * RU: Этот метод проверяет, является ли следующая строка допустимой.
      *
-     * @return boolean Если следующая строка является допустимой.
+     * @return bool Если следующая строка является допустимой.
      */
-    public function valid()
+    public function valid(): bool
     {
         if (! $this->next()) {
             if (is_resource($this->filePointer)) {

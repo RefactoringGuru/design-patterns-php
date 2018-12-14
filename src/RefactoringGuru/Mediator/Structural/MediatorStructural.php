@@ -28,7 +28,7 @@ namespace RefactoringGuru\Mediator\Structural;
  */
 interface Mediator
 {
-    public function notify($sender, $event);
+    public function notify(object $sender, string $event): void;
 }
 
 /**
@@ -52,7 +52,7 @@ class ConcreteMediator implements Mediator
         $this->component2->setMediator($this);
     }
 
-    public function notify($sender, $event)
+    public function notify(object $sender, string $event): void
     {
         if ($event == "A") {
             echo "Mediator reacts on A and triggers following operations:\n";
@@ -83,7 +83,7 @@ class BaseComponent
         $this->mediator = $mediator;
     }
 
-    function setMediator(Mediator $mediator)
+    function setMediator(Mediator $mediator): void
     {
         $this->mediator = $mediator;
     }
@@ -99,13 +99,13 @@ class BaseComponent
  */
 class Component1 extends BaseComponent
 {
-    public function doA()
+    public function doA(): void
     {
         echo "Component 1 does A.\n";
         $this->mediator->notify($this, "A");
     }
 
-    public function doB()
+    public function doB(): void
     {
         echo "Component 1 does B.\n";
         $this->mediator->notify($this, "B");
@@ -114,13 +114,13 @@ class Component1 extends BaseComponent
 
 class Component2 extends BaseComponent
 {
-    public function doC()
+    public function doC(): void
     {
         echo "Component 2 does C.\n";
         $this->mediator->notify($this, "C");
     }
 
-    public function doD()
+    public function doD(): void
     {
         echo "Component 2 does D.\n";
         $this->mediator->notify($this, "D");
@@ -139,6 +139,6 @@ $mediator = new ConcreteMediator($c1, $c2);
 echo "Client triggers operation A.\n";
 $c1->doA();
 
-echo "\n");
+echo "\n";
 echo "Client triggers operation D.\n";
 $c2->doD();

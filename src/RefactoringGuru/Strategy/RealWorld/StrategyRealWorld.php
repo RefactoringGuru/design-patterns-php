@@ -62,16 +62,14 @@ class OrderController
      * @param $data
      * @throws \Exception
      */
-    public function post($url, $data)
+    public function post(string $url, array $data)
     {
         echo "Controller: POST request to $url with ".json_encode($data)."\n";
 
         $path = parse_url($url, PHP_URL_PATH);
 
         if (preg_match('#^/orders?$#', $path, $matches)) {
-
             $this->postNewOrder($data);
-
         } else {
             echo "Controller: 404 page\n";
         }
@@ -88,7 +86,7 @@ class OrderController
      * @param $url
      * @throws \Exception
      */
-    public function get($url)
+    public function get(string $url): void
     {
         echo "Controller: GET request to $url\n";
 
@@ -97,11 +95,8 @@ class OrderController
         parse_str($query, $data);
 
         if (preg_match('#^/orders?$#', $path, $matches)) {
-
             $this->getAllOrders();
-
         } elseif (preg_match('#^/order/([0-9]+?)/payment/([a-z]+?)(/return)?$#', $path, $matches)) {
-
             $order = Order::get($matches[1]);
 
             // EN: The payment method (strategy) is selected according to the
@@ -116,7 +111,6 @@ class OrderController
             } else {
                 $this->getPaymentReturn($paymentMethod, $order, $data);
             }
-
         } else {
             echo "Controller: 404 page\n";
         }
@@ -125,7 +119,7 @@ class OrderController
     /**
      * POST /order {data}
      */
-    public function postNewOrder(array $data)
+    public function postNewOrder(array $data): void
     {
         $order = new Order($data);
         echo "Controller: Created the order #{$order->id}.\n";
@@ -134,7 +128,7 @@ class OrderController
     /**
      * GET /orders
      */
-    public function getAllOrders()
+    public function getAllOrders(): void
     {
         echo "Controller: Here's all orders:\n";
         foreach (Order::get() as $order) {
@@ -145,7 +139,7 @@ class OrderController
     /**
      * GET /order/123/payment/XX
      */
-    public function getPayment(PaymentMethod $method, Order $order, array $data)
+    public function getPayment(PaymentMethod $method, Order $order, array $data): void
     {
         // EN: The actual work is delegated to the payment method object.
         //
@@ -158,7 +152,7 @@ class OrderController
     /**
      * GET /order/123/payment/XXX/return?key=AJHKSJHJ3423&success=true
      */
-    public function getPaymentReturn(PaymentMethod $method, Order $order, array $data)
+    public function getPaymentReturn(PaymentMethod $method, Order $order, array $data): void
     {
         try {
             // EN: Another type of work delegated to the payment method.
@@ -236,7 +230,7 @@ class Order
      *
      * RU: Метод позвонить при оплате заказа.
      */
-    public function complete()
+    public function complete(): void
     {
         $this->status = "completed";
         echo "Order: #{$this->id} is now {$this->status}.";
@@ -265,7 +259,7 @@ class PaymentFactory
      * @return PaymentMethod
      * @throws \Exception
      */
-    public static function getPaymentMethod($id): PaymentMethod
+    public static function getPaymentMethod(string $id): PaymentMethod
     {
         switch ($id) {
             case "cc":
@@ -297,7 +291,7 @@ interface PaymentMethod
 {
     public function getPaymentForm(Order $order): string;
     
-    public function validateReturn(Order $order, $data): bool;
+    public function validateReturn(Order $order, array $data): bool;
 }
 
 /**
@@ -330,7 +324,7 @@ class CreditCardPayment implements PaymentMethod
 FORM;
     }
 
-    public function validateReturn(Order $order, $data): bool
+    public function validateReturn(Order $order, array $data): bool
     {
         echo "CreditCardPayment: ...validating... ";
 
@@ -378,7 +372,7 @@ class PayPalPayment implements PaymentMethod
 FORM;
     }
 
-    public function validateReturn(Order $order, $data): bool
+    public function validateReturn(Order $order, array $data): bool
     {
         echo "PayPalPayment: ...validating... ";
 

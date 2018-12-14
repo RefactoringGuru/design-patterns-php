@@ -25,7 +25,7 @@ namespace RefactoringGuru\Decorator\Structural;
  */
 interface Component
 {
-    public function operation();
+    public function operation(): string;
 }
 
 /**
@@ -37,7 +37,7 @@ interface Component
  */
 class ConcreteComponent implements Component
 {
-    public function operation()
+    public function operation(): string
     {
         return "ConcreteComponent";
     }
@@ -73,7 +73,7 @@ class Decorator implements Component
      *
      * RU: Декоратор делегирует всю работу обёрнутому компоненту.
      */
-    public function operation()
+    public function operation(): string
     {
         return $this->component->operation();
     }
@@ -97,7 +97,7 @@ class ConcreteDecoratorA extends Decorator
      * того, чтобы вызвать обёрнутый объект напрямую. Такой подход упрощает
      * расширение классов декораторов.
      */
-    public function operation()
+    public function operation(): string
     {
         return "ConcreteDecoratorA(".parent::operation().")";
     }
@@ -112,7 +112,7 @@ class ConcreteDecoratorA extends Decorator
  */
 class ConcreteDecoratorB extends Decorator
 {
-    public function operation()
+    public function operation(): string
     {
         return "ConcreteDecoratorB(".parent::operation().")";
     }

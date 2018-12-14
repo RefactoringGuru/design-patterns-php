@@ -58,7 +58,7 @@ abstract class Page
      * RU: Паттерн Мост позволяет динамически заменять присоединённый объект
      * Реализации.
      */
-    public function changeRenderer(Renderer $renderer)
+    public function changeRenderer(Renderer $renderer): void
     {
         $this->renderer = $renderer;
     }
@@ -70,7 +70,7 @@ abstract class Page
      * RU: Поведение «вида» остаётся абстрактным, так как оно предоставляется
      * только классами Конкретной Абстракции.
      */
-    abstract public function view();
+    abstract public function view(): string;
 }
 
 /**
@@ -83,7 +83,7 @@ class SimplePage extends Page
     protected $title;
     protected $content;
 
-    public function __construct(Renderer $renderer, $title, $content)
+    public function __construct(Renderer $renderer, string $title, string $content)
     {
         parent::__construct($renderer);
         $this->title = $title;
@@ -138,7 +138,13 @@ class Product
 {
     private $id, $title, $description, $image, $price;
 
-    public function __construct($id, $title, $description, $image, $price)
+    public function __construct(
+        string $id,
+        string $title,
+        string $description,
+        string $image,
+        float $price
+    )
     {
         $this->id = $id;
         $this->title = $title;
@@ -147,15 +153,15 @@ class Product
         $this->price = $price;
     }
 
-    public function getId() { return $this->id; }
+    public function getId(): string { return $this->id; }
 
-    public function getTitle() { return $this->title; }
+    public function getTitle(): string { return $this->title; }
 
-    public function getDescription() { return $this->description; }
+    public function getDescription(): string { return $this->description; }
 
-    public function getImage() { return $this->image; }
+    public function getImage(): string { return $this->image; }
 
-    public function getPrice() { return $this->price; }
+    public function getPrice(): float { return $this->price; }
 }
 
 

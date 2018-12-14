@@ -64,7 +64,7 @@ class Page
     //
     // RU: +100 приватных полей.
 
-    public function __construct($title, $body, $author)
+    public function __construct(string $title, string $body, Author $author)
     {
         $this->title = $title;
         $this->body = $body;
@@ -73,7 +73,7 @@ class Page
         $this->date = new \DateTime();
     }
 
-    public function addComment($comment)
+    public function addComment(string $comment): void
     {
         $this->comments[] = $comment;
     }
@@ -119,12 +119,12 @@ class Author
      */
     private $pages = [];
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;
     }
 
-    public function addToPage($page)
+    public function addToPage(Page $page): void
     {
         $this->pages[] = $page;
     }

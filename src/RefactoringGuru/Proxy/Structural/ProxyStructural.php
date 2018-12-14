@@ -27,7 +27,7 @@ namespace RefactoringGuru\Proxy\Structural;
  */
 interface Subject
 {
-    public function request();
+    public function request(): void;
 }
 
 /**
@@ -44,7 +44,7 @@ interface Subject
  */
 class RealSubject implements Subject
 {
-    public function request()
+    public function request(): void
     {
         echo "RealSubject: Handling request.\n";
     }
@@ -86,7 +86,7 @@ class Proxy implements Subject
      * зависимости от результата, передать выполнение одноимённому методу в
      * связанном объекте класса РеальныйСубъект.
      */
-    public function request()
+    public function request(): void
     {
         if ($this->checkAccess()) {
             $this->realSubject->request();
@@ -94,7 +94,7 @@ class Proxy implements Subject
         }
     }
 
-    private function checkAccess()
+    private function checkAccess(): bool
     {
         // EN: Some real checks should go here.
         //
@@ -104,7 +104,7 @@ class Proxy implements Subject
         return true;
     }
 
-    private function logAccess()
+    private function logAccess(): void
     {
         echo "Proxy: Logging the time of request.\n";
     }

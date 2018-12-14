@@ -68,7 +68,7 @@ class EmailNotification implements Notification
         $this->adminEmail = $adminEmail;
     }
 
-    public function send(string $title, string $message)
+    public function send(string $title, string $message): void
     {
         mail($this->adminEmail, $title, $message);
         echo "Sent email with title '$title' to '{$this->adminEmail}' that says '$message'.";
@@ -96,13 +96,13 @@ class SlackApi
         $this->apiKey = $apiKey;
     }
 
-    public function logIn()
+    public function logIn(): void
     {
         // Send authentication request to Slack web service.
         echo "Logged in to a slack account '{$this->login}'.\n";
     }
 
-    public function sendMessage($chatId, $message)
+    public function sendMessage(string $chatId, string $message): void
     {
         // Send message post request to Slack web service.
         echo "Posted following message into the '$chatId' chat: '$message'.\n";
@@ -136,7 +136,7 @@ class SlackNotification implements Notification
      * RU: Адаптер способен адаптировать интерфейсы и преобразовывать входные
      * данные в формат,  необходимый Адаптируемому классу.
      */
-    public function send(string $title, string $message)
+    public function send(string $title, string $message): void
     {
         $slackMessage = "#" . $title . "# " . strip_tags($message);
         $this->slack->logIn();

@@ -37,7 +37,7 @@ abstract class AbstractClass
      *
      * RU: Шаблонный метод определяет скелет алгоритма.
      */
-    final public function templateMethod()
+    final public function templateMethod(): void
     {
         $this->baseOperation1();
         $this->requiredOperations1();
@@ -53,17 +53,17 @@ abstract class AbstractClass
      *
      * RU: Эти операции уже имеют реализации.
      */
-    protected function baseOperation1()
+    protected function baseOperation1(): void
     {
         echo "AbstractClass says: I am doing the bulk of the work\n";
     }
 
-    protected function baseOperation2()
+    protected function baseOperation2(): void
     {
         echo "AbstractClass says: But I let subclasses override some operations\n";
     }
 
-    protected function baseOperation3()
+    protected function baseOperation3(): void
     {
         echo "AbstractClass says: But I am doing the bulk of the work anyway\n";
     }
@@ -73,9 +73,9 @@ abstract class AbstractClass
      *
      * RU: А эти операции должны быть реализованы в подклассах.
      */
-    protected abstract function requiredOperations1();
+    protected abstract function requiredOperations1(): void;
 
-    protected abstract function requiredOperation2();
+    protected abstract function requiredOperation2(): void;
 
     /**
      * EN: These are "hooks." Subclasses may override them, but it's not
@@ -88,9 +88,9 @@ abstract class AbstractClass
      * предоставляют дополнительные точки расширения в некоторых критических
      * местах алгоритма.
      */
-    protected function hook1() { }
+    protected function hook1(): void { }
 
-    protected function hook2() { }
+    protected function hook2(): void { }
 }
 
 /**
@@ -103,12 +103,12 @@ abstract class AbstractClass
  */
 class ConcreteClass1 extends AbstractClass
 {
-    protected function requiredOperations1()
+    protected function requiredOperations1(): void
     {
         echo "ConcreteClass1 says: Implemented Operation1\n";
     }
 
-    protected function requiredOperation2()
+    protected function requiredOperation2(): void
     {
         echo "ConcreteClass1 says: Implemented Operation2\n";
     }
@@ -123,17 +123,17 @@ class ConcreteClass1 extends AbstractClass
  */
 class ConcreteClass2 extends AbstractClass
 {
-    protected function requiredOperations1()
+    protected function requiredOperations1(): void
     {
         echo "ConcreteClass2 says: Implemented Operation1\n";
     }
 
-    protected function requiredOperation2()
+    protected function requiredOperation2(): void
     {
         echo "ConcreteClass2 says: Implemented Operation2\n";
     }
 
-    protected function hook1()
+    protected function hook1(): void
     {
         echo "ConcreteClass2 says: Overridden Hook1\n";
     }

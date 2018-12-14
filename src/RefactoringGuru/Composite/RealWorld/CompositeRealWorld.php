@@ -70,23 +70,23 @@ abstract class FormElement
     protected $title;
     protected $data;
 
-    public function __construct($name, $title)
+    public function __construct(string $name, string $title)
     {
         $this->name = $name;
         $this->title = $title;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setData($data)
+    public function setData($data): void
     {
         $this->data = $data;
     }
 
-    public function getData()
+    public function getData(): array
     {
         return $this->data;
     }
@@ -113,7 +113,7 @@ class Input extends FormElement
 {
     private $type;
 
-    public function __construct($name, $title, $type)
+    public function __construct(string $name, string $title, string $type)
     {
         parent::__construct($name, $title);
         $this->type = $type;
@@ -154,13 +154,13 @@ abstract class FieldComposite extends FormElement
      *
      * RU: Методы добавления/удаления подобъектов.
      */
-    public function add(FormElement $field)
+    public function add(FormElement $field): void
     {
         $name = $field->getName();
         $this->fields[$name] = $field;
     }
 
-    public function remove(FormElement $component)
+    public function remove(FormElement $component): void
     {
         $this->fields = array_filter($this->fields, function ($child) use ($component) {
             return $child == $component;
@@ -182,7 +182,7 @@ abstract class FieldComposite extends FormElement
      *
      * @param array $data
      */
-    public function setData($data)
+    public function setData($data): void
     {
         foreach ($this->fields as $name => $field) {
             if (isset($data[$name])) {
@@ -198,12 +198,14 @@ abstract class FieldComposite extends FormElement
      * RU: Та же логика применима и к получателю. Он возвращает
      * структурированные данные самого контейнера, а также все дочерние данные.
      */
-    public function getData()
+    public function getData(): array
     {
         $data = [];
+        
         foreach ($this->fields as $name => $field) {
             $data[$name] = $field->getData();
         }
+        
         return $data;
     }
 
@@ -219,9 +221,11 @@ abstract class FieldComposite extends FormElement
     public function render(): string
     {
         $output = "";
+        
         foreach ($this->fields as $name => $field) {
             $output .= $field->render();
         }
+        
         return $output;
     }
 }
@@ -241,6 +245,7 @@ class Fieldset extends FieldComposite
         // RU: Обратите внимание, как комбинированный результат рендеринга
         // потомков включается в тег fieldset.
         $output = parent::render();
+        
         return "<fieldset><legend>{$this->title}</legend>\n$output</fieldset>\n";
     }
 }
@@ -254,7 +259,7 @@ class Form extends FieldComposite
 {
     protected $url;
 
-    public function __construct($name, $title, $url)
+    public function __construct(string $name, string $title, string $url)
     {
         parent::__construct($name, $title);
         $this->url = $url;

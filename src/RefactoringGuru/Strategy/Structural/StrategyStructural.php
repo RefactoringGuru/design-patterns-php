@@ -68,7 +68,7 @@ class Context
      * RU: Вместо того, чтобы самостоятельно реализовывать множественные версии
      * алгоритма, Контекст делегирует некоторую работу объекту Стратегии.
      */
-    public function doSomeBusinessLogic()
+    public function doSomeBusinessLogic(): void
     {
         // ...
 
@@ -95,7 +95,7 @@ class Context
  */
 interface Strategy
 {
-    public function doAlgorithm($data);
+    public function doAlgorithm(array $data): array;
 }
 
 /**
@@ -107,7 +107,7 @@ interface Strategy
  */
 class ConcreteStrategyA implements Strategy
 {
-    public function doAlgorithm($data)
+    public function doAlgorithm(array $data): array
     {
         sort($data);
 
@@ -117,7 +117,7 @@ class ConcreteStrategyA implements Strategy
 
 class ConcreteStrategyB implements Strategy
 {
-    public function doAlgorithm($data)
+    public function doAlgorithm(array $data): array
     {
         rsort($data);
 

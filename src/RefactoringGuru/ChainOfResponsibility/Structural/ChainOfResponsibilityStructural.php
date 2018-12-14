@@ -26,9 +26,9 @@ namespace RefactoringGuru\ChainOfResponsibility\Structural;
  */
 interface Handler
 {
-    public function setNext(Handler $handler);
+    public function setNext(Handler $handler): Handler;
 
-    public function handle($request);
+    public function handle($request): ?string;
 }
 
 /**
@@ -49,7 +49,7 @@ abstract class AbstractHandler implements Handler
      * @param Handler $handler
      * @return Handler
      */
-    public function setNext(Handler $handler)
+    public function setNext(Handler $handler): Handler
     {
         $this->nextHandler = $handler;
         // EN: Returning a handler from here will let us link handlers in a
@@ -62,11 +62,13 @@ abstract class AbstractHandler implements Handler
         return $handler;
     }
 
-    public function handle($request)
+    public function handle($request): ?string
     {
         if ($this->nextHandler) {
             return $this->nextHandler->handle($request);
         }
+        
+        return null;
     }
 }
 
@@ -79,7 +81,7 @@ abstract class AbstractHandler implements Handler
  */
 class MonkeyHandler extends AbstractHandler
 {
-    public function handle($request)
+    public function handle($request): ?string
     {
         if ($request == "Banana") {
             return "Monkey: I'll eat the ".$request.".\n";
@@ -91,7 +93,7 @@ class MonkeyHandler extends AbstractHandler
 
 class SquirrelHandler extends AbstractHandler
 {
-    public function handle($request)
+    public function handle($request): ?string
     {
         if ($request == "Nut") {
             return "Squirrel: I'll eat the ".$request.".\n";
@@ -103,7 +105,7 @@ class SquirrelHandler extends AbstractHandler
 
 class DogHandler extends AbstractHandler
 {
-    public function handle($request)
+    public function handle($request): ?string
     {
         if ($request == "MeatBall") {
             return "Dog: I'll eat the ".$request.".\n";

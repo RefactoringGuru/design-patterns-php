@@ -48,7 +48,7 @@ class Singleton
      * статического поля. В этом случае статическое поле является массивом, где
      * каждый подкласс Одиночки хранит свой собственный экземпляр.
      */
-    private static $instances = array();
+    private static $instances = [];
 
     /**
      * EN: Singleton's constructor should not be public. However, it can't be
@@ -78,7 +78,7 @@ class Singleton
      */
     public static function getInstance()
     {
-        $subclass = get_called_class();
+        $subclass = static::class;
         if (!isset(self::$instances[$subclass])) {
             // EN: Note that here we use the "static" keyword instead of the
             // actual class name. In this context, the "static" keyword means
@@ -141,7 +141,7 @@ class Logger extends Singleton
      *
      * RU: Пишем запись в журнале в открытый файловый ресурс.
      */
-    public function writeLog(string $message)
+    public function writeLog(string $message): void
     {
         $date = date('Y-m-d');
         fwrite($this->fileHandle, "$date: $message\n");
@@ -154,7 +154,7 @@ class Logger extends Singleton
      * RU: Просто удобный ярлык для уменьшения объёма кода, необходимого для
      * регистрации сообщений из клиентского кода.
      */
-    public static function log(string $message)
+    public static function log(string $message): void
     {
         $logger = static::getInstance();
         $logger->writeLog($message);
@@ -174,12 +174,12 @@ class Config extends Singleton
 {
     private $hashmap = [];
 
-    public function getValue($key)
+    public function getValue(string $key): string
     {
         return $this->hashmap[$key];
     }
 
-    public function setValue($key, $value)
+    public function setValue(string $key, string $value): void
     {
         $this->hashmap[$key] = $value;
     }

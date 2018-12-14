@@ -63,9 +63,9 @@ abstract class Component
      * во время сборки дерева объектов. Недостаток такого подхода в том, что эти
      * методы будут пустыми для компонентов уровня листа.
      */
-    public function add(Component $component) { }
+    public function add(Component $component): void { }
 
-    public function remove(Component $component) { }
+    public function remove(Component $component): void { }
 
     /**
      * EN: You can provide a method that lets the client code figure out whether
@@ -88,7 +88,7 @@ abstract class Component
      * умолчанию или поручить это конкретным классам, объявив метод, содержащий
      * поведение абстрактным.
      */
-    public abstract function operation();
+    public abstract function operation(): string;
 }
 
 /**
@@ -106,7 +106,7 @@ abstract class Component
  */
 class Leaf extends Component
 {
-    public function operation()
+    public function operation(): string
     {
         return "Leaf";
     }
@@ -135,13 +135,13 @@ class Composite extends Component
      * RU: Объект контейнера может как добавлять компоненты в свой список
      * вложенных компонентов, так и удалять их, как простые, так и сложные.
      */
-    public function add(Component $component)
+    public function add(Component $component): void
     {
         $this->children[] = $component;
         $component->setParent($this);
     }
 
-    public function remove(Component $component)
+    public function remove(Component $component): void
     {
         $this->children = array_filter($this->children, function ($child) use ($component) {
             return $child == $component;
@@ -165,7 +165,7 @@ class Composite extends Component
      * Поскольку потомки контейнера передают эти вызовы своим потомкам и так
      * далее,  в результате обходится всё дерево объектов.
      */
-    public function operation()
+    public function operation(): string
     {
         $results = [];
         foreach ($this->children as $child) {

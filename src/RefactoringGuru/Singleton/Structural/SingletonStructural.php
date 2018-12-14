@@ -64,12 +64,12 @@ class Singleton
      */
     public static function getInstance(): Singleton
     {
-        $cls = get_called_class();
-        if (! isset(self::$instances[$cls])) {
-            self::$instances[$cls] = new static;
+        $cls = static::class;
+        if (! isset(static::$instances[$cls])) {
+            static::$instances[$cls] = new static;
         }
 
-        return self::$instances[$cls];
+        return static::$instances[$cls];
     }
 
     /**

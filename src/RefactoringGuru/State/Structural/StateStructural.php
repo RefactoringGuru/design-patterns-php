@@ -47,7 +47,7 @@ class Context
      *
      * @param State $state
      */
-    public function transitionTo(State $state)
+    public function transitionTo(State $state): void
     {
         echo "Context: Transition to ".get_class($state).".\n";
         $this->state = $state;
@@ -61,12 +61,12 @@ class Context
      * RU: Контекст делегирует часть своего поведения текущему объекту
      * Состояния.
      */
-    public function request1()
+    public function request1(): void
     {
         $this->state->handle1();
     }
 
-    public function request2()
+    public function request2(): void
     {
         $this->state->handle2();
     }
@@ -95,9 +95,9 @@ abstract class State
         $this->context = $context;
     }
 
-    public abstract function handle1();
+    public abstract function handle1(): void;
 
-    public abstract function handle2();
+    public abstract function handle2(): void;
 }
 
 /**
@@ -109,14 +109,14 @@ abstract class State
  */
 class ConcreteStateA extends State
 {
-    public function handle1()
+    public function handle1(): void
     {
         echo "ConcreteStateA handles request1.\n";
         echo "ConcreteStateA wants to change the state of the context.\n";
         $this->context->transitionTo(new ConcreteStateB());
     }
 
-    public function handle2()
+    public function handle2(): void
     {
         echo "ConcreteStateA handles request2.\n";
     }
@@ -124,12 +124,12 @@ class ConcreteStateA extends State
 
 class ConcreteStateB extends State
 {
-    public function handle1()
+    public function handle1(): void
     {
         echo "ConcreteStateB handles request1.\n";
     }
 
-    public function handle2()
+    public function handle2(): void
     {
         echo "ConcreteStateB handles request2.\n";
         echo "ConcreteStateB wants to change the state of the context.\n";

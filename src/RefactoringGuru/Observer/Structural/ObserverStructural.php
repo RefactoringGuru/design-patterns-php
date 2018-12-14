@@ -117,13 +117,13 @@ class Subject implements \SplSubject
      *
      * RU: Методы управления подпиской.
      */
-    public function attach(\SplObserver $observer)
+    public function attach(\SplObserver $observer): void
     {
         echo "Subject: Attached an observer.\n";
         $this->observers[] = $observer;
     }
 
-    public function detach(\SplObserver $observer)
+    public function detach(\SplObserver $observer): void
     {
         foreach ($this->observers as $key => $s) {
             if ($s === $observer) {
@@ -138,7 +138,7 @@ class Subject implements \SplSubject
      *
      * RU: Запуск обновления в каждом подписчике.
      */
-    public function notify()
+    public function notify(): void
     {
         echo "Subject: Notifying observers...\n";
         foreach ($this->observers as $observer) {
@@ -157,7 +157,7 @@ class Subject implements \SplSubject
      * метод уведомления всякий раз, когда должно произойти что-то важное (или
      * после этого).
      */
-    public function someBusinessLogic()
+    public function someBusinessLogic(): void
     {
         echo "\nSubject: I'm doing something important.\n";
         $this->state = rand(0, 10);
@@ -176,7 +176,7 @@ class Subject implements \SplSubject
  */
 class ConcreteObserverA implements \SplObserver
 {
-    public function update(\SplSubject $subject)
+    public function update(\SplSubject $subject): void
     {
         if (! $subject instanceof Subject) {
             return;
@@ -190,7 +190,7 @@ class ConcreteObserverA implements \SplObserver
 
 class ConcreteObserverB implements \SplObserver
 {
-    public function update(\SplSubject $subject)
+    public function update(\SplSubject $subject): void
     {
         if (! $subject instanceof Subject) {
             return;

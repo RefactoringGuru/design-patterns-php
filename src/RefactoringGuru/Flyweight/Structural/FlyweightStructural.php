@@ -36,7 +36,7 @@ class Flyweight
         $this->sharedState = $sharedState;
     }
 
-    public function operation($uniqueState)
+    public function operation($uniqueState): void
     {
         $s = json_encode($this->sharedState);
         $u = json_encode($uniqueState);
@@ -77,7 +77,7 @@ class FlyweightFactory
      * @param array $state
      * @return string
      */
-    private function getKey(array $state)
+    private function getKey(array $state): string
     {
         ksort($state);
 
@@ -94,7 +94,7 @@ class FlyweightFactory
      * @param $sharedState
      * @return Flyweight
      */
-    public function getFlyweight(array $sharedState)
+    public function getFlyweight(array $sharedState): Flyweight
     {
         $key = $this->getKey($sharedState);
 
@@ -108,7 +108,7 @@ class FlyweightFactory
         return $this->flyweights[$key];
     }
 
-    public function listFlyweights()
+    public function listFlyweights(): void
     {
         $count = count($this->flyweights);
         echo "\nFlyweightFactory: I have $count flyweights:\n";
@@ -157,13 +157,15 @@ addCarToPoliceDatabase($factory,
     "James Doe",
     "BMW",
     "M5",
-    "red");
+    "red",
+);
 
 addCarToPoliceDatabase($factory,
     "CL234IR",
     "James Doe",
     "BMW",
     "X1",
-    "red");
+    "red",
+);
 
 $factory->listFlyweights();

@@ -24,7 +24,7 @@ namespace RefactoringGuru\Visitor\Structural;
  */
 interface Component
 {
-    function accept(Visitor $visitor);
+    public function accept(Visitor $visitor): void;
 }
 
 /**
@@ -45,7 +45,7 @@ class ConcreteComponentA implements Component
      * соответствует названию текущего класса. Таким образом мы позволяем
      * посетителю узнать, с каким классом компонента он работает.
      */
-    function accept(Visitor $visitor)
+    public function accept(Visitor $visitor): void
     {
         $visitor->visitConcreteComponentA($this);
     }
@@ -59,7 +59,7 @@ class ConcreteComponentA implements Component
      * базовом классе или интерфейсе. Посетитель всё же может использовать эти
      * методы, поскольку он знает о конкретном классе компонента.
      */
-    function exclusiveMethodOfConcreteComponentA()
+    public function exclusiveMethodOfConcreteComponentA(): string
     {
         return "A";
     }
@@ -72,12 +72,12 @@ class ConcreteComponentB implements Component
      *
      * RU: То же самое здесь: visitConcreteComponentB => ConcreteComponentB
      */
-    function accept(Visitor $visitor)
+    public function accept(Visitor $visitor): void
     {
         $visitor->visitConcreteComponentB($this);
     }
 
-    function specialMethodOfConcreteComponentB()
+    public function specialMethodOfConcreteComponentB(): string
     {
         return "B";
     }
@@ -94,9 +94,9 @@ class ConcreteComponentB implements Component
  */
 interface Visitor
 {
-    public function visitConcreteComponentA(ConcreteComponentA $element);
+    public function visitConcreteComponentA(ConcreteComponentA $element): void;
 
-    public function visitConcreteComponentB(ConcreteComponentB $element);
+    public function visitConcreteComponentB(ConcreteComponentB $element): void;
 }
 
 /**
@@ -118,12 +118,12 @@ interface Visitor
  */
 class ConcreteVisitor1 implements Visitor
 {
-    public function visitConcreteComponentA(ConcreteComponentA $element)
+    public function visitConcreteComponentA(ConcreteComponentA $element): void
     {
         echo $element->exclusiveMethodOfConcreteComponentA()." + ConcreteVisitor1\n";
     }
 
-    public function visitConcreteComponentB(ConcreteComponentB $element)
+    public function visitConcreteComponentB(ConcreteComponentB $element): void
     {
         echo $element->specialMethodOfConcreteComponentB()." + ConcreteVisitor1\n";
     }
@@ -131,12 +131,12 @@ class ConcreteVisitor1 implements Visitor
 
 class ConcreteVisitor2 implements Visitor
 {
-    public function visitConcreteComponentA(ConcreteComponentA $element)
+    public function visitConcreteComponentA(ConcreteComponentA $element): void
     {
         echo $element->exclusiveMethodOfConcreteComponentA()." + ConcreteVisitor2\n";
     }
 
-    public function visitConcreteComponentB(ConcreteComponentB $element)
+    public function visitConcreteComponentB(ConcreteComponentB $element): void
     {
         echo $element->specialMethodOfConcreteComponentB()." + ConcreteVisitor2\n";
     }

@@ -69,7 +69,7 @@ abstract class SocialNetworkPoster
      * подклассы могут изменять логику косвенно, возвращая из фабричного метода
      * различные типы коннекторов.
      */
-    public function post($content)
+    public function post($content): void
     {
         // EN: Call the factory method to create a Product object...
         //
@@ -97,7 +97,7 @@ class FacebookPoster extends SocialNetworkPoster
 {
     private $login, $password;
 
-    public function __construct($login, $password)
+    public function __construct(string $login, string $password)
     {
         $this->login = $login;
         $this->password = $password;
@@ -118,7 +118,7 @@ class LinkedInPoster extends SocialNetworkPoster
 {
     private $email, $password;
 
-    public function __construct($email, $password)
+    public function __construct(string $email, string $password)
     {
         $this->email = $email;
         $this->password = $password;
@@ -137,11 +137,11 @@ class LinkedInPoster extends SocialNetworkPoster
  */
 interface SocialNetworkConnector
 {
-    public function logIn();
+    public function logIn(): void;
 
-    public function logOut();
+    public function logOut(): void;
 
-    public function createPost($content);
+    public function createPost($content): void;
 }
 
 /**
@@ -153,24 +153,24 @@ class FacebookConnector implements SocialNetworkConnector
 {
     private $login, $password;
 
-    public function __construct($login, $password)
+    public function __construct(string $login, string $password)
     {
         $this->login = $login;
         $this->password = $password;
     }
 
-    public function logIn()
+    public function logIn(): void
     {
         echo "Send HTTP API request to log in user $this->login with " .
             "password $this->password\n";
     }
 
-    public function logOut()
+    public function logOut(): void
     {
         echo "Send HTTP API request to log out user $this->login\n";
     }
 
-    public function createPost($content)
+    public function createPost($content): void
     {
         echo "Send HTTP API requests to create a post in Facebook timeline.\n";
     }
@@ -185,24 +185,24 @@ class LinkedInConnector implements SocialNetworkConnector
 {
     private $email, $password;
 
-    public function __construct($email, $password)
+    public function __construct(string $email, string $password)
     {
         $this->email = $email;
         $this->password = $password;
     }
 
-    public function logIn()
+    public function logIn(): void
     {
         echo "Send HTTP API request to log in user $this->email with " .
             "password $this->password\n";
     }
 
-    public function logOut()
+    public function logOut(): void
     {
         echo "Send HTTP API request to log out user $this->email\n";
     }
 
-    public function createPost($content)
+    public function createPost($content): void
     {
         echo "Send HTTP API requests to create a post in LinkedIn timeline.\n";
     }
