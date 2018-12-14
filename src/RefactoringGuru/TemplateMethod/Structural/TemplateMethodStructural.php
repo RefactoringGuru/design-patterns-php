@@ -55,17 +55,17 @@ abstract class AbstractClass
      */
     protected function baseOperation1()
     {
-        print("AbstractClass says: I am doing the bulk of the work\n");
+        echo "AbstractClass says: I am doing the bulk of the work\n";
     }
 
     protected function baseOperation2()
     {
-        print("AbstractClass says: But I let subclasses override some operations\n");
+        echo "AbstractClass says: But I let subclasses override some operations\n";
     }
 
     protected function baseOperation3()
     {
-        print("AbstractClass says: But I am doing the bulk of the work anyway\n");
+        echo "AbstractClass says: But I am doing the bulk of the work anyway\n";
     }
 
     /**
@@ -105,12 +105,12 @@ class ConcreteClass1 extends AbstractClass
 {
     protected function requiredOperations1()
     {
-        print("ConcreteClass1 says: Implemented Operation1\n");
+        echo "ConcreteClass1 says: Implemented Operation1\n";
     }
 
     protected function requiredOperation2()
     {
-        print("ConcreteClass1 says: Implemented Operation2\n");
+        echo "ConcreteClass1 says: Implemented Operation2\n";
     }
 }
 
@@ -125,17 +125,17 @@ class ConcreteClass2 extends AbstractClass
 {
     protected function requiredOperations1()
     {
-        print("ConcreteClass2 says: Implemented Operation1\n");
+        echo "ConcreteClass2 says: Implemented Operation1\n";
     }
 
     protected function requiredOperation2()
     {
-        print("ConcreteClass2 says: Implemented Operation2\n");
+        echo "ConcreteClass2 says: Implemented Operation2\n";
     }
 
     protected function hook1()
     {
-        print("ConcreteClass2 says: Overridden Hook1\n");
+        echo "ConcreteClass2 says: Overridden Hook1\n";
     }
 }
 
@@ -156,9 +156,9 @@ function clientCode(AbstractClass $class)
     // ...
 }
 
-print("Same client code can work with different subclasses:\n");
+echo "Same client code can work with different subclasses:\n";
 clientCode(new ConcreteClass1());
-print("\n");
+echo "\n";
 
-print("Same client code can work with different subclasses:\n");
+echo "Same client code can work with different subclasses:\n";
 clientCode(new ConcreteClass2());

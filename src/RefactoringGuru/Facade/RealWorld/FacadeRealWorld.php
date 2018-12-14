@@ -70,28 +70,28 @@ class YouTubeDownloader
      */
     public function downloadVideo(string $url)
     {
-        print("Fetching video metadata from youtube...\n");
+        echo "Fetching video metadata from youtube...\n";
         // $title = $this->youtube->fetchVideo($url)->getTitle();
-        print("Saving video file to a temporary file...\n");
+        echo "Saving video file to a temporary file...\n";
         // $this->youtube->saveAs($url, "video.mpg");
 
-        print("Processing source video...\n");
+        echo "Processing source video...\n";
         // $video = $this->ffmpeg->open('video.mpg');
-        print("Normalizing and resizing the video to smaller dimensions...\n");
+        echo "Normalizing and resizing the video to smaller dimensions...\n";
         // $video
         //     ->filters()
         //     ->resize(new FFMpeg\Coordinate\Dimension(320, 240))
         //     ->synchronize();
-        print("Capturing preview image...\n");
+        echo "Capturing preview image...\n";
         // $video
         //     ->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(10))
         //     ->save($title . 'frame.jpg');
-        print("Saving video in target formats...\n");
+        echo "Saving video in target formats...\n";
         // $video
         //     ->save(new FFMpeg\Format\Video\X264(), $title . '.mp4')
         //     ->save(new FFMpeg\Format\Video\WMV(), $title . '.wmv')
         //     ->save(new FFMpeg\Format\Video\WebM(), $title . '.webm');
-        print("Done!\n");
+        echo "Done!\n";
     }
 }
 

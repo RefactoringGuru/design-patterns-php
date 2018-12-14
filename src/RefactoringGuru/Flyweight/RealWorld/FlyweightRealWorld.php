@@ -150,13 +150,13 @@ class CatVariation
      */
     public function renderProfile($name, $age, $owner)
     {
-        print("= $name =\n");
-        print("Age: $age\n");
-        print("Owner: $owner\n");
-        print("Breed: $this->breed\n");
-        print("Image: $this->image\n");
-        print("Color: $this->color\n");
-        print("Texture: $this->texture\n");
+        echo "= $name =\n";
+        echo "Age: $age\n";
+        echo "Owner: $owner\n";
+        echo "Breed: $this->breed\n";
+        echo "Image: $this->image\n";
+        echo "Color: $this->color\n";
+        echo "Texture: $this->texture\n";
     }
 }
 
@@ -285,7 +285,7 @@ class CatDataBase
         $variation =
             $this->getVariation($breed, $image, $color, $texture, $fur, $size);
         $this->cats[] = new Cat($name, $age, $owner, $variation);
-        print("CatDataBase: Added a cat ($name, $breed).\n");
+        echo "CatDataBase: Added a cat ($name, $breed).\n";
     }
 
     /**
@@ -329,7 +329,7 @@ class CatDataBase
                 return $cat;
             }
         }
-        print("CatDataBase: Sorry, your query does not yield any results.");
+        echo "CatDataBase: Sorry, your query does not yield any results.";
     }
 }
 
@@ -340,7 +340,7 @@ class CatDataBase
  */
 $db = new CatDataBase();
 
-print("Client: Let's see what we have in \"cats.csv\".\n");
+echo "Client: Let's see what we have in \"cats.csv\".\n";
 
 // EN: To see the real effect of the pattern, you should have a large database
 // with several millions of records. Feel free to experiment with code to see
@@ -380,13 +380,13 @@ fclose($handle);
 
 // ...
 
-print("\nClient: Let's look for a cat named \"Siri\".\n");
+echo "\nClient: Let's look for a cat named \"Siri\".\n";
 $cat = $db->findCat(['name' => "Siri"]);
 if ($cat) {
     $cat->render();
 }
 
-print("\nClient: Let's look for a cat named \"Bob\".\n");
+echo "\nClient: Let's look for a cat named \"Bob\".\n";
 $cat = $db->findCat(['name' => "Bob"]);
 if ($cat) {
     $cat->render();

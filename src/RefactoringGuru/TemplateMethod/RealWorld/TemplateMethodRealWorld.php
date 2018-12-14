@@ -99,27 +99,27 @@ class Facebook extends SocialNetwork
 {
     public function logIn(string $userName, string $password): bool
     {
-        print("\nChecking user's credentials...\n");
-        print("Name: ".$this->username."\n");
-        print("Password: ".str_repeat("*", strlen($this->password))."\n");
+        echo "\nChecking user's credentials...\n";
+        echo "Name: ".$this->username."\n";
+        echo "Password: ".str_repeat("*", strlen($this->password))."\n";
 
         simulateNetworkLatency();
 
-        print("\n\nFacebook: '".$this->username."' has logged in successfully.\n");
+        echo "\n\nFacebook: '".$this->username."' has logged in successfully.\n";
 
         return true;
     }
 
     public function sendData(string $message): bool
     {
-        print("Facebook: '".$this->username."' has posted '".$message."'.\n");
+        echo "Facebook: '".$this->username."' has posted '".$message."'.\n";
 
         return true;
     }
 
     public function logOut()
     {
-        print("Facebook: '".$this->username."' has been logged out.\n");
+        echo "Facebook: '".$this->username."' has been logged out.\n";
     }
 }
 
@@ -132,27 +132,27 @@ class Twitter extends SocialNetwork
 {
     public function logIn(string $userName, string $password): bool
     {
-        print("\nChecking user's credentials...\n");
-        print("Name: ".$this->username."\n");
-        print("Password: ".str_repeat("*", strlen($this->password))."\n");
+        echo "\nChecking user's credentials...\n";
+        echo "Name: ".$this->username."\n";
+        echo "Password: ".str_repeat("*", strlen($this->password))."\n";
 
         simulateNetworkLatency();
 
-        print("\n\nTwitter: '".$this->username."' has logged in successfully.\n");
+        echo "\n\nTwitter: '".$this->username."' has logged in successfully.\n";
 
         return true;
     }
 
     public function sendData(string $message): bool
     {
-        print("Twitter: '".$this->username."' has posted '".$message."'.\n");
+        echo "Twitter: '".$this->username."' has posted '".$message."'.\n";
 
         return true;
     }
 
     public function logOut()
     {
-        print("Twitter: '".$this->username."' has been logged out.\n");
+        echo "Twitter: '".$this->username."' has been logged out.\n";
     }
 }
 
@@ -166,7 +166,7 @@ function simulateNetworkLatency()
 {
     $i = 0;
     while ($i < 5) {
-        print(".");
+        echo ".";
         sleep(1);
         $i++;
     }
@@ -177,16 +177,16 @@ function simulateNetworkLatency()
  *
  * RU: Клиентский код.
  */
-print("Username: \n");
+echo "Username: \n";
 $username = readline();
-print("Password: \n");
+echo "Password: \n";
 $password = readline();
-print("Message: \n");
+echo "Message: \n";
 $message = readline();
 
-print("\nChoose the social network to post the message:\n".
+echo "\nChoose the social network to post the message:\n".
     "1 - Facebook\n".
-    "2 - Twitter\n");
+    "2 - Twitter\n";
 $choice = readline();
 
 // EN: Now, let's create a proper social network object and send the message.

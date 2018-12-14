@@ -60,9 +60,9 @@ class SimpleDownloader implements Downloader
 {
     public function download(string $url): string
     {
-        print("Downloading a file from the Internet.\n");
+        echo "Downloading a file from the Internet.\n";
         $result = file_get_contents($url);
-        print("Downloaded bytes: " . strlen($result) . "\n");
+        echo "Downloaded bytes: " . strlen($result) . "\n";
         return $result;
     }
 }
@@ -100,11 +100,11 @@ class CachingDownloader implements Downloader
     public function download(string $url): string
     {
         if (!isset($this->cache[$url])) {
-            print("CacheProxy MISS. ");
+            echo "CacheProxy MISS. ";
             $result = $this->downloader->download($url);
             $this->cache[$url] = $result;
         } else {
-            print("CacheProxy HIT. Retrieving result from cache.\n");
+            echo "CacheProxy HIT. Retrieving result from cache.\n";
         }
         return $this->cache[$url];
     }
@@ -140,12 +140,12 @@ function clientCode(Downloader $subject)
     // ...
 }
 
-print("Executing client code with real subject:\n");
+echo "Executing client code with real subject:\n";
 $realSubject = new SimpleDownloader();
 clientCode($realSubject);
 
-print("\n");
+echo "\n");
 
-print("Executing the same client code with a proxy:\n");
+echo "Executing the same client code with a proxy:\n";
 $proxy = new CachingDownloader($realSubject);
 clientCode($proxy);

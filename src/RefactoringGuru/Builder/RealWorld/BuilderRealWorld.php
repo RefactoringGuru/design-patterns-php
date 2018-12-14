@@ -204,7 +204,7 @@ function clientCode(SQLQueryBuilder $queryBuilder)
         ->limit(10, 20)
         ->getSQL();
 
-    print($query);
+    echo $query;
 
     // ...
 }
@@ -224,10 +224,10 @@ function clientCode(SQLQueryBuilder $queryBuilder)
 // clientCode($builder);
 
 
-print("Testing MySQL query builder:\n");
+echo "Testing MySQL query builder:\n";
 clientCode(new MysqlQueryBuilder());
 
-print("\n\n");
+echo "\n\n";
 
-print("Testing PostgresSQL query builder:\n");
+echo "Testing PostgresSQL query builder:\n";
 clientCode(new PostgresQueryBuilder());

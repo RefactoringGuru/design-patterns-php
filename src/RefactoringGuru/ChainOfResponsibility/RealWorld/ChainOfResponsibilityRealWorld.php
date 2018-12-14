@@ -129,13 +129,13 @@ class UserExistsMiddleware extends Middleware
     public function check(string $email, string $password): bool
     {
         if (! $this->server->hasEmail($email)) {
-            print("UserExistsMiddleware: This email is not registered!\n");
+            echo "UserExistsMiddleware: This email is not registered!\n";
 
             return false;
         }
 
         if (! $this->server->isValidPassword($email, $password)) {
-            print("UserExistsMiddleware: Wrong password!\n");
+            echo "UserExistsMiddleware: Wrong password!\n";
 
             return false;
         }
@@ -156,11 +156,11 @@ class RoleCheckMiddleware extends Middleware
     public function check(string $email, string $password): bool
     {
         if ($email === "admin@example.com") {
-            print("RoleCheckMiddleware: Hello, admin!\n");
+            echo "RoleCheckMiddleware: Hello, admin!\n";
 
             return true;
         }
-        print("RoleCheckMiddleware: Hello, user!\n");
+        echo "RoleCheckMiddleware: Hello, user!\n";
 
         return parent::check($email, $password);
     }
@@ -212,7 +212,7 @@ class ThrottlingMiddleware extends Middleware
         $this->request++;
 
         if ($this->request > $this->requestPerMinute) {
-            print("ThrottlingMiddleware: Request limit exceeded!\n");
+            echo "ThrottlingMiddleware: Request limit exceeded!\n";
             die();
         }
 
@@ -260,7 +260,7 @@ class Server
     public function logIn(string $email, string $password)
     {
         if ($this->middleware->check($email, $password)) {
-            print("Server: Authorization has been successful!\n");
+            echo "Server: Authorization has been successful!\n";
 
             // EN: Do something useful for authorized users.
             //
@@ -316,9 +316,9 @@ $server->setMiddleware($middleware);
 // ...
 
 do {
-    print("\nEnter your email:\n");
+    echo "\nEnter your email:\n";
     $email = readline();
-    print("Enter your password:\n");
+    echo "Enter your password:\n";
     $password = readline();
     $success = $server->logIn($email, $password);
 } while (! $success);

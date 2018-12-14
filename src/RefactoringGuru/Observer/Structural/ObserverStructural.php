@@ -119,7 +119,7 @@ class Subject implements \SplSubject
      */
     public function attach(\SplObserver $observer)
     {
-        print("Subject: Attached an observer.\n");
+        echo "Subject: Attached an observer.\n";
         $this->observers[] = $observer;
     }
 
@@ -128,7 +128,7 @@ class Subject implements \SplSubject
         foreach ($this->observers as $key => $s) {
             if ($s === $observer) {
                 unset($this->observers[$key]);
-                print("Subject: Detached an observer.\n");
+                echo "Subject: Detached an observer.\n";
             }
         }
     }
@@ -140,7 +140,7 @@ class Subject implements \SplSubject
      */
     public function notify()
     {
-        print("Subject: Notifying observers...\n");
+        echo "Subject: Notifying observers...\n";
         foreach ($this->observers as $observer) {
             $observer->update($this);
         }
@@ -159,10 +159,10 @@ class Subject implements \SplSubject
      */
     public function someBusinessLogic()
     {
-        print("\nSubject: I'm doing something important.\n");
+        echo "\nSubject: I'm doing something important.\n";
         $this->state = rand(0, 10);
 
-        print("Subject: My state has just changed to: {$this->state}\n");
+        echo "Subject: My state has just changed to: {$this->state}\n";
         $this->notify();
     }
 }
@@ -183,7 +183,7 @@ class ConcreteObserverA implements \SplObserver
         }
 
         if ($subject->state < 3) {
-            print("ConcreteObserverA: Reacted to the event.\n");
+            echo "ConcreteObserverA: Reacted to the event.\n";
         }
     }
 }
@@ -197,7 +197,7 @@ class ConcreteObserverB implements \SplObserver
         }
 
         if ($subject->state == 0 || $subject->state >= 2) {
-            print("ConcreteObserverB: Reacted to the event.\n");
+            echo "ConcreteObserverB: Reacted to the event.\n";
         }
     }
 }

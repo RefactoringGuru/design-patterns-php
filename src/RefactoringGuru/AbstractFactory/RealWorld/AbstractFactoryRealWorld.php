@@ -146,7 +146,7 @@ class PHPTemplateTitleTemplate implements TitleTemplate
 {
     public function getTemplateString(): string
     {
-        return "<h1><?php print(\$title) ?></h1>";
+        return "<h1><?= $title; ?></h1>";
     }
 }
 
@@ -213,7 +213,7 @@ class PHPTemplatePageTemplate extends BasePageTemplate
         return <<<EOF
 <div class="page">
   $renderedTitle
-  <article class="content"><?php print(\$content) ?></article>
+  <article class="content"><?= $content; ?></article>
 </div>
 EOF;
     }
@@ -231,7 +231,7 @@ function templateRenderer(TemplateFactory $factory)
 {
     $pageTemplate = $factory->createPageTemplate();
 
-    print($pageTemplate->getTemplateString());
+    echo $pageTemplate->getTemplateString();
 
     // EN: Here's how would you use the template further in real life:
     //
@@ -250,9 +250,9 @@ function templateRenderer(TemplateFactory $factory)
  * RU: Теперь в других частях приложения клиентский код может принимать
  * фабричные объекты любого типа.
  */
-print("Testing rendering with the Twig factory:\n");
+echo "Testing rendering with the Twig factory:\n";
 templateRenderer(new TwigTemplateFactory());
-print("\n\n");
+echo "\n\n";
 
-print("Testing rendering with the PHPTemplate factory:\n");
+echo "Testing rendering with the PHPTemplate factory:\n";
 templateRenderer(new PHPTemplateFactory());

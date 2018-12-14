@@ -270,12 +270,12 @@ $company = new Company("SuperStarDevelopment", [$mobileDev, $techSupport]);
 setlocale(LC_MONETARY, 'en_US');
 $report = new SalaryReport();
 
-print("Client: I can print a report for a whole company:\n\n");
-print($company->accept($report));
+echo "Client: I can print a report for a whole company:\n\n";
+echo $company->accept($report);
 
-print("\nClient: ...or just for a single department:\n\n");
-print($techSupport->accept($report));
+echo "\nClient: ...or just for a single department:\n\n";
+echo $techSupport->accept($report);
 
 // $export = new JSONExport(); 
-// print($company->accept($export));
+// echo $company->accept($export);
 

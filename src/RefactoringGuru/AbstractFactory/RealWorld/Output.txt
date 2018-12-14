@@ -6,6 +6,6 @@ Testing rendering with the Twig factory:
 
 Testing rendering with the PHPTemplate factory:
 <div class="page">
-  <h1><?php print($title) ?></h1>
-  <article class="content"><?php print($content) ?></article>
+  <h1><?= $title; ?></h1>
+  <article class="content"><?= $content; ?></article>
 </div>

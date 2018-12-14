@@ -120,12 +120,12 @@ class ConcreteVisitor1 implements Visitor
 {
     public function visitConcreteComponentA(ConcreteComponentA $element)
     {
-        print($element->exclusiveMethodOfConcreteComponentA()." + ConcreteVisitor1\n");
+        echo $element->exclusiveMethodOfConcreteComponentA()." + ConcreteVisitor1\n";
     }
 
     public function visitConcreteComponentB(ConcreteComponentB $element)
     {
-        print($element->specialMethodOfConcreteComponentB()." + ConcreteVisitor1\n");
+        echo $element->specialMethodOfConcreteComponentB()." + ConcreteVisitor1\n";
     }
 }
 
@@ -133,12 +133,12 @@ class ConcreteVisitor2 implements Visitor
 {
     public function visitConcreteComponentA(ConcreteComponentA $element)
     {
-        print($element->exclusiveMethodOfConcreteComponentA()." + ConcreteVisitor2\n");
+        echo $element->exclusiveMethodOfConcreteComponentA()." + ConcreteVisitor2\n";
     }
 
     public function visitConcreteComponentB(ConcreteComponentB $element)
     {
-        print($element->specialMethodOfConcreteComponentB()." + ConcreteVisitor2\n");
+        echo $element->specialMethodOfConcreteComponentB()." + ConcreteVisitor2\n";
     }
 }
 
@@ -165,11 +165,11 @@ $components = [
     new ConcreteComponentB(),
 ];
 
-print("The client code works with all visitors via the base Visitor interface:\n");
+echo "The client code works with all visitors via the base Visitor interface:\n";
 $visitor1 = new ConcreteVisitor1();
 clientCode($components, $visitor1);
-print("\n");
+echo "\n";
 
-print("It allows the same client code to work with different types of visitors:\n");
+echo "It allows the same client code to work with different types of visitors:\n";
 $visitor2 = new ConcreteVisitor2();
 clientCode($components, $visitor2);
