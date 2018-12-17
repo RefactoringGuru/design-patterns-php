@@ -141,9 +141,9 @@ function clientCode(Handler $handler)
  *
  * RU: Другая часть клиентского кода создает саму цепочку.
  */
-$monkey = new MonkeyHandler();
-$squirrel = new SquirrelHandler();
-$dog = new DogHandler();
+$monkey = new MonkeyHandler;
+$squirrel = new SquirrelHandler;
+$dog = new DogHandler;
 
 $monkey->setNext($squirrel)->setNext($dog);
 

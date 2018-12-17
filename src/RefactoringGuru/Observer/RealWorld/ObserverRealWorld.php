@@ -125,7 +125,7 @@ class UserRepository implements \SplSubject
     {
         echo "UserRepository: Creating a user.\n";
 
-        $user = new User();
+        $user = new User;
         $user->update($data);
 
         $id = bin2hex(openssl_random_pseudo_bytes(16));
@@ -247,7 +247,7 @@ class OnboardingNotification implements \SplObserver
  * RU: Клиентский код.
  */
 
-$repository = new UserRepository();
+$repository = new UserRepository;
 $repository->attach(new Logger(__DIR__ . "/log.txt"), "*");
 $repository->attach(new OnboardingNotification("1@example.com"), "users:created");
 

@@ -134,7 +134,7 @@ function clientCode(Subject $subject)
 }
 
 echo "Client: Executing the client code with a real subject:\n";
-$realSubject = new RealSubject();
+$realSubject = new RealSubject;
 clientCode($realSubject);
 
 echo "\n";

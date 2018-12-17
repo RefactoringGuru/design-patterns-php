@@ -137,10 +137,10 @@ class ConcreteStrategyB implements Strategy
 $context = new Context();
 
 echo "Client: Strategy is set to normal sorting.\n";
-$context->setStrategy(new ConcreteStrategyA());
+$context->setStrategy(new ConcreteStrategyA);
 $context->doSomeBusinessLogic();
 echo "\n";
 
 echo "Client: Strategy is set to reverse sorting.\n";
-$context->setStrategy(new ConcreteStrategyB());
+$context->setStrategy(new ConcreteStrategyB);
 $context->doSomeBusinessLogic();

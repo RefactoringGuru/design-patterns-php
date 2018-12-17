@@ -79,7 +79,7 @@ class TwigTemplateFactory implements TemplateFactory
 {
     public function createTitleTemplate(): TitleTemplate
     {
-        return new TwigTitleTemplate();
+        return new TwigTitleTemplate;
     }
 
     public function createPageTemplate(): PageTemplate
@@ -97,7 +97,7 @@ class PHPTemplateFactory implements TemplateFactory
 {
     public function createTitleTemplate(): TitleTemplate
     {
-        return new PHPTemplateTitleTemplate();
+        return new PHPTemplateTitleTemplate;
     }
 
     public function createPageTemplate(): PageTemplate
@@ -253,8 +253,8 @@ function templateRenderer(TemplateFactory $factory)
  * фабричные объекты любого типа.
  */
 echo "Testing rendering with the Twig factory:\n";
-templateRenderer(new TwigTemplateFactory());
+templateRenderer(new TwigTemplateFactory);
 echo "\n\n";
 
 echo "Testing rendering with the PHPTemplate factory:\n";
-templateRenderer(new PHPTemplateFactory());
+templateRenderer(new PHPTemplateFactory);

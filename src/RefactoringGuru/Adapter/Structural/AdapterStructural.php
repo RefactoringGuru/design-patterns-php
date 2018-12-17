@@ -80,11 +80,11 @@ function clientCode(Target $target)
 }
 
 echo "Client: I can work just fine with the Target objects:\n";
-$target = new Target();
+$target = new Target;
 clientCode($target);
 echo "\n\n";
 
-$adaptee = new Adaptee();
+$adaptee = new Adaptee;
 echo "Client: The Adaptee class has a weird interface. See, I don't understand it:\n";
 echo "Adaptee: " . $adaptee->specificRequest();
 echo "\n\n";
