@@ -245,7 +245,7 @@ class Server
      *
      * RU: Клиент может настроить сервер с помощью цепочки объектов middleware.
      */
-    public function setMiddleware(Middleware $middleware)
+    public function setMiddleware(Middleware $middleware): void
     {
         $this->middleware = $middleware;
     }
@@ -257,7 +257,7 @@ class Server
      * RU: Сервер получает email и пароль от клиента и отправляет запрос
      * авторизации в middleware.
      */
-    public function logIn(string $email, string $password)
+    public function logIn(string $email, string $password): bool
     {
         if ($this->middleware->check($email, $password)) {
             echo "Server: Authorization has been successful!\n";
@@ -273,7 +273,7 @@ class Server
         return false;
     }
 
-    public function register(string $email, string $password)
+    public function register(string $email, string $password): void
     {
         $this->users[$email] = $password;
     }

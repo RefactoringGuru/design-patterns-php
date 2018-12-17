@@ -13,7 +13,7 @@ Each pattern includes two examples:
 
 ## Requirements
 
-These examples require PHP 7.0 and newer, although they can be easily
+These examples require PHP 7.3 and newer, although they can be easily
 replicated in older versions of PHP.
 
 This version provides explicit argument and return type declarations, which help to understand better some patterns' features that are not very obvious in dynamically typed language.

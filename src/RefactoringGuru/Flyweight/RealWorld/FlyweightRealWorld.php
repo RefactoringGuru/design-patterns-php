@@ -88,8 +88,14 @@ class CatVariation
 
     public $size;
 
-    public function __construct($breed, $image, $color, $texture, $fur, $size)
-    {
+    public function __construct(
+        string $breed,
+        string $image,
+        string $color,
+        string $texture,
+        string $fur,
+        string $size
+    ) {
         $this->breed = $breed;
         $this->image = $image;
         $this->color = $color;
@@ -148,7 +154,7 @@ class CatVariation
      * храниться в массиве или какой-то другой, более эффективной структуре
      * данных.
      */
-    public function renderProfile($name, $age, $owner)
+    public function renderProfile(string $name, string  $age, string $owner)
     {
         echo "= $name =\n";
         echo "Age: $age\n";
@@ -191,7 +197,7 @@ class Cat
      */
     private $variation;
 
-    public function __construct($name, $age, $owner, CatVariation $variation)
+    public function __construct(string $name, string $age, string $owner, CatVariation $variation)
     {
         $this->name = $name;
         $this->age = $age;
@@ -211,10 +217,10 @@ class Cat
      * для удобства вы можете реализовать несколько вспомогательных методов
      * (например, для сравнения нескольких объектов Контекста между собой).
      *
-     * @param $query
+     * @param array $query
      * @return bool
      */
-    public function matches($query): bool
+    public function matches(array $query): bool
     {
         foreach ($query as $key => $value) {
             if (property_exists($this, $key)) {
@@ -244,7 +250,7 @@ class Cat
      * могут быть  остатками реальных методов, извлечённых в класс Легковеса во
      * время массивного рефакторинга к паттерну Легковес.
      */
-    public function render()
+    public function render(): string
     {
         $this->variation->renderProfile($this->name, $this->age, $this->owner);
     }
@@ -280,8 +286,17 @@ class CatDataBase
      * RU: При добавлении кошки в базу данных мы сначала ищем существующую
      * вариацию кошки.
      */
-    public function addCat($name, $age, $owner, $breed, $image, $color, $texture, $fur, $size)
-    {
+    public function addCat(
+        string $name,
+        string $age,
+        string $owner,
+        string $breed,
+        string $image,
+        string $color,
+        string $texture,
+        string $fur,
+        string $size
+    ) {
         $variation =
             $this->getVariation($breed, $image, $color, $texture, $fur, $size);
         $this->cats[] = new Cat($name, $age, $owner, $variation);
@@ -295,7 +310,13 @@ class CatDataBase
      * RU: Возвращаем существующий вариант (Легковеса) по указанным данным или
      * создаём новый, если он ещё не существует.
      */
-    public function getVariation($breed, $image, $color, $texture, $fur, $size): CatVariation
+    public function getVariation(
+        string $breed,
+        string $image, $color,
+        string $texture,
+        string $fur,
+        string $size
+    ): CatVariation 
     {
         $key = $this->getKey(get_defined_vars());
 
@@ -312,7 +333,7 @@ class CatDataBase
      *
      * RU: Эта функция помогает генерировать уникальные ключи массива.
      */
-    private function getKey($data): string
+    private function getKey(array $data): string
     {
         return md5(implode("_", $data));
     }
@@ -322,7 +343,7 @@ class CatDataBase
      *
      * RU: Ищем кошку в базе данных, используя заданные параметры запроса.
      */
-    public function findCat($query)
+    public function findCat(array $query)
     {
         foreach ($this->cats as $cat) {
             if ($cat->matches($query)) {
@@ -372,7 +393,7 @@ while (($data = fgetcsv($handle)) !== false) {
         $data[$columns['color']],
         $data[$columns['texture']],
         $data[$columns['fur']],
-        $data[$columns['size']]
+        $data[$columns['size']],
     );
     $row++;
 }

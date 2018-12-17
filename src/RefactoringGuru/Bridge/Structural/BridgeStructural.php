@@ -47,7 +47,7 @@ class Abstraction
         $this->implementation = $implementation;
     }
 
-    public function operation()
+    public function operation(): string
     {
         return "Abstraction: Base operation with:\n".
             $this->implementation->operationImplementation();
@@ -62,7 +62,7 @@ class Abstraction
  */
 class ExtendedAbstraction extends Abstraction
 {
-    public function operation()
+    public function operation(): string
     {
         return "ExtendedAbstraction: Extended operation with:\n".
             $this->implementation->operationImplementation();
@@ -84,7 +84,7 @@ class ExtendedAbstraction extends Abstraction
  */
 interface Implementation
 {
-    public function operationImplementation();
+    public function operationImplementation(): string;
 }
 
 /**
@@ -96,7 +96,7 @@ interface Implementation
  */
 class ConcreteImplementationA implements Implementation
 {
-    public function operationImplementation()
+    public function operationImplementation(): string
     {
         return "ConcreteImplementationA: Here's the result on the platform A.\n";
     }
@@ -104,7 +104,7 @@ class ConcreteImplementationA implements Implementation
 
 class ConcreteImplementationB implements Implementation
 {
-    public function operationImplementation()
+    public function operationImplementation(): string
     {
         return "ConcreteImplementationB: Here's the result on the platform B.\n";
     }

@@ -68,7 +68,7 @@ class MysqlQueryBuilder implements SQLQueryBuilder
 {
     protected $query;
 
-    protected function reset()
+    protected function reset(): void
     {
         $this->query = new \stdClass();
     }

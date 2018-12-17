@@ -44,7 +44,7 @@ namespace RefactoringGuru\Visitor\RealWorld;
  */
 interface Entity
 {
-    public function accept(Visitor $visitor);
+    public function accept(Visitor $visitor): string;
 }
 
 /**
@@ -61,25 +61,25 @@ class Company implements Entity
      */
     private $departments;
 
-    public function __construct($name, $departments)
+    public function __construct(string $name, array $departments)
     {
         $this->name = $name;
         $this->departments = $departments;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getDepartments()
+    public function getDepartments(): array
     {
         return $this->departments;
     }
 
     // ...
 
-    public function accept(Visitor $visitor)
+    public function accept(Visitor $visitor): string
     {
         // EN: See, the Company component must call the visitCompany method. The
         // same principle applies to all components.
@@ -104,23 +104,23 @@ class Department implements Entity
      */
     private $employees;
 
-    public function __construct($name, $employees)
+    public function __construct(string $name, array $employees)
     {
         $this->name = $name;
         $this->employees = $employees;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getEmployees()
+    public function getEmployees(): array
     {
         return $this->employees;
     }
 
-    public function getCost()
+    public function getCost(): int
     {
         $cost = 0;
         foreach ($this->employees as $employee) {
@@ -132,7 +132,7 @@ class Department implements Entity
 
     // ...
 
-    public function accept(Visitor $visitor)
+    public function accept(Visitor $visitor): string
     {
         return $visitor->visitDepartment($this);
     }
@@ -151,31 +151,31 @@ class Employee implements Entity
 
     private $salary;
 
-    public function __construct($name, $position, $salary)
+    public function __construct(string $name, string $position, int $salary)
     {
         $this->name = $name;
         $this->position = $position;
         $this->salary = $salary;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getPosition()
+    public function getPosition(): string
     {
         return $this->position;
     }
 
-    public function getSalary()
+    public function getSalary(): int
     {
         return $this->salary;
     }
 
     // ...
 
-    public function accept(Visitor $visitor)
+    public function accept(Visitor $visitor): string
     {
         return $visitor->visitEmployee($this);
     }
@@ -190,11 +190,11 @@ class Employee implements Entity
  */
 interface Visitor
 {
-    public function visitCompany(Company $company);
+    public function visitCompany(Company $company): string;
 
-    public function visitDepartment(Department $department);
+    public function visitDepartment(Department $department): string;
 
-    public function visitEmployee(Employee $employee);
+    public function visitEmployee(Employee $employee): string;
 }
 
 /**
@@ -206,7 +206,7 @@ interface Visitor
  */
 class SalaryReport implements Visitor
 {
-    public function visitCompany(Company $company)
+    public function visitCompany(Company $company): string
     {
         $output = "";
         $total = 0;
@@ -222,7 +222,7 @@ class SalaryReport implements Visitor
         return $output;
     }
 
-    public function visitDepartment(Department $department)
+    public function visitDepartment(Department $department): string
     {
         $output = "";
 
@@ -237,7 +237,7 @@ class SalaryReport implements Visitor
         return $output;
     }
 
-    public function visitEmployee(Employee $employee)
+    public function visitEmployee(Employee $employee): string
     {
         return money_format("%#6n", $employee->getSalary()).
             " ".$employee->getName().

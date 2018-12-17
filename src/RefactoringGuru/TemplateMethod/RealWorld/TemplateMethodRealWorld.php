@@ -39,7 +39,7 @@ abstract class SocialNetwork
 
     protected $password;
 
-    public function __construct($username, $password)
+    public function __construct(string $username, string $password)
     {
         $this->username = $username;
         $this->password = $password;
@@ -86,7 +86,7 @@ abstract class SocialNetwork
 
     public abstract function sendData(string $message): bool;
 
-    public abstract function logOut();
+    public abstract function logOut(): void;
 }
 
 /**
@@ -117,7 +117,7 @@ class Facebook extends SocialNetwork
         return true;
     }
 
-    public function logOut()
+    public function logOut(): void
     {
         echo "Facebook: '".$this->username."' has been logged out.\n";
     }
@@ -150,7 +150,7 @@ class Twitter extends SocialNetwork
         return true;
     }
 
-    public function logOut()
+    public function logOut(): void
     {
         echo "Twitter: '".$this->username."' has been logged out.\n";
     }

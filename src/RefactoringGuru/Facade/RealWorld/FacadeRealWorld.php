@@ -68,7 +68,7 @@ class YouTubeDownloader
      * целевой формат (для простоты понимания примера реальный код
      * закомментирован).
      */
-    public function downloadVideo(string $url)
+    public function downloadVideo(string $url): void
     {
         echo "Fetching video metadata from youtube...\n";
         // $title = $this->youtube->fetchVideo($url)->getTitle();
@@ -102,9 +102,9 @@ class YouTubeDownloader
  */
 class YouTube
 {
-    function fetchVideo() { /* ... */ }
+    public function fetchVideo(): string { /* ... */ }
 
-    function saveAs($path) { /* ... */ }
+    public function saveAs(string $path): void { /* ... */ }
 
     // EN: ...more methods and classes...
     //
@@ -118,9 +118,9 @@ class YouTube
  */
 class FFMpeg
 {
-    static public function create() { /* ... */ }
+    static public function create(): FFMpeg { /* ... */ }
 
-    public function open(string $video) { /* ... */ }
+    public function open(string $video): void { /* ... */ }
 
     // EN: ...more methods and classes... RU: ...дополнительные методы и
     // классы...
@@ -128,15 +128,15 @@ class FFMpeg
 
 class FFMpegVideo
 {
-    public function filters() { /* ... */ }
+    public function filters(): self { /* ... */ }
 
-    public function resize() { /* ... */ }
+    public function resize(): self { /* ... */ }
 
-    public function synchronize() { /* ... */ }
+    public function synchronize(): self { /* ... */ }
 
-    public function frame() { /* ... */ }
+    public function frame(): self { /* ... */ }
 
-    public function save(string $path) { /* ... */ }
+    public function save(string $path): self { /* ... */ }
 
     // EN: ...more methods and classes... RU: ...дополнительные методы и
     // классы...

@@ -34,11 +34,11 @@ namespace RefactoringGuru\Command\RealWorld;
  */
 interface Command
 {
-    public function execute();
+    public function execute(): void;
 
-    public function getId();
+    public function getId(): int;
 
-    public function getStatus();
+    public function getStatus(): int;
 }
 
 /**
@@ -68,17 +68,17 @@ abstract class WebScrapingCommand implements Command
         $this->url = $url;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getStatus()
+    public function getStatus(): int
     {
         return $this->status;
     }
 
-    public function getURL()
+    public function getURL(): string
     {
         return $this->url;
     }
@@ -98,14 +98,14 @@ abstract class WebScrapingCommand implements Command
      * Шш! Наблюдательный читатель может обнаружить здесь другой поведенческий
      * паттерн в действии.
      */
-    public function execute()
+    public function execute(): void
     {
         $html = $this->download();
         $this->parse($html);
         $this->complete();
     }
 
-    public function download()
+    public function download(): string
     {
         $html = file_get_contents($this->getURL());
         echo "WebScrapingCommand: Downloaded {$this->url}\n";
@@ -113,9 +113,9 @@ abstract class WebScrapingCommand implements Command
         return $html;
     }
 
-    abstract public function parse($html);
+    abstract public function parse($html): void;
 
-    public function complete()
+    public function complete(): void
     {
         $this->status = 1;
         Queue::get()->completeCommand($this);
@@ -141,7 +141,7 @@ class IMDBGenresScrapingCommand extends WebScrapingCommand
      * RU: Извлечение всех жанров и их поисковых URL со страницы:
      * https://www.imdb.com/feature/genre/
      */
-    public function parse($html)
+    public function parse($html): void
     {
         preg_match_all("|href=\"(https://www.imdb.com/search/title\?genres=.*?)\"|", $html, $matches);
         echo "IMDBGenresScrapingCommand: Discovered ".count($matches[1])." genres.\n";
@@ -161,13 +161,13 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
 {
     private $page;
 
-    public function __construct($url, $page = 1)
+    public function __construct(string $url, int $page = 1)
     {
         parent::__construct($url);
         $this->page = $page;
     }
 
-    public function getURL()
+    public function getURL(): string
     {
         return $this->url.'?page='.$this->page;
     }
@@ -179,7 +179,7 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
      * RU: Извлечение всех фильмов со страницы вроде этой:
      * https://www.imdb.com/search/title?genres=sci-fi&explore=title_type,genres
      */
-    public function parse($html)
+    public function parse(string $html)
     {
         preg_match_all("|href=\"(/title/.*?/)\?ref_=adv_li_tt\"|", $html, $matches);
         echo "IMDBGenrePageScrapingCommand: Discovered ".count($matches[1])." movies.\n";
@@ -212,7 +212,7 @@ class IMDBMovieScrapingCommand extends WebScrapingCommand
      * RU: Получить информацию о фильме с подобной страницы:
      * https://www.imdb.com/title/tt4154756/
      */
-    public function parse($html)
+    public function parse(sting $html): void
     {
         if (preg_match("|<h1 itemprop=\"name\" class=\"\">(.*?)</h1>|", $html, $matches)) {
             $title = $matches[1];
@@ -257,14 +257,14 @@ class Queue
         )');
     }
 
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         $query = 'SELECT COUNT("id") FROM "commands" WHERE status = 0';
 
         return $this->db->querySingle($query) === 0;
     }
 
-    public function add(Command $command)
+    public function add(Command $command): void
     {
         $query = 'INSERT INTO commands (command, status) VALUES (:command, :status)';
         $statement = $this->db->prepare($query);
@@ -283,7 +283,7 @@ class Queue
         return $command;
     }
 
-    public function completeCommand(Command $command)
+    public function completeCommand(Command $command): void
     {
         $query = 'UPDATE commands SET status = :status WHERE id = :id';
         $statement = $this->db->prepare($query);
@@ -292,7 +292,7 @@ class Queue
         $statement->execute();
     }
 
-    public function work()
+    public function work(): void
     {
         while (! $this->isEmpty()) {
             $command = $this->getCommand();

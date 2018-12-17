@@ -70,14 +70,14 @@ class UserRepository implements \SplSubject
         $this->observers["*"] = [];
     }
 
-    private function initEventGroup(string $event = "*")
+    private function initEventGroup(string $event = "*"): void
     {
         if (! isset($this->observers[$event])) {
             $this->observers[$event] = [];
         }
     }
 
-    private function getEventObservers(string $event = "*")
+    private function getEventObservers(string $event = "*"): array
     {
         $this->initEventGroup($event);
         $group = $this->observers[$event];
@@ -86,14 +86,14 @@ class UserRepository implements \SplSubject
         return array_merge($group, $all);
     }
 
-    public function attach(\SplObserver $observer, string $event = "*")
+    public function attach(\SplObserver $observer, string $event = "*"): void
     {
         $this->initEventGroup($event);
 
         $this->observers[$event][] = $observer;
     }
 
-    public function detach(\SplObserver $observer, string $event = "*")
+    public function detach(\SplObserver $observer, string $event = "*"): void
     {
         foreach ($this->getEventObservers($event) as $key => $s) {
             if ($s === $observer) {
@@ -102,7 +102,7 @@ class UserRepository implements \SplSubject
         }
     }
 
-    public function notify(string $event = "*", $data = null)
+    public function notify(string $event = "*", $data = null): void
     {
         echo "UserRepository: Broadcasting the '$event' event.\n";
         foreach ($this->getEventObservers($event) as $observer) {
@@ -114,14 +114,14 @@ class UserRepository implements \SplSubject
     //
     // RU: Вот методы, представляющие бизнес-логику класса.
 
-    public function initialize($filename)
+    public function initialize($filename): void
     {
         echo "UserRepository: Loading user records from a file.\n";
         // ...
         $this->notify("users:init", $filename);
     }
 
-    public function createUser(array $data)
+    public function createUser(array $data): User
     {
         echo "UserRepository: Creating a user.\n";
 
@@ -137,7 +137,7 @@ class UserRepository implements \SplSubject
         return $user;
     }
 
-    public function updateUser(User $user, array $data)
+    public function updateUser(User $user, array $data): User
     {
         echo "UserRepository: Updating a user.\n";
 
@@ -154,7 +154,7 @@ class UserRepository implements \SplSubject
         return $user;
     }
 
-    public function deleteUser(User $user)
+    public function deleteUser(User $user): void
     {
         echo "UserRepository: Deleting a user.\n";
 
@@ -180,7 +180,7 @@ class User
 {
     public $attributes = [];
 
-    public function update($data)
+    public function update($data): void
     {
         $this->attributes = array_merge($this->attributes, $data);
     }
@@ -204,7 +204,7 @@ class Logger implements \SplObserver
         }
     }
 
-    public function update(\SplSubject $repository, string $event = null, $data = null)
+    public function update(\SplSubject $repository, string $event = null, $data = null): void
     {
         $entry = date("Y-m-d H:i:s").": '$event' with data '".json_encode($data)."'\n";
         file_put_contents($this->filename, $entry, FILE_APPEND);
@@ -231,7 +231,7 @@ class OnboardingNotification implements \SplObserver
         $this->adminEmail = $adminEmail;
     }
 
-    public function update(\SplSubject $repository, string $event = null, $data = null)
+    public function update(\SplSubject $repository, string $event = null, $data = null): void
     {
         // mail($this->adminEmail,
         //     "Onboarding required",

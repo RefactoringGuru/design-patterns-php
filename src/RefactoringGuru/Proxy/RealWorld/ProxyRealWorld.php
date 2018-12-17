@@ -63,6 +63,7 @@ class SimpleDownloader implements Downloader
         echo "Downloading a file from the Internet.\n";
         $result = file_get_contents($url);
         echo "Downloaded bytes: " . strlen($result) . "\n";
+        
         return $result;
     }
 }
@@ -144,7 +145,7 @@ echo "Executing client code with real subject:\n";
 $realSubject = new SimpleDownloader();
 clientCode($realSubject);
 
-echo "\n");
+echo "\n";
 
 echo "Executing the same client code with a proxy:\n";
 $proxy = new CachingDownloader($realSubject);

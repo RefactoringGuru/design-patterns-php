@@ -59,7 +59,7 @@ class Facade
      * RU: Методы Фасада удобны для быстрого доступа к сложной функциональности
      * подсистем. Однако клиенты получают только часть возможностей подсистемы.
      */
-    public function operation()
+    public function operation(): string
     {
         $result = "Facade initializes subsystems:\n";
         $result .= $this->subsystem1->operation1();
@@ -83,14 +83,14 @@ class Facade
  */
 class Subsystem1
 {
-    function operation1()
+    function operation1(): string
     {
         return "Subsystem1: Ready!\n";
     }
 
     // ...
 
-    function operationN()
+    function operationN(): string
     {
         return "Subsystem1: Go!\n";
     }
@@ -103,14 +103,14 @@ class Subsystem1
  */
 class Subsystem2
 {
-    public function operation1()
+    public function operation1(): string
     {
         return "Subsystem2: Get ready!\n";
     }
 
     // ...
 
-    public function operationZ()
+    public function operationZ(): string
     {
         return "Subsystem2: Fire!\n";
     }
