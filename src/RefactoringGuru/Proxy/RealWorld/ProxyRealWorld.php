@@ -142,7 +142,7 @@ function clientCode(Downloader $subject)
 }
 
 echo "Executing client code with real subject:\n";
-$realSubject = new SimpleDownloader();
+$realSubject = new SimpleDownloader;
 clientCode($realSubject);
 
 echo "\n";

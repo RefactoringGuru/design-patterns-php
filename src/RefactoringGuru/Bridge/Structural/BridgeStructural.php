@@ -137,12 +137,12 @@ function clientCode(Abstraction $abstraction)
  * RU: Клиентский код должен работать с любой предварительно сконфигурированной
  * комбинацией абстракции и реализации.
  */
-$implementation = new ConcreteImplementationA();
+$implementation = new ConcreteImplementationA;
 $abstraction = new Abstraction($implementation);
 clientCode($abstraction);
 
 echo "\n";
 
-$implementation = new ConcreteImplementationB();
+$implementation = new ConcreteImplementationB;
 $abstraction = new ExtendedAbstraction($implementation);
 clientCode($abstraction);

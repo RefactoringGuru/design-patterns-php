@@ -132,8 +132,8 @@ class Component2 extends BaseComponent
  *
  * RU: Клиентский код.
  */
-$c1 = new Component1();
-$c2 = new Component2();
+$c1 = new Component1;
+$c2 = new Component2;
 $mediator = new ConcreteMediator($c1, $c2);
 
 echo "Client triggers operation A.\n";

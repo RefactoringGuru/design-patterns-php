@@ -89,7 +89,7 @@ class ConcreteCreator1 extends Creator
      */
     public function factoryMethod(): Product
     {
-        return new ConcreteProduct1();
+        return new ConcreteProduct1;
     }
 }
 
@@ -97,7 +97,7 @@ class ConcreteCreator2 extends Creator
 {
     public function factoryMethod(): Product
     {
-        return new ConcreteProduct2();
+        return new ConcreteProduct2;
     }
 }
 
@@ -161,8 +161,8 @@ function clientCode(Creator $creator)
  * среды.
  */
 echo "App: Launched with the ConcreteCreator1.\n";
-clientCode(new ConcreteCreator1());
+clientCode(new ConcreteCreator1);
 echo "\n\n";
 
 echo "App: Launched with the ConcreteCreator2.\n";
-clientCode(new ConcreteCreator2());
+clientCode(new ConcreteCreator2);

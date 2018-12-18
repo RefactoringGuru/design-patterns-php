@@ -123,7 +123,7 @@ function events(): EventDispatcher
 {
     static $eventDispatcher;
     if (! $eventDispatcher) {
-        $eventDispatcher = new EventDispatcher();
+        $eventDispatcher = new EventDispatcher;
     }
 
     return $eventDispatcher;
@@ -212,7 +212,7 @@ class UserRepository implements Observer
     {
         echo "UserRepository: Creating a user.\n";
 
-        $user = new User();
+        $user = new User;
         $user->update($data);
 
         $id = bin2hex(openssl_random_pseudo_bytes(16));
@@ -351,7 +351,7 @@ class OnboardingNotification implements Observer
  * RU: Клиентский код.
  */
 
-$repository = new UserRepository();
+$repository = new UserRepository;
 events()->attach($repository, "facebook:update");
 
 $logger = new Logger(__DIR__ . "/log.txt");

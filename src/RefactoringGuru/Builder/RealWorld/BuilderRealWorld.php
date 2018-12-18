@@ -70,7 +70,7 @@ class MysqlQueryBuilder implements SQLQueryBuilder
 
     protected function reset(): void
     {
-        $this->query = new \stdClass();
+        $this->query = new \stdClass;
     }
 
     /**
@@ -219,15 +219,15 @@ function clientCode(SQLQueryBuilder $queryBuilder)
  */
 // if ($_ENV['database_type'] == 'postgres') {
 //     $builder = new PostgresQueryBuilder(); } else {
-//     $builder = new MysqlQueryBuilder(); }
+//     $builder = new MysqlQueryBuilder; }
 //
 // clientCode($builder);
 
 
 echo "Testing MySQL query builder:\n";
-clientCode(new MysqlQueryBuilder());
+clientCode(new MysqlQueryBuilder);
 
 echo "\n\n";
 
 echo "Testing PostgresSQL query builder:\n";
-clientCode(new PostgresQueryBuilder());
+clientCode(new PostgresQueryBuilder);

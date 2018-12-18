@@ -306,7 +306,7 @@ $server->register("user@example.com", "user_pass");
 $middleware = new ThrottlingMiddleware(2);
 $middleware
     ->linkWith(new UserExistsMiddleware($server))
-    ->linkWith(new RoleCheckMiddleware());
+    ->linkWith(new RoleCheckMiddleware);
 
 // EN: The server gets a chain from the client code.
 //

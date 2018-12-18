@@ -268,7 +268,7 @@ $techSupport = new Department("Tech Support", [
 $company = new Company("SuperStarDevelopment", [$mobileDev, $techSupport]);
 
 setlocale(LC_MONETARY, 'en_US');
-$report = new SalaryReport();
+$report = new SalaryReport;
 
 echo "Client: I can print a report for a whole company:\n\n";
 echo $company->accept($report);
@@ -276,6 +276,6 @@ echo $company->accept($report);
 echo "\nClient: ...or just for a single department:\n\n";
 echo $techSupport->accept($report);
 
-// $export = new JSONExport(); 
+// $export = new JSONExport; 
 // echo $company->accept($export);
 
