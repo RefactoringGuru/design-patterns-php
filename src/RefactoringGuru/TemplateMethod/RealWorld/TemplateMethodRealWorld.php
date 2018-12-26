@@ -82,11 +82,11 @@ abstract class SocialNetwork
      * RU: Шаги объявлены абстрактными, чтобы заставить подклассы реализовать их
      * полностью.
      */
-    public abstract function logIn(string $userName, string $password): bool;
+    abstract public function logIn(string $userName, string $password): bool;
 
-    public abstract function sendData(string $message): bool;
+    abstract public function sendData(string $message): bool;
 
-    public abstract function logOut(): void;
+    abstract public function logOut(): void;
 }
 
 /**

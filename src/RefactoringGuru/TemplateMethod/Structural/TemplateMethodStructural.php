@@ -73,9 +73,9 @@ abstract class AbstractClass
      *
      * RU: А эти операции должны быть реализованы в подклассах.
      */
-    protected abstract function requiredOperations1(): void;
+    abstract protected function requiredOperations1(): void;
 
-    protected abstract function requiredOperation2(): void;
+    abstract protected function requiredOperation2(): void;
 
     /**
      * EN: These are "hooks." Subclasses may override them, but it's not
