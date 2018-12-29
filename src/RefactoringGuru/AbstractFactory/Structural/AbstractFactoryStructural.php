@@ -206,11 +206,11 @@ class ConcreteProductB2 implements AbstractProductB
  */
 function clientCode(AbstractFactory $factory)
 {
-    $product_a = $factory->createProductA();
-    $product_b = $factory->createProductB();
+    $productA = $factory->createProductA();
+    $productB = $factory->createProductB();
 
-    echo $product_b->usefulFunctionB() . "\n";
-    echo $product_b->anotherUsefulFunctionB($product_a) . "\n";
+    echo $productB->usefulFunctionB() . "\n";
+    echo $productB->anotherUsefulFunctionB($productA) . "\n";
 }
 
 /**
