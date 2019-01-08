@@ -58,7 +58,7 @@ abstract class SocialNetworkPoster
      * абстрактный коннектор. Это позволяет подклассам возвращать любые
      * конкретные коннекторы без нарушения контракта суперкласса.
      */
-    public abstract function getSocialNetwork(): SocialNetworkConnector;
+    abstract public function getSocialNetwork(): SocialNetworkConnector;
 
     /**
      * EN: When the factory method is used inside the Creator's business logic,

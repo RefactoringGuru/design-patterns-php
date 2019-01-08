@@ -34,7 +34,7 @@ abstract class Creator
      * RU: Обратите внимание, что Создатель может также обеспечить реализацию
      * фабричного метода по умолчанию.
      */
-    public abstract function factoryMethod(): Product;
+    abstract public function factoryMethod(): Product;
 
     /**
      * EN: Also note that, despite its name, the Creator's primary

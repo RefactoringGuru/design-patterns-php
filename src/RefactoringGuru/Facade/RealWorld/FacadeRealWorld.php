@@ -118,7 +118,7 @@ class YouTube
  */
 class FFMpeg
 {
-    static public function create(): FFMpeg { /* ... */ }
+    public static function create(): FFMpeg { /* ... */ }
 
     public function open(string $video): void { /* ... */ }
 
