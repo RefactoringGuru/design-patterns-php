@@ -72,7 +72,7 @@ class UserRepository implements \SplSubject
 
     private function initEventGroup(string $event = "*"): void
     {
-        if (! isset($this->observers[$event])) {
+        if (!isset($this->observers[$event])) {
             $this->observers[$event] = [];
         }
     }
@@ -142,7 +142,7 @@ class UserRepository implements \SplSubject
         echo "UserRepository: Updating a user.\n";
 
         $id = $user->attributes["id"];
-        if (! isset($this->users[$id])) {
+        if (!isset($this->users[$id])) {
             return null;
         }
 
@@ -159,7 +159,7 @@ class UserRepository implements \SplSubject
         echo "UserRepository: Deleting a user.\n";
 
         $id = $user->attributes["id"];
-        if (! isset($this->users[$id])) {
+        if (!isset($this->users[$id])) {
             return;
         }
 

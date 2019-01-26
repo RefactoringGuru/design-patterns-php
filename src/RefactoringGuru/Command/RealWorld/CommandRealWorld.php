@@ -294,7 +294,7 @@ class Queue
 
     public function work(): void
     {
-        while (! $this->isEmpty()) {
+        while (!$this->isEmpty()) {
             $command = $this->getCommand();
             $command->execute();
         }
@@ -308,7 +308,7 @@ class Queue
     public static function get(): Queue
     {
         static $instance;
-        if (! $instance) {
+        if (!$instance) {
             $instance = new Queue;
         }
 

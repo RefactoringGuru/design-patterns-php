@@ -21,4 +21,10 @@
         <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.OneParamPerLine" />
         <exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
     </rule>
+    
+    <rule ref="Generic.Formatting.SpaceAfterNot">
+        <properties>
+            <property name="spacing" value="0" />
+        </properties>
+    </rule>
 </ruleset>

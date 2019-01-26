@@ -65,7 +65,7 @@ class Singleton
     public static function getInstance(): Singleton
     {
         $cls = static::class;
-        if (! isset(static::$instances[$cls])) {
+        if (!isset(static::$instances[$cls])) {
             static::$instances[$cls] = new static;
         }
 

@@ -319,7 +319,7 @@ class CatDataBase
     ): CatVariation {
         $key = $this->getKey(get_defined_vars());
 
-        if (! isset($this->variations[$key])) {
+        if (!isset($this->variations[$key])) {
             $this->variations[$key] =
                 new CatVariation($breed, $image, $color, $texture, $fur, $size);
         }

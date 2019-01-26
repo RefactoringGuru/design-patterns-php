@@ -178,7 +178,7 @@ class ConcreteObserverA implements \SplObserver
 {
     public function update(\SplSubject $subject): void
     {
-        if (! $subject instanceof Subject) {
+        if (!$subject instanceof Subject) {
             return;
         }
 
@@ -192,7 +192,7 @@ class ConcreteObserverB implements \SplObserver
 {
     public function update(\SplSubject $subject): void
     {
-        if (! $subject instanceof Subject) {
+        if (!$subject instanceof Subject) {
             return;
         }
 

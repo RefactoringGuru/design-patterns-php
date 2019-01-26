@@ -194,7 +194,7 @@ class Caretaker
 
     public function undo(): void
     {
-        if (! count($this->mementos)) {
+        if (!count($this->mementos)) {
             return;
         }
         $memento = array_pop($this->mementos);

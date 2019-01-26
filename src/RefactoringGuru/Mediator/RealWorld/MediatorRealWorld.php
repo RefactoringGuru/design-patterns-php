@@ -73,7 +73,7 @@ class EventDispatcher
 
     private function initEventGroup(string &$event = "*"): void
     {
-        if (! isset($this->observers[$event])) {
+        if (!isset($this->observers[$event])) {
             $this->observers[$event] = [];
         }
     }
@@ -122,7 +122,7 @@ class EventDispatcher
 function events(): EventDispatcher
 {
     static $eventDispatcher;
-    if (! $eventDispatcher) {
+    if (!$eventDispatcher) {
         $eventDispatcher = new EventDispatcher;
     }
 
@@ -219,7 +219,7 @@ class UserRepository implements Observer
         $user->update(["id" => $id]);
         $this->users[$id] = $user;
 
-        if (! $silent) {
+        if (!$silent) {
             events()->trigger("users:created", $this, $user);
         }
 
@@ -231,14 +231,14 @@ class UserRepository implements Observer
         echo "UserRepository: Updating a user.\n";
 
         $id = $user->attributes["id"];
-        if (! isset($this->users[$id])) {
+        if (!isset($this->users[$id])) {
             return null;
         }
 
         $user = $this->users[$id];
         $user->update($data);
 
-        if (! $silent) {
+        if (!$silent) {
             events()->trigger("users:updated", $this, $user);
         }
 
@@ -250,13 +250,13 @@ class UserRepository implements Observer
         echo "UserRepository: Deleting a user.\n";
 
         $id = $user->attributes["id"];
-        if (! isset($this->users[$id])) {
+        if (!isset($this->users[$id])) {
             return;
         }
 
         unset($this->users[$id]);
 
-        if (! $silent) {
+        if (!$silent) {
             events()->trigger("users:deleted", $this, $user);
         }
     }

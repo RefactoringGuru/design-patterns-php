@@ -164,7 +164,7 @@ class CsvIterator implements \Iterator
     public function next(): bool
     {
         if (is_resource($this->filePointer)) {
-            return ! feof($this->filePointer);
+            return !feof($this->filePointer);
         }
 
         return false;
@@ -181,7 +181,7 @@ class CsvIterator implements \Iterator
      */
     public function valid(): bool
     {
-        if (! $this->next()) {
+        if (!$this->next()) {
             if (is_resource($this->filePointer)) {
                 fclose($this->filePointer);
             }

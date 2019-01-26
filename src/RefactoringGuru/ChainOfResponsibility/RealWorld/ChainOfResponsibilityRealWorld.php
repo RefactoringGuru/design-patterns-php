@@ -102,7 +102,7 @@ abstract class Middleware
      */
     public function check(string $email, string $password): bool
     {
-        if (! $this->next) {
+        if (!$this->next) {
             return true;
         }
 
@@ -128,13 +128,13 @@ class UserExistsMiddleware extends Middleware
 
     public function check(string $email, string $password): bool
     {
-        if (! $this->server->hasEmail($email)) {
+        if (!$this->server->hasEmail($email)) {
             echo "UserExistsMiddleware: This email is not registered!\n";
 
             return false;
         }
 
-        if (! $this->server->isValidPassword($email, $password)) {
+        if (!$this->server->isValidPassword($email, $password)) {
             echo "UserExistsMiddleware: Wrong password!\n";
 
             return false;
@@ -321,4 +321,4 @@ do {
     echo "Enter your password:\n";
     $password = readline();
     $success = $server->logIn($email, $password);
-} while (! $success);
+} while (!$success);

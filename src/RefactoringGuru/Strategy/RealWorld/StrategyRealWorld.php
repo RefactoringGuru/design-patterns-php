@@ -106,7 +106,7 @@ class OrderController
             // значением, переданным в запросе.
             $paymentMethod = PaymentFactory::getPaymentMethod($matches[2]);
 
-            if (! isset($matches[3])) {
+            if (!isset($matches[3])) {
                 $this->getPayment($paymentMethod, $order, $data);
             } else {
                 $this->getPaymentReturn($paymentMethod, $order, $data);
@@ -332,7 +332,7 @@ FORM;
             throw new \Exception("Payment key is wrong.");
         }
 
-        if (! isset($data['success']) || ! $data['success'] || $data['success'] == 'false') {
+        if (!isset($data['success']) || !$data['success'] || $data['success'] == 'false') {
             throw new \Exception("Payment failed.");
         }
 

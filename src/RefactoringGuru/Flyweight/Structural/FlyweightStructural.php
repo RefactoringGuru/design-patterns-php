@@ -98,7 +98,7 @@ class FlyweightFactory
     {
         $key = $this->getKey($sharedState);
 
-        if (! isset($this->flyweights[$key])) {
+        if (!isset($this->flyweights[$key])) {
             echo "FlyweightFactory: Can't find a flyweight, creating new one.\n";
             $this->flyweights[$key] = new Flyweight($sharedState);
         } else {
