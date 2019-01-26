@@ -83,7 +83,7 @@ class BaseComponent
         $this->mediator = $mediator;
     }
 
-    function setMediator(Mediator $mediator): void
+    public function setMediator(Mediator $mediator): void
     {
         $this->mediator = $mediator;
     }

@@ -83,14 +83,14 @@ class Facade
  */
 class Subsystem1
 {
-    function operation1(): string
+    public function operation1(): string
     {
         return "Subsystem1: Ready!\n";
     }
 
     // ...
 
-    function operationN(): string
+    public function operationN(): string
     {
         return "Subsystem1: Go!\n";
     }
