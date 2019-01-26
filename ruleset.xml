@@ -41,4 +41,8 @@
             <property name="ignoreNewlines" value="true" />
         </properties>
     </rule>
+    
+    <rule ref="Generic.Files.LineLength.MaxExceeded">
+        <severity>1</severity>
+    </rule>
 </ruleset>
