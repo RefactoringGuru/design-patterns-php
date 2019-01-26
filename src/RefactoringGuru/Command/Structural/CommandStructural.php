@@ -42,7 +42,7 @@ class SimpleCommand implements Command
 
     public function execute(): void
     {
-        echo "SimpleCommand: See, I can do simple things like printing (".$this->payload.")\n";
+        echo "SimpleCommand: See, I can do simple things like printing (" . $this->payload . ")\n";
     }
 }
 
@@ -110,12 +110,12 @@ class Receiver
 {
     public function doSomething(string $a): void
     {
-        echo "Receiver: Working on (".$a.".)\n";
+        echo "Receiver: Working on (" . $a . ".)\n";
     }
 
     public function doSomethingElse(string $b): void
     {
-        echo "Receiver: Also working on (".$b.".)\n";
+        echo "Receiver: Also working on (" . $b . ".)\n";
     }
 }
 

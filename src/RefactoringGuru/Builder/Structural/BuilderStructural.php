@@ -144,7 +144,7 @@ class Product1
 
     public function listParts(): void
     {
-        echo "Product parts: ".implode(', ', $this->parts)."\n\n";
+        echo "Product parts: " . implode(', ', $this->parts) . "\n\n";
     }
 }
 

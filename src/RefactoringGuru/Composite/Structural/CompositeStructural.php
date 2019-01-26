@@ -172,7 +172,7 @@ class Composite extends Component
             $results[] = $child->operation();
         }
 
-        return "Branch(".implode("+", $results).")";
+        return "Branch(" . implode("+", $results) . ")";
     }
 }
 
@@ -185,7 +185,7 @@ function clientCode(Component $component)
 {
     // ...
 
-    echo "RESULT: ".$component->operation();
+    echo "RESULT: " . $component->operation();
 
     // ...
 }
@@ -234,7 +234,7 @@ function clientCode2(Component $component1, Component $component2)
     if ($component1->isComposite()) {
         $component1->add($component2);
     }
-    echo "RESULT: ".$component1->operation();
+    echo "RESULT: " . $component1->operation();
 
     // ...
 }

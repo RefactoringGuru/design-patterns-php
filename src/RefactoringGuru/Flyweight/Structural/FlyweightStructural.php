@@ -113,7 +113,7 @@ class FlyweightFactory
         $count = count($this->flyweights);
         echo "\nFlyweightFactory: I have $count flyweights:\n";
         foreach ($this->flyweights as $key => $flyweight) {
-            echo $key."\n";
+            echo $key . "\n";
         }
     }
 }

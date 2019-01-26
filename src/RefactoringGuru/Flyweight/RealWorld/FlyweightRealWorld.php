@@ -369,7 +369,7 @@ echo "Client: Let's see what we have in \"cats.csv\".\n";
 // RU: Чтобы увидеть реальный эффект паттерна, вы должны иметь большую базу
 // данных с несколькими миллионами записей. Не стесняйтесь экспериментировать с
 // кодом, чтобы увидеть реальные масштабы паттерна.
-$handle = fopen(__DIR__."/cats.csv", "r");
+$handle = fopen(__DIR__ . "/cats.csv", "r");
 $row = 0;
 $columns = [];
 while (($data = fgetcsv($handle)) !== false) {

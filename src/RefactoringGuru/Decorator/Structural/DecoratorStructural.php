@@ -99,7 +99,7 @@ class ConcreteDecoratorA extends Decorator
      */
     public function operation(): string
     {
-        return "ConcreteDecoratorA(".parent::operation().")";
+        return "ConcreteDecoratorA(" . parent::operation() . ")";
     }
 }
 
@@ -114,7 +114,7 @@ class ConcreteDecoratorB extends Decorator
 {
     public function operation(): string
     {
-        return "ConcreteDecoratorB(".parent::operation().")";
+        return "ConcreteDecoratorB(" . parent::operation() . ")";
     }
 }
 
@@ -131,7 +131,7 @@ function clientCode(Component $component)
 {
     // ...
 
-    echo "RESULT: ".$component->operation();
+    echo "RESULT: " . $component->operation();
 
     // ...
 }

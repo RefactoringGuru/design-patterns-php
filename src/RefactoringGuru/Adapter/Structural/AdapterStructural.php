@@ -65,7 +65,7 @@ class Adapter extends Target
 
     public function request(): string
     {
-        return "Adapter: (TRANSLATED) ".strrev($this->adaptee->specificRequest());
+        return "Adapter: (TRANSLATED) " . strrev($this->adaptee->specificRequest());
     }
 }
 

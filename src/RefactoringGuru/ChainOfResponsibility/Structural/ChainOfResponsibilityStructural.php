@@ -84,7 +84,7 @@ class MonkeyHandler extends AbstractHandler
     public function handle($request): ?string
     {
         if ($request == "Banana") {
-            return "Monkey: I'll eat the ".$request.".\n";
+            return "Monkey: I'll eat the " . $request . ".\n";
         } else {
             return parent::handle($request);
         }
@@ -96,7 +96,7 @@ class SquirrelHandler extends AbstractHandler
     public function handle($request): ?string
     {
         if ($request == "Nut") {
-            return "Squirrel: I'll eat the ".$request.".\n";
+            return "Squirrel: I'll eat the " . $request . ".\n";
         } else {
             return parent::handle($request);
         }
@@ -108,7 +108,7 @@ class DogHandler extends AbstractHandler
     public function handle($request): ?string
     {
         if ($request == "MeatBall") {
-            return "Dog: I'll eat the ".$request.".\n";
+            return "Dog: I'll eat the " . $request . ".\n";
         } else {
             return parent::handle($request);
         }
@@ -126,12 +126,12 @@ class DogHandler extends AbstractHandler
 function clientCode(Handler $handler)
 {
     foreach (["Nut", "Banana", "Cup of coffee"] as $food) {
-        echo "Client: Who wants a ".$food."?\n";
+        echo "Client: Who wants a " . $food . "?\n";
         $result = $handler->handle($food);
         if ($result) {
-            echo "  ".$result;
+            echo "  " . $result;
         } else {
-            echo "  ".$food." was left untouched.\n";
+            echo "  " . $food . " was left untouched.\n";
         }
     }
 }

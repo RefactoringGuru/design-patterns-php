@@ -151,7 +151,7 @@ class ConcreteMemento implements Memento
      */
     public function getName(): string
     {
-        return $this->date." / (".substr($this->state, 0, 9)."...)";
+        return $this->date . " / (" . substr($this->state, 0, 9) . "...)";
     }
 
     public function getDate(): string
@@ -199,7 +199,7 @@ class Caretaker
         }
         $memento = array_pop($this->mementos);
 
-        echo "Caretaker: Restoring state to: ".$memento->getName()."\n";
+        echo "Caretaker: Restoring state to: " . $memento->getName() . "\n";
         try {
             $this->originator->restore($memento);
         } catch (\Exception $e) {
@@ -211,7 +211,7 @@ class Caretaker
     {
         echo "Caretaker: Here's the list of mementos:\n";
         foreach ($this->mementos as $memento) {
-            echo $memento->getName()."\n";
+            echo $memento->getName() . "\n";
         }
     }
 }

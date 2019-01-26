@@ -60,7 +60,7 @@ abstract class Creator
         // EN: Now, use the product.
         //
         // RU: Далее, работаем с этим продуктом.
-        $result = "Creator: The same creator's code has just worked with ".
+        $result = "Creator: The same creator's code has just worked with " .
             $product->operation();
 
         return $result;
@@ -149,7 +149,7 @@ function clientCode(Creator $creator)
 {
     // ...
     echo "Client: I'm not aware of the creator's class, but it still works.\n"
-        .$creator->someOperation();
+        . $creator->someOperation();
     // ...
 }
 

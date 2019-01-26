@@ -106,7 +106,7 @@ class CsvIterator implements \Iterator
             $this->filePointer = fopen($file, 'rb');
             $this->delimiter = $delimiter;
         } catch (\Exception $e) {
-            throw new \Exception('The file "'.$file.'" cannot be read.');
+            throw new \Exception('The file "' . $file . '" cannot be read.');
         }
     }
 

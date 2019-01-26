@@ -144,7 +144,7 @@ class IMDBGenresScrapingCommand extends WebScrapingCommand
     public function parse($html): void
     {
         preg_match_all("|href=\"(https://www.imdb.com/search/title\?genres=.*?)\"|", $html, $matches);
-        echo "IMDBGenresScrapingCommand: Discovered ".count($matches[1])." genres.\n";
+        echo "IMDBGenresScrapingCommand: Discovered " . count($matches[1]) . " genres.\n";
 
         foreach ($matches[1] as $genre) {
             Queue::get()->add(new IMDBGenrePageScrapingCommand($genre));
@@ -169,7 +169,7 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
 
     public function getURL(): string
     {
-        return $this->url.'?page='.$this->page;
+        return $this->url . '?page=' . $this->page;
     }
 
     /**
@@ -182,10 +182,10 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
     public function parse(string $html)
     {
         preg_match_all("|href=\"(/title/.*?/)\?ref_=adv_li_tt\"|", $html, $matches);
-        echo "IMDBGenrePageScrapingCommand: Discovered ".count($matches[1])." movies.\n";
+        echo "IMDBGenrePageScrapingCommand: Discovered " . count($matches[1]) . " movies.\n";
 
         foreach ($matches[1] as $moviePath) {
-            $url = "https://www.imdb.com".$moviePath;
+            $url = "https://www.imdb.com" . $moviePath;
             Queue::get()->add(new IMDBMovieScrapingCommand($url));
         }
 

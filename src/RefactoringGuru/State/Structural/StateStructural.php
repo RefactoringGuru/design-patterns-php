@@ -49,7 +49,7 @@ class Context
      */
     public function transitionTo(State $state): void
     {
-        echo "Context: Transition to ".get_class($state).".\n";
+        echo "Context: Transition to " . get_class($state) . ".\n";
         $this->state = $state;
         $this->state->setContext($this);
     }

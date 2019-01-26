@@ -64,7 +64,7 @@ class OrderController
      */
     public function post(string $url, array $data)
     {
-        echo "Controller: POST request to $url with ".json_encode($data)."\n";
+        echo "Controller: POST request to $url with " . json_encode($data) . "\n";
 
         $path = parse_url($url, PHP_URL_PATH);
 
@@ -132,7 +132,7 @@ class OrderController
     {
         echo "Controller: Here's all orders:\n";
         foreach (Order::get() as $order) {
-            echo json_encode($order, JSON_PRETTY_PRINT)."\n";
+            echo json_encode($order, JSON_PRETTY_PRINT) . "\n";
         }
     }
 
@@ -146,7 +146,7 @@ class OrderController
         // RU: Фактическая работа делегируется объекту метода оплаты.
         $form = $method->getPaymentForm($order);
         echo "Controller: here's the payment form:\n";
-        echo $form."\n";
+        echo $form . "\n";
     }
 
     /**
@@ -163,7 +163,7 @@ class OrderController
                 $order->complete();
             }
         } catch (\Exception $e) {
-            echo "Controller: got an exception (".$e->getMessage().")\n";
+            echo "Controller: got an exception (" . $e->getMessage() . ")\n";
         }
     }
 }
@@ -307,7 +307,7 @@ class CreditCardPayment implements PaymentMethod
 
     public function getPaymentForm(Order $order): string
     {
-        $returnURL = "https://our-website.com/".
+        $returnURL = "https://our-website.com/" .
             "order/{$order->id}/payment/cc/return";
 
         return <<<FORM
@@ -328,7 +328,7 @@ FORM;
     {
         echo "CreditCardPayment: ...validating... ";
 
-        if ($data['key'] != md5($order->id.static::$store_secret_key)) {
+        if ($data['key'] != md5($order->id . static::$store_secret_key)) {
             throw new \Exception("Payment key is wrong.");
         }
 
@@ -359,7 +359,7 @@ class PayPalPayment implements PaymentMethod
 {
     public function getPaymentForm(Order $order): string
     {
-        $returnURL = "https://our-website.com/".
+        $returnURL = "https://our-website.com/" .
             "order/{$order->id}/payment/paypal/return";
 
         return <<<FORM
@@ -419,5 +419,5 @@ echo "\nClient: Oh, I'm redirected to the PayPal.\n";
 echo "\nClient: ...pays on the PayPal...\n";
 echo "\nClient: Alright, I'm back with you, guys.\n";
 
-$controller->get("/order/1/payment/paypal/return".
+$controller->get("/order/1/payment/paypal/return" .
     "?key=c55a3964833a4b0fa4469ea94a057152&success=true&total=19.95");

@@ -27,4 +27,18 @@
             <property name="spacing" value="0" />
         </properties>
     </rule>
+    
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="80" />
+            <property name="absoluteLineLimit" value="80" />
+        </properties>
+    </rule>
+    
+    <rule ref="Squiz.Strings.ConcatenationSpacing">
+        <properties>
+            <property name="spacing" value="1" />
+            <property name="ignoreNewlines" value="true" />
+        </properties>
+    </rule>
 </ruleset>
