@@ -60,7 +60,7 @@ namespace RefactoringGuru\Observer\Structural;
  *
  * Вот как выглядит интерфейс Издателя:
  *
- * @link http://php.net/manual/en/class.splsubject.php
+ * @link http://php.net/manual/ru/class.splsubject.php
  *
  *     interface SplSubject
  *     {
@@ -76,7 +76,7 @@ namespace RefactoringGuru\Observer\Structural;
  *
  * Также имеется встроенный интерфейс для Наблюдателей:
  *
- * @link http://php.net/manual/en/class.splobserver.php
+ * @link http://php.net/manual/ru/class.splobserver.php
  *
  *     interface SplObserver
  *     {

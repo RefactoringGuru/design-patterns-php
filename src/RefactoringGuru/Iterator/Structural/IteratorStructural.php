@@ -50,7 +50,7 @@ use Iterator;
  * RU: PHP имеет встроенный интерфейс Итератора, который предоставляет очень
  * удобную интеграцию с циклами foreach. Вот как выглядит интерфейс:
  *
- * @link http://php.net/manual/en/class.iterator.php
+ * @link http://php.net/manual/ru/class.iterator.php
  *
  *     interface Iterator extends Traversable {
  *         // Возврат текущего элемента.
@@ -71,7 +71,7 @@ use Iterator;
  *
  * Также есть встроенный интерфейс для коллекций:
  *
- * @link http://php.net/manual/en/class.iteratoraggregate.php
+ * @link http://php.net/manual/ru/class.iteratoraggregate.php
  *
  *     interface IteratorAggregate extends Traversable {
  *         public getIterator(): Traversable;
