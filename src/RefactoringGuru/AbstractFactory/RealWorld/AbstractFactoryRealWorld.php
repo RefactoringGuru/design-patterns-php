@@ -188,7 +188,7 @@ abstract class BasePageTemplate implements PageTemplate
  */
 class TwigPageTemplate extends BasePageTemplate
 {
-public function getTemplateString(): string
+    public function getTemplateString(): string
     {
         $renderedTitle = $this->titleTemplate->getTemplateString();
         
