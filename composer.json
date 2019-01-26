@@ -16,7 +16,7 @@
     },
     "scripts": {
         "codestyle:check": "./vendor/bin/phpcs -p -s -n --standard=ruleset.xml --ignore=vendor src",
-        "codestyle:fix": "./vendor/bin/phpcbf --standard=ruleset.xml src/ "
+        "codestyle:fix": "./vendor/bin/phpcbf --standard=ruleset.xml src/"
     },
     "autoload": {
         "psr-4": {
