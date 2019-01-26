@@ -93,10 +93,6 @@ class Originator
      */
     public function restore(Memento $memento): void
     {
-        if (! $memento instanceof ConcreteMemento) {
-            throw new \Exception("Unknown memento class ".get_class($memento));
-        }
-
         $this->state = $memento->getState();
         echo "Originator: My state has changed to: {$this->state}\n";
     }
