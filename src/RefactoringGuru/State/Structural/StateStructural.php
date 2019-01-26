@@ -95,9 +95,9 @@ abstract class State
         $this->context = $context;
     }
 
-    public abstract function handle1(): void;
+    abstract public function handle1(): void;
 
-    public abstract function handle2(): void;
+    abstract public function handle2(): void;
 }
 
 /**

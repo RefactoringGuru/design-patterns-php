@@ -144,8 +144,7 @@ class Product
         string $description,
         string $image,
         float $price
-    )
-    {
+    ) {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;

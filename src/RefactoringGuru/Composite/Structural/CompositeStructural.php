@@ -88,7 +88,7 @@ abstract class Component
      * умолчанию или поручить это конкретным классам, объявив метод, содержащий
      * поведение абстрактным.
      */
-    public abstract function operation(): string;
+    abstract public function operation(): string;
 }
 
 /**

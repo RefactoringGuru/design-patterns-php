@@ -316,8 +316,7 @@ class CatDataBase
         string $texture,
         string $fur,
         string $size
-    ): CatVariation 
-    {
+    ): CatVariation {
         $key = $this->getKey(get_defined_vars());
 
         if (! isset($this->variations[$key])) {

@@ -99,7 +99,7 @@ abstract class FormElement
      * рендеринга, но мы можем с уверенностью предположить, что все они будут
      * возвращать строки.
      */
-    public abstract function render(): string;
+    abstract public function render(): string;
 }
 
 /**
