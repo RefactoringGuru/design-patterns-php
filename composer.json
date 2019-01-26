@@ -1,0 +1,26 @@
+{
+    "name": "RefactoringGuru/design-patterns-php",
+    "description": "PHP examples for all classic GoF design patterns",
+    "authors": [
+        {
+            "name": "Alexander Shvets",
+            "email": "neochief@shvetsgroup.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.3"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3"
+    },
+    "scripts": {
+        "codestyle:check": "./vendor/bin/phpcs -p -s -n --standard=ruleset.xml --ignore=vendor src",
+        "codestyle:fix": "./vendor/bin/phpcbf --standard=ruleset.xml src/ "
+    },
+    "autoload": {
+        "psr-4": {
+            "RefactoringGuru\\": ""
+        }
+    }
+}

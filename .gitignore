@@ -5,3 +5,4 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 src/RefactoringGuru/Command/RealWorld/commands.sqlite
+vendor/
