@@ -1,0 +1,11 @@
+sudo: false
+language: php
+
+before_script:
+  - travis_retry composer install --dev --no-interaction
+  
+php:
+  - 7.3
+  
+script:
+  - composer codestyle:check
