@@ -178,10 +178,6 @@ class ConcreteObserverA implements \SplObserver
 {
     public function update(\SplSubject $subject): void
     {
-        if (!$subject instanceof Subject) {
-            return;
-        }
-
         if ($subject->state < 3) {
             echo "ConcreteObserverA: Reacted to the event.\n";
         }
@@ -192,10 +188,6 @@ class ConcreteObserverB implements \SplObserver
 {
     public function update(\SplSubject $subject): void
     {
-        if (!$subject instanceof Subject) {
-            return;
-        }
-
         if ($subject->state == 0 || $subject->state >= 2) {
             echo "ConcreteObserverB: Reacted to the event.\n";
         }
