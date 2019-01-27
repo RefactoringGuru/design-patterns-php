@@ -103,14 +103,19 @@ class Subject implements \SplSubject
     public $state;
 
     /**
-     * EN: @var array List of subscribers. In real life, the list of subscribers
+     * EN: @var \SplObjectStorage List of subscribers. In real life, the list of subscribers
      * can be stored more comprehensively (categorized by event type, etc.).
      *
-     * RU: @var array Список подписчиков. В реальной жизни список подписчиков
+     * RU: @var \SplObjectStorage Список подписчиков. В реальной жизни список подписчиков
      * может храниться в более подробном виде (классифицируется по типу события
      * и т.д.)
      */
-    private $observers = [];
+    private $observers;
+    
+    public function __construct()
+    {
+        $this->observers = new \SplObjectStorage;
+    }
 
     /**
      * EN: The subscription management methods.
@@ -120,17 +125,13 @@ class Subject implements \SplSubject
     public function attach(\SplObserver $observer): void
     {
         echo "Subject: Attached an observer.\n";
-        $this->observers[] = $observer;
+        $this->observers->attach($observer);
     }
 
     public function detach(\SplObserver $observer): void
     {
-        foreach ($this->observers as $key => $s) {
-            if ($s === $observer) {
-                unset($this->observers[$key]);
-                echo "Subject: Detached an observer.\n";
-            }
-        }
+        $this->observers->detach($observer);
+        echo "Subject: Detached an observer.\n";
     }
 
     /**
