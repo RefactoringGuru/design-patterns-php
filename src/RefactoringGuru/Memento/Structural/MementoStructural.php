@@ -27,10 +27,10 @@ namespace RefactoringGuru\Memento\Structural;
 class Originator
 {
     /**
-     * EN: @var mixed For the sake of simplicity, the originator's state is
+     * EN: @var string For the sake of simplicity, the originator's state is
      * stored inside a single variable.
      *
-     * RU: @var mixed Для удобства состояние создателя хранится внутри одной
+     * RU: @var string Для удобства состояние создателя хранится внутри одной
      * переменной.
      */
     private $state;
@@ -74,7 +74,7 @@ class Originator
     /**
      * EN: Saves the current state inside a memento.
      *
-     * RU: Сохранияет текущее состояние внутри снимка.
+     * RU: Сохраняет текущее состояние внутри снимка.
      *
      * @return Memento
      */
@@ -89,7 +89,6 @@ class Originator
      * RU: Восстанавливает состояние Создателя из объекта снимка.
      *
      * @param Memento $memento
-     * @throws \Exception
      */
     public function restore(Memento $memento): void
     {
