@@ -123,7 +123,7 @@ class Receiver
  * EN: The Invoker is associated with one or several commands. It sends a
  * request to the command.
  *
- * RU: Отпрвитель связан с одной или несколькими командами. Он отправляет запрос
+ * RU: Отправитель связан с одной или несколькими командами. Он отправляет запрос
  * команде.
  */
 class Invoker
