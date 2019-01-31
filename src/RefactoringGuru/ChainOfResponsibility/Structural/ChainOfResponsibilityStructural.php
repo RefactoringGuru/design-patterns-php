@@ -28,7 +28,7 @@ interface Handler
 {
     public function setNext(Handler $handler): Handler;
 
-    public function handle($request): ?string;
+    public function handle(string $request): ?string;
 }
 
 /**
@@ -62,7 +62,7 @@ abstract class AbstractHandler implements Handler
         return $handler;
     }
 
-    public function handle($request): ?string
+    public function handle(string $request): ?string
     {
         if ($this->nextHandler) {
             return $this->nextHandler->handle($request);
@@ -81,9 +81,9 @@ abstract class AbstractHandler implements Handler
  */
 class MonkeyHandler extends AbstractHandler
 {
-    public function handle($request): ?string
+    public function handle(string $request): ?string
     {
-        if ($request == "Banana") {
+        if ($request === "Banana") {
             return "Monkey: I'll eat the " . $request . ".\n";
         } else {
             return parent::handle($request);
@@ -93,9 +93,9 @@ class MonkeyHandler extends AbstractHandler
 
 class SquirrelHandler extends AbstractHandler
 {
-    public function handle($request): ?string
+    public function handle(string $request): ?string
     {
-        if ($request == "Nut") {
+        if ($request === "Nut") {
             return "Squirrel: I'll eat the " . $request . ".\n";
         } else {
             return parent::handle($request);
@@ -105,9 +105,9 @@ class SquirrelHandler extends AbstractHandler
 
 class DogHandler extends AbstractHandler
 {
-    public function handle($request): ?string
+    public function handle(string $request): ?string
     {
-        if ($request == "MeatBall") {
+        if ($request === "MeatBall") {
             return "Dog: I'll eat the " . $request . ".\n";
         } else {
             return parent::handle($request);
