@@ -124,9 +124,14 @@ class Leaf extends Component
 class Composite extends Component
 {
     /**
-     * @var Component[]
+     * @var \SplObjectStorage
      */
-    protected $children = [];
+    protected $children;
+    
+    public function __construct()
+    {
+        $this->children = new \SplObjectStorage;
+    }
 
     /**
      * EN: A composite object can add or remove other components (both simple or
@@ -137,15 +142,13 @@ class Composite extends Component
      */
     public function add(Component $component): void
     {
-        $this->children[] = $component;
+        $this->children->attach($component);
         $component->setParent($this);
     }
 
     public function remove(Component $component): void
     {
-        $this->children = array_filter($this->children, function ($child) use ($component) {
-            return $child == $component;
-        });
+        $this->children->detach($component);
         $component->setParent(null);
     }
 
