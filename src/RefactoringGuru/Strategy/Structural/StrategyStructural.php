@@ -43,7 +43,7 @@ class Context
      *
      * @param Strategy $strategy
      */
-    public function __constructor(Strategy $strategy)
+    public function __construct(Strategy $strategy)
     {
         $this->strategy = $strategy;
     }
@@ -134,11 +134,10 @@ class ConcreteStrategyB implements Strategy
  * Клиент должен знать о различиях между стратегиями, чтобы сделать правильный
  * выбор.
  */
-$context = new Context();
-
+$context = new Context(new ConcreteStrategyA);
 echo "Client: Strategy is set to normal sorting.\n";
-$context->setStrategy(new ConcreteStrategyA);
 $context->doSomeBusinessLogic();
+
 echo "\n";
 
 echo "Client: Strategy is set to reverse sorting.\n";
