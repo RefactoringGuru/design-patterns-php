@@ -19,7 +19,7 @@ namespace RefactoringGuru\Visitor\Structural;
  * EN: The Component interface declares an `accept` method that should take the
  * base visitor interface as an argument.
  *
- * RU: Интерфейс Компонента объявляет метод принятия, который в качестве
+ * RU: Интерфейс Компонента объявляет метод accept, который в качестве
  * аргумента может получать любой объект, реализующий интерфейс посетителя.
  */
 interface Component
@@ -31,8 +31,8 @@ interface Component
  * EN: Each Concrete Component must implement the `accept` method in such a way
  * that it calls the visitor's method corresponding to the component's class.
  *
- * RU: Каждый Конкретный Компонент должен реализовать метод принятия таким
- * образом, чтобы он вызывал метод посетителя, соотвествующий классу компонента.
+ * RU: Каждый Конкретный Компонент должен реализовать метод accept таким
+ * образом, чтобы он вызывал метод посетителя, соответствующий классу компонента.
  */
 class ConcreteComponentA implements Component
 {
