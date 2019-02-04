@@ -193,10 +193,11 @@ abstract class FieldComposite extends FormElement
 
     /**
      * EN: The same logic applies to the getter. It returns the structured data
-     * of the composite itself, plus all the children data.
+     * of the composite itself (if any) and all the children data.
      *
      * RU: Та же логика применима и к получателю. Он возвращает
-     * структурированные данные самого контейнера, а также все дочерние данные.
+     * структурированные данные самого контейнера (если они есть), а также все
+     * дочерние данные.
      */
     public function getData(): array
     {
