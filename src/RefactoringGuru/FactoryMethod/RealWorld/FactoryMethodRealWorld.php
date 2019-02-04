@@ -75,9 +75,9 @@ abstract class SocialNetworkPoster
         //
         // RU: Вызываем фабричный метод для создания объекта Продукта...
         $network = $this->getSocialNetwork();
-        // ...then use it as you will.
+        // EN: ...then use it as you will.
         //
-        // ...а затем используем его по своему усмотрению.
+        // RU: ...а затем используем его по своему усмотрению.
         $network->logIn();
         $network->createPost($content);
         $network->logout();
