@@ -6,7 +6,7 @@ It contains PHP examples for all classic GoF design patterns.
 
 Each pattern includes two examples:
 
-- **Structural** examples show the internal structure of patterns, including detailed comments.
+- **Conceptual** examples show the internal structure of patterns, including detailed comments.
 
 - **RealWorld** examples show how patterns can be used in real-world PHP applications.
 
@@ -46,7 +46,7 @@ _Client_ means _client of classes, defined as part of a pattern_, which is merel
 
 #### 2. I don't understand the roles you're referring to in RealWorld examples.
 
-Take a look at the structural example first. There you'll find detailed descriptions of each class in a pattern, its role, and connection to other classes.
+Take a look at the conceptual example first. There you'll find detailed descriptions of each class in a pattern, its role, and connection to other classes.
 
 
 ## Contributor's Guide
