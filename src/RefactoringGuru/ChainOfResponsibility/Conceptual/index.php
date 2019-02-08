@@ -45,10 +45,6 @@ abstract class AbstractHandler implements Handler
      */
     private $nextHandler;
 
-    /**
-     * @param Handler $handler
-     * @return Handler
-     */
     public function setNext(Handler $handler): Handler
     {
         $this->nextHandler = $handler;

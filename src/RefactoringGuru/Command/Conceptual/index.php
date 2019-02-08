@@ -142,8 +142,6 @@ class Invoker
      * EN: Initialize commands.
      *
      * RU: Инициализация команд.
-     *
-     * @param Command $command
      */
     public function setOnStart(Command $command): void
     {

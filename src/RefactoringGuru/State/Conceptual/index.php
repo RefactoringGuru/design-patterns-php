@@ -31,10 +31,7 @@ class Context
      * RU: @var State Ссылка на текущее состояние Контекста.
      */
     private $state;
-
-    /**
-     * @param State $state
-     */
+    
     public function __construct(State $state)
     {
         $this->transitionTo($state);
@@ -44,8 +41,6 @@ class Context
      * EN: The Context allows changing the State object at runtime.
      *
      * RU: Контекст позволяет изменять объект Состояния во время выполнения.
-     *
-     * @param State $state
      */
     public function transitionTo(State $state): void
     {

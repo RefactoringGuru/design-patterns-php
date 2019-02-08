@@ -73,9 +73,6 @@ class FlyweightFactory
      * EN: Returns a Flyweight's string hash for a given state.
      *
      * RU: Возвращает хеш строки Легковеса для данного состояния.
-     *
-     * @param array $state
-     * @return string
      */
     private function getKey(array $state): string
     {
@@ -90,9 +87,6 @@ class FlyweightFactory
      *
      * RU: Возвращает существующий Легковес с заданным состоянием или создает
      * новый.
-     *
-     * @param $sharedState
-     * @return Flyweight
      */
     public function getFlyweight(array $sharedState): Flyweight
     {
