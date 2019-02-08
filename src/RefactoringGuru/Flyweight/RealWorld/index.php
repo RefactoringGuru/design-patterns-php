@@ -210,15 +210,9 @@ class Cat
      * for the sake of convenience, you may need to implement some helper
      * methods (for example, for comparing several Context objects.)
      *
-     * @param $query
-     * @return bool
-     *
      * RU: Поскольку объекты Контекста не владеют всем своим состоянием, иногда
      * для удобства вы можете реализовать несколько вспомогательных методов
      * (например, для сравнения нескольких объектов Контекста между собой).
-     *
-     * @param array $query
-     * @return bool
      */
     public function matches(array $query): bool
     {

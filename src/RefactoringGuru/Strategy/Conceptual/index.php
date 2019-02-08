@@ -40,8 +40,6 @@ class Context
      *
      * RU: Обычно Контекст принимает стратегию через конструктор, а также
      * предоставляет сеттер для её изменения во время выполнения.
-     *
-     * @param Strategy $strategy
      */
     public function __construct(Strategy $strategy)
     {
@@ -53,8 +51,6 @@ class Context
      *
      * RU: Обычно Контекст позволяет заменить объект Стратегии во время
      * выполнения.
-     *
-     * @param Strategy $strategy
      */
     public function setStrategy(Strategy $strategy)
     {

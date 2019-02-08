@@ -75,8 +75,6 @@ class Originator
      * EN: Saves the current state inside a memento.
      *
      * RU: Сохраняет текущее состояние внутри снимка.
-     *
-     * @return Memento
      */
     public function save(): Memento
     {
@@ -87,8 +85,6 @@ class Originator
      * EN: Restores the Originator's state from a memento object.
      *
      * RU: Восстанавливает состояние Создателя из объекта снимка.
-     *
-     * @param Memento $memento
      */
     public function restore(Memento $memento): void
     {
