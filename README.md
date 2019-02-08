@@ -10,6 +10,7 @@ Each pattern includes two examples:
 
 - **RealWorld** examples show how patterns can be used in real-world PHP applications.
 
+
 ## Requirements
 
 These examples require PHP 7.3 and newer, although they can be easily replicated in older versions of PHP.
@@ -27,12 +28,14 @@ For the best experience, I recommend working with examples with these IDEs:
 - [PhpStorm](https://www.jetbrains.com/phpstorm/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
+
 ## Roadmap
 
 - [ ] Memento: RealLife
 - [ ] State: RealLife
 
 I'm out of decent ideas for real-world usages for these two in PHP apps. If you had used them in your project, feel free to suggest me an idea by posting an Issue.
+
 
 ## FAQ
 
@@ -44,6 +47,7 @@ _Client_ means _client of classes, defined as part of a pattern_, which is merel
 
 Take a look at the conceptual example first. There you'll find detailed descriptions of each class in a pattern, its role, and connection to other classes.
 
+
 ## Contributor's Guide
 
 I appreciate any help, whether it's a simple fix of a typo or a whole new example. Just [make a fork](https://help.github.com/articles/fork-a-repo/), make your change and submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
@@ -54,7 +58,7 @@ Here's a style guide which might help you to keep your changes consistent with t
 
 2. Try to hard-wrap the code at 80th's character. It helps to list the code on the website without scrollbars.
 
-3. Examples should match following namespace convention: RefactoringGuru/{pattern-name}/{example-name}/index.php. For instance:
+3. Examples should match following namespace convention: RefactoringGuru/{pattern-name}/{example-name}. For instance:
 
     ```php
     <?php
@@ -82,6 +86,7 @@ Here's a style guide which might help you to keep your changes consistent with t
     ```
 
     This notation helps to keep the code in one place while allowing the website to generates separate versions of examples for all listed languages. Don't be scared and ignore the non-English part of such comments. If you want to change something in a comment like this, just do it. Even if you do it wrong, we'll tell you how to fix it during the Pull Request.
+
 
 ## License
 
