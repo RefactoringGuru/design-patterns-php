@@ -146,7 +146,7 @@ class PHPTemplateTitleTemplate implements TitleTemplate
 {
     public function getTemplateString(): string
     {
-        return "<h1><?= $title; ?></h1>";
+        return "<h1><?= \$title; ?></h1>";
     }
 }
 
@@ -215,7 +215,7 @@ class PHPTemplatePageTemplate extends BasePageTemplate
         return <<<HTML
         <div class="page">
             $renderedTitle
-            <article class="content"><?= $content; ?></article>
+            <article class="content"><?= \$content; ?></article>
         </div>
         HTML;
     }
