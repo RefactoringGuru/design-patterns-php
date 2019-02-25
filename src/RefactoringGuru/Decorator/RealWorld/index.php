@@ -88,9 +88,9 @@ class TextFormat implements InputFormat
      */
     protected $inputFormat;
 
-    public function __construct(InputFormat $inoutFormat)
+    public function __construct(InputFormat $inputFormat)
     {
-        $this->inputFormat = $inoutFormat;
+        $this->inputFormat = $inputFormat;
     }
 
     /**

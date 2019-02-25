@@ -61,8 +61,6 @@ abstract class WebScrapingCommand implements Command
      */
     public $url;
 
-    protected $rawContent;
-
     public function __construct(string $url)
     {
         $this->url = $url;
@@ -113,7 +111,7 @@ abstract class WebScrapingCommand implements Command
         return $html;
     }
 
-    abstract public function parse($html): void;
+    abstract public function parse(string $html): void;
 
     public function complete(): void
     {
@@ -179,7 +177,7 @@ class IMDBGenrePageScrapingCommand extends WebScrapingCommand
      * RU: Извлечение всех фильмов со страницы вроде этой:
      * https://www.imdb.com/search/title?genres=sci-fi&explore=title_type,genres
      */
-    public function parse(string $html)
+    public function parse(string $html): void
     {
         preg_match_all("|href=\"(/title/.*?/)\?ref_=adv_li_tt\"|", $html, $matches);
         echo "IMDBGenrePageScrapingCommand: Discovered " . count($matches[1]) . " movies.\n";
@@ -212,7 +210,7 @@ class IMDBMovieScrapingCommand extends WebScrapingCommand
      * RU: Получить информацию о фильме с подобной страницы:
      * https://www.imdb.com/title/tt4154756/
      */
-    public function parse(sting $html): void
+    public function parse(string $html): void
     {
         if (preg_match("|<h1 itemprop=\"name\" class=\"\">(.*?)</h1>|", $html, $matches)) {
             $title = $matches[1];
