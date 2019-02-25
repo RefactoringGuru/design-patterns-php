@@ -58,12 +58,12 @@ Here's a style guide which might help you to keep your changes consistent with t
 
 2. Try to hard-wrap the code at 80th's character. It helps to list the code on the website without scrollbars.
 
-3. Examples should match following namespace convention: RefactoringGuru/{pattern-name}/{example-name}. For instance:
+3. Examples should match following namespace convention: RefactoringGuru\{pattern-name}\{example-name}. For instance:
 
     ```php
     <?php
     
-    namespace RefactoringGuru/FactoryMethod/Example/Buttons;
+    namespace RefactoringGuru\FactoryMethod\Example\Buttons;
     
     class Button {
     ...
