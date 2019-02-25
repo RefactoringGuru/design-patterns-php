@@ -22,7 +22,7 @@ namespace RefactoringGuru\Proxy\Conceptual;
  *
  * RU: Интерфейс Субъекта объявляет общие операции как для Реального Субъекта,
  * так и для Заместителя. Пока клиент работает с Реальным Субъектом, используя
- * этот интерфейс,  вы сможете передать ему заместителя вместо реального
+ * этот интерфейс, вы сможете передать ему заместителя вместо реального
  * субъекта.
  */
 interface Subject
@@ -66,7 +66,7 @@ class Proxy implements Subject
      * EN: The Proxy maintains a reference to an object of the RealSubject
      * class. It can be either lazy-loaded or passed to the Proxy by the client.
      *
-     * RU: Заместитель хранит ссылку на объект класса РеальныйСубъект.  Клиент
+     * RU: Заместитель хранит ссылку на объект класса РеальныйСубъект. Клиент
      * может либо лениво загрузить его, либо передать Заместителю.
      */
     public function __construct(RealSubject $realSubject)

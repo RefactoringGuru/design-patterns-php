@@ -122,8 +122,7 @@ class FFMpeg
 
     public function open(string $video): void { /* ... */ }
 
-    // EN: ...more methods and classes... RU: ...дополнительные методы и
-    // классы...
+    // ...more methods and classes... RU: ...дополнительные методы и классы...
 }
 
 class FFMpegVideo
@@ -138,8 +137,7 @@ class FFMpegVideo
 
     public function save(string $path): self { /* ... */ }
 
-    // EN: ...more methods and classes... RU: ...дополнительные методы и
-    // классы...
+    // ...more methods and classes... RU: ...дополнительные методы и классы...
 }
 
 

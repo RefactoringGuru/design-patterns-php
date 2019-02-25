@@ -30,7 +30,7 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  * RU: Паттерн Цепочка обязанностей
  *
  * Назначение: Позволяет избежать привязки отправителя запроса к его получателю,
- * предоставляя возможность обработать запрос нескольким объектам.  Связывает в
+ * предоставляя возможность обработать запрос нескольким объектам. Связывает в
  * цепочку объекты-получатели, а затем передаёт запрос по цепочке, пока некий
  * получатель не обработает его.
  *
@@ -148,7 +148,7 @@ class UserExistsMiddleware extends Middleware
  * EN: This Concrete Middleware checks whether a user associated with the
  * request has sufficient permissions.
  *
- * RU: Это Конкретное Middleware проверяет, имеет ли пользователь,  связанный с
+ * RU: Это Конкретное Middleware проверяет, имеет ли пользователь, связанный с
  * запросом, достаточные права доступа.
  */
 class RoleCheckMiddleware extends Middleware
@@ -200,7 +200,7 @@ class ThrottlingMiddleware extends Middleware
      *
      * Это даёт значительно большую свободу действий, чем простой цикл по всем
      * объектам middleware. Например, middleware может изменить порядок
-     * проверок,  запустив свою проверку после всех остальных.
+     * проверок, запустив свою проверку после всех остальных.
      */
     public function check(string $email, string $password): bool
     {

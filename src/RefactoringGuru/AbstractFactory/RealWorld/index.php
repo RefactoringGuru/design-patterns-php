@@ -140,7 +140,8 @@ class TwigTitleTemplate implements TitleTemplate
 /**
  * EN: And this Concrete Product provides PHPTemplate page title templates.
  *
- * RU: А этот Конкретный Продукт предоставляет шаблоны заголовков страниц PHPTemplate.
+ * RU: А этот Конкретный Продукт предоставляет шаблоны заголовков страниц
+ * PHPTemplate.
  */
 class PHPTemplateTitleTemplate implements TitleTemplate
 {
@@ -241,8 +242,7 @@ function templateRenderer(TemplateFactory $factory)
 
     // Twig::render($pageTemplate->getTemplateString(), [
     //     'title' => $page->title,
-    //     'content' => $page->content,
-    // ]);
+    //     'content' => $page->content, ]);
 }
 
 /**
