@@ -12,7 +12,7 @@ namespace RefactoringGuru\Bridge\Conceptual;
  *            /     \                        A         N
  *          Aa      Ab        ===>        /     \     / \
  *         / \     /  \                 Aa(N) Ab(N)  1   2
- *     Aa1 Aa2  Ab1 Ab2
+ *       Aa1 Aa2  Ab1 Ab2
  *
  * RU: Паттерн Мост
  *
@@ -23,7 +23,7 @@ namespace RefactoringGuru\Bridge\Conceptual;
  *            /     \                        A         N
  *          Aa      Ab        ===>        /     \     / \
  *         / \     /  \                 Aa(N) Ab(N)  1   2
- *     Aa1 Aa2  Ab1 Ab2
+ *       Aa1 Aa2  Ab1 Ab2
  */
 
 /**

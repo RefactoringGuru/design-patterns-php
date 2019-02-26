@@ -15,9 +15,11 @@ namespace RefactoringGuru\Prototype\Conceptual;
  */
 
 /**
- * EN: The example class that has cloning ability.
+ * EN: The example class that has cloning ability. We'll see how the values of
+ * field with different types will be cloned.
  *
- * RU: Пример класса, имеющего возможность клонирования.
+ * RU: Пример класса, имеющего возможность клонирования. Мы посмотрим как
+ * происходит клонирование значений полей разных типов.
  */
 class Prototype
 {
