@@ -5,8 +5,8 @@ namespace RefactoringGuru\Singleton\RealWorld;
 /**
  * EN: Singleton Design Pattern
  *
- * Intent: Ensure that a class has a single instance, and provide a global point
- * of access to it.
+ * Intent: Lets you ensure that a class has only one instance, while providing a
+ * global access point to this instance.
  *
  * Example: The Singleton pattern is notorious for limiting code reuse and
  * complicating unit testing. However, it is still very useful in some cases. In
@@ -16,8 +16,8 @@ namespace RefactoringGuru\Singleton\RealWorld;
  *
  * RU: Паттерн Одиночка
  *
- * Назначение: Гарантирует существование единственного экземпляра класса и
- * предоставляет глобальную точку доступа к нему.
+ * Назначение: Гарантирует, что у класса есть только один экземпляр, и
+ * предоставляет к нему глобальную точку доступа.
  *
  * Пример: Паттерн Одиночка печально известен тем, что ограничивает повторное
  * использование кода и усложняет модульное тестирование. Несмотря на это, он

@@ -5,9 +5,8 @@ namespace RefactoringGuru\Observer\RealWorld;
 /**
  * EN: Observer Design Pattern
  *
- * Intent: Define a one-to-many dependency between objects so that when one
- * object changes state, all of its dependents are notified and updated
- * automatically.
+ * Intent: Lets you define a subscription mechanism to notify multiple objects
+ * about any events that happen to the object they're observing.
  *
  * Example: In this example the Observer pattern allows various objects to
  * observe events that are happening inside a user repository of an app.
@@ -17,9 +16,8 @@ namespace RefactoringGuru\Observer\RealWorld;
  *
  * RU: Паттерн Наблюдатель
  *
- * Назначение: Устанавливает между объектами зависимость «один ко многим» таким
- * образом, что когда изменяется состояние одного объекта, все зависимые от него
- * объекты оповещаются и обновляются автоматически.
+ * Назначение: Создаёт механизм подписки, позволяющий одним объектам следить и
+ * реагировать на события, происходящие в других объектах.
  *
  * Пример: В этом примере паттерн Наблюдатель позволяет различным объектам
  * наблюдать за событиями, происходящими в пользовательском репозитории

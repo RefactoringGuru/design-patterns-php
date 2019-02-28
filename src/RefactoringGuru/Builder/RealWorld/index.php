@@ -5,8 +5,9 @@ namespace RefactoringGuru\Builder\RealWorld;
 /**
  * EN: Builder Design Pattern
  *
- * Intent: Separate the construction of a complex object from its representation
- * so that the same construction process can create different representations.
+ * Intent: Lets you construct complex objects step by step. The pattern allows
+ * you to produce different types and representations of an object using the
+ * same construction code.
  *
  * Example: One of the best applications of the Builder pattern is an SQL query
  * builder. The Builder interface defines the common steps required to build a
@@ -16,9 +17,9 @@ namespace RefactoringGuru\Builder\RealWorld;
  *
  * RU: Паттерн Строитель
  *
- * Назначение: Отделяет построение сложного объекта от его представления так,
- * что один и тот же процесс построения может создавать разные представления
- * объекта.
+ * Назначение: Позволяет создавать сложные объекты пошагово. Строитель даёт
+ * возможность использовать один и тот же код строительства для получения разных
+ * представлений объектов.
  *
  * Пример: Одним из лучших применений паттерна Строитель является конструктор
  * запросов SQL. Интерфейс Строителя определяет общие шаги, необходимые для

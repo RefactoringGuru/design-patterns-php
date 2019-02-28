@@ -5,9 +5,7 @@ namespace RefactoringGuru\Visitor\RealWorld;
 /**
  * EN: Visitor Design Pattern
  *
- * Intent: Represent an operation to be performed over elements of an object
- * structure. The Visitor pattern lets you define a new operation without
- * changing the classes of the elements on which it operates.
+ * Intent: Lets you separate algorithms from the objects on which they operate.
  *
  * Example: In this example, the Visitor pattern helps to introduce a reporting
  * feature into an existing class hierarchy:
@@ -19,8 +17,8 @@ namespace RefactoringGuru\Visitor\RealWorld;
  *
  * RU: Паттерн Посетитель
  *
- * Назначение: Позволяет добавлять в программу новые операции, не изменяя классы
- * объектов, над которыми эти операции могут выполняться.
+ * Назначение: Позволяет создавать новые операции, не меняя классы объектов, над
+ * которыми эти операции могут выполняться.
  *
  * Пример: В этом примере паттерн Посетитель помогает внедрить функцию
  * отчётности в существующую иерархию классов:

@@ -5,9 +5,8 @@ namespace RefactoringGuru\Adapter\RealWorld;
 /**
  * EN: Adapter Design Pattern
  *
- * Intent: Convert the interface of a class into the interface clients expect.
- * Adapter lets classes work together where they otherwise couldn't, due to
- * incompatible interfaces.
+ * Intent: Provides a unified interface that allows objects with incompatible
+ * interfaces to collaborate.
  *
  * Example: The Adapter pattern allows you to use 3rd-party or legacy classes
  * even if they are incompatible with the bulk of your code. For example,
@@ -18,8 +17,7 @@ namespace RefactoringGuru\Adapter\RealWorld;
  *
  * RU: Паттерн Адаптер
  *
- * Назначение: Преобразует интерфейс класса в интерфейс, ожидаемый клиентами.
- * Адаптер позволяет классам с несовместимыми интерфейсами работать вместе.
+ * Назначение: Позволяет объектам с несовместимыми интерфейсами работать вместе.
  *
  * Пример: Паттерн Адаптер позволяет использовать сторонние или устаревшие
  * классы, даже если они несовместимы с основной частью кода. Например, вместо

@@ -5,8 +5,8 @@ namespace RefactoringGuru\Prototype\RealWorld;
 /**
  * EN: Prototype Design Pattern
  *
- * Intent: Produce new objects by copying existing ones without compromising
- * their internal structure.
+ * Intent: Lets you copy existing objects without making your code dependent on
+ * their classes.
  *
  * Example: The Prototype pattern provides a convenient way to replicate
  * existing objects instead of reconstructing them and copying over all of their
@@ -22,8 +22,8 @@ namespace RefactoringGuru\Prototype\RealWorld;
  *
  * RU: Паттерн Прототип
  *
- * Назначение: Создаёт новые объекты, копируя существующие без нарушения их
- * внутренней структуры.
+ * Назначение: Позволяет копировать объекты, не вдаваясь в подробности их
+ * реализации.
  *
  * Пример: Паттерн Прототип предоставляет удобный способ репликации существующих
  * объектов вместо их восстановления и копирования всех полей напрямую. Прямое

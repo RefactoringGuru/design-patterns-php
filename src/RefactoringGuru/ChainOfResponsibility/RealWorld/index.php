@@ -5,9 +5,9 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
 /**
  * EN: Chain of Responsibility Design Pattern
  *
- * Intent: Avoid coupling a sender of a request to its receiver by giving more
- * than one object a chance to handle the request. Chain the receiving objects
- * and then pass the request through the chain until some receiver handles it.
+ * Intent: Lets you pass requests along a chain of handlers. Upon receiving a
+ * request, each handler decides either to process the request or to pass it to
+ * the next handler in the chain.
  *
  * Example: The most widely known use of the Chain of Responsibility (CoR)
  * pattern in the PHP world is found in HTTP request middleware. These are
@@ -29,10 +29,9 @@ namespace RefactoringGuru\ChainOfResponsibility\RealWorld;
  *
  * RU: Паттерн Цепочка обязанностей
  *
- * Назначение: Позволяет избежать привязки отправителя запроса к его получателю,
- * предоставляя возможность обработать запрос нескольким объектам. Связывает в
- * цепочку объекты-получатели, а затем передаёт запрос по цепочке, пока некий
- * получатель не обработает его.
+ * Назначение: Позволяет передавать запросы последовательно по цепочке
+ * обработчиков. Каждый последующий обработчик решает, может ли он обработать
+ * запрос сам и стоит ли передавать запрос дальше по цепи.
  *
  * Пример: Пожалуй, самым известным применением паттерна Цепочка обязанностей
  * (CoR) в мире PHP являются промежуточные обработчики HTTP-запросов, называемые

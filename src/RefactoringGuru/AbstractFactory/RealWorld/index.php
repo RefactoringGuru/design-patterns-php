@@ -5,8 +5,8 @@ namespace RefactoringGuru\AbstractFactory\RealWorld;
 /**
  * EN: Abstract Factory Design Pattern
  *
- * Intent: Provide an interface for creating families of related or dependent
- * objects without specifying their concrete classes.
+ * Intent: Lets you produce families of related objects without specifying their
+ * concrete classes.
  *
  * Example: In this example, the Abstract Factory pattern provides an
  * infrastructure for creating various types of templates for different elements

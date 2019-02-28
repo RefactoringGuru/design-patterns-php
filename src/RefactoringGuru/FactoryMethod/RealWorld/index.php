@@ -5,9 +5,8 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
 /**
  * EN: Factory Method Design Pattern
  *
- * Intent: Define an interface for creating an object, but let subclasses decide
- * which class to instantiate. Factory Method lets a class defer instantiation
- * to subclasses.
+ * Intent: Provides an interface for creating objects in a superclass, but
+ * allows subclasses to alter the type of objects that will be created.
  *
  * Example: In this example, the Factory Method pattern provides an interface
  * for creating social network connectors, which can be used to log in to the
@@ -17,9 +16,8 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
  *
  * RU: Паттерн Фабричный Метод
  *
- * Назначение: Определяет интерфейс для создания объекта, но позволяет
- * подклассам решать, какого класса создавать экземпляр. Фабричный Метод
- * позволяет классу делегировать создание экземпляра подклассам.
+ * Назначение: Определяет общий интерфейс для создания объектов в суперклассе,
+ * позволяя подклассам изменять тип создаваемых объектов.
  *
  * Пример: В этом примере паттерн Фабричный Метод предоставляет интерфейс для
  * создания коннекторов к социальным сетям, которые могут быть использованы для

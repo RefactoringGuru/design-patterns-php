@@ -5,9 +5,8 @@ namespace RefactoringGuru\Decorator\RealWorld;
 /**
  * EN: Decorator Design Pattern
  *
- * Intent: Attach additional responsibilities to an object dynamically.
- * Decorators provide a flexible alternative to subclassing for extending
- * functionality.
+ * Intent: Lets you attach new behaviors to objects by placing these objects
+ * inside special wrapper objects that contain the behaviors.
  *
  * Example: In this example, the Decorator pattern helps you to construct
  * complex text filtering rules to clean up content before rendering it on a web
@@ -23,9 +22,8 @@ namespace RefactoringGuru\Decorator\RealWorld;
  *
  * RU: Паттерн Декоратор
  *
- * Назначение: Динамически подключает к объекту дополнительную функциональность.
- * Декораторы предоставляют гибкую альтернативу практике создания подклассов для
- * расширения функциональности.
+ * Назначение: Позволяет динамически добавлять объектам новую функциональность,
+ * оборачивая их в полезные «обёртки».
  *
  * Пример: В этом примере паттерн Декоратора помогает создать сложные правила
  * фильтрации текста для приведения информации в порядок перед её отображением
