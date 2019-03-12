@@ -161,7 +161,7 @@ abstract class FieldComposite extends FormElement
     public function remove(FormElement $component): void
     {
         $this->fields = array_filter($this->fields, function ($child) use ($component) {
-            return $child == $component;
+            return $child != $component;
         });
     }
 
