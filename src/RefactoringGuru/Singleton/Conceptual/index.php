@@ -15,14 +15,27 @@ namespace RefactoringGuru\Singleton\Conceptual;
  */
 
 /**
- * EN: The Singleton class defines the `getInstance` method that lets clients
- * access the unique singleton instance.
+ * EN: The Singleton class defines the `GetInstance` method that serves as an
+ * alternative to constructor and lets clients access the same instance of this
+ * class over and over.
  *
- * RU: Класс Одиночка предоставляет метод getInstance, который позволяет
- * клиентам получить доступ к уникальному экземпляру одиночки.
+ * RU: Класс Одиночка предоставляет метод `GetInstance`, который ведёт себя как
+ * альтернативный конструктор и позволяет клиентам получать один и тот же
+ * экземпляр класса при каждом вызове.
  */
 class Singleton
 {
+    /**
+     * EN: The Singleton's instance is stored in a static field. This field is
+     * an array, because we'll allow our Singleton to have subclasses. Each item
+     * in this array will be an instance of a specific Singleton's subclass.
+     * You'll see how this works in a moment.
+     *
+     * RU: Объект одиночки храниться в статичном поле класса. Это поле — массив,
+     * так как мы поволим нашему Одиночке иметь подклассы. Все элементы этого
+     * массива будут экземплярами кокретных подклассов Одиночки. Не волнуйтесь,
+     * мы вот-вот познакомимся с тем, как это работает.
+     */
     private static $instances = [];
 
     /**
@@ -52,12 +65,18 @@ class Singleton
     }
 
     /**
-     * EN: The static method that controls the access to the singleton instance.
+     * EN: This is the static method that controls the access to the singleton
+     * instance. On the first run, it creates a singleton object and places it
+     * into the static field. On subsequent runs, it returns the client existing
+     * object stored in the static field.
      *
-     * This implementation let you subclass the Singleton class while keeping
+     * This implementation lets you subclass the Singleton class while keeping
      * just one instance of each subclass around.
      *
-     * RU: Статический метод, управляющий доступом к экземпляру одиночки.
+     * RU: Это статический метод, управляющий доступом к экземпляру одиночки.
+     * При первом запуске, он создаёт экземпляр одиночки и помещает его в
+     * статическое поле. При последующих запусках, он возвращает клиенту объект,
+     * хранящийся в статическом поле.
      *
      * Эта реализация позволяет вам расширять класс Одиночки, сохраняя повсюду
      * только один экземпляр каждого подкласса.
