@@ -1,11 +1,5 @@
-Testing rendering with the Twig factory:
+Testing actual rendering with the PHPTemplate factory:
 <div class="page">
-  <h1>{{ title }}</h1>
-  <article class="content">{{ content }}</article>
-</div>
-
-Testing rendering with the PHPTemplate factory:
-<div class="page">
-  <h1><?= $title; ?></h1>
-  <article class="content"><?= $content; ?></article>
+    <h1>Sample page</h1>
+    <article class="content">This it the body.</article>
 </div>
