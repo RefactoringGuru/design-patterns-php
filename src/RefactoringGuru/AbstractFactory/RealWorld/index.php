@@ -315,13 +315,13 @@ class Page
     // RU: Вот как вы бы использовали этот шаблон в дальнейшем. Обратите
     // внимание, что класс страницы не зависит ни от классов шаблонов, ни от
     // классов отрисовки.
-    public function render(TemplateFactory $factory)
+    public function render(TemplateFactory $factory): string
     {
         $pageTemplate = $factory->createPageTemplate();
 
         $renderer = $factory->getRenderer();
 
-        echo $renderer->render($pageTemplate->getTemplateString(), [
+        return $renderer->render($pageTemplate->getTemplateString(), [
             'title' => $this->title,
             'content' => $this->content
         ]);
@@ -338,7 +338,7 @@ class Page
 $page = new Page('Sample page', 'This it the body.');
 
 echo "Testing actual rendering with the PHPTemplate factory:\n";
-$page->render(new PHPTemplateFactory);
+echo $page->render(new PHPTemplateFactory);
 
 
 // EN: Uncomment the following if you have Twig installed.
@@ -346,4 +346,4 @@ $page->render(new PHPTemplateFactory);
 // RU: Можете убрать комментарии, если у вас установлен Twig.
 
 // echo "Testing rendering with the Twig factory:\n";
-// $page->render(new TwigTemplateFactory);
+// echo $page->render(new TwigTemplateFactory);
