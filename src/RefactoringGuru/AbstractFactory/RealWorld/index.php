@@ -62,6 +62,8 @@ interface TemplateFactory
     public function createTitleTemplate(): TitleTemplate;
 
     public function createPageTemplate(): PageTemplate;
+
+    public function getRenderer(): TemplateRenderer;
 }
 
 /**
@@ -86,6 +88,11 @@ class TwigTemplateFactory implements TemplateFactory
     {
         return new TwigPageTemplate($this->createTitleTemplate());
     }
+
+    public function getRenderer(): TemplateRenderer
+    {
+        return new TwigRenderer();
+    }
 }
 
 /**
@@ -103,6 +110,11 @@ class PHPTemplateFactory implements TemplateFactory
     public function createPageTemplate(): PageTemplate
     {
         return new PHPTemplatePageTemplate($this->createTitleTemplate());
+    }
+
+    public function getRenderer(): TemplateRenderer
+    {
+        return new PHPTemplateRenderer();
     }
 }
 
@@ -192,7 +204,7 @@ class TwigPageTemplate extends BasePageTemplate
     public function getTemplateString(): string
     {
         $renderedTitle = $this->titleTemplate->getTemplateString();
-        
+
         return <<<HTML
         <div class="page">
             $renderedTitle
@@ -212,13 +224,41 @@ class PHPTemplatePageTemplate extends BasePageTemplate
     public function getTemplateString(): string
     {
         $renderedTitle = $this->titleTemplate->getTemplateString();
-        
+
         return <<<HTML
         <div class="page">
             $renderedTitle
             <article class="content"><?= \$content; ?></article>
         </div>
         HTML;
+    }
+}
+
+interface TemplateRenderer
+{
+    function render(string $templateString, array $arguments = []): string;
+}
+
+class TwigRenderer implements TemplateRenderer
+{
+    function render(string $templateString, array $arguments = []): string
+    {
+        return \Twig::render($templateString, $arguments);
+    }
+}
+
+class PHPTemplateRenderer implements TemplateRenderer
+{
+    function render(string $templateString, array $arguments = []): string
+    {
+        extract($arguments);
+
+        ob_start();
+        eval(' ?>' . $templateString . '<?php ');
+        $result = ob_get_contents();
+        ob_end_clean();
+
+        return $result;
     }
 }
 
@@ -230,19 +270,36 @@ class PHPTemplatePageTemplate extends BasePageTemplate
  * Фабрики в качестве параметра, что позволяет клиенту работать с любым типом
  * конкретной фабрики.
  */
-function templateRenderer(TemplateFactory $factory)
+class Page
 {
-    $pageTemplate = $factory->createPageTemplate();
 
-    echo $pageTemplate->getTemplateString();
+    public $title;
 
-    // EN: Here's how would you use the template further in real life:
+    public $content;
+
+    public function __construct($title, $content)
+    {
+        $this->title = $title;
+        $this->content = $content;
+    }
+
+    // EN: Here's how would you use the template further in real life. Note that
+    // the page class does not depend on any concrete template classes.
     //
-    // RU: Вот как вы бы использовали этот шаблон в дальнейшем:
+    // RU: Вот как вы бы использовали этот шаблон в дальнейшем. Обратите
+    // внимание, что класс страницы не зависит ни от классов шаблонов, ни от
+    // классов отрисовки.
+    function render(TemplateFactory $factory)
+    {
+        $pageTemplate = $factory->createPageTemplate();
 
-    // Twig::render($pageTemplate->getTemplateString(), [
-    //     'title' => $page->title,
-    //     'content' => $page->content, ]);
+        $renderer = $factory->getRenderer();
+
+        echo $renderer->render($pageTemplate->getTemplateString(), [
+            'title' => $this->title,
+            'content' => $this->content
+        ]);
+    }
 }
 
 /**
@@ -252,9 +309,15 @@ function templateRenderer(TemplateFactory $factory)
  * RU: Теперь в других частях приложения клиентский код может принимать
  * фабричные объекты любого типа.
  */
-echo "Testing rendering with the Twig factory:\n";
-templateRenderer(new TwigTemplateFactory);
-echo "\n\n";
+$page = new Page('Sample page', 'This it the body.');
 
-echo "Testing rendering with the PHPTemplate factory:\n";
-templateRenderer(new PHPTemplateFactory);
+echo "Testing actual rendering with the PHPTemplate factory:\n";
+$page->render(new PHPTemplateFactory);
+
+
+// EN: Uncomment the following if you have Twig installed.
+//
+// RU: Можете убрать комментарии, если у вас установлен Twig.
+
+// echo "Testing rendering with the Twig factory:\n";
+// $page->render(new TwigTemplateFactory);
