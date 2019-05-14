@@ -247,7 +247,7 @@ class PHPTemplatePageTemplate extends BasePageTemplate
  */
 interface TemplateRenderer
 {
-    function render(string $templateString, array $arguments = []): string;
+    public function render(string $templateString, array $arguments = []): string;
 }
 
 /**
@@ -257,7 +257,7 @@ interface TemplateRenderer
  */
 class TwigRenderer implements TemplateRenderer
 {
-    function render(string $templateString, array $arguments = []): string
+    public function render(string $templateString, array $arguments = []): string
     {
         return \Twig::render($templateString, $arguments);
     }
@@ -275,7 +275,7 @@ class TwigRenderer implements TemplateRenderer
  */
 class PHPTemplateRenderer implements TemplateRenderer
 {
-    function render(string $templateString, array $arguments = []): string
+    public function render(string $templateString, array $arguments = []): string
     {
         extract($arguments);
 
@@ -315,7 +315,7 @@ class Page
     // RU: Вот как вы бы использовали этот шаблон в дальнейшем. Обратите
     // внимание, что класс страницы не зависит ни от классов шаблонов, ни от
     // классов отрисовки.
-    function render(TemplateFactory $factory)
+    public function render(TemplateFactory $factory)
     {
         $pageTemplate = $factory->createPageTemplate();
 
