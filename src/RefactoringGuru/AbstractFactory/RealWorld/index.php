@@ -234,11 +234,27 @@ class PHPTemplatePageTemplate extends BasePageTemplate
     }
 }
 
+/**
+ * EN: The renderer is responsible for converting a template string into the
+ * actual HTML code. Each renderer behaves differently and expects its own type
+ * of template strings passed to it. Baking templates with the factory let you
+ * pass proper types of templates to proper renders.
+ *
+ * RU: Классы отрисовки отвечают за преобразовании строк шаблонов в конечный
+ * HTML код. Каждый такой класс устроен по-раному и ожидает на входе шаблоны
+ * только своего типа. Работа с шаблонами через фабрику позволяет вам избавиться
+ * от риска подать в отрисовщик шаблон не того типа.
+ */
 interface TemplateRenderer
 {
     function render(string $templateString, array $arguments = []): string;
 }
 
+/**
+ * EN: The renderer for Twig templates.
+ *
+ * RU: Отрисовщик шаблонов Twig.
+ */
 class TwigRenderer implements TemplateRenderer
 {
     function render(string $templateString, array $arguments = []): string
@@ -247,6 +263,16 @@ class TwigRenderer implements TemplateRenderer
     }
 }
 
+/**
+ * EN: The renderer for PHPTemplate templates. Note that this implementation is
+ * very basic, if not crude. Using the `eval` function has many security
+ * implications, so use it with caution in real projects.
+ *
+ * RU: Отрисовщик шаблонов PHPTemplate. Оговорюсь, что эта реализация очень
+ * простая, если не примитивная. В реальных проектах используйте `eval` с
+ * осмотрительностью, т.к. неправильное использование этой функции может
+ * привести к дырам безопасности.
+ */
 class PHPTemplateRenderer implements TemplateRenderer
 {
     function render(string $templateString, array $arguments = []): string
