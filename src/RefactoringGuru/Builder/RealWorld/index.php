@@ -158,8 +158,9 @@ class PostgresQueryBuilder extends MysqlQueryBuilder
      */
     public function limit(int $start, int $offset): SQLQueryBuilder
     {
-        parent::limit($start, $offset);
-
+        if (!in_array($this->query->type, ['select'])) {
+            throw new \Exception("LIMIT can only be added to SELECT");
+        }
         $this->query->limit = " LIMIT " . $start . " OFFSET " . $offset;
 
         return $this;
