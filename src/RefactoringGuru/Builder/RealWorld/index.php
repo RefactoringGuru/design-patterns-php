@@ -95,8 +95,8 @@ class MysqlQueryBuilder implements SQLQueryBuilder
      */
     public function where(string $field, string $value, string $operator = '='): SQLQueryBuilder
     {
-        if (!in_array($this->query->type, ['select', 'update'])) {
-            throw new \Exception("WHERE can only be added to SELECT OR UPDATE");
+        if (!in_array($this->query->type, ['select', 'update', 'delete'])) {
+            throw new \Exception("WHERE can only be added to SELECT, UPDATE OR DELETE");
         }
         $this->query->where[] = "$field $operator '$value'";
 
