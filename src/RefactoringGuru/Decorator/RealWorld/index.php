@@ -298,6 +298,6 @@ $text = new TextInput;
 $markdown = new MarkdownFormat($text);
 $filteredInput = new DangerousHTMLTagsFilter($markdown);
 echo "Website renders a forum post after translating markdown markup" .
-    "and filtering some dangerous HTML tags and attributes (safe, pretty):\n";
+    " and filtering some dangerous HTML tags and attributes (safe, pretty):\n";
 displayCommentAsAWebsite($filteredInput, $dangerousForumPost);
 echo "\n\n\n";
