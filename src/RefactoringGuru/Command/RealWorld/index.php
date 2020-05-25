@@ -250,7 +250,7 @@ class Queue
             SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
 
         $this->db->query('CREATE TABLE IF NOT EXISTS "commands" (
-            "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            "id" INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
             "command" TEXT,
             "status" INTEGER
         )');
