@@ -219,8 +219,10 @@ function clientCode(SQLQueryBuilder $queryBuilder)
  * текущей конфигурации или настроек среды.
  */
 // if ($_ENV['database_type'] == 'postgres') {
-//     $builder = new PostgresQueryBuilder(); } else {
-//     $builder = new MysqlQueryBuilder; }
+//     $builder = new PostgresQueryBuilder();
+// } else {
+//     $builder = new MysqlQueryBuilder;
+// }
 //
 // clientCode($builder);
 
