@@ -304,8 +304,8 @@ function clientCode(Page $page)
  * RU: Клиентский код может выполняться с любой предварительно
  * сконфигурированной комбинацией Абстракция+Реализация.
  */
-$HTMLRenderer = new HTMLRenderer;
-$JSONRenderer = new JsonRenderer;
+$HTMLRenderer = new HTMLRenderer();
+$JSONRenderer = new JsonRenderer();
 
 $page = new SimplePage($HTMLRenderer, "Home", "Welcome to our website!");
 echo "HTML view of a simple content page:\n";

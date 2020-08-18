@@ -110,10 +110,10 @@ class Subject implements \SplSubject
      * типу события и т.д.)
      */
     private $observers;
-    
+
     public function __construct()
     {
-        $this->observers = new \SplObjectStorage;
+        $this->observers = new \SplObjectStorage();
     }
 
     /**
@@ -200,12 +200,12 @@ class ConcreteObserverB implements \SplObserver
  * RU: Клиентский код.
  */
 
-$subject = new Subject;
+$subject = new Subject();
 
-$o1 = new ConcreteObserverA;
+$o1 = new ConcreteObserverA();
 $subject->attach($o1);
 
-$o2 = new ConcreteObserverB;
+$o2 = new ConcreteObserverB();
 $subject->attach($o2);
 
 $subject->someBusinessLogic();

@@ -92,8 +92,8 @@ class Singleton
             // особенность важна, потому что, когда метод вызывается в
             // подклассе, мы хотим, чтобы экземпляр этого подкласса был создан
             // здесь.
-           
-            self::$instances[$subclass] = new static;
+
+            self::$instances[$subclass] = new static();
         }
         return self::$instances[$subclass];
     }

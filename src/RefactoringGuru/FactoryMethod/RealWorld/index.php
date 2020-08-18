@@ -30,7 +30,7 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
  * EN: The Creator declares a factory method that can be used as a substitution
  * for the direct constructor calls of products, for instance:
  *
- * - Before: $p = new FacebookConnector;
+ * - Before: $p = new FacebookConnector();
  * - After: $p = $this->getSocialNetwork;
  *
  * This allows changing the type of the product being created by
@@ -39,7 +39,7 @@ namespace RefactoringGuru\FactoryMethod\RealWorld;
  * RU: Создатель объявляет фабричный метод, который может быть использован
  * вместо прямых вызовов конструктора продуктов, например:
  *
- * - До: $p = new FacebookConnector;
+ * - До: $p = new FacebookConnector();
  * - После: $p = $this->getSocialNetwork;
  *
  * Это позволяет подклассам SocialNetworkPoster изменять тип создаваемого

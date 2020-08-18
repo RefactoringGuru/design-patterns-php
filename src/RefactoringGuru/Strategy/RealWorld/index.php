@@ -262,9 +262,9 @@ class PaymentFactory
     {
         switch ($id) {
             case "cc":
-                return new CreditCardPayment;
+                return new CreditCardPayment();
             case "paypal":
-                return new PayPalPayment;
+                return new PayPalPayment();
             default:
                 throw new \Exception("Unknown Payment Method");
         }
@@ -289,7 +289,7 @@ class PaymentFactory
 interface PaymentMethod
 {
     public function getPaymentForm(Order $order): string;
-    
+
     public function validateReturn(Order $order, array $data): bool;
 }
 
@@ -389,7 +389,7 @@ FORM;
  * RU: Клиентский код.
  */
 
-$controller = new OrderController;
+$controller = new OrderController();
 
 echo "Client: Let's create some orders\n";
 

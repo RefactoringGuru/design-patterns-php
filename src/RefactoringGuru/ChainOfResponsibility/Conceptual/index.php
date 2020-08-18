@@ -62,7 +62,7 @@ abstract class AbstractHandler implements Handler
         if ($this->nextHandler) {
             return $this->nextHandler->handle($request);
         }
-        
+
         return null;
     }
 }
@@ -136,9 +136,9 @@ function clientCode(Handler $handler)
  *
  * RU: Другая часть клиентского кода создает саму цепочку.
  */
-$monkey = new MonkeyHandler;
-$squirrel = new SquirrelHandler;
-$dog = new DogHandler;
+$monkey = new MonkeyHandler();
+$squirrel = new SquirrelHandler();
+$dog = new DogHandler();
 
 $monkey->setNext($squirrel)->setNext($dog);
 

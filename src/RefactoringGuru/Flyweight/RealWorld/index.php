@@ -351,7 +351,7 @@ class CatDataBase
  *
  * RU: Клиентский код.
  */
-$db = new CatDataBase;
+$db = new CatDataBase();
 
 echo "Client: Let's see what we have in \"cats.csv\".\n";
 

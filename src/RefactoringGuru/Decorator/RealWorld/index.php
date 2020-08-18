@@ -246,7 +246,7 @@ HERE;
  *
  * RU: Наивное отображение комментариев (небезопасное).
  */
-$naiveInput = new TextInput;
+$naiveInput = new TextInput();
 echo "Website renders comments without filtering (unsafe):\n";
 displayCommentAsAWebsite($naiveInput, $dangerousComment);
 echo "\n\n\n";
@@ -284,7 +284,7 @@ HERE;
  *
  * RU: Наивное отображение сообщений (небезопасное, без форматирования).
  */
-$naiveInput = new TextInput;
+$naiveInput = new TextInput();
 echo "Website renders a forum post without filtering and formatting (unsafe, ugly):\n";
 displayCommentAsAWebsite($naiveInput, $dangerousForumPost);
 echo "\n\n\n";
@@ -294,7 +294,7 @@ echo "\n\n\n";
  *
  * RU: Форматтер Markdown + фильтрация опасных тегов (безопасно, красиво).
  */
-$text = new TextInput;
+$text = new TextInput();
 $markdown = new MarkdownFormat($text);
 $filteredInput = new DangerousHTMLTagsFilter($markdown);
 echo "Website renders a forum post after translating markdown markup" .

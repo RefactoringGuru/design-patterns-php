@@ -140,7 +140,7 @@ function clientCode(Component $component)
  * RU: Таким образом, клиентский код может поддерживать как простые
  * компоненты...
  */
-$simple = new ConcreteComponent;
+$simple = new ConcreteComponent();
 echo "Client: I've got a simple component:\n";
 clientCode($simple);
 echo "\n\n";

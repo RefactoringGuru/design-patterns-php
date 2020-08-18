@@ -50,12 +50,12 @@ class ConcreteFactory1 implements AbstractFactory
 {
     public function createProductA(): AbstractProductA
     {
-        return new ConcreteProductA1;
+        return new ConcreteProductA1();
     }
 
     public function createProductB(): AbstractProductB
     {
-        return new ConcreteProductB1;
+        return new ConcreteProductB1();
     }
 }
 
@@ -68,12 +68,12 @@ class ConcreteFactory2 implements AbstractFactory
 {
     public function createProductA(): AbstractProductA
     {
-        return new ConcreteProductA2;
+        return new ConcreteProductA2();
     }
 
     public function createProductB(): AbstractProductB
     {
-        return new ConcreteProductB2;
+        return new ConcreteProductB2();
     }
 }
 
@@ -219,9 +219,9 @@ function clientCode(AbstractFactory $factory)
  * RU: Клиентский код может работать с любым конкретным классом фабрики.
  */
 echo "Client: Testing client code with the first factory type:\n";
-clientCode(new ConcreteFactory1);
+clientCode(new ConcreteFactory1());
 
 echo "\n";
 
 echo "Client: Testing the same client code with the second factory type:\n";
-clientCode(new ConcreteFactory2);
+clientCode(new ConcreteFactory2());

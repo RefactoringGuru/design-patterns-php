@@ -56,7 +56,7 @@ class YouTubeDownloader
     public function __construct(string $youtubeApiKey)
     {
         $this->youtube = new YouTube($youtubeApiKey);
-        $this->ffmpeg = new FFMpeg;
+        $this->ffmpeg = new FFMpeg();
     }
 
     /**
@@ -88,9 +88,9 @@ class YouTubeDownloader
         //     ->save($title . 'frame.jpg');
         echo "Saving video in target formats...\n";
         // $video
-        //     ->save(new FFMpeg\Format\Video\X264, $title . '.mp4')
-        //     ->save(new FFMpeg\Format\Video\WMV, $title . '.wmv')
-        //     ->save(new FFMpeg\Format\Video\WebM, $title . '.webm');
+        //     ->save(new FFMpeg\Format\Video\X264(), $title . '.mp4')
+        //     ->save(new FFMpeg\Format\Video\WMV(), $title . '.wmv')
+        //     ->save(new FFMpeg\Format\Video\WebM(), $title . '.webm');
         echo "Done!\n";
     }
 }

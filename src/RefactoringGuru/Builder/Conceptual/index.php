@@ -59,7 +59,7 @@ class ConcreteBuilder1 implements Builder
 
     public function reset(): void
     {
-        $this->product = new Product1;
+        $this->product = new Product1();
     }
 
     /**
@@ -212,7 +212,7 @@ class Director
  */
 function clientCode(Director $director)
 {
-    $builder = new ConcreteBuilder1;
+    $builder = new ConcreteBuilder1();
     $director->setBuilder($builder);
 
     echo "Standard basic product:\n";
@@ -233,5 +233,5 @@ function clientCode(Director $director)
     $builder->getProduct()->listParts();
 }
 
-$director = new Director;
+$director = new Director();
 clientCode($director);

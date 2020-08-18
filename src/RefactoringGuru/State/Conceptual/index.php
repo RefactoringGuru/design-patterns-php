@@ -31,7 +31,7 @@ class Context
      * RU: @var State Ссылка на текущее состояние Контекста.
      */
     private $state;
-    
+
     public function __construct(State $state)
     {
         $this->transitionTo($state);
@@ -108,7 +108,7 @@ class ConcreteStateA extends State
     {
         echo "ConcreteStateA handles request1.\n";
         echo "ConcreteStateA wants to change the state of the context.\n";
-        $this->context->transitionTo(new ConcreteStateB);
+        $this->context->transitionTo(new ConcreteStateB());
     }
 
     public function handle2(): void
@@ -128,7 +128,7 @@ class ConcreteStateB extends State
     {
         echo "ConcreteStateB handles request2.\n";
         echo "ConcreteStateB wants to change the state of the context.\n";
-        $this->context->transitionTo(new ConcreteStateA);
+        $this->context->transitionTo(new ConcreteStateA());
     }
 }
 
@@ -137,6 +137,6 @@ class ConcreteStateB extends State
  *
  * RU: Клиентский код.
  */
-$context = new Context(new ConcreteStateA);
+$context = new Context(new ConcreteStateA());
 $context->request1();
 $context->request2();

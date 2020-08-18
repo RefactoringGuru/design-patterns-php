@@ -45,8 +45,8 @@ class Facade
         Subsystem1 $subsystem1 = null,
         Subsystem2 $subsystem2 = null
     ) {
-        $this->subsystem1 = $subsystem1 ?: new Subsystem1;
-        $this->subsystem2 = $subsystem2 ?: new Subsystem2;
+        $this->subsystem1 = $subsystem1 ?: new Subsystem1();
+        $this->subsystem2 = $subsystem2 ?: new Subsystem2();
     }
 
     /**
@@ -143,7 +143,7 @@ function clientCode(Facade $facade)
  * этом случае может оказаться целесообразным инициализировать Фасад с этими
  * объектами вместо того, чтобы позволить Фасаду создавать новые экземпляры.
  */
-$subsystem1 = new Subsystem1;
-$subsystem2 = new Subsystem2;
+$subsystem1 = new Subsystem1();
+$subsystem2 = new Subsystem2();
 $facade = new Facade($subsystem1, $subsystem2);
 clientCode($facade);

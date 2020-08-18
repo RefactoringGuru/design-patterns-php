@@ -184,7 +184,7 @@ class WordsCollection implements \IteratorAggregate
  * классах Коллекций, в зависимости от уровня косвенности, который вы хотите
  * сохранить в своей программе.
  */
-$collection = new WordsCollection;
+$collection = new WordsCollection();
 $collection->addItem("First");
 $collection->addItem("Second");
 $collection->addItem("Third");

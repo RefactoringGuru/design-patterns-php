@@ -81,7 +81,7 @@ class TwigTemplateFactory implements TemplateFactory
 {
     public function createTitleTemplate(): TitleTemplate
     {
-        return new TwigTitleTemplate;
+        return new TwigTitleTemplate();
     }
 
     public function createPageTemplate(): PageTemplate
@@ -104,7 +104,7 @@ class PHPTemplateFactory implements TemplateFactory
 {
     public function createTitleTemplate(): TitleTemplate
     {
-        return new PHPTemplateTitleTemplate;
+        return new PHPTemplateTitleTemplate();
     }
 
     public function createPageTemplate(): PageTemplate
@@ -338,7 +338,7 @@ class Page
 $page = new Page('Sample page', 'This it the body.');
 
 echo "Testing actual rendering with the PHPTemplate factory:\n";
-echo $page->render(new PHPTemplateFactory);
+echo $page->render(new PHPTemplateFactory());
 
 
 // EN: Uncomment the following if you have Twig installed.
@@ -346,4 +346,4 @@ echo $page->render(new PHPTemplateFactory);
 // RU: Можете убрать комментарии, если у вас установлен Twig.
 
 // echo "Testing rendering with the Twig factory:\n";
-// echo $page->render(new TwigTemplateFactory);
+// echo $page->render(new TwigTemplateFactory());

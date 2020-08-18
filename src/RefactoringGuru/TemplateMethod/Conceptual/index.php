@@ -157,8 +157,8 @@ function clientCode(AbstractClass $class)
 }
 
 echo "Same client code can work with different subclasses:\n";
-clientCode(new ConcreteClass1);
+clientCode(new ConcreteClass1());
 echo "\n";
 
 echo "Same client code can work with different subclasses:\n";
-clientCode(new ConcreteClass2);
+clientCode(new ConcreteClass2());

@@ -308,7 +308,7 @@ class Queue
     {
         static $instance;
         if (!$instance) {
-            $instance = new Queue;
+            $instance = new Queue();
         }
 
         return $instance;
@@ -324,7 +324,7 @@ class Queue
 $queue = Queue::get();
 
 if ($queue->isEmpty()) {
-    $queue->add(new IMDBGenresScrapingCommand);
+    $queue->add(new IMDBGenresScrapingCommand());
 }
 
 $queue->work();

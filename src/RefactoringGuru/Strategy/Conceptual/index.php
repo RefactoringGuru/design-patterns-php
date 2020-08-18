@@ -129,12 +129,12 @@ class ConcreteStrategyB implements Strategy
  * Клиент должен знать о различиях между стратегиями, чтобы сделать правильный
  * выбор.
  */
-$context = new Context(new ConcreteStrategyA);
+$context = new Context(new ConcreteStrategyA());
 echo "Client: Strategy is set to normal sorting.\n";
 $context->doSomeBusinessLogic();
 
 echo "\n";
 
 echo "Client: Strategy is set to reverse sorting.\n";
-$context->setStrategy(new ConcreteStrategyB);
+$context->setStrategy(new ConcreteStrategyB());
 $context->doSomeBusinessLogic();

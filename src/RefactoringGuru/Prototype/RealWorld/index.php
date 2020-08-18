@@ -70,7 +70,7 @@ class Page
         $this->body = $body;
         $this->author = $author;
         $this->author->addToPage($this);
-        $this->date = new \DateTime;
+        $this->date = new \DateTime();
     }
 
     public function addComment(string $comment): void
@@ -106,7 +106,7 @@ class Page
         $this->title = "Copy of " . $this->title;
         $this->author->addToPage($this);
         $this->comments = [];
-        $this->date = new \DateTime;
+        $this->date = new \DateTime();
     }
 }
 
