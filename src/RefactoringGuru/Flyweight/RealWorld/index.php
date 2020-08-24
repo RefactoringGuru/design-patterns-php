@@ -243,7 +243,7 @@ class Cat
      * могут быть остатками реальных методов, извлечённых в класс Легковеса во
      * время массивного рефакторинга к паттерну Легковес.
      */
-    public function render(): string
+    public function render(): void
     {
         $this->variation->renderProfile($this->name, $this->age, $this->owner);
     }
