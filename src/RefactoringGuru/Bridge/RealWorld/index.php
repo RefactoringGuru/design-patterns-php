@@ -264,7 +264,7 @@ class JsonRenderer implements Renderer
 
     public function renderLink(string $url, string $title): string
     {
-        return '"link": {"href": "' . $title . '", "title": "' . $title . '""}';
+        return '"link": {"href": "' . $url . '", "title": "' . $title . '"}';
     }
 
     public function renderHeader(): string
