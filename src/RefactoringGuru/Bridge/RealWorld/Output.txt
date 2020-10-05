@@ -23,5 +23,5 @@ JSON view of a simple content page, with the same client code:
 "title": "Star Wars, episode1",
 "text": "A long time ago in a galaxy far, far away...",
 "img": "/images/star-wars.jpeg",
-"link": {"href": "Add to cart", "title": "Add to cart""}
+"link": {"href": "/cart/add/123", "title": "Add to cart"}
 }
