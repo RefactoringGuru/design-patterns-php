@@ -1,5 +1,5 @@
 {
-    "name": "RefactoringGuru/design-patterns-php",
+    "name": "refactoringguru/design-patterns-php",
     "description": "PHP examples for all classic GoF design patterns",
     "authors": [
         {
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "RefactoringGuru\\": ""
+            "RefactoringGuru\\": "src/RefactoringGuru"
         }
     }
 }
