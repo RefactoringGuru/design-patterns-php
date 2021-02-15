@@ -101,6 +101,7 @@ $a = new VariableExp('A');
 $b = new VariableExp('B');
 $c = new VariableExp('C');
 
+// example 1:
 // A ∧ (B ∨ C)
 $exp = new AndExp(
     $a,
@@ -113,4 +114,23 @@ $context->assign($c, false);
 
 $result = $exp->interpret($context) ? 'true' : 'false';
 
-echo 'boolean expression A ∧ (B ∨ C) = ' . $result;
+echo 'boolean expression A ∧ (B ∨ C) = ' . $result . ', with variables A=true, B=true, C=false' . PHP_EOL;
+
+
+// example 2:
+// B ∨ (A ∧ (B ∨ C))
+$exp = new OrExp(
+    $b,
+    new AndExp(
+        $a,
+        new OrExp($b, $c)
+    )
+);
+
+$context->assign($a, false);
+$context->assign($b, false);
+$context->assign($c, true);
+
+$result2 = $exp->interpret($context) ? 'true' : 'false';
+
+echo 'boolean expression B ∨ (A ∧ (B ∨ C)) = ' . $result2 . ', with variables A=false, B=false, C=true';
