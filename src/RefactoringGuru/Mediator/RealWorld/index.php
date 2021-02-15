@@ -224,7 +224,7 @@ class UserRepository implements Observer
         return $user;
     }
 
-    public function updateUser(User $user, array $data, bool $silent = false): User
+    public function updateUser(User $user, array $data, bool $silent = false): ?User
     {
         echo "UserRepository: Updating a user.\n";
 
