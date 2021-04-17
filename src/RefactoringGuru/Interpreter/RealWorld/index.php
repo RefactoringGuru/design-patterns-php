@@ -17,14 +17,14 @@ class Context
 
     public function lookUp(string $name): bool
     {
-        if (!key_exists($name, $this->poolVariable)) {
+        if (!array_key_exists($name, $this->poolVariable)) {
             die("No exist variable: $name");
         }
 
         return $this->poolVariable[$name];
     }
 
-    public function assign(VariableExp $variable, $val)
+    public function assign(VariableExp $variable, $val): void
     {
         $this->poolVariable[$variable->getName()] = $val;
     }
@@ -68,7 +68,7 @@ class AndExp implements Expression
 
     public function interpret(Context $context): bool
     {
-        return (bool)$this->first->interpret($context) && $this->second->interpret($context);
+        return $this->first->interpret($context) && $this->second->interpret($context);
     }
 }
 
