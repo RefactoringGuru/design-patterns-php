@@ -30,12 +30,12 @@ class Context
     }
 }
 
-abstract class AbstractExp
+interface Expression
 {
-    abstract public function interpret(Context $context): bool;
+    public function interpret(Context $context): bool;
 }
 
-class VariableExp extends AbstractExp
+class VariableExp implements Expression
 {
     private $name;
 
@@ -55,12 +55,12 @@ class VariableExp extends AbstractExp
     }
 }
 
-class AndExp extends AbstractExp
+class AndExp implements Expression
 {
     private $first;
     private $second;
 
-    public function __construct(AbstractExp $first, AbstractExp $second)
+    public function __construct(Expression $first, Expression $second)
     {
         $this->first  = $first;
         $this->second = $second;
@@ -72,12 +72,12 @@ class AndExp extends AbstractExp
     }
 }
 
-class OrExp extends AbstractExp
+class OrExp implements Expression
 {
     private $first;
     private $second;
 
-    public function __construct(AbstractExp $first, AbstractExp $second)
+    public function __construct(Expression $first, Expression $second)
     {
         $this->first  = $first;
         $this->second = $second;
