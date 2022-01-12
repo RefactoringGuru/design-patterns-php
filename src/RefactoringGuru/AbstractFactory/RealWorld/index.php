@@ -335,7 +335,7 @@ class Page
  * RU: Теперь в других частях приложения клиентский код может принимать
  * фабричные объекты любого типа.
  */
-$page = new Page('Sample page', 'This it the body.');
+$page = new Page('Sample page', 'This is the body.');
 
 echo "Testing actual rendering with the PHPTemplate factory:\n";
 echo $page->render(new PHPTemplateFactory());
