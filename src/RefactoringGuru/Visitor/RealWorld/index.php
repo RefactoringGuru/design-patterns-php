@@ -271,8 +271,13 @@ $report = new SalaryReport();
 echo "Client: I can print a report for a whole company:\n\n";
 echo $company->accept($report);
 
-echo "\nClient: ...or just for a single department:\n\n";
-echo $techSupport->accept($report);
+echo "\nClient: ...or for different entities " .
+    "such as an employee, a department, or the whole company:\n\n";
+$someEmployee = new Employee("Some employee", "operator", 35000);
+$differentEntities = [$someEmployee, $techSupport, $company];
+foreach ($differentEntities as $entity) {
+    echo $entity->accept($report) . "\r\n";
+}
 
 // $export = new JSONExport(); 
 // echo $company->accept($export);

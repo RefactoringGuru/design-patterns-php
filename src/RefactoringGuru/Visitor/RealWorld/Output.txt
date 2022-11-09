@@ -18,12 +18,34 @@ SuperStarDevelopment (USD550,000.00)
     $ 34,000.00 John Burnovsky (operator)
     $ 35,000.00 Sergey Korolev (operator)
 
-Client: ...or just for a single department:
 
-Tech Support (USD199,000.00)
+Client: ...or for different entities such as an employee, a department, or the whole company:
 
-    $ 70,000.00 Larry Ulbrecht (supervisor)
-    $ 30,000.00 Elton Pale (operator)
-    $ 30,000.00 Rajeet Kumar (operator)
-    $ 34,000.00 John Burnovsky (operator)
-    $ 35,000.00 Sergey Korolev (operator)
+35000 Some employee (operator)
+
+Tech Support (199000)
+
+   70000 Larry Ulbrecht (supervisor)
+   30000 Elton Pale (operator)
+   30000 Rajeet Kumar (operator)
+   34000 John Burnovsky (operator)
+   35000 Sergey Korolev (operator)
+
+SuperStarDevelopment (550000)
+
+--Mobile Development (351000)
+
+   100000 Albert Falmore (designer)
+   100000 Ali Halabay (programmer)
+   90000 Sarah Konor (programmer)
+   31000 Monica Ronaldino (QA engineer)
+   30000 James Smith (QA engineer)
+
+--Tech Support (199000)
+
+   70000 Larry Ulbrecht (supervisor)
+   30000 Elton Pale (operator)
+   30000 Rajeet Kumar (operator)
+   34000 John Burnovsky (operator)
+   35000 Sergey Korolev (operator)
+
