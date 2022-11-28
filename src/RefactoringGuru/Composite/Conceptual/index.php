@@ -24,7 +24,7 @@ namespace RefactoringGuru\Composite\Conceptual;
 abstract class Component
 {
     /**
-     * @var Component
+     * @var Component|null
      */
     protected $parent;
 
@@ -38,7 +38,7 @@ abstract class Component
      * также может предоставить некоторую реализацию по умолчанию для этих
      * методов.
      */
-    public function setParent(Component $parent)
+    public function setParent(?Component $parent)
     {
         $this->parent = $parent;
     }
