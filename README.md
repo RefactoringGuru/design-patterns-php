@@ -54,7 +54,7 @@ I appreciate any help, whether it's a simple fix of a typo or a whole new exampl
 
 Here's a style guide which might help you to keep your changes consistent with the rest of the project's code:
 
-1. All code should match the [PSR2 coding style guide](https://www.php-fig.org/psr/psr-2/)
+1. All code should match the [PSR12 extended coding style guide](https://www.php-fig.org/psr/psr-12/)
 
 2. Try to hard-wrap the code at 80th's character. It helps to list the code on the website without scrollbars.
 
