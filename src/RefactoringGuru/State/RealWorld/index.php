@@ -1,6 +1,6 @@
 <?php
 
-namespace RefactoringGuru\Singleton\RealWorld;
+namespace RefactoringGuru\State\RealWorld;
 
 /**
  * State Design Pattern
