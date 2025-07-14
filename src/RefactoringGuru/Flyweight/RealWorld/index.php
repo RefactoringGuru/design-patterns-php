@@ -153,7 +153,7 @@ class CatVariation
      * не быть объявленного класса Контекста. Контекстные данные могут храниться
      * в массиве или какой-то другой, более эффективной структуре данных.
      */
-    public function renderProfile(string $name, string  $age, string $owner)
+    public function renderProfile(string $name, string $age, string $owner)
     {
         echo "= $name =\n";
         echo "Age: $age\n";
@@ -305,7 +305,8 @@ class CatDataBase
      */
     public function getVariation(
         string $breed,
-        string $image, $color,
+        string $image,
+        string $color,
         string $texture,
         string $fur,
         string $size

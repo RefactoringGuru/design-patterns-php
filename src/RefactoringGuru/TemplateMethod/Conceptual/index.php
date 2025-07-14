@@ -88,9 +88,13 @@ abstract class AbstractClass
      * предоставляют дополнительные точки расширения в некоторых критических
      * местах алгоритма.
      */
-    protected function hook1(): void { }
+    protected function hook1(): void
+    {
+    }
 
-    protected function hook2(): void { }
+    protected function hook2(): void
+    {
+    }
 }
 
 /**

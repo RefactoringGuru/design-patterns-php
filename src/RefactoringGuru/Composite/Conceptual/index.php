@@ -61,9 +61,13 @@ abstract class Component
      * во время сборки дерева объектов. Недостаток такого подхода в том, что эти
      * методы будут пустыми для компонентов уровня листа.
      */
-    public function add(Component $component): void { }
+    public function add(Component $component): void
+    {
+    }
 
-    public function remove(Component $component): void { }
+    public function remove(Component $component): void
+    {
+    }
 
     /**
      * EN: You can provide a method that lets the client code figure out whether

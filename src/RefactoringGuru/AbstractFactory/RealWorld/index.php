@@ -298,7 +298,6 @@ class PHPTemplateRenderer implements TemplateRenderer
  */
 class Page
 {
-
     public $title;
 
     public $content;
