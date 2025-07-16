@@ -12,7 +12,7 @@ namespace RefactoringGuru\Memento\RealWorld;
 
 /**
  * Real-World Memento Pattern Example: Text Editor with Undo/Redo
- * 
+ *
  * This real-world example demonstrates how a text editor implements undo/redo
  * functionality using the Memento pattern. The pattern allows the editor to
  * save snapshots of its state and restore them later without exposing the
@@ -50,7 +50,7 @@ class TextEditor
      * @var string
      */
     private $content;
-    
+
     /**
      * Current cursor position
      *
@@ -61,7 +61,7 @@ class TextEditor
      * @var int
      */
     private $cursorPosition;
-    
+
     /**
      * Currently selected text
      *
@@ -71,7 +71,7 @@ class TextEditor
      * @var string
      */
     private $selectedText;
-    
+
     /**
      * Current formatting settings
      *
@@ -272,7 +272,7 @@ interface EditorMemento
      * @return string The timestamp when the memento was created
      */
     public function getTimestamp(): string;
-    
+
     /**
      * Get a human-readable description of this memento
      *
@@ -324,7 +324,7 @@ class EditorSnapshot implements EditorMemento
      * @var string
      */
     private $content;
-    
+
     /**
      * Stored cursor position
      *
@@ -333,7 +333,7 @@ class EditorSnapshot implements EditorMemento
      * @var int
      */
     private $cursorPosition;
-    
+
     /**
      * Stored selected text
      *
@@ -342,7 +342,7 @@ class EditorSnapshot implements EditorMemento
      * @var string
      */
     private $selectedText;
-    
+
     /**
      * Stored formatting options
      *
@@ -351,7 +351,7 @@ class EditorSnapshot implements EditorMemento
      * @var array
      */
     private $formatting;
-    
+
     /**
      * Creation timestamp
      *
@@ -415,8 +415,8 @@ class EditorSnapshot implements EditorMemento
      */
     public function getDescription(): string
     {
-        $preview = strlen($this->content) > 20 
-            ? substr($this->content, 0, 20) . "..." 
+        $preview = strlen($this->content) > 20
+            ? substr($this->content, 0, 20) . "..."
             : $this->content;
         return "{$this->timestamp} - \"{$preview}\" (pos: {$this->cursorPosition})";
     }
@@ -472,7 +472,7 @@ class EditorHistory
      * @var array
      */
     private $history = [];
-    
+
     /**
      * Current position in history
      *
@@ -484,7 +484,7 @@ class EditorHistory
      * @var int
      */
     private $currentIndex = -1;
-    
+
     /**
      * Reference to the originator
      *
@@ -495,7 +495,7 @@ class EditorHistory
      * @var TextEditor
      */
     protected $editor;
-    
+
     /**
      * Maximum history size
      *
