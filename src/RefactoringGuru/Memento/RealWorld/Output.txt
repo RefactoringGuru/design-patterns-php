@@ -1,0 +1,75 @@
+=== Text Editor with Memento Pattern Demo ===
+
+1. Initial state:
+Content: '' | Cursor: 0 | Selected: '' | Format: {"bold":false,"italic":false,"fontSize":12}
+
+State saved to history (index: 0)
+
+
+2. Typing 'Hello World':
+Typed: 'Hello World' | Content: 'Hello World'
+State saved to history (index: 1)
+
+
+3. Applying bold formatting:
+Applied formatting: {"bold":true}
+State saved to history (index: 2)
+Named snapshot 'hello_world_bold' saved
+
+
+4. Adding more text:
+Typed: ' - This is amazing!' | Content: 'Hello World - This is amazing!'
+State saved to history (index: 3)
+
+
+5. Deleting some text:
+Deleted: 's amazing!' | Content: 'Hello World - This i'
+State saved to history (index: 4)
+
+=== Editor History ===
+    [0] 2025-07-16 18:52:48 - "" (pos: 0)
+    [1] 2025-07-16 18:52:48 - "Hello World" (pos: 11)
+    [2] 2025-07-16 18:52:48 - "Hello World" (pos: 11)
+    [3] 2025-07-16 18:52:48 - "Hello World - This i..." (pos: 30)
+ -> [4] 2025-07-16 18:52:48 - "Hello World - This i" (pos: 20)
+======================
+
+
+
+6. Undo operations:
+State restored | Content: 'Hello World - This is amazing!' | Cursor: 30
+Undo successful
+State restored | Content: 'Hello World' | Cursor: 11
+Undo successful
+
+
+7. Redo operation:
+State restored | Content: 'Hello World - This is amazing!' | Cursor: 30
+Redo successful
+
+=== Editor History ===
+    [0] 2025-07-16 18:52:48 - "" (pos: 0)
+    [1] 2025-07-16 18:52:48 - "Hello World" (pos: 11)
+    [2] 2025-07-16 18:52:48 - "Hello World" (pos: 11)
+ -> [3] 2025-07-16 18:52:48 - "Hello World - This i..." (pos: 30)
+    [4] 2025-07-16 18:52:48 - "Hello World - This i" (pos: 20)
+======================
+
+
+
+8. Named snapshots:
+
+=== Named Snapshots ===
+'hello_world_bold' - 2025-07-16 18:52:48 - "Hello World" (pos: 11)
+========================
+
+
+
+9. Restoring from named snapshot:
+State restored | Content: 'Hello World' | Cursor: 11
+Restored from named snapshot 'hello_world_bold'
+
+
+10. Final state:
+Content: 'Hello World' | Cursor: 11 | Selected: '' | Format: {"bold":true,"italic":false,"fontSize":12}
+
