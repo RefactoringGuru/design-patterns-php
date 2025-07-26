@@ -132,8 +132,12 @@ $factory->listFlyweights();
 // ...
 
 function addCarToPoliceDatabase(
-    FlyweightFactory $ff, $plates, $owner,
-    $brand, $model, $color
+    FlyweightFactory $ff,
+    $plates,
+    $owner,
+    $brand,
+    $model,
+    $color
 ) {
     echo "\nClient: Adding a car to database.\n";
     $flyweight = $ff->getFlyweight([$brand, $model, $color]);
@@ -146,7 +150,8 @@ function addCarToPoliceDatabase(
     $flyweight->operation([$plates, $owner]);
 }
 
-addCarToPoliceDatabase($factory,
+addCarToPoliceDatabase(
+    $factory,
     "CL234IR",
     "James Doe",
     "BMW",
@@ -154,7 +159,8 @@ addCarToPoliceDatabase($factory,
     "red",
 );
 
-addCarToPoliceDatabase($factory,
+addCarToPoliceDatabase(
+    $factory,
     "CL234IR",
     "James Doe",
     "BMW",

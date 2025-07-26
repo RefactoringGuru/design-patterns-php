@@ -200,11 +200,11 @@ abstract class FieldComposite extends FormElement
     public function getData(): array
     {
         $data = [];
-        
+
         foreach ($this->fields as $name => $field) {
             $data[$name] = $field->getData();
         }
-        
+
         return $data;
     }
 
@@ -220,11 +220,11 @@ abstract class FieldComposite extends FormElement
     public function render(): string
     {
         $output = "";
-        
+
         foreach ($this->fields as $name => $field) {
             $output .= $field->render();
         }
-        
+
         return $output;
     }
 }
@@ -244,7 +244,7 @@ class Fieldset extends FieldComposite
         // RU: Обратите внимание, как комбинированный результат рендеринга
         // потомков включается в тег fieldset.
         $output = parent::render();
-        
+
         return "<fieldset><legend>{$this->title}</legend>\n$output</fieldset>\n";
     }
 }
