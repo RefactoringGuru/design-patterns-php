@@ -32,7 +32,6 @@ For the best experience, I recommend working with examples with these IDEs:
 ## Roadmap
 
 - [ ] Memento: RealLife
-- [ ] State: RealLife
 
 I'm out of decent ideas for real-world usages for these two in PHP apps. If you had used them in your project, feel free to suggest me an idea by posting an Issue.
 
