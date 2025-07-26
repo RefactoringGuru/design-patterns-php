@@ -46,7 +46,8 @@ interface InvoiceState
  *
  * The abstract class also maintains a reference to the context (Invoice)
  * object, which is needed for performing state transitions.
- */abstract class BaseInvoiceState implements InvoiceState
+ */
+abstract class BaseInvoiceState implements InvoiceState
 {
      /**
      * Reference to the context object (Invoice)
