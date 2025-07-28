@@ -1,0 +1,50 @@
+=== Simple Order Processing with Memento Pattern ===
+
+Order ORD_001 created with 2 items
+Initial order: {"order_id":"ORD_001","status":"pending","total":1029.98,"item_count":2,"payment_count":0}
+
+State saved as 'initial' for order ORD_001
+--- Step 1: Validate Order ---
+Validating order ORD_001...
+Order ORD_001 validated successfully
+State saved as 'after_validation' for order ORD_001
+Order status: validated
+
+--- Step 2: Process Payment ---
+Processing payment for order ORD_001...
+Payment of $1,029.98 processed
+State saved as 'after_payment' for order ORD_001
+Order status: paid
+
+--- Step 3: Ship Order ---
+Shipping order ORD_001...
+Order ORD_001 has been shipped
+State saved as 'after_shipping' for order ORD_001
+Order status: shipped
+
+
+=== Order Snapshots ===
+[initial] Order ORD_001 - Status: pending - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_validation] Order ORD_001 - Status: validated - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_payment] Order ORD_001 - Status: paid - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_shipping] Order ORD_001 - Status: shipped - Total: $1,029.98 - 2025-07-28 11:10:13
+========================
+
+--- Rollback Demonstration ---
+Rolling back to after_validation state...
+Order ORD_001 restored to status: validated
+Restored to snapshot 'after_validation'
+Current order status: validated
+
+--- Reprocess from validation state ---
+Processing payment for order ORD_001...
+Payment of $1,029.98 processed
+Order status after reprocessing: paid
+
+
+=== Order Snapshots ===
+[initial] Order ORD_001 - Status: pending - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_validation] Order ORD_001 - Status: validated - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_payment] Order ORD_001 - Status: paid - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_shipping] Order ORD_001 - Status: shipped - Total: $1,029.98 - 2025-07-28 11:10:13
+========================
