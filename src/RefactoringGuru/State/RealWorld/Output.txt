@@ -1,0 +1,38 @@
+=== Invoice State Pattern Demo ===
+
+Created invoice: {"id":1001,"amount":1500,"state":"draft","created_at":"2025-07-12 13:14:15"}
+
+--- Scenario 1: Draft -> Open -> Paid ---
+Invoice #1001 finalized - changing from Draft to Open
+Current state: open
+Invoice #1001 paid - changing from Open to Paid
+Current state: paid
+Expected error: Cannot pay invoice in paid state
+
+--- Scenario 2: Draft -> Open -> Void ---
+Invoice #1002 finalized - changing from Draft to Open
+Invoice #1002 voided - changing from Open to Void
+Invoice 2 state: void
+
+--- Scenario 3: Draft -> Open -> Uncollectable -> Paid ---
+Invoice #1003 finalized - changing from Draft to Open
+Invoice #1003 cancelled - changing from Open to Uncollectable
+Invoice 3 state: uncollectable
+Invoice #1003 paid - changing from Uncollectable to Paid
+Invoice 3 final state: paid
+
+--- Scenario 4: Draft -> Open -> Uncollectable -> Void ---
+Invoice #1004 finalized - changing from Draft to Open
+Invoice #1004 cancelled - changing from Open to Uncollectable
+Invoice #1004 voided - changing from Uncollectable to Void
+Invoice 4 final state: void
+
+--- Error Scenario: Invalid transition ---
+Expected error: Cannot pay invoice in draft state
+
+--- State Information ---
+Invoice 1: {"id":1001,"amount":1500,"state":"paid","created_at":"2025-07-12 13:14:15"}
+Invoice 2: {"id":1002,"amount":750,"state":"void","created_at":"2025-07-12 13:14:15"}
+Invoice 3: {"id":1003,"amount":2000,"state":"paid","created_at":"2025-07-12 13:14:15"}
+Invoice 4: {"id":1004,"amount":500,"state":"void","created_at":"2025-07-12 13:14:15"}
+Invoice 5: {"id":1005,"amount":300,"state":"draft","created_at":"2025-07-12 13:14:15"}

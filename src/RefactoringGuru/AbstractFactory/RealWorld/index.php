@@ -240,7 +240,7 @@ class PHPTemplatePageTemplate extends BasePageTemplate
  * of template strings passed to it. Baking templates with the factory let you
  * pass proper types of templates to proper renders.
  *
- * RU: Классы отрисовки отвечают за преобразовании строк шаблонов в конечный
+ * RU: Классы отрисовки отвечают за преобразование строк шаблонов в конечный
  * HTML код. Каждый такой класс устроен по-раному и ожидает на входе шаблоны
  * только своего типа. Работа с шаблонами через фабрику позволяет вам избавиться
  * от риска подать в отрисовщик шаблон не того типа.
@@ -298,7 +298,6 @@ class PHPTemplateRenderer implements TemplateRenderer
  */
 class Page
 {
-
     public $title;
 
     public $content;

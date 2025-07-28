@@ -45,14 +45,18 @@ class Singleton
      * RU: Конструктор Одиночки всегда должен быть скрытым, чтобы предотвратить
      * создание объекта через оператор new.
      */
-    protected function __construct() { }
+    protected function __construct()
+    {
+    }
 
     /**
      * EN: Singletons should not be cloneable.
      *
      * RU: Одиночки не должны быть клонируемыми.
      */
-    protected function __clone() { }
+    protected function __clone()
+    {
+    }
 
     /**
      * EN: Singletons should not be restorable from strings.

@@ -32,7 +32,6 @@ For the best experience, I recommend working with examples with these IDEs:
 ## Roadmap
 
 - [ ] Memento: RealLife
-- [ ] State: RealLife
 
 I'm out of decent ideas for real-world usages for these two in PHP apps. If you had used them in your project, feel free to suggest me an idea by posting an Issue.
 
@@ -54,7 +53,7 @@ I appreciate any help, whether it's a simple fix of a typo or a whole new exampl
 
 Here's a style guide which might help you to keep your changes consistent with the rest of the project's code:
 
-1. All code should match the [PSR2 coding style guide](https://www.php-fig.org/psr/psr-2/)
+1. All code should match the [PSR12 extended coding style guide](https://www.php-fig.org/psr/psr-12/)
 
 2. Try to hard-wrap the code at 80th's character. It helps to list the code on the website without scrollbars.
 

@@ -57,14 +57,18 @@ class Singleton
      * RU: Конструктор Одиночки не должен быть публичным. Однако он не может
      * быть приватным, если мы хотим разрешить создание подклассов.
      */
-    protected function __construct() { }
+    protected function __construct()
+    {
+    }
 
     /**
      * EN: Cloning and unserialization are not permitted for singletons.
      *
      * RU: Клонирование и десериализация не разрешены для одиночек.
      */
-    protected function __clone() { }
+    protected function __clone()
+    {
+    }
 
     public function __wakeup()
     {
@@ -215,7 +219,8 @@ $config1->setValue("password", $password);
 //
 // RU: ...и восстанавливает их.
 $config2 = Config::getInstance();
-if ($login == $config2->getValue("login") &&
+if (
+    $login == $config2->getValue("login") &&
     $password == $config2->getValue("password")
 ) {
     Logger::log("Config singleton also works fine.");

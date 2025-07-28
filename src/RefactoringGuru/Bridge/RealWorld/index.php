@@ -124,8 +124,8 @@ class ProductPage extends Page
             $this->renderer->renderTitle($this->product->getTitle()),
             $this->renderer->renderTextBlock($this->product->getDescription()),
             $this->renderer->renderImage($this->product->getImage()),
-            $this->renderer->renderTextBlock('$'.number_format($this->product->getPrice(), 2)),
-            $this->renderer->renderLink("/cart/add/".$this->product->getId(), "Add to cart"),
+            $this->renderer->renderTextBlock('$' . number_format($this->product->getPrice(), 2)),
+            $this->renderer->renderLink("/cart/add/" . $this->product->getId(), "Add to cart"),
             $this->renderer->renderFooter()
         ]);
     }
@@ -154,15 +154,30 @@ class Product
         $this->price = $price;
     }
 
-    public function getId(): string { return $this->id; }
+    public function getId(): string
+    {
+        return $this->id;
+    }
 
-    public function getTitle(): string { return $this->title; }
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
 
-    public function getDescription(): string { return $this->description; }
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
 
-    public function getImage(): string { return $this->image; }
+    public function getImage(): string
+    {
+        return $this->image;
+    }
 
-    public function getPrice(): float { return $this->price; }
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
 }
 
 
@@ -326,9 +341,13 @@ clientCode($page);
 echo "\n\n";
 
 
-$product = new Product("123", "Star Wars, episode1",
+$product = new Product(
+    "123",
+    "Star Wars, episode1",
     "A long time ago in a galaxy far, far away...",
-    "/images/star-wars.jpeg", 39.95);
+    "/images/star-wars.jpeg",
+    39.95
+);
 
 $page = new ProductPage($HTMLRenderer, $product);
 echo "HTML view of a product page, same client code:\n";

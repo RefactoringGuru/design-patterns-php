@@ -302,7 +302,7 @@ interface PaymentMethod
  */
 class CreditCardPayment implements PaymentMethod
 {
-    static private $store_secret_key = "swordfish";
+    private static $store_secret_key = "swordfish";
 
     public function getPaymentForm(Order $order): string
     {
