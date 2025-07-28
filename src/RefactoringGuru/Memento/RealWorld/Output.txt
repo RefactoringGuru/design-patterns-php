@@ -1,75 +1,50 @@
-=== Text Editor with Memento Pattern Demo ===
+=== Simple Order Processing with Memento Pattern ===
 
-1. Initial state:
-Content: '' | Cursor: 0 | Selected: '' | Format: {"bold":false,"italic":false,"fontSize":12}
+Order ORD_001 created with 2 items
+Initial order: {"order_id":"ORD_001","status":"pending","total":1029.98,"item_count":2,"payment_count":0}
 
-State saved to history (index: 0)
+State saved as 'initial' for order ORD_001
+--- Step 1: Validate Order ---
+Validating order ORD_001...
+Order ORD_001 validated successfully
+State saved as 'after_validation' for order ORD_001
+Order status: validated
 
+--- Step 2: Process Payment ---
+Processing payment for order ORD_001...
+Payment of $1,029.98 processed
+State saved as 'after_payment' for order ORD_001
+Order status: paid
 
-2. Typing 'Hello World':
-Typed: 'Hello World' | Content: 'Hello World'
-State saved to history (index: 1)
-
-
-3. Applying bold formatting:
-Applied formatting: {"bold":true}
-State saved to history (index: 2)
-Named snapshot 'hello_world_bold' saved
-
-
-4. Adding more text:
-Typed: ' - This is amazing!' | Content: 'Hello World - This is amazing!'
-State saved to history (index: 3)
-
-
-5. Deleting some text:
-Deleted: 's amazing!' | Content: 'Hello World - This i'
-State saved to history (index: 4)
-
-=== Editor History ===
-    [0] 2025-07-16 18:52:48 - "" (pos: 0)
-    [1] 2025-07-16 18:52:48 - "Hello World" (pos: 11)
-    [2] 2025-07-16 18:52:48 - "Hello World" (pos: 11)
-    [3] 2025-07-16 18:52:48 - "Hello World - This i..." (pos: 30)
- -> [4] 2025-07-16 18:52:48 - "Hello World - This i" (pos: 20)
-======================
+--- Step 3: Ship Order ---
+Shipping order ORD_001...
+Order ORD_001 has been shipped
+State saved as 'after_shipping' for order ORD_001
+Order status: shipped
 
 
-
-6. Undo operations:
-State restored | Content: 'Hello World - This is amazing!' | Cursor: 30
-Undo successful
-State restored | Content: 'Hello World' | Cursor: 11
-Undo successful
-
-
-7. Redo operation:
-State restored | Content: 'Hello World - This is amazing!' | Cursor: 30
-Redo successful
-
-=== Editor History ===
-    [0] 2025-07-16 18:52:48 - "" (pos: 0)
-    [1] 2025-07-16 18:52:48 - "Hello World" (pos: 11)
-    [2] 2025-07-16 18:52:48 - "Hello World" (pos: 11)
- -> [3] 2025-07-16 18:52:48 - "Hello World - This i..." (pos: 30)
-    [4] 2025-07-16 18:52:48 - "Hello World - This i" (pos: 20)
-======================
-
-
-
-8. Named snapshots:
-
-=== Named Snapshots ===
-'hello_world_bold' - 2025-07-16 18:52:48 - "Hello World" (pos: 11)
+=== Order Snapshots ===
+[initial] Order ORD_001 - Status: pending - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_validation] Order ORD_001 - Status: validated - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_payment] Order ORD_001 - Status: paid - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_shipping] Order ORD_001 - Status: shipped - Total: $1,029.98 - 2025-07-28 11:10:13
 ========================
 
+--- Rollback Demonstration ---
+Rolling back to after_validation state...
+Order ORD_001 restored to status: validated
+Restored to snapshot 'after_validation'
+Current order status: validated
+
+--- Reprocess from validation state ---
+Processing payment for order ORD_001...
+Payment of $1,029.98 processed
+Order status after reprocessing: paid
 
 
-9. Restoring from named snapshot:
-State restored | Content: 'Hello World' | Cursor: 11
-Restored from named snapshot 'hello_world_bold'
-
-
-10. Final state:
-Content: 'Hello World' | Cursor: 11 | Selected: '' | Format: {"bold":true,"italic":false,"fontSize":12}
-
+=== Order Snapshots ===
+[initial] Order ORD_001 - Status: pending - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_validation] Order ORD_001 - Status: validated - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_payment] Order ORD_001 - Status: paid - Total: $1,029.98 - 2025-07-28 11:10:13
+[after_shipping] Order ORD_001 - Status: shipped - Total: $1,029.98 - 2025-07-28 11:10:13
+========================
