@@ -7,491 +7,342 @@ namespace RefactoringGuru\Memento\RealWorld;
  *
  * Intent: Lets you save and restore the previous state of an object without
  * revealing the details of its implementation.
+ *
+ * This real-world example demonstrates how a configuration management system
+ * implements backup and restore functionality using the Memento pattern.
  */
-
 
 /**
- * The Memento interface provides a way to retrieve metadata about the memento.
+ * The Originator holds some important state that may change over time. It also
+ * defines a method for saving the state inside a memento and another method for
+ * restoring the state from it.
  *
- * This interface defines the contract that all order memento implementations
- * must follow. It provides methods for accessing metadata about the saved
- * state but does NOT provide direct access to the order's internal state.
+ * In this example, the ConfigManager acts as the Originator. It manages
+ * application configuration settings that can be modified during runtime.
+ * The configuration might include database settings, feature flags, UI themes,
+ * SEO settings, and other application parameters.
  *
- * The interface serves as a protective barrier between the caretaker and
- * the actual state data, ensuring proper encapsulation.
+ * The ConfigManager's business logic may affect its internal state. Therefore,
+ * the client should backup the state before launching methods of the
+ * business logic via the save() method.
  */
-interface OrderMemento
+class ConfigManager
 {
     /**
-     * Get the timestamp when this memento was created
+     * @var array For simplicity, the configuration state is stored inside an array.
+     * In real applications, this might be a more complex structure with validation,
+     * type checking, and nested configurations.
+     */
+    private $config;
+
+    /**
+     * Constructor initializes the configuration manager with default settings.
+     *
+     * @param array $initialConfig The initial configuration values
+     */
+    public function __construct(array $initialConfig)
+    {
+        $this->config = $initialConfig;
+        echo "ConfigManager: Initialized with " . count($initialConfig) . " config items.\n";
+    }
+
+    /**
+     * The ConfigManager's business logic may affect its internal state. Therefore,
+     * the client should backup the state before launching methods of the
+     * business logic via the save() method.
+     *
+     * This method simulates updating configuration values, which is a common
+     * operation in web applications (admin panels, user preferences, etc.).
+     *
+     * @param array $newValues New configuration values to merge with existing config
+     */
+    public function updateConfig(array $newValues): void
+    {
+        echo "ConfigManager: Updating configuration with new values...\n";
+        $this->config = array_merge($this->config, $newValues);
+        echo "ConfigManager: Configuration updated. Current config has " . count($this->config) . " items.\n";
+    }
+
+    /**
+     * Retrieves the current configuration state.
+     *
+     * @return array The current configuration
+     */
+    public function getConfig(): array
+    {
+        return $this->config;
+    }
+
+    /**
+     * Saves the current state inside a memento.
+     *
+     * This method creates a snapshot of the current configuration state
+     * and returns it wrapped in a memento object. The memento contains
+     * all the information needed to restore the configuration to its
+     * current state later.
+     *
+     * @return ConfigSnapshot A memento containing the current config state
+     */
+    public function save(): ConfigSnapshot
+    {
+        echo "ConfigManager: Saving current configuration state...\n";
+        return new ConfigSnapshot($this->config);
+    }
+
+    /**
+     * Restores the ConfigManager's state from a memento object.
+     *
+     * This method takes a memento and restores the configuration to the
+     * state that was saved in that memento. This is useful for implementing
+     * undo functionality or rolling back failed configuration changes.
+     *
+     * @param ConfigSnapshot $snapshot The memento to restore from
+     */
+    public function restore(ConfigSnapshot $snapshot): void
+    {
+        $this->config = $snapshot->getState();
+        echo "ConfigManager: Configuration restored from snapshot.\n";
+    }
+
+    /**
+     * Additional business method: Reset to defaults
+     *
+     * Resets the configuration to default values. This is another operation
+     * that might benefit from creating a backup before execution.
+     */
+    public function resetToDefaults(): void
+    {
+        echo "ConfigManager: Resetting configuration to defaults...\n";
+        $this->config = [
+            'maintenance_mode' => false,
+            'theme' => 'light',
+            'debug' => false
+        ];
+        echo "ConfigManager: Configuration reset to defaults.\n";
+    }
+
+    /**
+     * Additional business method: Enable maintenance mode
+     *
+     * Quickly enables maintenance mode across the application.
+     */
+    public function enableMaintenanceMode(): void
+    {
+        echo "ConfigManager: Enabling maintenance mode...\n";
+        $this->config['maintenance_mode'] = true;
+        $this->config['maintenance_message'] = 'System under maintenance. Please try again later.';
+        echo "ConfigManager: Maintenance mode enabled.\n";
+    }
+}
+
+/**
+ * The Memento interface provides a way to retrieve the memento's metadata, such
+ * as creation date or name. However, it doesn't expose the Originator's state.
+ *
+ * This interface ensures that external classes can work with mementos without
+ * having direct access to the stored state. Only the originator should be able
+ * to extract the actual state data.
+ */
+interface ConfigMemento
+{
+    /**
+     * Returns a user-friendly name for this memento.
+     *
+     * @return string A descriptive name for this snapshot
+     */
+    public function getName(): string;
+
+    /**
+     * Returns the date when this memento was created.
      *
      * @return string The creation timestamp
      */
-    public function getTimestamp(): string;
-
-    /**
-     * Get a description of this memento's state
-     *
-     * @return string A description of the saved state
-     */
-    public function getDescription(): string;
-
-    /**
-     * Get the complete state data from this memento
-     *
-     * This method should only be called by the originator when restoring state.
-     *
-     * @return array The complete order state data
-     */
-    public function getState(): array;
+    public function getDate(): string;
 }
 
-
 /**
- * The Concrete Memento stores the complete order state.
+ * The Concrete Memento contains the infrastructure for storing the Originator's
+ * state.
  *
- * This class implements the OrderMemento interface and provides storage
- * for all aspects of an order's state. It captures a complete snapshot
- * that allows the order to be restored to exactly the same state later.
- *
- * The memento is immutable - once created, its state cannot be changed.
+ * This class stores a snapshot of the configuration state along with metadata
+ * about when the snapshot was created. The actual state is stored privately
+ * and can only be accessed by the originator through the getState() method.
  */
-class OrderSnapshot implements OrderMemento
+class ConfigSnapshot implements ConfigMemento
 {
     /**
-     * Stored order state data
-     *
-     * @var array
+     * @var array The configuration state at the time this snapshot was created
      */
-    private $orderState;
+    private $state;
 
     /**
-     * Creation timestamp
-     *
-     * @var string
+     * @var string The timestamp when this snapshot was created
      */
-    private $timestamp;
+    private $date;
 
     /**
-     * Constructor
+     * Constructor stores the provided state and records the current timestamp.
      *
-     * Creates a new order snapshot with all the provided state information.
-     *
-     * @param string $orderId Order identifier
-     * @param array $items Order items
-     * @param array $customer Customer information
-     * @param string $status Current order status
-     * @param float $total Order total amount
-     * @param array $payments Payment information
+     * @param array $state The configuration state to store
      */
-    public function __construct(
-        string $orderId,
-        array $items,
-        array $customer,
-        string $status,
-        float $total,
-        array $payments
-    ) {
-        $this->orderState = [
-            'orderId' => $orderId,
-            'items' => $items,
-            'customer' => $customer,
-            'status' => $status,
-            'total' => $total,
-            'payments' => $payments
-        ];
-        
-        $this->timestamp = date('Y-m-d H:i:s');
-    }
-
-    /**
-     * Get the creation timestamp
-     *
-     * @return string When this memento was created
-     */
-    public function getTimestamp(): string
+    public function __construct(array $state)
     {
-        return $this->timestamp;
+        $this->state = $state;
+        $this->date = date('Y-m-d H:i:s');
+        echo "ConfigSnapshot: Created snapshot with " . count($state) . " config items.\n";
     }
 
     /**
-     * Get a description of this memento
+     * The Originator uses this method when restoring its state.
      *
-     * @return string Human-readable description
-     */
-    public function getDescription(): string
-    {
-        $orderId = $this->orderState['orderId'];
-        $status = $this->orderState['status'];
-        $total = number_format($this->orderState['total'], 2);
-        
-        return "Order {$orderId} - Status: {$status} - Total: \${$total}";
-    }
-
-    /**
-     * Get the complete state data
+     * This method provides access to the stored state data. It should only
+     * be called by the ConfigManager when restoring configuration.
      *
-     * @return array The complete order state
+     * @return array The stored configuration state
      */
     public function getState(): array
     {
-        return $this->orderState;
+        return $this->state;
+    }
+
+    /**
+     * The rest of the methods are used by the Caretaker to display metadata.
+     *
+     * Returns a descriptive name that includes the timestamp and a preview
+     * of the configuration content.
+     *
+     * @return string A user-friendly name for this snapshot
+     */
+    public function getName(): string
+    {
+        $configCount = count($this->state);
+        $maintenanceStatus = $this->state['maintenance_mode'] ?? 'unknown';
+        return $this->date . " / ({$configCount} items, maintenance: {$maintenanceStatus})";
+    }
+
+    /**
+     * Returns the creation date of this snapshot.
+     *
+     * @return string The timestamp when this snapshot was created
+     */
+    public function getDate(): string
+    {
+        return $this->date;
     }
 }
 
 /**
- * The Originator (Order) holds important state that changes during processing.
+ * The Caretaker doesn't depend on the Concrete Memento class. Therefore, it
+ * doesn't have access to the originator's state, stored inside the memento. It
+ * works with all mementos via the base Memento interface.
  *
- * This class represents an e-commerce order that goes through various
- * processing steps. Each step modifies the order's state, and any step
- * might fail, requiring a rollback to a previous consistent state.
- *
- * The Order can create snapshots of its state and restore from them
- * without exposing the internal structure to external systems.
+ * The ConfigHistory class manages a collection of configuration snapshots and
+ * provides undo functionality. It demonstrates how the caretaker can manage
+ * mementos without knowing their internal structure.
  */
-class Order
+class ConfigHistory
 {
     /**
-     * Unique order identifier
-     *
-     * @var string
-     */
-    private $orderId;
-
-    /**
-     * Order items with details
-     *
-     * @var array
-     */
-    private $items;
-
-    /**
-     * Customer information
-     *
-     * @var array
-     */
-    private $customer;
-
-    /**
-     * Current processing status
-     *
-     * @var string
-     */
-    private $status;
-
-    /**
-     * Order total amount
-     *
-     * @var float
-     */
-    private $total;
-
-    /**
-     * Payment information
-     *
-     * @var array
-     */
-    private $payments;
-
-    /**
-     * Constructor
-     *
-     * Creates a new order with basic information.
-     * The order starts in 'pending' status.
-     *
-     * @param string $orderId Unique identifier for this order
-     * @param array $items Order items
-     * @param array $customer Customer information
-     */
-    public function __construct(string $orderId, array $items, array $customer)
-    {
-        $this->orderId = $orderId;
-        $this->items = $items;
-        $this->customer = $customer;
-        $this->status = 'pending';
-        $this->total = $this->calculateTotal();
-        $this->payments = [];
-
-        echo "Order {$this->orderId} created with " . count($items) . " items\n";
-    }
-
-    /**
-     * Business logic method: Validate order
-     *
-     * Performs order validation and updates status.
-     */
-    public function validateOrder(): void
-    {
-        echo "Validating order {$this->orderId}...\n";
-        
-        // Update item details during validation
-        foreach ($this->items as &$item) {
-            $item['validated'] = true;
-            $item['validated_at'] = date('Y-m-d H:i:s');
-        }
-        
-        $this->status = 'validated';
-        echo "Order {$this->orderId} validated successfully\n";
-    }
-
-    /**
-     * Business logic method: Process payment
-     *
-     * Processes payment for the order.
-     *
-     * @param array $paymentInfo Payment details
-     */
-    public function processPayment(array $paymentInfo): void
-    {
-        echo "Processing payment for order {$this->orderId}...\n";
-        
-        $payment = [
-            'method' => $paymentInfo['method'],
-            'amount' => $this->total,
-            'status' => 'completed',
-            'transaction_id' => 'TXN_' . uniqid(),
-            'processed_at' => date('Y-m-d H:i:s')
-        ];
-        
-        $this->payments[] = $payment;
-        $this->status = 'paid';
-        
-        echo "Payment of $" . number_format($this->total, 2) . " processed\n";
-    }
-
-    /**
-     * Business logic method: Ship order
-     *
-     * Prepares order for shipping.
-     */
-    public function shipOrder(): void
-    {
-        echo "Shipping order {$this->orderId}...\n";
-        
-        $this->status = 'shipped';
-        
-        echo "Order {$this->orderId} has been shipped\n";
-    }
-
-    /**
-     * Calculate order total
-     *
-     * @return float The calculated total
-     */
-    private function calculateTotal(): float
-    {
-        $total = 0;
-        foreach ($this->items as $item) {
-            $total += $item['price'] * $item['quantity'];
-        }
-        return $total;
-    }
-
-    /**
-     * Creates a memento with the current order state
-     *
-     * This is the key method of the Memento pattern. It creates a snapshot
-     * of the current order state and returns it as a memento object.
-     *
-     * @return OrderMemento A memento containing the current state
-     */
-    public function saveToMemento(): OrderMemento
-    {
-        return new OrderSnapshot(
-            $this->orderId,
-            $this->items,
-            $this->customer,
-            $this->status,
-            $this->total,
-            $this->payments
-        );
-    }
-
-    /**
-     * Restores the order's state from a memento object
-     *
-     * This method accepts a memento and restores the order's state to
-     * match the state stored in the memento.
-     *
-     * @param OrderMemento $memento The memento to restore from
-     */
-    public function restoreFromMemento(OrderMemento $memento): void
-    {
-        $state = $memento->getState();
-        
-        $this->items = $state['items'];
-        $this->customer = $state['customer'];
-        $this->status = $state['status'];
-        $this->total = $state['total'];
-        $this->payments = $state['payments'];
-        
-        echo "Order {$this->orderId} restored to status: {$this->status}\n";
-    }
-
-    /**
-     * Get order ID
-     *
-     * @return string The order ID
-     */
-    public function getOrderId(): string
-    {
-        return $this->orderId;
-    }
-
-    /**
-     * Get current status
-     *
-     * @return string The current order status
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    /**
-     * Get order summary
-     *
-     * @return array Order summary information
-     */
-    public function getOrderSummary(): array
-    {
-        return [
-            'order_id' => $this->orderId,
-            'status' => $this->status,
-            'total' => $this->total,
-            'item_count' => count($this->items),
-            'payment_count' => count($this->payments)
-        ];
-    }
-}
-
-
-/**
- * The Caretaker manages order snapshots and provides rollback functionality.
- *
- * This class represents the Caretaker in the Memento pattern. It manages
- * a collection of order snapshots and provides methods to save states
- * and rollback when needed.
- *
- * The caretaker doesn't access the order's internal state directly - it
- * works through the memento interface, maintaining proper encapsulation.
- */
-class OrderHistory
-{
-    /**
-     * Collection of saved snapshots
-     *
-     * @var array
+     * @var ConfigSnapshot[] Array of stored configuration snapshots
      */
     private $snapshots = [];
 
     /**
-     * Reference to the order being managed
-     *
-     * @var Order
+     * @var ConfigManager Reference to the configuration manager
      */
-    private $order;
+    private $configManager;
 
     /**
-     * Constructor
+     * Constructor establishes the relationship with the originator.
      *
-     * Creates a new history manager for the given order.
-     *
-     * @param Order $order The order to manage history for
+     * @param ConfigManager $configManager The configuration manager to work with
      */
-    public function __construct(Order $order)
+    public function __construct(ConfigManager $configManager)
     {
-        $this->order = $order;
+        $this->configManager = $configManager;
+        echo "ConfigHistory: History manager initialized.\n";
     }
 
     /**
-     * Save current order state
+     * Creates a backup of the current configuration state.
      *
-     * Creates a snapshot of the current order state and saves it.
-     *
-     * @param string $label Optional label for this snapshot
+     * This method asks the originator to create a memento and stores it
+     * in the history. This should be called before making changes that
+     * might need to be undone.
      */
-    public function saveState(string $label = ''): void
+    public function backup(): void
     {
-        $memento = $this->order->saveToMemento();
-        
-        $snapshotKey = count($this->snapshots);
-        if ($label) {
-            $snapshotKey = $label;
-        }
-        
-        $this->snapshots[$snapshotKey] = $memento;
-        
-        echo "State saved";
-        if ($label) {
-            echo " as '{$label}'";
-        }
-        echo " for order {$this->order->getOrderId()}\n";
+        echo "\nConfigHistory: Creating backup of current configuration...\n";
+        $this->snapshots[] = $this->configManager->save();
+        echo "ConfigHistory: Backup created. Total backups: " . count($this->snapshots) . "\n";
     }
 
     /**
-     * Restore to a previous state
+     * Restores the configuration to the most recent backup.
      *
-     * Restores the order to a previously saved state.
-     *
-     * @param string|int $snapshotKey The snapshot to restore to
-     * @return bool True if restore successful, false otherwise
+     * This method retrieves the most recent memento from the history and
+     * asks the originator to restore its state from that memento.
      */
-    public function restoreState($snapshotKey): bool
+    public function undo(): void
     {
-        if (!isset($this->snapshots[$snapshotKey])) {
-            echo "Snapshot '{$snapshotKey}' not found\n";
-            return false;
+        if (!count($this->snapshots)) {
+            echo "ConfigHistory: No backups available for undo.\n";
+            return;
         }
-        
-        $memento = $this->snapshots[$snapshotKey];
-        $this->order->restoreFromMemento($memento);
-        
-        echo "Restored to snapshot '{$snapshotKey}'\n";
-        return true;
+
+        $memento = array_pop($this->snapshots);
+
+        echo "ConfigHistory: Restoring configuration to: " . $memento->getName() . "\n";
+        try {
+            $this->configManager->restore($memento);
+            echo "ConfigHistory: Undo completed successfully.\n";
+        } catch (\Exception $e) {
+            echo "ConfigHistory: Undo failed, trying previous backup...\n";
+            $this->undo();
+        }
     }
 
     /**
-     * Get list of available snapshots
+     * Displays the history of all saved configuration snapshots.
      *
-     * @return array List of snapshot information
+     * This method shows all available backups using only the information
+     * available through the memento interface, without accessing the
+     * actual configuration data.
      */
-    public function getSnapshots(): array
+    public function showHistory(): void
     {
-        $snapshotList = [];
-        foreach ($this->snapshots as $key => $memento) {
-            $snapshotList[$key] = [
-                'key' => $key,
-                'description' => $memento->getDescription(),
-                'timestamp' => $memento->getTimestamp()
-            ];
-        }
-        return $snapshotList;
-    }
-
-    /**
-     * Show all snapshots
-     */
-    public function showSnapshots(): void
-    {
-        echo "\n=== Order Snapshots ===\n";
+        echo "\nConfigHistory: Available configuration backups:\n";
         if (empty($this->snapshots)) {
-            echo "No snapshots available\n";
+            echo "No backups available.\n";
         } else {
-            foreach ($this->snapshots as $key => $memento) {
-                echo "[{$key}] {$memento->getDescription()} - {$memento->getTimestamp()}\n";
+            foreach ($this->snapshots as $index => $memento) {
+                echo "[{$index}] " . $memento->getName() . "\n";
             }
         }
-        echo "========================\n\n";
+        echo "\n";
     }
 
     /**
-     * Clear all snapshots
+     * Clears all stored backups.
+     *
+     * This method removes all mementos from the history, which might be
+     * useful when starting fresh or to free up memory.
      */
-    public function clearSnapshots(): void
+    public function clearHistory(): void
     {
+        $count = count($this->snapshots);
         $this->snapshots = [];
-        echo "All snapshots cleared for order {$this->order->getOrderId()}\n";
+        echo "ConfigHistory: Cleared {$count} backups from history.\n";
+    }
+
+    /**
+     * Gets the number of available backups.
+     *
+     * @return int The number of stored backups
+     */
+    public function getBackupCount(): int
+    {
+        return count($this->snapshots);
     }
 }
 
@@ -499,77 +350,191 @@ class OrderHistory
 
 /**
  * ============================================================================
- * USAGE EXAMPLE AND DEMONSTRATION
+ * CLIENT CODE - DEMONSTRATION AND USAGE EXAMPLES
  * ============================================================================
- *
- * The following code demonstrates how to use the Memento pattern implementation
- * with various scenarios that show all the key features of the pattern:
- * - Creating and restoring mementos
- * - Undo/redo functionality
- * - History management
  */
 
-echo "=== Simple Order Processing with Memento Pattern ===\n\n";
+echo "=== Configuration Manager with Memento Pattern Demo ===\n\n";
 
-// Create order
-$customer = [
-    'id' => 'CUST_001',
-    'name' => 'John Doe',
-    'email' => 'john@example.com'
-];
+/**
+ * Example 1: Basic configuration management with backup/restore
+ */
+echo "--- Example 1: Basic Configuration Management ---\n";
 
-$items = [
-    [
-        'product_id' => 'PROD_001',
-        'name' => 'Laptop',
-        'price' => 999.99,
-        'quantity' => 1
+// Initialize configuration manager with default settings
+$config = new ConfigManager([
+    'maintenance_mode' => false,
+    'theme' => 'light',
+    'seo' => ['title' => 'My Website', 'description' => 'Welcome to my site!'],
+    'debug' => false,
+    'max_users' => 1000
+]);
+
+// Create history manager
+$history = new ConfigHistory($config);
+
+echo "\nInitial configuration:\n";
+print_r($config->getConfig());
+
+/**
+ * Example 2: Making changes with backups
+ */
+echo "\n--- Example 2: Making Changes with Backups ---\n";
+
+// Create backup before making changes
+$history->backup();
+
+// Update theme settings
+$config->updateConfig([
+    'theme' => 'dark',
+    'theme_options' => ['sidebar' => 'collapsed', 'font_size' => 'large']
+]);
+
+echo "\nAfter theme update:\n";
+print_r($config->getConfig());
+
+// Create another backup
+$history->backup();
+
+// Enable maintenance mode
+$config->enableMaintenanceMode();
+
+echo "\nAfter enabling maintenance mode:\n";
+print_r($config->getConfig());
+
+/**
+ * Example 3: Demonstrating undo functionality
+ */
+echo "\n--- Example 3: Undo Functionality ---\n";
+
+// Show current history
+$history->showHistory();
+
+// Undo last change (maintenance mode)
+echo "Undoing maintenance mode activation...\n";
+$history->undo();
+
+echo "\nAfter first undo:\n";
+print_r($config->getConfig());
+
+// Undo theme changes
+echo "\nUndoing theme changes...\n";
+$history->undo();
+
+echo "\nAfter second undo (back to original):\n";
+print_r($config->getConfig());
+
+/**
+ * Example 4: Multiple configuration scenarios
+ */
+echo "\n--- Example 4: Multiple Configuration Scenarios ---\n";
+
+// Scenario A: SEO Configuration
+$history->backup();
+echo "\nScenario A: Updating SEO settings...\n";
+$config->updateConfig([
+    'seo' => [
+        'title' => 'Best Products Online',
+        'description' => 'Find the best products at great prices!',
+        'keywords' => 'products, online, shopping, deals'
     ],
-    [
-        'product_id' => 'PROD_002',
-        'name' => 'Mouse',
-        'price' => 29.99,
-        'quantity' => 1
+    'analytics' => ['google_id' => 'GA-123456', 'facebook_pixel' => 'FB-789012']
+]);
+
+echo "SEO configuration updated:\n";
+print_r($config->getConfig());
+
+// Scenario B: Performance Settings
+$history->backup();
+echo "\nScenario B: Updating performance settings...\n";
+$config->updateConfig([
+    'cache_enabled' => true,
+    'cache_duration' => 3600,
+    'compression' => 'gzip',
+    'max_users' => 2000
+]);
+
+echo "Performance settings updated:\n";
+print_r($config->getConfig());
+
+// Scenario C: Emergency rollback
+echo "\nScenario C: Emergency rollback to SEO-only changes...\n";
+$history->undo(); // Remove performance changes
+echo "Rolled back performance changes:\n";
+print_r($config->getConfig());
+
+/**
+ * Example 5: Reset and recovery
+ */
+echo "\n--- Example 5: Reset and Recovery ---\n";
+
+// Save current state before reset
+$history->backup();
+
+// Reset configuration
+$config->resetToDefaults();
+
+echo "\nAfter reset to defaults:\n";
+print_r($config->getConfig());
+
+// Restore previous configuration
+echo "\nRestoring previous configuration...\n";
+$history->undo();
+
+echo "\nAfter restoration:\n";
+print_r($config->getConfig());
+
+/**
+ * Example 6: History management
+ */
+echo "\n--- Example 6: History Management ---\n";
+
+// Show complete history
+$history->showHistory();
+
+echo "Total backups available: " . $history->getBackupCount() . "\n";
+
+// Clear history
+echo "\nClearing history...\n";
+$history->clearHistory();
+
+// Show history after clearing
+$history->showHistory();
+
+/**
+ * Example 7: Real-world workflow simulation
+ */
+echo "\n--- Example 7: Real-World Workflow Simulation ---\n";
+
+// Simulate a typical configuration update workflow
+echo "Simulating typical admin workflow...\n\n";
+
+// Step 1: Admin wants to update site for promotion
+$history->backup();
+echo "Step 1: Preparing for Black Friday promotion...\n";
+$config->updateConfig([
+    'promotion_banner' => 'Black Friday Sale - 50% Off!',
+    'theme' => 'dark',
+    'special_offers' => ['discount' => 50, 'code' => 'BLACKFRIDAY50']
+]);
+
+// Step 2: Update SEO for promotion
+$history->backup();
+echo "\nStep 2: Updating SEO for promotion visibility...\n";
+$config->updateConfig([
+    'seo' => [
+        'title' => 'Black Friday Sale - 50% Off Everything!',
+        'description' => 'Huge Black Friday discounts on all products. Limited time offer!',
+        'keywords' => 'black friday, sale, discount, deals, promotion'
     ]
-];
+]);
 
-$order = new Order('ORD_001', $items, $customer);
-$history = new OrderHistory($order);
+// Step 3: Something goes wrong, need to rollback SEO changes only
+echo "\nStep 3: SEO changes caused issues, rolling back SEO only...\n";
+$history->undo();
 
-echo "Initial order: " . json_encode($order->getOrderSummary()) . "\n\n";
+echo "Final configuration after workflow:\n";
+print_r($config->getConfig());
 
-// Save initial state
-$history->saveState('initial');
-
-// Process order step by step with snapshots
-echo "--- Step 1: Validate Order ---\n";
-$order->validateOrder();
-$history->saveState('after_validation');
-echo "Order status: " . $order->getStatus() . "\n\n";
-
-echo "--- Step 2: Process Payment ---\n";
-$order->processPayment(['method' => 'credit_card']);
-$history->saveState('after_payment');
-echo "Order status: " . $order->getStatus() . "\n\n";
-
-echo "--- Step 3: Ship Order ---\n";
-$order->shipOrder();
-$history->saveState('after_shipping');
-echo "Order status: " . $order->getStatus() . "\n\n";
-
-// Show all snapshots
-$history->showSnapshots();
-
-// Demonstrate rollback
-echo "--- Rollback Demonstration ---\n";
-echo "Rolling back to after_validation state...\n";
-$history->restoreState('after_validation');
-echo "Current order status: " . $order->getStatus() . "\n\n";
-
-// Process payment again
-echo "--- Reprocess from validation state ---\n";
-$order->processPayment(['method' => 'debit_card']);
-echo "Order status after reprocessing: " . $order->getStatus() . "\n\n";
-
-// Show final snapshots
-$history->showSnapshots();
+echo "\nFinal history state:\n";
+$history->showHistory();

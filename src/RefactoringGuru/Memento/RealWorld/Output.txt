@@ -1,50 +1,340 @@
-=== Simple Order Processing with Memento Pattern ===
+=== Configuration Manager with Memento Pattern Demo ===
 
-Order ORD_001 created with 2 items
-Initial order: {"order_id":"ORD_001","status":"pending","total":1029.98,"item_count":2,"payment_count":0}
+--- Example 1: Basic Configuration Management ---
+ConfigManager: Initialized with 5 config items.
+ConfigHistory: History manager initialized.
 
-State saved as 'initial' for order ORD_001
---- Step 1: Validate Order ---
-Validating order ORD_001...
-Order ORD_001 validated successfully
-State saved as 'after_validation' for order ORD_001
-Order status: validated
+Initial configuration:
+Array
+(
+    [maintenance_mode] => 
+    [theme] => light
+    [seo] => Array
+        (
+            [title] => My Website
+            [description] => Welcome to my site!
+        )
 
---- Step 2: Process Payment ---
-Processing payment for order ORD_001...
-Payment of $1,029.98 processed
-State saved as 'after_payment' for order ORD_001
-Order status: paid
+    [debug] => 
+    [max_users] => 1000
+)
 
---- Step 3: Ship Order ---
-Shipping order ORD_001...
-Order ORD_001 has been shipped
-State saved as 'after_shipping' for order ORD_001
-Order status: shipped
+--- Example 2: Making Changes with Backups ---
+
+ConfigHistory: Creating backup of current configuration...
+ConfigManager: Saving current configuration state...
+ConfigSnapshot: Created snapshot with 5 config items.
+ConfigHistory: Backup created. Total backups: 1
+ConfigManager: Updating configuration with new values...
+ConfigManager: Configuration updated. Current config has 6 items.
+
+After theme update:
+Array
+(
+    [maintenance_mode] => 
+    [theme] => dark
+    [seo] => Array
+        (
+            [title] => My Website
+            [description] => Welcome to my site!
+        )
+
+    [debug] => 
+    [max_users] => 1000
+    [theme_options] => Array
+        (
+            [sidebar] => collapsed
+            [font_size] => large
+        )
+
+)
+
+ConfigHistory: Creating backup of current configuration...
+ConfigManager: Saving current configuration state...
+ConfigSnapshot: Created snapshot with 6 config items.
+ConfigHistory: Backup created. Total backups: 2
+ConfigManager: Enabling maintenance mode...
+ConfigManager: Maintenance mode enabled.
+
+After enabling maintenance mode:
+Array
+(
+    [maintenance_mode] => 1
+    [theme] => dark
+    [seo] => Array
+        (
+            [title] => My Website
+            [description] => Welcome to my site!
+        )
+
+    [debug] => 
+    [max_users] => 1000
+    [theme_options] => Array
+        (
+            [sidebar] => collapsed
+            [font_size] => large
+        )
+
+    [maintenance_message] => System under maintenance. Please try again later.
+)
+
+--- Example 3: Undo Functionality ---
+
+ConfigHistory: Available configuration backups:
+[0] 2025-07-28 15:04:16 / (5 items, maintenance: )
+[1] 2025-07-28 15:04:16 / (6 items, maintenance: )
+
+Undoing maintenance mode activation...
+ConfigHistory: Restoring configuration to: 2025-07-28 15:04:16 / (6 items, maintenance: )
+ConfigManager: Configuration restored from snapshot.
+ConfigHistory: Undo completed successfully.
+
+After first undo:
+Array
+(
+    [maintenance_mode] => 
+    [theme] => dark
+    [seo] => Array
+        (
+            [title] => My Website
+            [description] => Welcome to my site!
+        )
+
+    [debug] => 
+    [max_users] => 1000
+    [theme_options] => Array
+        (
+            [sidebar] => collapsed
+            [font_size] => large
+        )
+
+)
+
+Undoing theme changes...
+ConfigHistory: Restoring configuration to: 2025-07-28 15:04:16 / (5 items, maintenance: )
+ConfigManager: Configuration restored from snapshot.
+ConfigHistory: Undo completed successfully.
+
+After second undo (back to original):
+Array
+(
+    [maintenance_mode] => 
+    [theme] => light
+    [seo] => Array
+        (
+            [title] => My Website
+            [description] => Welcome to my site!
+        )
+
+    [debug] => 
+    [max_users] => 1000
+)
+
+--- Example 4: Multiple Configuration Scenarios ---
+
+ConfigHistory: Creating backup of current configuration...
+ConfigManager: Saving current configuration state...
+ConfigSnapshot: Created snapshot with 5 config items.
+ConfigHistory: Backup created. Total backups: 1
+
+Scenario A: Updating SEO settings...
+ConfigManager: Updating configuration with new values...
+ConfigManager: Configuration updated. Current config has 6 items.
+SEO configuration updated:
+Array
+(
+    [maintenance_mode] => 
+    [theme] => light
+    [seo] => Array
+        (
+            [title] => Best Products Online
+            [description] => Find the best products at great prices!
+            [keywords] => products, online, shopping, deals
+        )
+
+    [debug] => 
+    [max_users] => 1000
+    [analytics] => Array
+        (
+            [google_id] => GA-123456
+            [facebook_pixel] => FB-789012
+        )
+
+)
+
+ConfigHistory: Creating backup of current configuration...
+ConfigManager: Saving current configuration state...
+ConfigSnapshot: Created snapshot with 6 config items.
+ConfigHistory: Backup created. Total backups: 2
+
+Scenario B: Updating performance settings...
+ConfigManager: Updating configuration with new values...
+ConfigManager: Configuration updated. Current config has 9 items.
+Performance settings updated:
+Array
+(
+    [maintenance_mode] => 
+    [theme] => light
+    [seo] => Array
+        (
+            [title] => Best Products Online
+            [description] => Find the best products at great prices!
+            [keywords] => products, online, shopping, deals
+        )
+
+    [debug] => 
+    [max_users] => 2000
+    [analytics] => Array
+        (
+            [google_id] => GA-123456
+            [facebook_pixel] => FB-789012
+        )
+
+    [cache_enabled] => 1
+    [cache_duration] => 3600
+    [compression] => gzip
+)
+
+Scenario C: Emergency rollback to SEO-only changes...
+ConfigHistory: Restoring configuration to: 2025-07-28 15:04:16 / (6 items, maintenance: )
+ConfigManager: Configuration restored from snapshot.
+ConfigHistory: Undo completed successfully.
+Rolled back performance changes:
+Array
+(
+    [maintenance_mode] => 
+    [theme] => light
+    [seo] => Array
+        (
+            [title] => Best Products Online
+            [description] => Find the best products at great prices!
+            [keywords] => products, online, shopping, deals
+        )
+
+    [debug] => 
+    [max_users] => 1000
+    [analytics] => Array
+        (
+            [google_id] => GA-123456
+            [facebook_pixel] => FB-789012
+        )
+
+)
+
+--- Example 5: Reset and Recovery ---
+
+ConfigHistory: Creating backup of current configuration...
+ConfigManager: Saving current configuration state...
+ConfigSnapshot: Created snapshot with 6 config items.
+ConfigHistory: Backup created. Total backups: 2
+ConfigManager: Resetting configuration to defaults...
+ConfigManager: Configuration reset to defaults.
+
+After reset to defaults:
+Array
+(
+    [maintenance_mode] => 
+    [theme] => light
+    [debug] => 
+)
+
+Restoring previous configuration...
+ConfigHistory: Restoring configuration to: 2025-07-28 15:04:16 / (6 items, maintenance: )
+ConfigManager: Configuration restored from snapshot.
+ConfigHistory: Undo completed successfully.
+
+After restoration:
+Array
+(
+    [maintenance_mode] => 
+    [theme] => light
+    [seo] => Array
+        (
+            [title] => Best Products Online
+            [description] => Find the best products at great prices!
+            [keywords] => products, online, shopping, deals
+        )
+
+    [debug] => 
+    [max_users] => 1000
+    [analytics] => Array
+        (
+            [google_id] => GA-123456
+            [facebook_pixel] => FB-789012
+        )
+
+)
+
+--- Example 6: History Management ---
+
+ConfigHistory: Available configuration backups:
+[0] 2025-07-28 15:04:16 / (5 items, maintenance: )
+
+Total backups available: 1
+
+Clearing history...
+ConfigHistory: Cleared 1 backups from history.
+
+ConfigHistory: Available configuration backups:
+No backups available.
 
 
-=== Order Snapshots ===
-[initial] Order ORD_001 - Status: pending - Total: $1,029.98 - 2025-07-28 11:10:13
-[after_validation] Order ORD_001 - Status: validated - Total: $1,029.98 - 2025-07-28 11:10:13
-[after_payment] Order ORD_001 - Status: paid - Total: $1,029.98 - 2025-07-28 11:10:13
-[after_shipping] Order ORD_001 - Status: shipped - Total: $1,029.98 - 2025-07-28 11:10:13
-========================
-
---- Rollback Demonstration ---
-Rolling back to after_validation state...
-Order ORD_001 restored to status: validated
-Restored to snapshot 'after_validation'
-Current order status: validated
-
---- Reprocess from validation state ---
-Processing payment for order ORD_001...
-Payment of $1,029.98 processed
-Order status after reprocessing: paid
+--- Example 7: Real-World Workflow Simulation ---
+Simulating typical admin workflow...
 
 
-=== Order Snapshots ===
-[initial] Order ORD_001 - Status: pending - Total: $1,029.98 - 2025-07-28 11:10:13
-[after_validation] Order ORD_001 - Status: validated - Total: $1,029.98 - 2025-07-28 11:10:13
-[after_payment] Order ORD_001 - Status: paid - Total: $1,029.98 - 2025-07-28 11:10:13
-[after_shipping] Order ORD_001 - Status: shipped - Total: $1,029.98 - 2025-07-28 11:10:13
-========================
+ConfigHistory: Creating backup of current configuration...
+ConfigManager: Saving current configuration state...
+ConfigSnapshot: Created snapshot with 6 config items.
+ConfigHistory: Backup created. Total backups: 1
+Step 1: Preparing for Black Friday promotion...
+ConfigManager: Updating configuration with new values...
+ConfigManager: Configuration updated. Current config has 8 items.
+
+ConfigHistory: Creating backup of current configuration...
+ConfigManager: Saving current configuration state...
+ConfigSnapshot: Created snapshot with 8 config items.
+ConfigHistory: Backup created. Total backups: 2
+
+Step 2: Updating SEO for promotion visibility...
+ConfigManager: Updating configuration with new values...
+ConfigManager: Configuration updated. Current config has 8 items.
+
+Step 3: SEO changes caused issues, rolling back SEO only...
+ConfigHistory: Restoring configuration to: 2025-07-28 15:04:16 / (8 items, maintenance: )
+ConfigManager: Configuration restored from snapshot.
+ConfigHistory: Undo completed successfully.
+Final configuration after workflow:
+Array
+(
+    [maintenance_mode] => 
+    [theme] => dark
+    [seo] => Array
+        (
+            [title] => Best Products Online
+            [description] => Find the best products at great prices!
+            [keywords] => products, online, shopping, deals
+        )
+
+    [debug] => 
+    [max_users] => 1000
+    [analytics] => Array
+        (
+            [google_id] => GA-123456
+            [facebook_pixel] => FB-789012
+        )
+
+    [promotion_banner] => Black Friday Sale - 50% Off!
+    [special_offers] => Array
+        (
+            [discount] => 50
+            [code] => BLACKFRIDAY50
+        )
+
+)
+
+Final history state:
+
+ConfigHistory: Available configuration backups:
+[0] 2025-07-28 15:04:16 / (6 items, maintenance: )
+
