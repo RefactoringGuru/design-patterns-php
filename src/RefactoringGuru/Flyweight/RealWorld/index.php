@@ -162,7 +162,7 @@ class CatVariation
         $output .= "Image: $this->image\n";
         $output .= "Color: $this->color\n";
         $output .= "Texture: $this->texture\n";
-        
+
         return $output;
     }
 }
