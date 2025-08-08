@@ -153,17 +153,15 @@ class CatVariation
      * не быть объявленного класса Контекста. Контекстные данные могут храниться
      * в массиве или какой-то другой, более эффективной структуре данных.
      */
-    public function renderProfile(string $name, string $age, string $owner): string
+    public function renderProfile(string $name, string $age, string $owner): void
     {
-        $output = "= $name =\n";
-        $output .= "Age: $age\n";
-        $output .= "Owner: $owner\n";
-        $output .= "Breed: $this->breed\n";
-        $output .= "Image: $this->image\n";
-        $output .= "Color: $this->color\n";
-        $output .= "Texture: $this->texture\n";
-
-        return $output;
+        echo "= $name =\n";
+        echo "Age: $age\n";
+        echo "Owner: $owner\n";
+        echo "Breed: $this->breed\n";
+        echo "Image: $this->image\n";
+        echo "Color: $this->color\n";
+        echo "Texture: $this->texture\n";
     }
 }
 
@@ -245,9 +243,9 @@ class Cat
      * могут быть остатками реальных методов, извлечённых в класс Легковеса во
      * время массивного рефакторинга к паттерну Легковес.
      */
-    public function render(): string
+    public function render(): void
     {
-        return $this->variation->renderProfile($this->name, $this->age, $this->owner);
+        $this->variation->renderProfile($this->name, $this->age, $this->owner);
     }
 }
 
@@ -399,11 +397,11 @@ fclose($handle);
 echo "\nClient: Let's look for a cat named \"Siri\".\n";
 $cat = $db->findCat(['name' => "Siri"]);
 if ($cat) {
-    echo $cat->render();
+    $cat->render();
 }
 
 echo "\nClient: Let's look for a cat named \"Bob\".\n";
 $cat = $db->findCat(['name' => "Bob"]);
 if ($cat) {
-    echo $cat->render();
+    $cat->render();
 }
