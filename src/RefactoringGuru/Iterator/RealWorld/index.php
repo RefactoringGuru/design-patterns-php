@@ -119,6 +119,8 @@ class CsvIterator implements \Iterator
     {
         $this->rowCounter = 0;
         rewind($this->filePointer);
+        // Read the first row to initialize
+        $this->currentElement = fgetcsv($this->filePointer, self::ROW_SIZE, $this->delimiter);
     }
 
     /**
@@ -132,10 +134,7 @@ class CsvIterator implements \Iterator
      */
     public function current(): array
     {
-        $this->currentElement = fgetcsv($this->filePointer, self::ROW_SIZE, $this->delimiter);
-        $this->rowCounter++;
-
-        return $this->currentElement;
+        return $this->currentElement ?: [];
     }
 
     /**
@@ -153,35 +152,30 @@ class CsvIterator implements \Iterator
     }
 
     /**
-     * EN: This method checks if the end of file has been reached.
+     * EN: This method moves to the next element.
      *
-     * @return bool Returns true on EOF reached, false otherwise.
-     *
-     * RU: Этот метод проверяет, достигнут ли конец файла.
-     *
-     * @return bool Возвращает true при достижении EOF, в ином случае false.
+     * RU: Этот метод переходит к следующему элементу.
      */
-    public function next(): bool
+    public function next(): void
     {
         if (is_resource($this->filePointer)) {
-            return !feof($this->filePointer);
+            $this->currentElement = fgetcsv($this->filePointer, self::ROW_SIZE, $this->delimiter);
+            $this->rowCounter++;
         }
-
-        return false;
     }
 
     /**
-     * EN: This method checks if the next row is a valid row.
+     * EN: This method checks if the current position is valid.
      *
-     * @return bool If the next row is a valid row.
+     * @return bool If the current position is valid.
      *
-     * RU: Этот метод проверяет, является ли следующая строка допустимой.
+     * RU: Этот метод проверяет, является ли текущая позиция допустимой.
      *
-     * @return bool Если следующая строка является допустимой.
+     * @return bool Если текущая позиция является допустимой.
      */
     public function valid(): bool
     {
-        if (!$this->next()) {
+        if ($this->currentElement === false) {
             if (is_resource($this->filePointer)) {
                 fclose($this->filePointer);
             }
@@ -189,7 +183,7 @@ class CsvIterator implements \Iterator
             return false;
         }
 
-        return true;
+        return is_resource($this->filePointer);
     }
 }
 
