@@ -153,15 +153,17 @@ class CatVariation
      * не быть объявленного класса Контекста. Контекстные данные могут храниться
      * в массиве или какой-то другой, более эффективной структуре данных.
      */
-    public function renderProfile(string $name, string $age, string $owner)
+    public function renderProfile(string $name, string $age, string $owner): string
     {
-        echo "= $name =\n";
-        echo "Age: $age\n";
-        echo "Owner: $owner\n";
-        echo "Breed: $this->breed\n";
-        echo "Image: $this->image\n";
-        echo "Color: $this->color\n";
-        echo "Texture: $this->texture\n";
+        $output = "= $name =\n";
+        $output .= "Age: $age\n";
+        $output .= "Owner: $owner\n";
+        $output .= "Breed: $this->breed\n";
+        $output .= "Image: $this->image\n";
+        $output .= "Color: $this->color\n";
+        $output .= "Texture: $this->texture\n";
+        
+        return $output;
     }
 }
 
@@ -245,7 +247,7 @@ class Cat
      */
     public function render(): string
     {
-        $this->variation->renderProfile($this->name, $this->age, $this->owner);
+        return $this->variation->renderProfile($this->name, $this->age, $this->owner);
     }
 }
 
@@ -397,11 +399,11 @@ fclose($handle);
 echo "\nClient: Let's look for a cat named \"Siri\".\n";
 $cat = $db->findCat(['name' => "Siri"]);
 if ($cat) {
-    $cat->render();
+    echo $cat->render();
 }
 
 echo "\nClient: Let's look for a cat named \"Bob\".\n";
 $cat = $db->findCat(['name' => "Bob"]);
 if ($cat) {
-    $cat->render();
+    echo $cat->render();
 }
