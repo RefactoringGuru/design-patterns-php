@@ -153,7 +153,7 @@ class CatVariation
      * не быть объявленного класса Контекста. Контекстные данные могут храниться
      * в массиве или какой-то другой, более эффективной структуре данных.
      */
-    public function renderProfile(string $name, string $age, string $owner)
+    public function renderProfile(string $name, string $age, string $owner): void
     {
         echo "= $name =\n";
         echo "Age: $age\n";
@@ -243,7 +243,7 @@ class Cat
      * могут быть остатками реальных методов, извлечённых в класс Легковеса во
      * время массивного рефакторинга к паттерну Легковес.
      */
-    public function render(): string
+    public function render(): void
     {
         $this->variation->renderProfile($this->name, $this->age, $this->owner);
     }
